@@ -14,7 +14,9 @@ return new class extends Migration
             $table->string('purpose')->nullable();
             $table->text('brief_explanation')->nullable();
             $table->boolean('needs_form')->default(false);
+            $table->json('form_schema')->nullable();
             $table->boolean('needs_report')->default(false);
+            $table->json('report_schema')->nullable();
             $table->string('typical_record_type')->nullable();
             $table->string('example_template_name')->nullable();
             $table->string('external_url')->nullable();

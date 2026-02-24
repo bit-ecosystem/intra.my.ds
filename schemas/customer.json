@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "required": ["name", "email"],
+  "properties": {
+    "name": { "type": "string", "title": "Full Name" },
+    "email": { "type": "string" },
+    "bio": { "type": "string", "format": "textarea" },
+    "role": { "enum": ["admin", "staff", "guest"] },
+    "avatar": { "type": "string", "format": "file" }
+  }
+}

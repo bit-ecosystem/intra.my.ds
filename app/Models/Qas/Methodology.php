@@ -10,17 +10,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Methodology extends Model
 {
     protected $table = 'q_methodologies';
-
-    protected $fillable = [
-        'methodology',
-        'purpose',
-        'brief_explanation',
-        'needs_form',
-        'needs_report',
-        'typical_record_type',
-        'example_template_name',
-        'external_url',
+    
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+    
+    protected $casts = [
+        'form_schema'   => 'array',
+        'report_schema' => 'array',
+        'needs_form'    => 'boolean',
+        'needs_report'  => 'boolean',
     ];
+
 
     public function runs(): HasMany
     {
