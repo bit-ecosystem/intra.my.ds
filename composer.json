@@ -106,7 +106,11 @@
         ],
         "job-seed": [
             "@php artisan db:seed MigrationSeeder",
-            "@php artisan bites:make-permissions"
+            "@php artisan bites:make-permissions",
+            "@upload"
+        ],
+        "upload": [
+            "bash -lc 'set -e; cd /srv/intra; if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then echo \"[upload] Not a git repo.\"; exit 1; fi; if ! git diff --quiet || ! git diff --cached --quiet || [ -n \"$(git ls-files --others --exclude-standard)\" ]; then git add .; git commit -m \"chore: auto upload via composer ($(date -u +%Y-%m-%dT%H:%M:%SZ))\" || echo \"[upload] Nothing to commit (commit skipped)\"; git push; echo \"[upload] Pushed to origin\"; else echo \"[upload] No changes\"; fi'"
         ],
         "test": [
             "@php artisan config:clear --ansi",
