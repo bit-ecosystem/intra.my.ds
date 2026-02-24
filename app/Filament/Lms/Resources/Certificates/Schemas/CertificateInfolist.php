@@ -60,14 +60,16 @@ class CertificateInfolist
                                     ->placeholder('-')
                                     ->date() // keeps your date formatting
                                     ->inlineLabel()
-                                    ->color(function ($state) {
+                                    ->color(function ($state): string {
                                         if (blank($state)) {
                                             return 'gray';
                                         }
+
                                         $expiry = $state instanceof Carbon ? $state : Carbon::parse($state);
                                         if (now()->greaterThan($expiry)) {
                                             return 'danger';
                                         }
+
                                         $days = now()->diffInDays($expiry, false);
                                         if ($days <= 14) {
                                             return 'warning';

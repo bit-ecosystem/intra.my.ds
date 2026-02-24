@@ -19,7 +19,7 @@ class OrgUnitsTable
             ->columns([
                 TextColumn::make('name')
                     // ->description(fn(OrgUnit $record): string => $record->parent?->code ? 'in ' . $record->parent->code : "")
-                    ->description(fn (OrgUnit $orgUnit): ?string =>
+                    ->description(fn (OrgUnit $orgUnit): string =>
                         // If both code and parent code exist: "CODE in PARENTCODE"
                         ($orgUnit->code && $orgUnit->parent?->code)
                             ? sprintf('%s %s in %s %s', $orgUnit->code, $orgUnit->type, $orgUnit->parent->code, $orgUnit->parent->type)
@@ -31,7 +31,7 @@ class OrgUnitsTable
 
                     ->searchable(),
                 TextColumn::make('code')
-                    ->description(fn (OrgUnit $orgUnit): ?string =>
+                    ->description(fn (OrgUnit $orgUnit): string =>
                             // If both code and parent code exist: "CODE in PARENTCODE"
                             ($orgUnit->name && $orgUnit->parent?->code)
                                 ? sprintf('%s %s in %s', $orgUnit->name, $orgUnit->type, $orgUnit->parent->code)

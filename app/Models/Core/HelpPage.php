@@ -16,10 +16,6 @@ class HelpPage extends Model
         'record',
     ];
 
-    protected $casts = [
-        'is_active' => 'boolean',
-    ];
-
     /**
      * Resolve help for a Filament page class.
      */
@@ -29,5 +25,12 @@ class HelpPage extends Model
             ->where('page_class', $pageClass)
             ->where('is_active', true)
             ->first();
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+        ];
     }
 }

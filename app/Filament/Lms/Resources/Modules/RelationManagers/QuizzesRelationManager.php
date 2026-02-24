@@ -27,20 +27,21 @@ class QuizzesRelationManager extends RelationManager
                 CreateAction::make()
                     ->mutateDataUsing(function (array $data): array {
                         $data['module_id'] = $this->getOwnerRecord()->getKey(); // the parent Module ID
+
                         return $data;
                     }),
                 CreateAction::make()
                     ->using(function (array $data) {
                         // Ensure module_id is not coming from the client
                         return $this->getRelationship()->create($data);
-                    })
+                    }),
             ])
 
             ->recordActions([
                 // EditAction::make(),
                 Actions\Action::make('openDynamicForm')
                     ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->url(fn($record): string => QuizAttemptResource::getUrl('create', ['form_id' => $record->id]))
+                    ->url(fn ($record): string => QuizAttemptResource::getUrl('create', ['form_id' => $record->id]))
                     // ->openUrlInNewTab() // optional
                     ->label('Do Quiz'),
             ]);

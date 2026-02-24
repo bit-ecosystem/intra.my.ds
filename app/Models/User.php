@@ -18,18 +18,18 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Laravel\Passport\Contracts\OAuthenticatable;
 use Laravel\Passport\HasApiTokens;
+use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
+use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use Spatie\Permission\PermissionRegistrar;
 use Spatie\Permission\Traits\HasRoles;
-use LdapRecord\Laravel\Auth\LdapAuthenticatable;
-use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
 
-class User extends Authenticatable implements HasAppAuthentication, OAuthenticatable, LdapAuthenticatable
+class User extends Authenticatable implements HasAppAuthentication, LdapAuthenticatable, OAuthenticatable
 {
+    use AuthenticatesWithLdap;
     use HasApiTokens;
     use HasFactory;
     use HasRoles;
     use Notifiable;
-    use AuthenticatesWithLdap;
 
     protected $guard_name = 'web';
 
@@ -83,7 +83,7 @@ class User extends Authenticatable implements HasAppAuthentication, OAuthenticat
         return Str::of($this->name)
             ->explode(' ')
             ->take(2)
-            ->map(fn($word) => Str::substr($word, 0, 1))
+            ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
 
@@ -160,8 +160,8 @@ class User extends Authenticatable implements HasAppAuthentication, OAuthenticat
                     : $this->staff->personAttributes()->get())
                 : collect();
             // Map to key=>value
-            $staffMap = $staffAttrs->mapWithKeys(fn($attr): array => [$attr->key => $attr->value]);
-            $userMap = $userAttrs->mapWithKeys(fn($attr): array => [$attr->key => $attr->value]);
+            $staffMap = $staffAttrs->mapWithKeys(fn ($attr): array => [$attr->key => $attr->value]);
+            $userMap = $userAttrs->mapWithKeys(fn ($attr): array => [$attr->key => $attr->value]);
             // Base merged map: user overrides staff
             $merged = $staffMap->merge($userMap);
             // Append derived attributes (null-safe)
@@ -232,10 +232,12 @@ class User extends Authenticatable implements HasAppAuthentication, OAuthenticat
             app(PermissionRegistrar::class)->setPermissionsTeamId($currentTeamId);
         }
     }
+
     public function getLdapGuidColumn(): string
     {
         return 'ldap_guid';
     }
+
     public function getLdapDomainColumn(): string
     {
         return 'ldap_domain';

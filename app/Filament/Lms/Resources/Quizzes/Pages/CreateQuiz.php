@@ -14,11 +14,11 @@ class CreateQuiz extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['passing_mark'] = $data['passing_mark'] / 100;
+        $data['passing_mark'] /= 100;
         $data['code'] = Str::upper($data['name']);
         foreach ($data['schema'] as $uuid => $block) {
             if (! Str::startsWith($data['schema'][$uuid]['data']['name'], 'q')) {
-                $data['schema'][$uuid]['data']['name'] = 'q' . Str::ulid();
+                $data['schema'][$uuid]['data']['name'] = 'q'.Str::ulid();
             }
 
             if (
@@ -29,7 +29,7 @@ class CreateQuiz extends CreateRecord
             ) {
                 foreach (array_keys($block['data']['options']) as $optuuid) {
                     if (! Str::startsWith($block['data']['options'][$optuuid]['data']['key'], 'a')) {
-                        $data['schema'][$uuid]['data']['options'][$optuuid]['data']['key'] = 'a' . Str::ulid();
+                        $data['schema'][$uuid]['data']['options'][$optuuid]['data']['key'] = 'a'.Str::ulid();
                     }
                 }
             }

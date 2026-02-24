@@ -75,13 +75,13 @@ return [
                 'sync_passwords' => false, // LDAP source of truth
                 'sync_attributes' => [
                     // Local column => AD attribute
-                    'name'        => 'cn',
-                    'email'       => 'mail',
-                    'username'    => 'samaccountname',
+                    'name' => 'cn',
+                    'email' => 'mail',
+                    'username' => 'samaccountname',
                     'employee_id' => 'employeenumber',   // or 'employeeid' if used in your AD
-                    'department'  => 'department',
-                    'title'       => 'title',
-                    'manager_dn'  => 'manager',          // DN of the manager
+                    'department' => 'department',
+                    'title' => 'title',
+                    'manager_dn' => 'manager',          // DN of the manager
                     // 'ldap_guid' => 'objectguid',
                     // function (\LdapRecord\Models\Model $ldap) {
                     //     $bytes = $ldap->getFirstAttribute('objectguid');

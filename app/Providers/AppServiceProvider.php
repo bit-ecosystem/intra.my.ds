@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Event::listen(Login::class, [SyncKeycloakAttributes::class, 'handle']);
         Event::listen(\LdapRecord\Laravel\Events\Import\Synchronized::class, [
             \App\Listeners\SyncLdap::class,
-            'handle'
+            'handle',
         ]);
     }
 

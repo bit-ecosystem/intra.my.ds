@@ -10,19 +10,21 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Methodology extends Model
 {
     protected $table = 'q_methodologies';
-    
-    protected $guarded = ['id', 'created_at', 'updated_at'];
-    
-    protected $casts = [
-        'form_schema'   => 'array',
-        'report_schema' => 'array',
-        'needs_form'    => 'boolean',
-        'needs_report'  => 'boolean',
-    ];
 
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function runs(): HasMany
     {
         return $this->hasMany(RunInitiative::class, 'methodology_id');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'form_schema' => 'array',
+            'report_schema' => 'array',
+            'needs_form' => 'boolean',
+            'needs_report' => 'boolean',
+        ];
     }
 }

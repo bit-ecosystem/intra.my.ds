@@ -21,7 +21,7 @@ class AttachableExtLink extends Model
     protected static function booted(): void
     {
         // Normalize input and enforce "empty => delete/skip" rule
-        static::saving(function (self $model) {
+        static::saving(function (self $model): bool {
             // Normalize / trim
             $model->url = trim((string) ($model->url ?? ''));
 
@@ -44,7 +44,7 @@ class AttachableExtLink extends Model
         });
 
         // Optional: if you prefer to also guard at "creating" boundary specifically.
-        static::creating(function (self $model) {
+        static::creating(function (self $model): bool {
             $model->url = trim((string) ($model->url ?? ''));
 
             return $model->url !== '';
@@ -58,9 +58,10 @@ class AttachableExtLink extends Model
         // });
     }
 
-    // Optional: keep trims consistent even when assigning directly
-    public function setUrlAttribute($value): void
+    protected function url(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $this->attributes['url'] = trim((string) ($value ?? ''));
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($value): array {
+            return ['url' => trim((string) ($value ?? ''))];
+        });
     }
 }

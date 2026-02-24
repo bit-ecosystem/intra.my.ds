@@ -11,11 +11,11 @@ class CorpLoginServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'corp-login');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'corp-login');
 
         $this->callAfterResolving(Factory::class, function (Factory $factory): void {
             $factory->add('corp-login', [
-                'path' => __DIR__ . '/../resources/svg',
+                'path' => __DIR__.'/../resources/svg',
                 'prefix' => 'bites',
             ]);
         });

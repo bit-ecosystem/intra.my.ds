@@ -69,6 +69,7 @@ class OrgUnit extends Model
     {
         return $this->hasMany(Document::class, 'org_unit_id');
     }
+
     //  public static function resolveCreation(array $data): self
     // {
     //     $staff_id = \App\Models\Hrm\Staff::where('staff_number', $data['staff_number'])->value('id');

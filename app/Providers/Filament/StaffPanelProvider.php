@@ -37,7 +37,7 @@ class StaffPanelProvider extends PanelProvider
             // Panel identity & routing
             ->id('staff')
             ->path('staff')
-            ->homeUrl(fn(): string => route(config('bites.staff_panel.route', '/')))
+            ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             // Authentication pages
             // ->login(\Bites\CorpLogin\Pages\Login::class) // Use package-provided login page
             ->login(\App\Filament\Pages\Auth\Login::class)
@@ -102,8 +102,8 @@ class StaffPanelProvider extends PanelProvider
             ])
 
             // Custom render hooks for UI
-            ->renderHook('panels::auth.login.form.after', fn(): View => view('corp-login::panel.extra'))
-            ->renderHook('panels::auth.register.form.after', fn(): View => view('corp-login::panel.extra'));
+            ->renderHook('panels::auth.login.form.after', fn (): View => view('corp-login::panel.extra'))
+            ->renderHook('panels::auth.register.form.after', fn (): View => view('corp-login::panel.extra'));
     }
 
     public function boot(Panel $panel): void
@@ -111,12 +111,12 @@ class StaffPanelProvider extends PanelProvider
         // Register custom UI hooks
         FilamentView::registerRenderHook(
             PanelsRenderHook::USER_MENU_BEFORE,
-            fn(): View => view('corp-login::panel.icon-links-umb'),
+            fn (): View => view('corp-login::panel.icon-links-umb'),
         );
 
         FilamentView::registerRenderHook(
             PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
-            fn(): View => view('corp-login::panel.icon-links-gsb'),
+            fn (): View => view('corp-login::panel.icon-links-gsb'),
         );
 
         // Register custom icons

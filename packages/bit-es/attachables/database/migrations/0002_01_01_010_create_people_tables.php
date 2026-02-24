@@ -1,11 +1,13 @@
 <?php
+
 // database/migrations/2026_02_14_000000_create_staff_table.php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
-    public function up()
+return new class extends Migration
+{
+    public function up(): void
     {
         // Schema::create('staff', function (Blueprint $table) {
         //     $table->id();
@@ -17,7 +19,7 @@ return new class extends Migration {
         //     $table->id();
         //     $table->string('title');
         //     $table->boolean('outsourced')->default(false);
-        //     $table->nullableMorphs('assignable'); // Staff or User 
+        //     $table->nullableMorphs('assignable'); // Staff or User
         //     $table->foreignId('work_shift_id')->nullable()->constrained('work_shifts');
         //     $table->timestamps();
         // });
@@ -42,8 +44,7 @@ return new class extends Migration {
         // });
     }
 
-
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('work_shifts');
         Schema::dropIfExists('attributeables');

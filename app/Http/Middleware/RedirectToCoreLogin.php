@@ -24,6 +24,7 @@ class RedirectToCoreLogin
         if (empty(Auth::user()->app_authentication_secret)) {
             return redirect()->route('filament.staff.auth.multi-factor-authentication.set-up-required');
         }
+
         if (! Auth::user()->can('go_'.$panelId.'_panel')) {
 
             Notification::make()

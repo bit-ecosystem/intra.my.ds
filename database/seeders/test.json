@@ -1,0 +1,57 @@
+{
+    "type": "object",
+    "properties": {
+        "date_created": {
+            "type": "string",
+            "title": "Date"
+        },
+        "process": {
+            "enum": [
+                "FOL",
+                "MOL",
+                "EOL",
+                "Plating",
+                "Others"
+            ],
+            "title": "Type"
+        },
+        "other": {
+            "type": "string",
+            "title": "Other"
+        },
+        "location": {
+            "type": "string",
+            "title": "Location"
+        },
+                "specific_location": {
+            "type": "string",
+            "title": "Specific Location"
+        },
+        "eip_type": {
+            "enum": [
+                "Quality",
+                "Safety",
+                "Others"
+            ],
+            "title": "EIP Type"
+        },
+        "partner": {
+            "type": "string",
+            "title": "Benchmark Partner"
+        },
+        "gap_summary": {
+            "type": "string",
+            "title": "Gap Summary",
+            "format": "textarea"
+        },
+        "evidence": {
+            "type": "string",
+            "title": "Evidence File",
+            "format": "file"
+        }
+    },
+    "required": [
+        "subject",
+        "benchmark_type"
+    ]
+}

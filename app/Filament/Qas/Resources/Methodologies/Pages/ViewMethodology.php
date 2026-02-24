@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Filament\Qas\Resources\Methodologies\Pages;
 
 use App\Filament\Qas\Resources\Methodologies\MethodologyResource;
+use App\Filament\Qas\Resources\RunInitiatives\RunInitiativeResource;
+use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 
@@ -16,6 +18,11 @@ class ViewMethodology extends ViewRecord
     {
         return [
             EditAction::make(),
+            Action::make('openDynamicForm')
+                ->icon('heroicon-o-arrow-top-right-on-square')
+                ->url(fn ($record): string => RunInitiativeResource::getUrl('create', ['form_id' => $record->id]))
+                // ->openUrlInNewTab() // optional
+                ->label('Run Initiative'),
         ];
     }
 }

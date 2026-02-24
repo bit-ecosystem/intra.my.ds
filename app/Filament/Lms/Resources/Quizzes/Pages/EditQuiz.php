@@ -24,7 +24,7 @@ class EditQuiz extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $data['passing_mark'] = $data['passing_mark'] / 100;
+        $data['passing_mark'] /= 100;
         foreach ($data['schema'] as $uuid => $block) {
             if (! Str::startsWith($data['schema'][$uuid]['data']['name'], 'q')) {
                 $data['schema'][$uuid]['data']['name'] = 'q'.Str::ulid();

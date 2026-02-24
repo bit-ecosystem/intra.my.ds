@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Bites\Attachables\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Core\OrgUnit;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 
 class RoleGroup extends Model
 {
@@ -14,22 +14,21 @@ class RoleGroup extends Model
         'org_unit_id',
         'code',
         'name',
-        'is_global'
+        'is_global',
     ];
- 
+
     public function orgUnit()
     {
         return $this->belongsTo(OrgUnit::class);
     }
- 
+
     public function users()
     {
-        return $this->belongsToMany(User::class,'role_group_users');
+        return $this->belongsToMany(User::class, 'role_group_users');
     }
- 
+
     public function permissions()
     {
         return $this->hasMany(RoleGroupPermission::class);
     }
 }
- 

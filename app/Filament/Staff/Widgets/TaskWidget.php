@@ -75,8 +75,8 @@ class TaskWidget extends TableWidget
                     ->label('Expires')
                     ->date('Y-m-d')
                     ->since() // “in 10 days”
-                    ->icon(fn ($record) => now()->greaterThan($record->expires_at) ? 'heroicon-o-exclamation-triangle' : null)
-                    ->color(fn ($record) => now()->greaterThan($record->expires_at) ? 'danger' : 'warning')
+                    ->icon(fn ($record): ?string => now()->greaterThan($record->expires_at) ? 'heroicon-o-exclamation-triangle' : null)
+                    ->color(fn ($record): string => now()->greaterThan($record->expires_at) ? 'danger' : 'warning')
                     ->sortable(),
 
                 TextColumn::make('status')

@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Listeners;
 
+use App\Models\Hrm\Staff;
 use Illuminate\Support\Str;
 use LdapRecord\Laravel\Events\Import\Synchronized;
 use LdapRecord\Models\Attributes\Guid;
-use App\Models\Hrm\Staff;
 
 class SyncLdap
 {
@@ -24,7 +26,7 @@ class SyncLdap
         }
 
         // Link staff by employee_id -> staff_number:
-        if (!empty($user->employee_id)) {
+        if (! empty($user->employee_id)) {
             $staff = Staff::where('staff_number', $user->employee_id)->first();
 
             if ($staff) {

@@ -1,18 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Pages\Auth;
 
-use Filament\Auth\Pages\Login as BaseLogin;
 use App\Models\User as AppUser;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use Filament\Auth\Http\Responses\Contracts\LoginResponse;
+use Filament\Auth\Pages\Login as BaseLogin;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Validation\ValidationException;
 use LdapRecord\Models\ActiveDirectory\User as AdUser;
 
 class Login extends BaseLogin
@@ -52,14 +53,15 @@ class Login extends BaseLogin
     {
         try {
             $this->rateLimit(5);
-        } catch (TooManyRequestsException $e) {
-            $this->getRateLimitedNotification($e)?->send();
+        } catch (TooManyRequestsException $tooManyRequestsException) {
+            $this->getRateLimitedNotification($tooManyRequestsException)?->send();
+
             return null; // allowed by Filament
         }
 
-        $data     = $this->form->getState();
+        $data = $this->form->getState();
         $loginVal = $data['login'] ?? '';
-        $isEmail  = filter_var($loginVal, FILTER_VALIDATE_EMAIL);
+        $isEmail = filter_var($loginVal, FILTER_VALIDATE_EMAIL);
         $remember = $data['remember'] ?? false;
 
         // 1) LDAP existence check (by mail or samaccountname)
@@ -67,7 +69,7 @@ class Login extends BaseLogin
             ? AdUser::where('mail', $loginVal)->first()
             : AdUser::where('samaccountname', $loginVal)->first();
 
-        if (! $ldapUser) {
+        if (! $ldapUser instanceof \LdapRecord\Models\Model) {
             // 2) LDAP user not found -> local fallback (Eloquent)
             $local = $isEmail
                 ? AppUser::where('email', $loginVal)->first()
@@ -88,6 +90,7 @@ class Login extends BaseLogin
                     }
 
                     session()->regenerate();
+
                     return app(LoginResponse::class);
                 }
 
@@ -101,8 +104,8 @@ class Login extends BaseLogin
             }
 
             // 3) Neither LDAP nor local -> redirect to your Register page
-            $panelId   = Filament::getCurrentPanel()->getId(); // e.g. 'admin'
-            $routeName = "filament.$panelId.auth.register";
+            $panelId = Filament::getCurrentPanel()->getId(); // e.g. 'admin'
+            $routeName = sprintf('filament.%s.auth.register', $panelId);
 
             session()->flash('auth.notice', 'We couldn’t find your account in Active Directory. You may request access.');
 
@@ -117,10 +120,10 @@ class Login extends BaseLogin
 
         // 4) LDAP user exists -> attempt LDAP auth with mapped keys
         if (! Filament::auth()->attempt($this->getCredentialsFromFormData($data), $remember)) {
-             Notification::make()
-                    ->title('Incorrect AD credentials.')
-                    ->warning()
-                    ->send();
+            Notification::make()
+                ->title('Incorrect AD credentials.')
+                ->warning()
+                ->send();
             $this->throwFailureValidationException(); // Filament-native message
         }
 
@@ -135,6 +138,7 @@ class Login extends BaseLogin
         }
 
         session()->regenerate();
+
         return app(LoginResponse::class);
     }
 }

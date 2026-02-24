@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Core\Resources\Permissions\Schemas;
 
 use Filament\Forms\Components\Select;
@@ -21,8 +23,8 @@ class PermissionForm
                 Select::make('roles')
                     ->multiple()
                     ->preload()
-                    ->relationship(titleAttribute: 'name', name: 'roles')
-                    ->getOptionLabelFromRecordUsing(fn (Role $record): string => "{$record->name} - {$record->team_id}"),
+                    ->relationship(name: 'roles', titleAttribute: 'name')
+                    ->getOptionLabelFromRecordUsing(fn (Role $record): string => sprintf('%s - %s', $record->name, $record->team_id)),
 
             ]);
     }

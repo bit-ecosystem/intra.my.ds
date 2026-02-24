@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('role_groups', function (Blueprint $table) {
+        Schema::create('role_groups', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('org_unit_id')->nullable()->constrained()->nullOnDelete();
             $table->string('code');
@@ -20,18 +20,18 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('role_group_users', function (Blueprint $table) {
+        Schema::create('role_group_users', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('role_group_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
 
-        Schema::create('role_group_permissions', function (Blueprint $table) {
+        Schema::create('role_group_permissions', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('role_group_id')->constrained()->cascadeOnDelete();
             $table->string('role_type');
         });
-        Schema::create('model_access_controls', function (Blueprint $table) {
+        Schema::create('model_access_controls', function (Blueprint $table): void {
 
             $table->id();
             $table->morphs('accessible');

@@ -8,7 +8,7 @@ return new class extends Migration // packages core core_tables
 {
     public function up(): void
     {
-        Schema::create('help_pages', function (Blueprint $table) {
+        Schema::create('help_pages', function (Blueprint $table): void {
             $table->id();
             $table->string('type')->default('help'); // e.g. help | faq | sop | guide
             $table->string('category')->nullable(); // e.g. 'Procurement', 'Onboarding'

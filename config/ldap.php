@@ -79,7 +79,6 @@ return [
     ],
     'locate_users_by' => ['mail', 'samaccountname'],
 
-
     'auth' => [
         'usernames' => [
             'samaccountname' => 'samaccountname',
@@ -88,6 +87,5 @@ return [
             // 'email' => 'mail',
         ],
     ],
-
 
 ];

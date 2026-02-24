@@ -13,7 +13,7 @@ abstract class BasePolicy
     {
         return $model->accessControls()
             ->where('role_type', $roleType)
-            ->where(function ($q) use ($user) {
+            ->where(function ($q) use ($user): void {
                 $q->whereIn(
                     'org_unit_id',
                     $user->accessibleOrgUnitIds()
@@ -26,6 +26,7 @@ abstract class BasePolicy
             )
             ->exists();
     }
+
     public function view(User $user, Model $model)
     {
         return $this->check($user, $model, 'view');

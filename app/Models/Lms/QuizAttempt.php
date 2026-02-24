@@ -59,15 +59,14 @@ class QuizAttempt extends Model
     public static function resolveCreation(array $data): self
     {
 
-        if (isset($data['meta'])) {
-            if ($data['meta'] !== '') {
-                $parts = array_map('trim', explode(',', $data['meta'] ?? ''));
-                $taker = Staff::firstWhere('staff_number', $parts[0])?->id;
-                $examiner = Staff::firstWhere('staff_number', $parts[1])?->id;
-                $data['for_staff'] = $taker;
-                $data['by_staff'] = $examiner;
-            }
+        if (isset($data['meta']) && $data['meta'] !== '') {
+            $parts = array_map('trim', explode(',', $data['meta'] ?? ''));
+            $taker = Staff::firstWhere('staff_number', $parts[0])?->id;
+            $examiner = Staff::firstWhere('staff_number', $parts[1])?->id;
+            $data['for_staff'] = $taker;
+            $data['by_staff'] = $examiner;
         }
+
         unset($data['user_id'],$data['meta']);
 
         return self::create($data);

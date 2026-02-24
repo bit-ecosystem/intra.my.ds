@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Quizzes\Schemas;
 
-use Filament\Forms;
-use Filament\Schemas;
 use App\Filament\Lms\Resources\Modules\RelationManagers\QuizzesRelationManager;
+use Filament\Forms;
 use Filament\Forms\Components\Slider\Enums\PipsMode;
+use Filament\Schemas;
 use Filament\Support\RawJs;
 
 class QuizForm
@@ -25,8 +25,8 @@ class QuizForm
                     ->relationship('module', 'title') // assumes Quiz belongsTo Module, and Module has 'name'
                     ->searchable()
                     ->preload()
-                    ->hidden(fn($livewire) => $livewire instanceof QuizzesRelationManager)
-                    ->required(fn($livewire) => ! ($livewire instanceof QuizzesRelationManager)),
+                    ->hidden(fn ($livewire): bool => $livewire instanceof QuizzesRelationManager)
+                    ->required(fn ($livewire): bool => ! ($livewire instanceof QuizzesRelationManager)),
                 Forms\Components\Slider::make('passing_mark')
                     ->range(minValue: 0, maxValue: 100)
                     ->pips(PipsMode::Positions)

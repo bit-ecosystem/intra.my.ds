@@ -22,6 +22,7 @@ class MethodologyInfolist
                     ->columnSpanFull(),
                 IconEntry::make('needs_form')
                     ->boolean(),
+                // TextEntry::make('form_schema')->html(),
                 IconEntry::make('needs_report')
                     ->boolean(),
                 TextEntry::make('typical_record_type')

@@ -23,18 +23,18 @@ class QuizAttemptsTable
             ->columns([
                 TextColumn::make('module.title')->searchable(),
                 TextColumn::make('quiz.name')->searchable()->sortable(),
-                
-TextColumn::make('examiner.staff_number')
-    ->searchable()
-    ->sortable()
-    ->formatStateUsing(function ($state, $record) {
-        // $state is examiner.staff_number
-        $examinerNo = $state;
-        $staffNo    = $record->staff?->staff_number;
 
-        // Show examiner number only if it's different; otherwise show '-'
-        return ($examinerNo && $examinerNo !== $staffNo) ? $examinerNo : '-';
-    }),
+                TextColumn::make('examiner.staff_number')
+                    ->searchable()
+                    ->sortable()
+                    ->formatStateUsing(function ($state, $record) {
+                        // $state is examiner.staff_number
+                        $examinerNo = $state;
+                        $staffNo = $record->staff?->staff_number;
+
+                        // Show examiner number only if it's different; otherwise show '-'
+                        return ($examinerNo && $examinerNo !== $staffNo) ? $examinerNo : '-';
+                    }),
 
                 TextColumn::make('staff.staff_number')->searchable()->copyable(),
                 TextColumn::make('name')->label('Name')->getStateUsing(fn ($record) => $record->staff?->name ?? $record->user?->name ?? '-'),

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use App\Models\Hrm\Staff;
@@ -23,31 +25,30 @@ class MakePermissions extends Command
         $models = $this->getAllModelClasses();
 
         $panels = config('bites.panels');
-        
-
 
         foreach ($panels as $panelId => $panelConfig) {
             $role = $panelConfig['role_can_access'];   // ← this is what you want
-            $permissionName = "go_{$panelId}_panel";
+            $permissionName = sprintf('go_%s_panel', $panelId);
             $permission = Permission::findOrCreate($permissionName, 'web');
             // $role=$role.[$panel];
             // dd($role);
-            $this->line("Sync: to {$permission}");
-            $permission->roles()->detach(); 
+            $this->line('Sync: to '.$permission);
+            $permission->roles()->detach();
             $permission->syncRoles($role);
         }
 
         foreach ($models as $model) {
             $alias = $this->aliasFromFqcn($model);
 
-            $this->createPermission("viewany_{$alias}");
-            $this->createPermission("view_{$alias}");
-            $this->createPermission("create_{$alias}");
-            $this->createPermission("update_{$alias}");
-            $this->createPermission("delete_{$alias}");
-            $this->createPermission("restore_{$alias}");
-            $this->createPermission("forcedelete_{$alias}");
+            $this->createPermission('viewany_'.$alias);
+            $this->createPermission('view_'.$alias);
+            $this->createPermission('create_'.$alias);
+            $this->createPermission('update_'.$alias);
+            $this->createPermission('delete_'.$alias);
+            $this->createPermission('restore_'.$alias);
+            $this->createPermission('forcedelete_'.$alias);
         }
+
         self::makeDeveloper();
         $this->info('Done.');
 
@@ -96,7 +97,7 @@ class MakePermissions extends Command
             $relative = trim(str_replace($base, '', $file->getPathname()), DIRECTORY_SEPARATOR);
             $withoutExt = Str::beforeLast($relative, '.php');
 
-            $fqcn = 'App\\Models\\' . str_replace(DIRECTORY_SEPARATOR, '\\', $withoutExt);
+            $fqcn = 'App\\Models\\'.str_replace(DIRECTORY_SEPARATOR, '\\', $withoutExt);
 
             if (class_exists($fqcn)) {
                 $classes->push($fqcn);
@@ -116,6 +117,7 @@ class MakePermissions extends Command
         ]);
 
         $role = Role::where('name', 'jt_developer')->first();
+
         $permissions = Permission::all();
         $role->syncPermissions($permissions);
 

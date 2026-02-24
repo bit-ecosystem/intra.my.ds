@@ -333,7 +333,7 @@ class RoleSyncService
 
         // Correctly group (st_% OR jt_%) AND enabled = 1
         $mappers = RoleMapper::query()
-            ->where(function ($q) {
+            ->where(function ($q): void {
                 $q->where('role_name', 'like', 'st_%')
                     ->orWhere('role_name', 'like', 'jt_%');
             })
@@ -341,7 +341,7 @@ class RoleSyncService
             ->get(['id', 'role_name', 'conditions', 'scope', 'category', 'label']);
 
         $stJtRoleIds = $mappers
-            ->filter(function ($mapper) use ($staff) {
+            ->filter(function ($mapper) use ($staff): bool {
                 $cond = (string) $mapper->conditions;
 
                 return $cond !== '' && self::evaluateSimpleCondition($cond, $staff);

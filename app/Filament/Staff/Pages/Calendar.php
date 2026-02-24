@@ -156,7 +156,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
         // Returns a LengthAwarePaginator of the *current page* after filters/search/sort
         $paginator = $this->getTableRecords();
 
-        $events = collect($paginator->items())->map(function (Event $event) {
+        $events = collect($paginator->items())->map(function (Event $event): array {
             return [
                 'title' => $event->title,
                 'start' => optional($event->starts_at)->toIso8601String(),

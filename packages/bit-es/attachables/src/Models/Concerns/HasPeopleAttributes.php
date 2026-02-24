@@ -28,6 +28,7 @@ trait HasPeopleAttributes
         ]);
 
         $this->peopleAttributes()->syncWithoutDetaching([$attr->id]);
+
         return $attr;
     }
 
@@ -60,6 +61,7 @@ trait HasPeopleAttributes
         ]);
 
         $this->workShift()->associate($shift)->save();
+
         return $shift;
     }
 }

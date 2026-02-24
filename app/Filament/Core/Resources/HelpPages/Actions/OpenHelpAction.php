@@ -34,26 +34,14 @@ final class OpenHelpAction
             if (Auth::user()->can('create_Core_HelpPage')) {
                 return self::createMode($pageKey, $resolvedPage, $recordId);
             }
+
             // return self::genericMode();
         }
 
         return self::viewMode($existing);
     }
 
-    protected static function genericMode(Action $action): void
-    {
-        $action
-            ->modalHeading(__('Help'))
-            ->modalSubmitAction(false)
-            ->schema([
-                TextEntry::make('content')
-                    ->state('<p>No help or manual for this page.</p>')
-                    ->html()
-                    ->columnSpanFull(),
-            ]);
-    }
-
-    protected static function createMode(
+    private static function createMode(
         string $pageKey,
         string $resolvedPage,
         ?int $recordId,
@@ -99,7 +87,7 @@ final class OpenHelpAction
             });
     }
 
-    protected static function viewMode(HelpPage $existing): Action
+    private static function viewMode(HelpPage $existing): Action
     {
         return Action::make('help')
             ->label(__('Help'))
@@ -116,7 +104,7 @@ final class OpenHelpAction
             ]);
     }
 
-    protected static function defaultTemplate(
+    private static function defaultTemplate(
         string $pageClass,
         ?int $recordId,
     ): string {

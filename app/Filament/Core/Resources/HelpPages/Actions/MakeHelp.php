@@ -59,7 +59,7 @@ final class MakeHelp
     /*  MODES */
     /* -------------------------------------------------- */
 
-    protected static function viewMode(Action $action, string $content): void
+    private static function viewMode(Action $action, string $content): void
     {
         $action
             ->modalHeading(__('Help'))
@@ -72,7 +72,7 @@ final class MakeHelp
             ]);
     }
 
-    protected static function genericMode(Action $action): void
+    private static function genericMode(Action $action): void
     {
         $action
             ->modalHeading(__('Help'))
@@ -85,7 +85,7 @@ final class MakeHelp
             ]);
     }
 
-    protected static function createMode(
+    private static function createMode(
         Action $action,
         string $pageKey,
         string $resolvedPage,
@@ -141,7 +141,7 @@ final class MakeHelp
     /*  AUTHORIZATION */
     /* -------------------------------------------------- */
 
-    protected static function canCreateHelp(?int $recordOrgUnitId): bool
+    private static function canCreateHelp(?int $recordOrgUnitId): bool
     {
         $user = Auth::user();
 
@@ -155,24 +155,18 @@ final class MakeHelp
         }
 
         // Org builder must match org unit
-        if (
-            $user->hasRole('ou_trainer') &&
-            $recordOrgUnitId &&
-            $user->org_unit_id === $recordOrgUnitId
-        ) {
-            return true;
-        }
-
-        return false;
+        return $user->hasRole('ou_trainer') &&
+        $recordOrgUnitId &&
+        $user->org_unit_id === $recordOrgUnitId;
     }
 
     /* -------------------------------------------------- */
     /*  HELPERS */
     /* -------------------------------------------------- */
 
-    protected static function extractRecordMeta(?Model $record): array
+    private static function extractRecordMeta(?Model $record): array
     {
-        if (! $record) {
+        if (! $record instanceof \Illuminate\Database\Eloquent\Model) {
             return [
                 'record_id' => null,
                 'record_label' => null,
@@ -202,7 +196,7 @@ final class MakeHelp
         ];
     }
 
-    protected static function defaultTemplate(
+    private static function defaultTemplate(
         string $pageClass,
         ?string $recordLabel,
     ): string {
@@ -210,7 +204,7 @@ final class MakeHelp
         $title = Str::headline(class_basename($pageClass));
 
         $recordSection = $recordLabel
-            ? "<p><strong>Record:</strong> {$recordLabel}</p>"
+            ? sprintf('<p><strong>Record:</strong> %s</p>', $recordLabel)
             : '';
 
         return <<<HTML

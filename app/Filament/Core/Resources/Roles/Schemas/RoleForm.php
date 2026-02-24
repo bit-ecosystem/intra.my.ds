@@ -16,7 +16,7 @@ class RoleForm
                 Select::make('permissions')
                     ->multiple()
                     ->preload()
-                    ->relationship(titleAttribute: 'name', name: 'permissions'),
+                    ->relationship(name: 'permissions', titleAttribute: 'name'),
             ]);
     }
 }

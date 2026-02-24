@@ -2,40 +2,35 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Core\Resources\RoleMappers\Tables;
+namespace App\Filament\Qas\Resources\RunInitiatives\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\QueryBuilder\Constraints\NumberConstraint;
-use Filament\Tables\Columns\IconColumn;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Table;
 
-class RoleMappersTable
+class RunInitiativesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('scope')
+                TextColumn::make('methodology.id')
                     ->searchable(),
-                TextColumn::make('role_name')
+                TextColumn::make('initiator.name')
                     ->searchable(),
-                TextColumn::make('ou.code')
+                TextColumn::make('title')
+                    ->searchable(),
+                TextColumn::make('status')
+                    ->searchable(),
+                TextColumn::make('started_at')
+                    ->date()
                     ->sortable(),
-                // TextColumn::make('org_unit_id')
-                //     ->sortable(),
-                TextColumn::make('staff_count')->counts('staff')
-                    ->listWithLineBreaks()
+                TextColumn::make('completed_at')
+                    ->date()
                     ->sortable(),
-                IconColumn::make('enabled')
-                    ->boolean(),
-                TextColumn::make('label')
-                    ->searchable(),
-                TextColumn::make('category')
-                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -46,12 +41,10 @@ class RoleMappersTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                // QueryBuilder::make()
-                //     ->constraints([
-                //         NumberConstraint::make('staff')
-                //     ])
+                //
             ])
             ->recordActions([
+                ViewAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([

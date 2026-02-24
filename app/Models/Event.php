@@ -36,6 +36,7 @@ class Event extends Model
             if ($event->starts_at) {
                 $event->start_UTC = $event->starts_at->copy()->timezone('UTC')->toDateString();
             }
+
             $event->end_UTC = $event->ends_at ? $event->ends_at->copy()->timezone('UTC')->toDateString() : $event->start_UTC;
         });
     }
@@ -82,7 +83,7 @@ class Event extends Model
         if (! empty($record['type']) && is_string($record['type'])) {
             $eventType = EventType::tryFrom($record['type'])
                 ?? collect(EventType::cases())
-                    ->first(fn (EventType $c) => mb_strtolower($c->value) === mb_strtolower($record['type']));
+                    ->first(fn (EventType $c): bool => mb_strtolower($c->value) === mb_strtolower($record['type']));
 
             if ($eventType instanceof EventType) {
                 // Canonical label
@@ -95,6 +96,7 @@ class Event extends Model
                 }
             }
         }
+
         // 3) Keep only fields we want to persist
         $data = Arr::only($record, [
             'title',
@@ -115,7 +117,7 @@ class Event extends Model
         // Don't overwrite with nulls unless explicitly intended
         $data = array_filter(
             $data,
-            static fn ($v) => ! is_null($v)
+            static fn ($v): bool => ! is_null($v)
         );
 
         // 4) Create or update

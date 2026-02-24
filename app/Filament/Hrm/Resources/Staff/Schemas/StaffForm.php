@@ -9,8 +9,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 use Illuminate\Database\Eloquent\Builder;
 
-use function Laravel\Prompts\select;
-
 class StaffForm
 {
     public static function configure(Schema $schema): Schema
@@ -39,7 +37,7 @@ class StaffForm
                     ->relationship(
                         name: 'staffRoleLinks',
                         titleAttribute: 'name',
-                        modifyQueryUsing: fn(Builder $query) => $query->where('guard_name', 'web'),
+                        modifyQueryUsing: fn (Builder $query) => $query->where('guard_name', 'web'),
                     )
                     ->multiple()
                     ->preload()

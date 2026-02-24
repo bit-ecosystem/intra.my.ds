@@ -51,7 +51,7 @@ trait HasAttachableExtLink
                             ->label('')
                             ->url()
                             ->maxLength(2048)
-                            ->dehydrateStateUsing(fn ($state) => trim((string) $state)),
+                            ->dehydrateStateUsing(fn ($state): string => trim((string) $state)),
                     ]),
             ])
             ->collapsible();

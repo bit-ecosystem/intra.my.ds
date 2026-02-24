@@ -24,7 +24,7 @@ return [
         ],
         'hrm' => [
             'label' => 'HR Panel',
-            'role_can_access' => ['ou_people_planner','hr_executive'],
+            'role_can_access' => ['ou_people_planner', 'hr_executive'],
             'home' => 'home',
             'description' => 'About HR management tasks including employee records, attendance, leave management, and performance evaluations.',
             'color' => '#0F4B8F',
