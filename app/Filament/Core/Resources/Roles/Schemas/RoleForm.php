@@ -1,0 +1,22 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Filament\Core\Resources\Roles\Schemas;
+
+use Filament\Forms\Components\Select;
+use Filament\Schemas\Schema;
+
+class RoleForm
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Select::make('permissions')
+                    ->multiple()
+                    ->preload()
+                    ->relationship(titleAttribute: 'name', name: 'permissions'),
+            ]);
+    }
+}

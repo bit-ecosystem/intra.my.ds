@@ -1,0 +1,11 @@
+{
+    "oauth_clients": [
+        {
+            "id": "019b2a81-eb95-73f1-a762-1c680c35829f",
+            "name": "Dev",
+            "redirect_uris": ["https://dev.my.ds.amkor.com/oauth/callback/passport"],
+            "grant_types": ["authorization_code","refresh_token"],
+            "revoked": 0
+        }
+    ]
+}

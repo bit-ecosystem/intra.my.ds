@@ -1,0 +1,20 @@
+{
+    "d_attachments": [
+        {"id": 1,"type": "policy","file_path": "http://atmportal/Documents/HR/ATM_Employee_Handbook_English_2025-rev6_latest.pdf","file_name": "Employee Handbook (BI)"},
+        {"id": 2,"type": "policy","file_path": "http://atmportal/Documents/HR/ATM_Employee_Handbook_Malay_Version.pdf","file_name": "Employee Handbook (BM)"},
+        {"id": 3,"type": "policy","file_path": "http://atmportal/Documents/HR/Amkor_Code_of_Business_Conduct_English.pdf","file_name": "Amkor Code of business conduct (BI)"},
+        {"id": 4,"type": "policy","file_path": "http://atmportal/Documents/HR/Amkor_Code_of_Business_Conduct_Malay.pdf","file_name": "Amkor Code of business conduct (BM)"},
+        {"id": 5,"type": "policy","file_path": "http://atmportal/Documents/HR/BR207N-EN_CodeOfConduct_DIGITAL_10-22_English.pdf","file_name": "RBA Code (BI)"},
+        {"id": 6,"type": "policy","file_path": "http://atmportal/Documents/HR/RBACodeofConduct6.0_Malay.pdf","file_name": "RBA Code (BM)"},
+        {"id": 7,"type": "policy","file_path": "http://atmportal/Documents/HR/Labor_and_Ethics_Amkor_Worldwide_2024.pdf","file_name": "Labor & Ethics Policy"},
+        {"id": 8,"type": "policy","file_path": "http://atmportal/Documents/HR/PDPA_Eng_Version.pd","file_name": "Personal Data Protection Notice (BI)"},
+        {"id": 9,"type": "policy","file_path": "http://atmportal/Documents/HR/PDPA_Malay_Version.pdf","file_name": "Personal Data Protection Notice (BM)"},
+        {"id": 10,"type": "user_manual","file_path": "http://atmportal/Documents/HR/Leave_Management.pdf","file_name": "Leave Application User Manual"},
+        {"id": 11,"type": "user_manual","file_path": "http://atmportal/Documents/HR/TAMS.pdf","file_name": "TAMS User Manual"},
+        {"id": 12,"type": "policy","file_path": "http://atmportal/Documents/HR/Management_Commitment_to_Trade_Compliance_ENGLISH_Sept_2024.pdf","file_name": "Management Commitment to Trade Compliance (BI)"},
+        {"id": 13,"type": "policy","file_path": "http://atmportal/Documents/HR/Komitmen_Pengurusan_terhadap_Pematuhan_Perdagangan_MALAY_Sept_2024.pdf","file_name": "Management Commitment to Trade Compliance (BM)"},
+        {"id": 14,"type": "specification","file_path": "http://atmportal/Documents/Others/EHSLegalRequirement.pdf","file_name": "EHS Legal Requirement"},
+        {"id": 15,"type": "quality_manual","file_path": "http://atmportal/Documents/Others/TEMGreenProcurement.pdf","file_name": "Green Procurement"
+        }
+    ]
+}

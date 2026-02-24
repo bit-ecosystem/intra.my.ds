@@ -1,0 +1,11 @@
+.document-content {
+    max-width: none;
+}
+
+.document-content p {
+    margin-bottom: 0.75em;
+}
+
+.document-content span {
+    color:inherit;
+}

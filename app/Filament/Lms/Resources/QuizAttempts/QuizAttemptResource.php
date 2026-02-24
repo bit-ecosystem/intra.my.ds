@@ -1,0 +1,56 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Filament\Lms\Resources\QuizAttempts;
+
+use App\Filament\Lms\Resources\QuizAttempts\Pages\CreateQuizAttempt;
+use App\Filament\Lms\Resources\QuizAttempts\Pages\EditQuizAttempt;
+use App\Filament\Lms\Resources\QuizAttempts\Pages\ListQuizAttempts;
+use App\Filament\Lms\Resources\QuizAttempts\Schemas\QuizAttemptForm;
+use App\Filament\Lms\Resources\QuizAttempts\Tables\QuizAttemptsTable;
+use App\Models\Lms\QuizAttempt;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables\Table;
+use UnitEnum;
+
+class QuizAttemptResource extends Resource
+{
+    protected static ?string $model = QuizAttempt::class;
+
+    protected static string|BackedEnum|null $navigationIcon = 'myicon-quiz-attempt';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Learning';
+
+    protected static ?string $modelLabel = 'Attempts';
+
+    protected static ?int $navigationSort = 2;
+
+    public static function form(Schema $schema): Schema
+    {
+        return QuizAttemptForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return QuizAttemptsTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListQuizAttempts::route('/'),
+            'create' => CreateQuizAttempt::route('/create'),
+            'edit' => EditQuizAttempt::route('/{record}/edit'),
+        ];
+    }
+}

@@ -1,0 +1,59 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bites\Idp\Resources\Clients\Tables;
+
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+
+class ClientsTable
+{
+    public static function configure(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('name')
+                    ->searchable(),
+                TextColumn::make('id')
+                    ->label('ID')
+                    ->copyable()
+                    ->copyMessage('Client ID copied to clipboard')
+                    ->searchable(),
+                TextColumn::make('redirect_uris')
+                    ->searchable(),
+                TextColumn::make('owner_type')
+                    ->searchable(),
+                TextColumn::make('owner_id')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('provider')
+                    ->searchable(),
+                IconColumn::make('revoked')
+                    ->boolean(),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+            ])
+            ->filters([
+                //
+            ])
+            ->recordActions([
+                EditAction::make(),
+            ])
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+}

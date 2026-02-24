@@ -1,0 +1,25 @@
+{
+
+"roles" : [
+{"name": "staff", "guard_name": "web", "description": "Employee or contractor"}, 
+{"name": "employee", "guard_name": "web", "description": "Employee self-service access to leave, claims, payslips, and personal info"}, 
+{"name": "contractor", "guard_name": "web", "description": "Limited access for timekeeping, payments, and project-related data"}, 
+{"name": "manager", "guard_name": "web", "description": "Responsible for a cost center, becomes the cost center owner"}, 
+{"name": "hrms_admin", "guard_name": "web", "description": "Full access to HRMS system configuration, roles, and permissions"}, 
+{"name": "hr_director", "guard_name": "web", "description": "Oversees HR strategy, policy, and compliance across the organization"}, 
+{"name": "hr_manager", "guard_name": "web", "description": "Manages day-to-day HR operations including recruitment, payroll, and employee relations"}, 
+{"name": "hr_businesspartner", "guard_name": "web", "description": "Acts as HR Business Partner aligning HR with business unit goals"}, 
+{"name": "hr_executive", "guard_name": "web", "description": "Handles routine HR tasks like employee records, queries, and document management"}, 
+{"name": "hr_recruiter", "guard_name": "web", "description": "Manages job postings, candidates, and recruitment process"}, 
+{"name": "hr_payrollspecialist", "guard_name": "web", "description": "Processes payroll, deductions, tax, and statutory contributions"}, 
+{"name": "hr_compensationbenefits", "guard_name": "web", "description": "Manages salary structures, benefits, and allowances"}, 
+{"name": "hr_trainingofficer", "guard_name": "web", "description": "Coordinates employee training, courses, and certifications"}, 
+{"name": "hr_performancespecialist", "guard_name": "web", "description": "Manages KPIs, appraisals, and performance review cycles"}, 
+{"name": "hr_employeerelations", "guard_name": "web", "description": "Handles grievances, engagement, and disciplinary actions"}, 
+{"name": "hr_financemanager", "guard_name": "web", "description": "Oversees HR-related financial reporting and payroll cost approvals"}, 
+{"name": "hr_complianceofficer", "guard_name": "web", "description": "Ensures HR compliance with labor laws, health & safety, and regulations"}, 
+{"name": "department_manager", "guard_name": "web", "description": "Approves leave, performance reviews, and manages team structure"}, 
+{"name": "supervisor", "guard_name": "web", "description": "Monitors attendance, approves timesheets, and manages daily operations"}, 
+{"name": "auditor", "guard_name": "web", "description": "Read-only access for HRMS audits and compliance checks"}
+]
+}

@@ -1,0 +1,401 @@
+[ 
+  {
+    "course": "Technical & Manufacturing-Specific Training",
+    "category": "Technical",
+    "description": "Core knowledge and hands-on skills for semiconductor fabrication lines, covering processes, equipment, yield, and data-driven optimization across front-end and back-end manufacturing.",
+    "modules": [
+      {
+        "name": "Semiconductor Fundamentals",
+        "description": "Overview of wafer fabrication flow: lithography, etch, deposition, doping/implant, CMP, and packaging; introduces device physics and cleanroom concepts.",
+        "materials": [
+          {
+            "title": "Semiconductor Fundamentals (PurdueX on edX)",
+            "type": "course",
+            "url": "https://www.edx.org/learn/electronics/purdue-university-semiconductor-fundamentals"
+          },
+          {
+            "title": "MIT OpenCourseWare: Semiconductor Manufacturing",
+            "type": "course",
+            "url": "https://globaleducationnews.org/top-free-semiconductor-courses-in-2025-from-swayam-to-mit/"
+          },
+          {
+            "title": "Semiconductor Fabrication 101 (Purdue + Intel)",
+            "type": "course",
+            "url": "https://engineering.purdue.edu/online/programs/masters-degrees/semiconductors/semiconductor-fabrication-101"
+          }
+        ]
+      },
+      {
+        "name": "Process Control & Optimization",
+        "description": "SPC, DOE, and Six Sigma basics to stabilize processes, reduce variation, and improve throughput.",
+        "materials": [
+          {
+            "title": "Free Six Sigma Training Manuals",
+            "type": "pdf",
+            "url": "https://www.sixsigmacouncil.org/six-sigma-training-material/"
+          },
+          {
+            "title": "Design of Experiments (DOE) Fundamentals PDF",
+            "type": "pdf",
+            "url": "https://www.sixsigmaonline.org/Flash_Videos/Supplemental/Printable/15_DOE.pdf"
+          },
+          {
+            "title": "Statistical Process Control Guide",
+            "type": "pdf",
+            "url": "https://siegergroups.com/corporate-training/pdf/Statistical-Process-Control.pdf"
+          }
+        ]
+      },
+      {
+        "name": "Cleanroom Protocols & Contamination Control",
+        "description": "Gowning, airflow, contamination control, chemical hygiene, and ESD-safe handling in ISO 14644 environments.",
+        "materials": [
+          {
+            "title": "Basic Cleanroom Protocols",
+            "type": "article",
+            "url": "https://www.cleanroom-industries.com/index.php/resources/basic-cleanroom-protocols/403"
+          },
+          {
+            "title": "Cleanroom Cleaning Process Guide (Pegasus)",
+            "type": "pdf",
+            "url": "https://pegasusclean.com/wp-content/uploads/2025/03/Cleanroom-Cleaning-Process-Guide-1.pdf"
+          },
+          {
+            "title": "Cleanroom Protocols + ESD Training",
+            "type": "course",
+            "url": "https://niccs.cisa.gov/training/catalog/tonex/cleanroom-protocols-esd-training"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "course": "Quality & Compliance",
+    "category": "Quality",
+    "description": "Standards and compliance practices to ensure consistent product quality, safe operations, and adherence to regulatory requirements across the semiconductor lifecycle.",
+    "modules": [
+      {
+        "name": "ISO 9001 / IATF 16949 Quality Management",
+        "description": "Quality system principles, documentation, audits, and automotive-specific requirements.",
+        "materials": [
+          {
+            "title": "Free IATF 16949 Templates",
+            "type": "pdf",
+            "url": "https://www.iso9001help.co.uk/Free-IATF-16949-2016-templates.html"
+          },
+          {
+            "title": "IATF 16949 Free Downloads (Advisera)",
+            "type": "pdf",
+            "url": "https://advisera.com/resources/iatf-16949-free-downloads/"
+          }
+        ]
+      },
+      {
+        "name": "Regulatory Standards",
+        "description": "RoHS/REACH requirements, material declarations, and region-specific semiconductor regulations.",
+        "materials": [
+          {
+            "title": "RoHS Compliance Guide",
+            "type": "article",
+            "url": "https://advisera.com/resources/rohs-compliance/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "course": "Soft Skills & Professional Development",
+    "category": "Soft Skills",
+    "description": "Human skills that improve problem-solving, communication, and collaboration for high-reliability, cross-functional semiconductor operations.",
+    "modules": [
+      {
+        "name": "Effective Communication in Technical Teams",
+        "description": "Clear written/verbal communication and stakeholder updates tailored to technical audiences.",
+        "materials": [
+          {
+            "title": "Workplace Skills for Engineering Teams (Coursera)",
+            "type": "course",
+            "url": "https://www.coursera.org/collections/soft-skills-for-engineering-teams"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "course": "Leadership & Management",
+    "category": "Leadership",
+    "description": "Capabilities for supervisors and managers to lead teams, deliver projects, and drive change in complex manufacturing operations.",
+    "modules": [
+      {
+        "name": "Project Management (PMI or Agile Basics)",
+        "description": "Scope, schedule, risk, and stakeholder management; Agile basics for engineering projects.",
+        "materials": [
+          {
+            "title": "Free Leadership and Management Course",
+            "type": "course",
+            "url": "https://www.mygreatlearning.com/academy/learn-for-free/courses/leadership-and-management"
+          },
+          {
+            "title": "Top 10 Free Leadership Resources",
+            "type": "article",
+            "url": "https://www.theleadershipcoachinglab.com/blog/top-ten-free-resources-for-leadership-growth"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "course": "Digital & Future Skills",
+    "category": "Digital",
+    "description": "Digital competencies for modern fabs: programming, AI/ML, cybersecurity, and simulation to accelerate data-driven operations.",
+    "modules": [
+      {
+        "name": "AI & Machine Learning in Manufacturing",
+        "description": "Intro to ML workflows, feature engineering, and practical applications like defect classification.",
+        "materials": [
+          {
+            "title": "Artificial Intelligence and Manufacturing (Oxford Home Study)",
+            "type": "course",
+            "url": "https://www.oxfordhomestudy.com/courses/ai-courses-online/artificial-intelligence-and-manufacturing"
+          },
+          {
+            "title": "Free Machine Learning Courses (Coursera)",
+            "type": "course",
+            "url": "https://www.coursera.org/courses?query=free&skills=Machine%20Learning"
+          },
+          {
+            "title": "MIT Open Learning: AI and Machine Learning",
+            "type": "course",
+            "url": "https://openlearning.mit.edu/news/explore-world-artificial-intelligence-online-courses-mit"
+          }
+        ]
+      },
+      {
+        "name": "Digital Twin & Simulation Tools",
+        "description": "Using simulation and digital twin concepts to model process flows and optimize capacity.",
+        "materials": [
+          {
+            "title": "Introduction to Digital Twins with Unity",
+            "type": "tutorial",
+            "url": "https://learn.unity.com/tutorial/introduction-to-digital-twins-with-unity"
+          },
+          {
+            "title": "NVIDIA Digital Twin Learning Path",
+            "type": "course",
+            "url": "https://www.nvidia.com/en-us/learn/learning-path/digital-twins/"
+          },
+          {
+            "title": "Digital Twin Simulation Guide (Simio)",
+            "type": "article",
+            "url": "https://www.simio.com/a-comprehensive-guide-to-digital-twin-simulation-for-beginners/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "course": "IT Foundations",
+    "category": "ICT",
+    "description": "Core IT concepts including service management, networking, and cybersecurity fundamentals for modern enterprises.",
+    "modules": [
+      {
+        "name": "Service Management",
+        "description": "ITIL principles, incident management, and service lifecycle basics.",
+        "materials": [
+          {
+            "title": "ITIL Foundation Free Guide",
+            "type": "pdf",
+            "url": "https://advisera.com/itil-foundation-free-downloads/"
+          },
+          {
+            "title": "IT Service Management Basics (Coursera)",
+            "type": "course",
+            "url": "https://www.coursera.org/learn/it-service-management"
+          }
+        ]
+      },
+      {
+        "name": "Networking Essentials",
+        "description": "Networking fundamentals, TCP/IP, routing, and switching concepts.",
+        "materials": [
+          {
+            "title": "Networking Basics (Cisco Networking Academy)",
+            "type": "course",
+            "url": "https://www.netacad.com/courses/networking/networking-basics"
+          },
+          {
+            "title": "Computer Networking Full Course (FreeCodeCamp)",
+            "type": "video",
+            "url": "https://www.youtube.com/watch?v=qiQR5rTSshw"
+          }
+        ]
+      },
+      {
+        "name": "Cybersecurity Fundamentals",
+        "description": "Security principles, threat models, and best practices for IT systems.",
+        "materials": [
+          {
+            "title": "Introduction to Cybersecurity (Cisco)",
+            "type": "course",
+            "url": "https://www.netacad.com/courses/cybersecurity/introduction-cybersecurity"
+          },
+          {
+            "title": "Cybersecurity Basics (IBM on Coursera)",
+            "type": "course",
+            "url": "https://www.coursera.org/learn/ibm-cybersecurity-basics"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "course": "Modern IT Infrastructure",
+    "category": "ICT",
+    "description": "Advanced IT infrastructure topics including cloud computing, OS management, and DevOps automation.",
+    "modules": [
+      {
+        "name": "Cloud Computing",
+        "description": "Cloud service models, virtualization, and deployment strategies.",
+        "materials": [
+          {
+            "title": "AWS Cloud Practitioner Essentials",
+            "type": "course",
+            "url": "https://www.aws.training/Details/Curriculum?id=20685"
+          },
+          {
+            "title": "Google Cloud Fundamentals",
+            "type": "course",
+            "url": "https://www.cloudskillsboost.google/course_templates/1"
+          }
+        ]
+      },
+      {
+        "name": "Operating Systems & Infrastructure",
+        "description": "Linux and Windows OS fundamentals, virtualization, and infrastructure management.",
+        "materials": [
+          {
+            "title": "Linux Essentials (Cisco)",
+            "type": "course",
+            "url": "https://www.netacad.com/courses/os-it/linux-essentials"
+          },
+          {
+            "title": "Windows Server Fundamentals",
+            "type": "course",
+            "url": "https://learn.microsoft.com/en-us/training/paths/windows-server-fundamentals/"
+          }
+        ]
+      },
+      {
+        "name": "DevOps & Automation",
+        "description": "CI/CD pipelines, containerization, and orchestration tools.",
+        "materials": [
+          {
+            "title": "Introduction to DevOps (Microsoft Learn)",
+            "type": "course",
+            "url": "https://learn.microsoft.com/en-us/training/paths/devops-foundations/"
+          },
+          {
+            "title": "Docker and Kubernetes Basics (FreeCodeCamp)",
+            "type": "video",
+            "url": "https://www.youtube.com/watch?v=9zUHg7xjIqQ"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "course": "Data Management",
+    "category": "ICT",
+    "description": "Database systems, storage architectures, and emerging technologies for data-driven enterprises.",
+    "modules": [
+      {
+        "name": "Database & Storage",
+        "description": "Relational and NoSQL databases, storage solutions, and data management best practices.",
+        "materials": [
+          {
+            "title": "Introduction to Databases (Khan Academy)",
+            "type": "course",
+            "url": "https://www.khanacademy.org/computing/computer-programming/sql"
+          },
+          {
+            "title": "MongoDB Basics (MongoDB University)",
+            "type": "course",
+            "url": "https://learn.mongodb.com/"
+          }
+        ]
+      },
+      {
+        "name": "Emerging Technologies",
+        "description": "Exploring AI, IoT, blockchain, and edge computing trends shaping ICT.",
+        "materials": [
+          {
+            "title": "Introduction to IoT (Cisco Networking Academy)",
+            "type": "course",
+            "url": "https://www.netacad.com/courses/iot/introduction-iot"
+          },
+          {
+            "title": "Blockchain Basics (Coursera)",
+            "type": "course",
+            "url": "https://www.coursera.org/learn/blockchain-basics"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "course": "Manufacturing & Enterprise Integration",
+    "category": "ICT",
+    "description": "Integration of manufacturing operations with enterprise systems for Industry 4.0 readiness.",
+    "modules": [
+      {
+        "name": "Level 3 – MOM",
+        "description": "Manufacturing Operations Management concepts, MES systems, and ISA-95 standards.",
+        "materials": [
+          {
+            "title": "ISA-95 Overview",
+            "type": "article",
+            "url": "https://www.isa.org/isa95"
+          },
+          {
+            "title": "MES Fundamentals (Siemens)",
+            "type": "article",
+            "url": "https://new.siemens.com/global/en/products/automation/topic-areas/manufacturing-execution-system.html"
+          }
+        ]
+      },
+      {
+        "name": "Level 4 – Business Planning & Logistics",
+        "description": "ERP systems, supply chain planning, and logistics optimization.",
+        "materials": [
+          {
+            "title": "SAP ERP Overview",
+            "type": "article",
+            "url": "https://www.sap.com/products/erp.html"
+          },
+          {
+            "title": "Supply Chain Fundamentals (MIT OpenCourseWare)",
+            "type": "course",
+            "url": "https://ocw.mit.edu/courses/sloan-school-of-management/15-762j-supply-chain-planning-spring-2004/"
+          }
+        ]
+      },
+      {
+        "name": "Information Exchange",
+        "description": "Standards and protocols for secure and efficient data exchange across ICT systems.",
+        "materials": [
+          {
+            "title": "REST API Basics (Mozilla Developer Network)",
+            "type": "article",
+            "url": "https://developer.mozilla.org/en-US/docs/Glossary/REST"
+          },
+          {
+            "title": "Introduction to OPC UA",
+            "type": "article",
+            "url": "https://opcfoundation.org/about/opc-technologies/opc-ua/"
+          }
+        ]
+      }
+    ]
+  }
+]
+

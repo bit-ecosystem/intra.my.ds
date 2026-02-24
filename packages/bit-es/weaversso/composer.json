@@ -1,0 +1,25 @@
+{
+    "name": "bit-es/weaversso",
+    "description": "Laravel bridge to sign users into Weaver E-cology (weaver.dev) via non-intrusive SSO",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bites\\WeaverSSO\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bites\\WeaverSSO\\WeaverSSOServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.0",
+        "firebase/php-jwt": "^6.10"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

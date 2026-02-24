@@ -1,0 +1,4121 @@
+[
+  {
+    "course": "IT Foundations",
+    "module": "Service Management",
+    "name": "ITIL",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q01ITIL001",
+          "label": "What does ITIL stand for?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL001A",
+                "value": "Information Technology Infrastructure Library",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL001B",
+                "value": "Information Technology Integrated Lifecycle",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL001C",
+                "value": "Infrastructure Technology Information Layer",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q01ITIL002",
+          "label": "Which ITIL practice focuses on restoring normal service operation as quickly as possible after an incident?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL002A",
+                "value": "Incident Management",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL002B",
+                "value": "Problem Management",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL002C",
+                "value": "Change Control",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q01ITIL003",
+          "label": "Which ITIL guiding principle suggests focusing on what adds value to the customer?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL003A",
+                "value": "Start where you are",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL003B",
+                "value": "Focus on value",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL003C",
+                "value": "Collaborate and promote visibility",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q01ITIL004",
+          "label": "Which ITIL practice is responsible for analyzing the root cause of recurring incidents?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL004A",
+                "value": "Incident Management",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL004B",
+                "value": "Problem Management",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL004C",
+                "value": "Service Desk",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q01ITIL005",
+          "label": "In ITIL, what is the purpose of Change Control?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL005A",
+                "value": "To ensure changes are assessed, authorized, and scheduled",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL005B",
+                "value": "To resolve incidents quickly",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a01ITIL005C",
+                "value": "To monitor service performance",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      }
+    ]
+  },
+  {
+    "course": "IT Foundations",
+    "module": "Service Operations",
+    "name": "Incident & Problem Management",
+    "passing_mark": 0.5,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL001",
+          "label": "Which statement best describes a Major Incident in ITIL?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL001A",
+                "value": "An incident with significant business impact requiring a dedicated response and escalation",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL001B",
+                "value": "Any incident that affects more than one user",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL001C",
+                "value": "A problem that has no workaround",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL002",
+          "label": "Which are typical KPIs for Incident Management? (Select all that apply)",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL002A",
+                "value": "Mean Time to Restore Service (MTRS)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL002B",
+                "value": "Incident backlog volume",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL002C",
+                "value": "Root cause elimination rate",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL002D",
+                "value": "First Contact Resolution (FCR)",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multiple correct answers"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL003",
+          "label": "What is the primary purpose of an Incident Model?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL003A",
+                "value": "To provide predefined steps for handling common incident types consistently",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL003B",
+                "value": "To document all known errors and workarounds",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL003C",
+                "value": "To authorize urgent changes to production",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL004",
+          "label": "Which activities are core to Problem Management? (Select all that apply)",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL004A",
+                "value": "Trend analysis of incident data",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL004B",
+                "value": "Root cause analysis (RCA)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL004C",
+                "value": "Initial logging and prioritization of every user request",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL004D",
+                "value": "Documenting and maintaining Known Error records",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multiple correct answers"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL005",
+          "label": "How do SLAs typically influence Incident prioritization?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL005A",
+                "value": "They define target response and resolution times based on impact and urgency",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL005B",
+                "value": "They determine the permanent fix required before closure",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL005C",
+                "value": "They restrict escalation to Problem Management",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL006",
+          "label": "What best differentiates Incident Management from Problem Management?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL006A",
+                "value": "Incident Management focuses on rapid restoration; Problem Management focuses on preventing recurrence",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL006B",
+                "value": "Incident Management performs RCA; Problem Management logs tickets only",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL006C",
+                "value": "Incident Management controls changes; Problem Management approves releases",
+                "correct": false
+              }
+            }
+          ],
+          "description": null,
+          "image":"quiz/01KEZXBNR4E3XXT8GWGPRBC8GP.png"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL007",
+          "label": "Which statements about workarounds are true in ITIL? (Select all that apply)",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL007A",
+                "value": "Workarounds can be used by Incident Management to restore service while investigation continues",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL007B",
+                "value": "Workarounds are documented in Known Error records within Problem Management",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL007C",
+                "value": "A workaround is a permanent fix delivered through Change Enablement",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multiple correct answers"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL008",
+          "label": "When should Problem Management raise a Change request?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL008A",
+                "value": "When implementing a permanent fix to remove or mitigate the root cause",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL008B",
+                "value": "Whenever an incident is reported",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL008C",
+                "value": "Only for emergency changes during major incidents",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL009",
+          "label": "Which criteria are commonly used to prioritize Problems? (Select all that apply)",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL009A",
+                "value": "Business impact and risk",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL009B",
+                "value": "Frequency of related incidents",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL009C",
+                "value": "Number of service requests fulfilled last month",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL009D",
+                "value": "Availability of a workaround",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multiple correct answers"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL010",
+          "label": "What is the role of the Service Desk during a Major Incident?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL010A",
+                "value": "Coordinate communications, log and update incident records, and support restoration efforts",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL010B",
+                "value": "Authorize emergency changes to production",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL010C",
+                "value": "Perform post-implementation review of all changes",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL011",
+          "label": "Which statements about Known Error Database (KEDB) are correct? (Select all that apply)",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL011A",
+                "value": "It stores analyzed problems with documented root causes and workarounds",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL011B",
+                "value": "It helps Incident Management resolve recurring incidents faster",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL011C",
+                "value": "It replaces the need for Change Enablement",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multiple correct answers"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03ITIL012",
+          "label": "Which is the most appropriate use of categorization and classification in Incident and Problem records?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL012A",
+                "value": "Enable routing, reporting, trend analysis, and consistent handling of similar issues",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL012B",
+                "value": "Ensure only major incidents are escalated to Problem Management",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03ITIL012C",
+                "value": "Prevent logging incidents that have workarounds",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      }
+    ]
+  },
+  {
+    "course": "IT Foundations",
+    "module": "Networking Essentials",
+    "name": "Networking",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q02NET001",
+          "label": "Which layer of the OSI model is responsible for routing packets across networks?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET001A",
+                "value": "Data Link",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET001B",
+                "value": "Network",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET001C",
+                "value": "Transport",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q02NET002",
+          "label": "Which protocols operate at the Transport layer of the TCP/IP model?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET002A",
+                "value": "TCP",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET002B",
+                "value": "UDP",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET002C",
+                "value": "ICMP",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET002D",
+                "value": "HTTP",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q02NET003",
+          "label": "Which of the following are private IPv4 address ranges?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET003A",
+                "value": "10.0.0.0/8",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET003B",
+                "value": "172.16.0.0/12",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET003C",
+                "value": "192.168.0.0/16",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET003D",
+                "value": "8.8.8.0/24",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q02NET004",
+          "label": "Which device primarily operates at Layer 2 of the OSI model?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET004A",
+                "value": "Router",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET004B",
+                "value": "Switch",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET004C",
+                "value": "Firewall",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q02NET005",
+          "label": "What are common uses of VLANs in enterprise networks?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET005A",
+                "value": "Isolate broadcast domains",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET005B",
+                "value": "Segment departments logically",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET005C",
+                "value": "Perform NAT between subnets",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a02NET005D",
+                "value": "Provide DHCP relay",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      }
+    ]
+  },
+  {
+    "course": "IT Foundations",
+    "module": "Cybersecurity Fundamentals",
+    "name": "Cybersecurity",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03SEC001",
+          "label": "Which principle ensures data is not altered or tampered with?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC001A",
+                "value": "Confidentiality",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC001B",
+                "value": "Integrity",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC001C",
+                "value": "Availability",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03SEC002",
+          "label": "Which are common indicators of phishing attempts?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC002A",
+                "value": "Urgent requests for credentials",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC002B",
+                "value": "Mismatched URLs or domains",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC002C",
+                "value": "Use of SPF, DKIM, and DMARC",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC002D",
+                "value": "Generic salutations",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03SEC003",
+          "label": "What is the primary difference between authentication and authorization?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC003A",
+                "value": "Authentication verifies identity; authorization determines access.",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC003B",
+                "value": "Authorization verifies identity; authentication determines access.",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC003C",
+                "value": "They are the same process.",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03SEC004",
+          "label": "Which security controls are examples of technical controls?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC004A",
+                "value": "Firewalls",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC004B",
+                "value": "Encryption",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC004C",
+                "value": "Security policies",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC004D",
+                "value": "Access control lists (ACLs)",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q03SEC005",
+          "label": "Which framework provides guidelines for improving cybersecurity risk management in organizations?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC005A",
+                "value": "NIST Cybersecurity Framework",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC005B",
+                "value": "ITIL Service Value System",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a03SEC005C",
+                "value": "PMBOK",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      }
+    ]
+  },
+  {
+    "course": "Modern IT Infrastructure",
+    "module": "Cloud Computing",
+    "name": "Cloud Computing",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q04CLD001",
+          "label": "Which cloud service model provides virtual machines and storage as a service?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD001A",
+                "value": "SaaS",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD001B",
+                "value": "PaaS",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD001C",
+                "value": "IaaS",
+                "correct": true
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q04CLD002",
+          "label": "Which deployment model combines on-premises infrastructure with public cloud services?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD002A",
+                "value": "Public Cloud",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD002B",
+                "value": "Hybrid Cloud",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD002C",
+                "value": "Private Cloud",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD002D",
+                "value": "Multi-Cloud",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select: both Hybrid and Multi-Cloud are valid depending on context"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q04CLD003",
+          "label": "What are typical advantages of serverless computing?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD003A",
+                "value": "Automatic scaling",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD003B",
+                "value": "Pay-per-execution pricing",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD003C",
+                "value": "Full control over underlying servers",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD003D",
+                "value": "Reduced operational overhead",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q04CLD004",
+          "label": "Which AWS service is primarily used for object storage?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD004A",
+                "value": "Amazon EC2",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD004B",
+                "value": "Amazon S3",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD004C",
+                "value": "Amazon RDS",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q04CLD005",
+          "label": "Which technologies are commonly used to package and run applications in isolated environments?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD005A",
+                "value": "Virtual Machines (Hypervisors)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD005B",
+                "value": "Containers (Docker)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD005C",
+                "value": "Bare metal hosting",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a04CLD005D",
+                "value": "Lambda layers",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      }
+    ]
+  },
+  {
+    "course": "Modern IT Infrastructure",
+    "module": "Operating Systems & Infrastructure",
+    "name": "Operating Systems & Infrastructure",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q05OPS001",
+          "label": "Which Linux command lists running processes with resource usage interactively?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS001A",
+                "value": "ps",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS001B",
+                "value": "top",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS001C",
+                "value": "ls",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q05OPS002",
+          "label": "Which file systems support journaling?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS002A",
+                "value": "NTFS",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS002B",
+                "value": "ext4",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS002C",
+                "value": "FAT32",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS002D",
+                "value": "exFAT",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q05OPS003",
+          "label": "Which technology allows multiple VMs to share the same physical server hardware?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS003A",
+                "value": "Container orchestration",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS003B",
+                "value": "Virtualization (hypervisor)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS003C",
+                "value": "RAID mirroring",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q05OPS004",
+          "label": "Which Windows tools can be used to manage services (start/stop) and inspect service issues?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS004A",
+                "value": "Services.msc",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS004B",
+                "value": "Event Viewer",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS004C",
+                "value": "Registry Editor",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS004D",
+                "value": "Task Scheduler",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q05OPS005",
+          "label": "Which RAID levels provide redundancy?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS005A",
+                "value": "RAID 0",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS005B",
+                "value": "RAID 1 (mirroring)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS005C",
+                "value": "RAID 5 (parity)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a05OPS005D",
+                "value": "RAID 10 (striping + mirroring)",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      }
+    ]
+  },
+  {
+    "course": "Modern IT Infrastructure",
+    "module": "DevOps & Automation",
+    "name": "DevOps & Automation",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q06DVA001",
+          "label": "What does CI/CD stand for in software delivery?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA001A",
+                "value": "Continuous Integration/Continuous Deployment",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA001B",
+                "value": "Code Inspection/Container Delivery",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA001C",
+                "value": "Continuous Inspection/Continuous Design",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q06DVA002",
+          "label": "Which tools are commonly used for Infrastructure as Code (IaC)?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA002A",
+                "value": "Terraform",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA002B",
+                "value": "Ansible",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA002C",
+                "value": "Jenkins",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA002D",
+                "value": "Packer",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q06DVA003",
+          "label": "Which container orchestration platform automates deployment, scaling, and management of containerized applications?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA003A",
+                "value": "Kubernetes",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA003B",
+                "value": "Vagrant",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA003C",
+                "value": "Ansible",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q06DVA004",
+          "label": "Which practices increase reliability in CI/CD pipelines?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA004A",
+                "value": "Automated tests (unit/integration)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA004B",
+                "value": "Immutable artifacts",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA004C",
+                "value": "Manual deployments only",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA004D",
+                "value": "Blue/Green or Canary releases",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q06DVA005",
+          "label": "What is a common use of Ansible in DevOps workflows?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA005A",
+                "value": "Container runtime",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA005B",
+                "value": "Configuration management and automation",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a06DVA005C",
+                "value": "Binary packaging",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      }
+    ]
+  },
+  {
+    "course": "Data Management",
+    "module": "Database & Storage",
+    "name": "Database & Storage",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q07DBS001",
+          "label": "Which language is primarily used to query relational databases?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS001A",
+                "value": "GraphQL",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS001B",
+                "value": "SQL",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS001C",
+                "value": "NoSQL",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q07DBS002",
+          "label": "Which database types are well-suited for flexible schemas and horizontal scalability?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS002A",
+                "value": "Relational (SQL)",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS002B",
+                "value": "Document stores (NoSQL)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS002C",
+                "value": "Key-Value stores (NoSQL)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS002D",
+                "value": "Columnar stores (NoSQL)",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q07DBS003",
+          "label": "Which normalization form aims to remove transitive dependencies?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS003A",
+                "value": "1NF",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS003B",
+                "value": "2NF",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS003C",
+                "value": "3NF",
+                "correct": true
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q07DBS004",
+          "label": "Which backup strategies capture only changes since the last backup of the same type?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS004A",
+                "value": "Full backup",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS004B",
+                "value": "Differential backup",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS004C",
+                "value": "Incremental backup",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS004D",
+                "value": "Log shipping",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select: incremental backup and log shipping capture changes"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q07DBS005",
+          "label": "Which storage systems are optimized for unstructured data and object retrieval?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS005A",
+                "value": "Block storage (SAN)",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS005B",
+                "value": "File storage (NAS)",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS005C",
+                "value": "Object storage (e.g., S3, Azure Blob)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a07DBS005D",
+                "value": "Tape libraries",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      }
+    ]
+  },
+  {
+    "course": "Data Management",
+    "module": "Emerging Technologies",
+    "name": "Emerging Technologies",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q08EMT001",
+          "label": "Which approach to security assumes no implicit trust and verifies every request explicitly?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT001A",
+                "value": "Perimeter-based security",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT001B",
+                "value": "Zero Trust",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT001C",
+                "value": "Security by obscurity",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q08EMT002",
+          "label": "What are common use cases for edge computing?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT002A",
+                "value": "Reducing latency by processing data near the source",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT002B",
+                "value": "Centralizing all workloads in a single data center",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT002C",
+                "value": "Supporting real-time analytics on IoT devices",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT002D",
+                "value": "Long-term archival storage",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q08EMT003",
+          "label": "In machine learning, which datasets are used to evaluate and tune model performance?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT003A",
+                "value": "Training set (fitting parameters)",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT003B",
+                "value": "Validation set (hyperparameter tuning)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT003C",
+                "value": "Test set (final evaluation on unseen data)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT003D",
+                "value": "Bootstrap set",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q08EMT004",
+          "label": "Which technology enables secure, tamper-resistant recording of transactions across a distributed network?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT004A",
+                "value": "Blockchain",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT004B",
+                "value": "Data warehouse",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT004C",
+                "value": "Relational database indexing",
+                "correct": false
+              }
+            }
+          ],
+          "description": null
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q08EMT005",
+          "label": "What does 'MLOps' primarily focus on?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT005A",
+                "value": "Operationalizing ML models (deployment, monitoring, governance)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT005B",
+                "value": "Manual tuning of data center cooling systems",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT005C",
+                "value": "Designing ASICs for GPU clusters",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a08EMT005D",
+                "value": "Feature store and model registry integration",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Multi-select"
+        }
+      }
+    ]
+  },
+  {
+    "course": "Manufacturing & Enterprise Integration",
+    "module": "Level 3 – MOM",
+    "name": "Level 3 – MOM",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3MES001",
+          "label": "What are core functions of a Manufacturing Execution System (MES)?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES001A",
+                "value": "Order dispatching and work-in-progress tracking",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES001B",
+                "value": "Long-term sales forecasting",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES001C",
+                "value": "Production reporting and genealogy",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES001D",
+                "value": "Real-time payroll processing",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. MES focuses on executing and tracking shop-floor operations (dispatch, WIP, genealogy, performance). Forecasting and payroll are typically Level 4 (ERP) responsibilities."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3MES002",
+          "label": "Which data types does MES commonly exchange with Level 4 systems?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES002A",
+                "value": "Production confirmations and yields",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES002B",
+                "value": "Material consumption and inventory movements",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES002C",
+                "value": "Corporate tax filings",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES002D",
+                "value": "Purchase order approvals",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. MES ↔ ERP typically synchronizes production outcomes, material usage, and statuses. Finance and PO approvals remain ERP-centric."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3MES003",
+          "label": "Which KPI is MOST aligned with MES performance tracking?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES003A",
+                "value": "Overall Equipment Effectiveness (OEE)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES003B",
+                "value": "Gross margin by region",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES003C",
+                "value": "Net promoter score (NPS)",
+                "correct": false
+              }
+            }
+          ],
+          "description": "OEE is a shop-floor KPI tracking availability, performance, and quality — central to MES dashboards."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3SCADA001",
+          "label": "Primary purpose of SCADA at Level 3?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA001A",
+                "value": "Supervisory monitoring and operator control",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA001B",
+                "value": "Monthly financial consolidations",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA001C",
+                "value": "Strategic supplier negotiations",
+                "correct": false
+              }
+            }
+          ],
+          "description": "SCADA provides visualization, alarms, and supervisory control above PLC/DCS; finance and procurement are Level 4 roles."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3SCADA002",
+          "label": "Which features are typical of SCADA HMIs?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA002A",
+                "value": "Real-time trends and alarm acknowledgments",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA002B",
+                "value": "Batch recipe authoring",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA002C",
+                "value": "Manual setpoint entry and mode switching",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA002D",
+                "value": "Accounts receivable aging",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. HMIs show process visuals, trends, alarms, and allow supervisory input; recipe management is more typical in batch systems."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3BATCH001",
+          "label": "Batch control systems are BEST described as:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH001A",
+                "value": "Systems executing recipes via procedural steps and phases",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH001B",
+                "value": "Long-term production capacity planning tools",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH001C",
+                "value": "Customer support ticketing platforms",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Batch systems use recipes and sequences (ISA-88 concepts) to execute repeatable operations."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3BATCH002",
+          "label": "Typical outputs from batch execution include:",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH002A",
+                "value": "Batch records with parameters and deviations",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH002B",
+                "value": "Serialized invoice documents",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH002C",
+                "value": "Material usage and yield results",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH002D",
+                "value": "Shareholder annual reports",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Batch records capture execution details, parameters, deviations, and material balances/yields."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3HIST001",
+          "label": "A data historian at Level 3 primarily:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST001A",
+                "value": "Collects, compresses, and time-indexes process data",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST001B",
+                "value": "Generates quarterly financial statements",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST001C",
+                "value": "Runs payroll tax calculations",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Historians store high-frequency time-series data for analysis, trending, and compliance traceability."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3HIST002",
+          "label": "Common historian use cases include:",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST002A",
+                "value": "Root-cause analysis with time-synchronized signals",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST002B",
+                "value": "Process KPI dashboards (e.g., energy per unit)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST002C",
+                "value": "Vendor payment reconciliation",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST002D",
+                "value": "Marketing campaign ROI analysis",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Historians support analytics and dashboards tied to process signals; finance/marketing uses are not typical."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3LIMS001",
+          "label": "Key functions of a LIMS (Laboratory Information Management System) include:",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS001A",
+                "value": "Sample management and chain of custody",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS001B",
+                "value": "Test result recording and approvals",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS001C",
+                "value": "Sales territory assignments",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS001D",
+                "value": "Email marketing automation",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. LIMS manages lab samples, methods, results, and compliant records — not sales/marketing functions."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3LIMS002",
+          "label": "Which integration best describes LIMS ↔ MES?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS002A",
+                "value": "MES requests quality tests; LIMS returns pass/fail with specifications",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS002B",
+                "value": "LIMS calculates payroll for lab technicians",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS002C",
+                "value": "MES sends batch context and sampling plan; LIMS records results and releases/holds product",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS002D",
+                "value": "LIMS issues purchase orders for reagents autonomously",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. MES orchestrates sampling, LIMS executes tests and returns disposition (release/hold); procurement and payroll are not in scope."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3CMMS001",
+          "label": "CMMS primarily supports which activities?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS001A",
+                "value": "Preventive and corrective maintenance work orders",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS001B",
+                "value": "Long-term shareholder reporting",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS001C",
+                "value": "Retail point-of-sale operations",
+                "correct": false
+              }
+            }
+          ],
+          "description": "CMMS handles maintenance planning, scheduling, and history for assets and equipment."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3CMMS002",
+          "label": "Which data flows are typical between CMMS and MES/SCADA?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS002A",
+                "value": "Condition-based triggers from SCADA to create work orders",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS002B",
+                "value": "Maintenance completion feedback to MES for equipment availability",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS002C",
+                "value": "Automatic vendor invoice settlement",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS002D",
+                "value": "SCADA sending HR timesheets to CMMS",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Condition monitoring → work orders; completion status → MES capacity updates. Finance/HR flows are not typical."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3WMS001",
+          "label": "WMS (Warehouse Management System) at Level 3 focuses on:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS001A",
+                "value": "Inventory movements, picking, and location control",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS001B",
+                "value": "Annual tax reporting",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS001C",
+                "value": "Global sales territory planning",
+                "correct": false
+              }
+            }
+          ],
+          "description": "WMS manages bins/locations, receipts, picks, and transfers close to the shop-floor, aligned with MOM time horizons."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3WMS002",
+          "label": "Which are common WMS ↔ MES interactions?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS002A",
+                "value": "MES requests material staging; WMS allocates and confirms pick",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS002B",
+                "value": "WMS updates MES with lot/serial and location changes",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS002C",
+                "value": "WMS performs quarterly revenue accruals",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS002D",
+                "value": "MES sends timesheets for pickers",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Material staging and confirmation plus lot/serial/location synchronization are common integrations."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3SCHED001",
+          "label": "Detailed scheduling & dispatching at Level 3 focuses on:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED001A",
+                "value": "Sequencing work orders by constraints (equipment, materials, changeover)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED001B",
+                "value": "Long-range capacity planning (quarters/years)",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED001C",
+                "value": "Customer lead tracking (CRM)",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Level 3 scheduling optimizes short-term sequences based on real-time constraints; long-range planning is APS/ERP at Level 4."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3SCHED002",
+          "label": "Which inputs are typical for dispatching decisions?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED002A",
+                "value": "Equipment status and availability from MES/CMMS",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED002B",
+                "value": "Real-time material availability from WMS",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED002C",
+                "value": "Board of directors strategic goals",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED002D",
+                "value": "Daily exchange rates",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Dispatching uses near-real-time constraints from equipment and materials; corporate strategy and FX rates are not dispatch drivers."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3TRACK001",
+          "label": "Product tracking & genealogy ensure:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK001A",
+                "value": "Traceability of lots/serials and consumed materials back to sources",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK001B",
+                "value": "Customer loyalty point accruals",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK001C",
+                "value": "Regional marketing segmentation",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Genealogy maps inputs to outputs per batch/serial for recalls, compliance, and continuous improvement."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3TRACK002",
+          "label": "Which data elements commonly form a genealogy record?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK002A",
+                "value": "Consumed material lots/serials with quantities",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK002B",
+                "value": "Process parameters/time stamps per operation",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK002C",
+                "value": "Customer survey responses",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK002D",
+                "value": "Operator IDs and equipment used",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Select all that apply. Genealogy ties materials, process context (parameters, times), equipment, and personnel to produced units."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3MES004",
+          "label": "Which capabilities distinguish MES from pure SCADA?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES004A",
+                "value": "Order lifecycle management and operator instructions",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES004B",
+                "value": "Master recipe execution phases",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES004C",
+                "value": "Genealogy/batch record generation",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3MES004D",
+                "value": "Enterprise financial consolidation",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. MES handles orders, instructions, execution context, and genealogy; SCADA focuses on visualization/control; batch execution is a dedicated batch system capability."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3SCADA003",
+          "label": "Alarm management best practices at Level 3 include:",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA003A",
+                "value": "Rationalizing alarms and configuring proper priorities",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA003B",
+                "value": "Allowing redundant nuisance alarms to ensure visibility",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA003C",
+                "value": "Implementing shelving and suppression rules",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCADA003D",
+                "value": "Disabling alarm logs to reduce storage costs",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Effective alarm programs minimize nuisance, prioritize action, and maintain audit trails for operations and compliance."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3BATCH003",
+          "label": "ISA-88 concepts commonly used by batch systems:",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH003A",
+                "value": "Procedural model (phases/operations)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH003B",
+                "value": "Equipment model (units/equipment modules)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH003C",
+                "value": "Quarterly financial close model",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3BATCH003D",
+                "value": "Marketing funnel model",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. ISA-88 separates processes (procedural) from equipment structures, key for reusable recipes."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3HIST003",
+          "label": "Historian integrations that empower MES analytics include:",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST003A",
+                "value": "Contextualizing time-series with batch IDs and equipment states",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST003B",
+                "value": "Auto-importing general ledger entries",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST003C",
+                "value": "Event frames linking alarms to process KPIs",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3HIST003D",
+                "value": "Archiving marketing emails",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Adding context (batch, equipment, events) turns raw signals into actionable MES intelligence."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3LIMS003",
+          "label": "Data integrity principles for LIMS include:",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS003A",
+                "value": "Audit trails for changes and approvals",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS003B",
+                "value": "Role-based access to methods/results",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS003C",
+                "value": "Editable raw data without logs",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3LIMS003D",
+                "value": "Sample ID reuse across products",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. LIMS requires traceable, controlled data handling to ensure quality compliance and reproducibility."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3CMMS003",
+          "label": "Which metrics typically drive maintenance strategies at Level 3?",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS003A",
+                "value": "Mean time between failures (MTBF)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS003B",
+                "value": "Customer net promoter score (NPS)",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3CMMS003C",
+                "value": "Ad spend by channel",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Maintenance KPIs (MTBF, MTTR, schedule compliance) guide preventive/predictive strategies at Level 3."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3WMS003",
+          "label": "Advanced WMS capabilities often include:",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS003A",
+                "value": "Wave picking and task interleaving",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS003B",
+                "value": "Slotting optimization and put-away strategies",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS003C",
+                "value": "Corporate stock buybacks",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3WMS003D",
+                "value": "RF scanning for lot/serial capture",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Select all that apply. Modern WMS optimizes labor and locations while ensuring traceability via RF devices."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3SCHED003",
+          "label": "Dispatch rules commonly used in short-horizon scheduling:",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED003A",
+                "value": "Earliest due date (EDD)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED003B",
+                "value": "Shortest processing time (SPT)",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED003C",
+                "value": "Annual budgeting priority",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3SCHED003D",
+                "value": "First-in, never-out (FINO)",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. EDD and SPT are classic heuristics balancing due dates and throughput for near-term schedules."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q09ISA3TRACK003",
+          "label": "Which integrations support end-to-end traceability at Level 3?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK003A",
+                "value": "MES ↔ WMS for lot/serial movements",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK003B",
+                "value": "MES ↔ LIMS for quality disposition",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK003C",
+                "value": "MES ↔ social media platform for customer engagement",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a09ISA3TRACK003D",
+                "value": "MES ↔ Historian for process context linkage",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Select all that apply. Traceability spans materials (WMS), quality outcomes (LIMS), and process context (historian) orchestrated by MES."
+        }
+      }
+    ]
+  },
+  {
+    "course": "Manufacturing & Enterprise Integration",
+    "module": "Level 4 – Business Planning & Logistics",
+    "name": "Business Planning & Logistics",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4ERP001",
+          "label": "Which functions are core to ERP systems at Level 4?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4ERP001A",
+                "value": "Production planning and material requirements",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4ERP001B",
+                "value": "Financial accounting and cost control",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4ERP001C",
+                "value": "Real-time PLC control",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4ERP001D",
+                "value": "Batch recipe execution",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. ERP handles planning, procurement, finance, and HR—not direct shop-floor control."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4ERP002",
+          "label": "Which data flows are typical between ERP and MES?",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4ERP002A",
+                "value": "ERP sends production orders and BOMs to MES",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4ERP002B",
+                "value": "MES returns actual production quantities and scrap",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4ERP002C",
+                "value": "ERP sends payroll tax updates to MES",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4ERP002D",
+                "value": "MES sends equipment vibration signals to ERP",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. ERP ↔ MES integration focuses on orders, BOM, and actuals—not payroll or raw sensor data."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4SCM001",
+          "label": "SCM systems primarily manage:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4SCM001A",
+                "value": "Supplier collaboration and logistics",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4SCM001B",
+                "value": "PLC ladder logic programming",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4SCM001C",
+                "value": "Batch phase execution",
+                "correct": false
+              }
+            }
+          ],
+          "description": "SCM optimizes sourcing, transportation, and inventory across the supply chain—not shop-floor control."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4SCM002",
+          "label": "Which SCM ↔ MES interactions are common?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4SCM002A",
+                "value": "MES provides consumption data for supplier replenishment",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4SCM002B",
+                "value": "SCM sends optimized delivery schedules to MES",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4SCM002C",
+                "value": "MES sends operator training records to SCM",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4SCM002D",
+                "value": "SCM sends marketing campaign data to MES",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. SCM ↔ MES links material flow and delivery timing—not HR or marketing data."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4CRM001",
+          "label": "CRM systems at Level 4 focus on:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4CRM001A",
+                "value": "Customer order management and service history",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4CRM001B",
+                "value": "Real-time SCADA alarms",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4CRM001C",
+                "value": "Batch recipe execution",
+                "correct": false
+              }
+            }
+          ],
+          "description": "CRM manages customer relationships, orders, and service—not process control."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4CRM002",
+          "label": "Which CRM ↔ ERP integration points are typical?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4CRM002A",
+                "value": "Order entry in CRM triggers ERP production planning",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4CRM002B",
+                "value": "ERP sends shipment status updates to CRM",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4CRM002C",
+                "value": "CRM sends PLC ladder logic to ERP",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4CRM002D",
+                "value": "ERP sends SCADA alarm logs to CRM",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. CRM ↔ ERP ensures order-to-cash visibility—not control logic."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4EAM001",
+          "label": "Enterprise Asset Management (EAM) systems provide:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4EAM001A",
+                "value": "Asset lifecycle tracking and capital planning",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4EAM001B",
+                "value": "Real-time PID loop tuning",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4EAM001C",
+                "value": "Batch phase execution",
+                "correct": false
+              }
+            }
+          ],
+          "description": "EAM focuses on long-term asset health, depreciation, and investment—not control loops."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4EAM002",
+          "label": "Which integration is common between EAM and CMMS?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4EAM002A",
+                "value": "CMMS sends maintenance history to EAM for asset valuation",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4EAM002B",
+                "value": "EAM sends capital replacement plans to CMMS",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4EAM002C",
+                "value": "EAM sends SCADA alarm logs to CMMS",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4EAM002D",
+                "value": "CMMS sends payroll data to EAM",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Integration aligns maintenance history with asset lifecycle planning—not alarms or payroll."
+        }
+      }
+    ]
+  },
+  {
+    "course": "Manufacturing & Enterprise Integration",
+    "module": "Information Exchange",
+    "name": "Business Planning & Logistics (Integration Focus)",
+    "passing_mark": 0.9,
+    "schema": [
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4APS001",
+          "label": "APS systems primarily support:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4APS001A",
+                "value": "Long-term capacity and material planning",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4APS001B",
+                "value": "Real-time SCADA alarm handling",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4APS001C",
+                "value": "Batch recipe execution",
+                "correct": false
+              }
+            }
+          ],
+          "description": "APS focuses on optimizing production plans over weeks/months, considering constraints and forecasts."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4APS002",
+          "label": "Which inputs are critical for APS planning?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4APS002A",
+                "value": "Forecast demand and confirmed orders",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4APS002B",
+                "value": "Equipment capacity and maintenance windows",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4APS002C",
+                "value": "PLC ladder logic",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4APS002D",
+                "value": "Marketing campaign ROI",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. APS uses demand forecasts, capacity, and constraints—not control logic or marketing data."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4FIN001",
+          "label": "Financial systems at Level 4 typically handle:",
+          "points": 1,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4FIN001A",
+                "value": "Budgeting and cost allocation",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4FIN001B",
+                "value": "Real-time PID loop tuning",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4FIN001C",
+                "value": "Batch phase execution",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Financial systems manage budgets, cost centers, and compliance—not process control."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4FIN002",
+          "label": "Which financial KPIs influence production planning?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4FIN002A",
+                "value": "Cost per unit produced",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4FIN002B",
+                "value": "Inventory carrying cost",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4FIN002C",
+                "value": "Customer NPS",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4FIN002D",
+                "value": "PLC scan cycle time",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Financial KPIs like cost per unit and inventory cost drive planning decisions."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4INT001",
+          "label": "MES ↔ ERP integration typically includes:",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT001A",
+                "value": "ERP sends production orders and BOMs to MES",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT001B",
+                "value": "MES sends actual production quantities and scrap to ERP",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT001C",
+                "value": "MES sends SCADA alarm logs to ERP",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT001D",
+                "value": "ERP sends payroll tax updates to MES",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Integration focuses on orders, BOM, and actuals—not alarms or payroll."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4INT002",
+          "label": "Quality ↔ Business system integration ensures:",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT002A",
+                "value": "LIMS sends test results to ERP for product release",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT002B",
+                "value": "ERP updates compliance certificates based on quality data",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT002C",
+                "value": "CRM sends marketing emails to LIMS",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT002D",
+                "value": "LIMS sends SCADA alarm logs to ERP",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Integration ensures quality disposition and compliance—not marketing or alarms."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4INT003",
+          "label": "Maintenance ↔ Asset Management integration provides:",
+          "points": 3,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT003A",
+                "value": "CMMS sends maintenance history to EAM for asset valuation",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT003B",
+                "value": "EAM sends capital replacement plans to CMMS",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT003C",
+                "value": "SCADA sends alarm logs to EAM for depreciation",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT003D",
+                "value": "CMMS sends payroll data to EAM",
+                "correct": false
+              }
+            }
+          ],
+          "description": "Select all that apply. Integration aligns maintenance history with asset lifecycle planning—not alarms or payroll."
+        }
+      },
+      {
+        "type": "quiz",
+        "data": {
+          "name": "q10ISA4INT004",
+          "label": "Which business systems typically consume MES performance data?",
+          "points": 2,
+          "options": [
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT004A",
+                "value": "ERP for cost and production reporting",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT004B",
+                "value": "APS for capacity planning",
+                "correct": true
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT004C",
+                "value": "CRM for customer loyalty programs",
+                "correct": false
+              }
+            },
+            {
+              "type": "option",
+              "data": {
+                "key": "a10ISA4INT004D",
+                "value": "Financial systems for budgeting",
+                "correct": true
+              }
+            }
+          ],
+          "description": "Select all that apply. MES feeds ERP, APS, and finance—not CRM loyalty programs."
+        }
+      }
+    ]
+  },
+  {
+  "course": "IT Foundations",
+  "module": "Service Transistion",
+  "name": "Importance of CI",
+  "passing_mark": 0.8,
+  "schema": [
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL101",
+        "label": "What is the main purpose of SACM in ITIL?",
+        "points": 1,
+        "options": [
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL101A", "value": "To perform incident diagnosis", "correct": false }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL101B", "value": "To track and control all configuration items", "correct": true }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL101C", "value": "To automate deployments", "correct": false }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL101D", "value": "To approve change requests", "correct": false }
+          }
+        ],
+        "description": "Knowing every part of a car so you know what exists and how it connects."
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL102",
+        "label": "Which of the following are considered Configuration Items (CIs)? (Select all that apply)",
+        "points": 1,
+        "options": [
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL102A", "value": "Servers", "correct": true }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL102B", "value": "Network switches", "correct": true }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL102C", "value": "Business requirements document", "correct": true }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL102D", "value": "User manuals", "correct": true }
+          }
+        ],
+        "description": null
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL103",
+        "label": "What is the CMDB used for?",
+        "points": 1,
+        "options": [
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL103A", "value": "Storing asset purchase receipts", "correct": false }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL103B", "value": "Storing system logs", "correct": false }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL103C", "value": "Storing CI details and relationships", "correct": true }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL103D", "value": "Monitoring server performance", "correct": false }
+          }
+        ],
+        "description": "Like a car’s parts diagram showing how everything is connected."
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL104",
+        "label": "What is Request Fulfilment responsible for?",
+        "points": 1,
+        "options": [
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL104A", "value": "Handling emergency outages", "correct": false }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL104B", "value": "Managing standard user requests", "correct": true }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL104C", "value": "Approving high‑risk changes", "correct": false }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL104D", "value": "Creating CIs automatically", "correct": false }
+          }
+        ],
+        "description": "Like requesting routine car services: changing wipers, adding tint."
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL105",
+        "label": "Which of the following are examples of ITIL service requests? (Select all that apply)",
+        "points": 1,
+        "options": [
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL105A", "value": "New laptop request", "correct": true }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL105B", "value": "Password reset", "correct": true }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL105C", "value": "Full data center migration", "correct": false }
+          },
+          {
+            "type": "option",
+            "data": { "key": "a01ITIL105D", "value": "Software installation", "correct": true }
+          }
+        ],
+        "description": null
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL106",
+        "label": "Completing a service request may require updating the related CI in the CMDB.",
+        "points": 1,
+        "options": [
+          { "type": "option", "data": { "key": "a01ITIL106A", "value": "True", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL106B", "value": "False", "correct": false } }
+        ],
+        "description": "Like updating car records after installing new tyres."
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL107",
+        "label": "What is an Event in ITIL?",
+        "points": 1,
+        "options": [
+          { "type": "option", "data": { "key": "a01ITIL107A", "value": "A planned modification to a system", "correct": false } },
+          { "type": "option", "data": { "key": "a01ITIL107B", "value": "A detectable change of state that has significance", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL107C", "value": "A service disruption", "correct": false } },
+          { "type": "option", "data": { "key": "a01ITIL107D", "value": "A user request", "correct": false } }
+        ],
+        "description": "Like a dashboard alert: low fuel or tyre pressure warning."
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL108",
+        "label": "Which of the following are valid Event types in ITIL? (Select all that apply)",
+        "points": 1,
+        "options": [
+          { "type": "option", "data": { "key": "a01ITIL108A", "value": "Informational", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL108B", "value": "Warning", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL108C", "value": "Exception", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL108D", "value": "Disaster", "correct": false } }
+        ],
+        "description": "Like car alerts: headlights on, tyre pressure low, engine overheating."
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL109",
+        "label": "Events must always link to what?",
+        "points": 1,
+        "options": [
+          { "type": "option", "data": { "key": "a01ITIL109A", "value": "A service desk ticket", "correct": false } },
+          { "type": "option", "data": { "key": "a01ITIL109B", "value": "A CI", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL109C", "value": "A backup schedule", "correct": false } },
+          { "type": "option", "data": { "key": "a01ITIL109D", "value": "A change request", "correct": false } }
+        ],
+        "description": "Like every dashboard alert is tied to a specific car part — tyre, engine, battery."
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL110",
+        "label": "What is the goal of Change Management?",
+        "points": 1,
+        "options": [
+          { "type": "option", "data": { "key": "a01ITIL110A", "value": "Prevent all changes", "correct": false } },
+          { "type": "option", "data": { "key": "a01ITIL110B", "value": "Ensure changes are assessed, approved, and implemented with minimal risk", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL110C", "value": "Speed up deployments", "correct": false } },
+          { "type": "option", "data": { "key": "a01ITIL110D", "value": "Resolve incidents automatically", "correct": false } }
+        ],
+        "description": "Like ensuring a major car modification — e.g., engine swap — is planned, safe, and tested."
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL111",
+        "label": "Which of the following ITIL Change Management examples may require service downtime? (Select all that apply)",
+        "points": 1,
+        "options": [
+          { "type": "option", "data": { "key": "a01ITIL111A", "value": "Replacing a production database server", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL111B", "value": "Updating user access permissions", "correct": false } },
+          { "type": "option", "data": { "key": "a01ITIL111C", "value": "Upgrading the storage subsystem that supports critical applications", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL111D", "value": "Adding a new software icon to the user portal", "correct": false } }
+        ],
+        "description": "Like major car repairs — engine replacement or brake overhaul — that prevent the car from being driven."
+      }
+    },
+    {
+      "type": "quiz",
+      "data": {
+        "name": "q01ITIL112",
+        "label": "A server sends a critical CPU overheating alert. What ITIL processes might be involved? (Select all that apply)",
+        "points": 1,
+        "options": [
+          { "type": "option", "data": { "key": "a01ITIL112A", "value": "Event Management", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL112B", "value": "Request Fulfilment", "correct": false } },
+          { "type": "option", "data": { "key": "a01ITIL112C", "value": "SACM", "correct": true } },
+          { "type": "option", "data": { "key": "a01ITIL112D", "value": "Change Management", "correct": true } }
+        ],
+        "description": null
+      }
+    }
+  ]
+}
+]

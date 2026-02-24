@@ -1,0 +1,67 @@
+{
+    "name": "bit-es/attachables",
+    "description": "Bites Plugin for attachables external link functionality, help pages, and others",
+    "keywords": [
+        "bit-es",
+        "links",
+        "external",
+        "help",
+        "manuals",
+        "laravel",
+        "filament"
+    ],
+    "homepage": "https://github.com/bit-es/attachables",
+    "support": {
+        "issues": "https://github.com/bit-es/attachables/issues",
+        "source": "https://github.com/bit-es/attachables"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bit-es",
+            "email": "bit.ecosystem@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^4.0"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^8.6",
+        "pestphp/pest": "^3.7",
+        "pestphp/pest-plugin-laravel": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bites\\Attachables\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php artisan migrate"
+        ],
+        "post-update-cmd": [],
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bites\\Attachables\\AttachablesServiceProvider"
+            ],
+            "aliases": {
+                "Attachables": "Bites\\Attachables\\Facades\\Attachables"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
