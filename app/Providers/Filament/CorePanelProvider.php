@@ -40,7 +40,7 @@ class CorePanelProvider extends PanelProvider
                 Css::make('theme-css', resource_path('css/enterprise/theme.css')),
             ])
             ->discoverResources(in: app_path('Filament/Core/Resources'), for: 'App\Filament\Core\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Core\Pages')
+            ->discoverPages(in: app_path('Filament/Core/Pages'), for: 'App\Filament\Core\Pages')
             ->pages([
                 // Dashboard::class,
             ])

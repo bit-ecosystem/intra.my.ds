@@ -10,26 +10,45 @@ use Filament\Schemas\Schema;
 
 class MethodologyForm
 {
-    public static function configure(Schema $schema): Schema
+ public static function configure(Schema $schema): Schema
     {
-        //    $format = json_decode(
-        //         file_get_contents(base_path('schemas/customer.json')),
-        //         true
-        //     );
-
-        // /** @var Component[] $components */
-        // $components = app(FormFormatBuilder::class)->build($format);
-
-        // // Support both common patterns:
-        // if (method_exists($schema, 'schema')) {
-        //     $schema->schema($components);
-        // } elseif (method_exists($schema, 'components')) {
-        //     $schema->components($components);
-        // } else {
-        //     // If neither exists, throw a helpful error so it's easy to fix.
-        //     throw new \RuntimeException('Unsupported Schema adapter: expected ->schema() or ->components().');
-        // }
-
-        return $schema;
+        return $schema
+            ->components([
+                Components\TextInput::make('name')->required(),
+                Components\TextInput::make('slug')->required()->unique(ignoreRecord: true),
+                Components\Toggle::make('is_active')->default(true),
+                Components\Repeater::make('schema')->label('Sections')
+                    ->schema([
+                        Components\TextInput::make('label')->label('Section Label')->required(),
+                        Components\Select::make('columns')
+                            ->options([
+                                1 => '1 Column',
+                                2 => '2 Columns',
+                                3 => '3 Columns',
+                            ])->default(1),
+                        Components\Repeater::make('fields')
+                            ->schema([
+                                Components\Select::make('component')
+                                    ->options([
+                                        'text' => 'Text',
+                                        'textarea' => 'Textarea',
+                                        'select' => 'Select',
+                                        'date' => 'Date',
+                                        'checkbox' => 'Checkbox',
+                                        'file' => 'File Upload',
+                                        'image' => 'Image Upload',
+                                    ])->required(),
+                                Components\TextInput::make('name')->required(),
+                                Components\TextInput::make('label')->required(),
+                                Components\Toggle::make('required'),
+                                Components\KeyValue::make('options')->visible(fn($get) => $get('component') === 'select'),
+                                Components\TextInput::make('disk')->default('public')->visible(fn($get) => in_array($get('component'), ['file', 'image'])),
+                                Components\TextInput::make('directory')->visible(fn($get) => in_array($get('component'), ['file', 'image'])),
+                                Components\TagsInput::make('accepted_types')->visible(fn($get) => $get('component') === 'file'),
+                            ])
+                            ->columnSpanFull(),
+                    ])
+                    ->columnSpanFull(),
+            ]);
     }
 }

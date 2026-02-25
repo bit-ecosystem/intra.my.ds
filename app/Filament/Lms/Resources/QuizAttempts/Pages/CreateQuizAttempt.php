@@ -38,7 +38,7 @@ class CreateQuizAttempt extends CreateRecord
     {
         parent::mount();
 
-        $formId = request()->get('form_id');
+        $formId = request()->input('form_id');
         if ($formId) {
             $form = Quiz::find($formId);
             $schema = $this->shuffleQuizOptions($form->schema);
