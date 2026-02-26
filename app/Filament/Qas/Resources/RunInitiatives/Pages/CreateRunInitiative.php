@@ -33,10 +33,9 @@ class CreateRunInitiative extends CreateRecord
 
         $form = Methodology::find($this->what);
         $user = User::find($this->who);
-        // dd($user);
         if ($form) {
             $this->form->fill([
-                'form_id' => $this->what,
+                'methodology_id' => $this->what,
                 'form_schema' => $form->form_schema,
                 'initiator_id' => $user->staff->id,
                 'initiator_sn' => $user->staff->staff_number,
@@ -44,5 +43,10 @@ class CreateRunInitiative extends CreateRecord
                 'date' => now()->toDateTimeString(),
             ]);
         }
+    }
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        dd($data);
+        return $data;
     }
 }

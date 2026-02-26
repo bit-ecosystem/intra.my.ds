@@ -1,22 +1,172 @@
 {
     "q_methodologies_old": [
-        {"id": 1,"title": "PDCA","description": "Continuous iterative improvement cycle","brief_explanation": " (Plan-Do-Check-Act). A systematic four-step model for carrying out change to improve processes","needs_form": true,"needs_report": true,"typical_record_type": "Improvement Log","example_template_name": "PDCA Cycle Template","external_url": "https://asq.org/quality-resources/pdca-cycle"},
-        {"id": 2,"title": "DMAIC","description": "Structured Six Sigma problem-solving process","brief_explanation": " (Define-Measure-Analyze-Improve-Control). A data-driven quality strategy used to improve processes","needs_form": true,"needs_report": true,"typical_record_type": "Six Sigma Project Charter","example_template_name": "DMAIC Project Charter","external_url": "https://asq.org/quality-resources/dmaic"},
-        {"id": 3,"title": "Lean","description": "Eliminate waste and improve flow","brief_explanation": "Emphasizes value-added activities and removal of non-value-added waste","needs_form": false,"needs_report": true,"typical_record_type": "Value Stream Map","example_template_name": "Lean Improvement Summary","external_url": "https://asq.org/quality-resources/lean"},
-        {"id": 4,"title": "Six Sigma","description": "Reduce variation and defects","brief_explanation": "Uses statistical methods to identify and eliminate defects","needs_form": true,"needs_report": true,"typical_record_type": "Six Sigma Project File","example_template_name": "Six Sigma Project Form","external_url": "https://asq.org/quality-resources/six-sigma"},
-        {"id": 5,"title": "5S","description": "Workplace organization and standardization","brief_explanation": "Sort; Set in order; Shine; Standardize; Sustain","needs_form": false,"needs_report": true,"typical_record_type": "5S Audit Record","example_template_name": "5S Checklist","external_url": "https://asq.org/quality-resources/5s"},
-        {"id": 6,"title": "VSM","description": "Visualize and improve process flow","brief_explanation": "(Value Stream Mapping). Identifies and analyzes the current process flow to remove waste","needs_form": true,"needs_report": true,"typical_record_type": "Process Map","example_template_name": "VSM Template","external_url": "https://asq.org/quality-resources/lean/value-stream-mapping"},
-        {"id": 7,"title": "RCA","description": "Identify and eliminate causes of problems","brief_explanation": "(Root Cause Analysis). Focuses on understanding underlying causes instead of symptoms","needs_form": true,"needs_report": true,"typical_record_type": "Problem Report","example_template_name": "RCA Worksheet","external_url": "https://asq.org/quality-resources/root-cause-analysis"},
-        {"id": 8,"title": "A3 Problem Solving","description": "Structured report-based improvement","brief_explanation": "Documents problem-solving steps on a single A3 sheet","needs_form": true,"needs_report": true,"typical_record_type": "Improvement Report","example_template_name": "A3 Template","external_url": "https://asq.org/quality-resources/a3-report"},
-        {"id": 9,"title": "Poka-Yoke","description": "Prevent errors before they occur","brief_explanation": "Designs fail-safes into processes to prevent mistakes","needs_form": false,"needs_report": true,"typical_record_type": "Process Design Change Log","example_template_name": "Poka-Yoke Report","external_url": "https://asq.org/quality-resources/poka-yoke"},
-        {"id": 10,"title": "Benchmarking","description": "Compare performance to best practices","brief_explanation": "Identifies gaps by comparing to leading organizations","needs_form": true,"needs_report": true,"typical_record_type": "Benchmark Analysis","example_template_name": "Benchmark Template","external_url": "https://asq.org/quality-resources/benchmarking"},
-        {"id": 11,"title": "TQM","description": "Company-wide quality approach","brief_explanation": "(Total Quality Management). Integrates quality improvement into all organizational activities","needs_form": true,"needs_report": true,"typical_record_type": "Quality Management Review","example_template_name": "TQM Review Form","external_url": "https://asq.org/quality-resources/total-quality-management"},
-        {"id": 12,"title": "Hoshin Kanri","description": "Align strategy with execution","brief_explanation": "(Policy Deployment). Ensures organizational goals are deployed to all levels","needs_form": true,"needs_report": true,"typical_record_type": "Strategic Plan","example_template_name": "Hoshin Matrix","external_url": "https://asq.org/quality-resources/hoshin-kanri"},
-        {"id": 13,"title": "8D Problem Solving","description": "Team-based problem solving","brief_explanation": "Used mainly in automotive and manufacturing to resolve recurring problems","needs_form": true,"needs_report": true,"typical_record_type": "Corrective Action Report","example_template_name": "8D Report","external_url": "https://asq.org/quality-resources/eight-disciplines-8d"},
-        {"id": 14,"title": "FMEA","description": "Identify potential failures proactively","brief_explanation": "(Failure Mode and Effects Analysis). Analyzes potential failure modes and their impact","needs_form": true,"needs_report": true,"typical_record_type": "Risk Assessment","example_template_name": "FMEA Worksheet","external_url": "https://asq.org/quality-resources/fmea"},
-        {"id": 15,"title": "Gemba Walk","description": "Gather information firsthand, rather than relying solely on reports","brief_explanation": "This Japanese word means “the actual place” or “the place where work happens”.","needs_form": true,"needs_report": true,"typical_record_type": "Checklists","example_template_name": "Observation forms","external_url": "https://processnavigation.com/insights/what-is-a-gemba-walk-definition/"}
+        {
+            "id": 1,
+            "title": "PDCA",
+            "description": "Continuous iterative improvement cycle",
+            "brief_explanation": " (Plan-Do-Check-Act). A systematic four-step model for carrying out change to improve processes",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Improvement Log",
+            "example_template_name": "PDCA Cycle Template",
+            "external_url": "https://asq.org/quality-resources/pdca-cycle"
+        },
+        {
+            "id": 2,
+            "title": "DMAIC",
+            "description": "Structured Six Sigma problem-solving process",
+            "brief_explanation": " (Define-Measure-Analyze-Improve-Control). A data-driven quality strategy used to improve processes",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Six Sigma Project Charter",
+            "example_template_name": "DMAIC Project Charter",
+            "external_url": "https://asq.org/quality-resources/dmaic"
+        },
+        {
+            "id": 3,
+            "title": "Lean",
+            "description": "Eliminate waste and improve flow",
+            "brief_explanation": "Emphasizes value-added activities and removal of non-value-added waste",
+            "needs_form": false,
+            "needs_report": true,
+            "typical_record_type": "Value Stream Map",
+            "example_template_name": "Lean Improvement Summary",
+            "external_url": "https://asq.org/quality-resources/lean"
+        },
+        {
+            "id": 4,
+            "title": "Six Sigma",
+            "description": "Reduce variation and defects",
+            "brief_explanation": "Uses statistical methods to identify and eliminate defects",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Six Sigma Project File",
+            "example_template_name": "Six Sigma Project Form",
+            "external_url": "https://asq.org/quality-resources/six-sigma"
+        },
+        {
+            "id": 5,
+            "title": "5S",
+            "description": "Workplace organization and standardization",
+            "brief_explanation": "Sort; Set in order; Shine; Standardize; Sustain",
+            "needs_form": false,
+            "needs_report": true,
+            "typical_record_type": "5S Audit Record",
+            "example_template_name": "5S Checklist",
+            "external_url": "https://asq.org/quality-resources/5s"
+        },
+        {
+            "id": 6,
+            "title": "VSM",
+            "description": "Visualize and improve process flow",
+            "brief_explanation": "(Value Stream Mapping). Identifies and analyzes the current process flow to remove waste",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Process Map",
+            "example_template_name": "VSM Template",
+            "external_url": "https://asq.org/quality-resources/lean/value-stream-mapping"
+        },
+        {
+            "id": 7,
+            "title": "RCA",
+            "description": "Identify and eliminate causes of problems",
+            "brief_explanation": "(Root Cause Analysis). Focuses on understanding underlying causes instead of symptoms",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Problem Report",
+            "example_template_name": "RCA Worksheet",
+            "external_url": "https://asq.org/quality-resources/root-cause-analysis"
+        },
+        {
+            "id": 8,
+            "title": "A3 Problem Solving",
+            "description": "Structured report-based improvement",
+            "brief_explanation": "Documents problem-solving steps on a single A3 sheet",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Improvement Report",
+            "example_template_name": "A3 Template",
+            "external_url": "https://asq.org/quality-resources/a3-report"
+        },
+        {
+            "id": 9,
+            "title": "Poka-Yoke",
+            "description": "Prevent errors before they occur",
+            "brief_explanation": "Designs fail-safes into processes to prevent mistakes",
+            "needs_form": false,
+            "needs_report": true,
+            "typical_record_type": "Process Design Change Log",
+            "example_template_name": "Poka-Yoke Report",
+            "external_url": "https://asq.org/quality-resources/poka-yoke"
+        },
+        {
+            "id": 10,
+            "title": "Benchmarking",
+            "description": "Compare performance to best practices",
+            "brief_explanation": "Identifies gaps by comparing to leading organizations",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Benchmark Analysis",
+            "example_template_name": "Benchmark Template",
+            "external_url": "https://asq.org/quality-resources/benchmarking"
+        },
+        {
+            "id": 11,
+            "title": "TQM",
+            "description": "Company-wide quality approach",
+            "brief_explanation": "(Total Quality Management). Integrates quality improvement into all organizational activities",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Quality Management Review",
+            "example_template_name": "TQM Review Form",
+            "external_url": "https://asq.org/quality-resources/total-quality-management"
+        },
+        {
+            "id": 12,
+            "title": "Hoshin Kanri",
+            "description": "Align strategy with execution",
+            "brief_explanation": "(Policy Deployment). Ensures organizational goals are deployed to all levels",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Strategic Plan",
+            "example_template_name": "Hoshin Matrix",
+            "external_url": "https://asq.org/quality-resources/hoshin-kanri"
+        },
+        {
+            "id": 13,
+            "title": "8D Problem Solving",
+            "description": "Team-based problem solving",
+            "brief_explanation": "Used mainly in automotive and manufacturing to resolve recurring problems",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Corrective Action Report",
+            "example_template_name": "8D Report",
+            "external_url": "https://asq.org/quality-resources/eight-disciplines-8d"
+        },
+        {
+            "id": 14,
+            "title": "FMEA",
+            "description": "Identify potential failures proactively",
+            "brief_explanation": "(Failure Mode and Effects Analysis). Analyzes potential failure modes and their impact",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Risk Assessment",
+            "example_template_name": "FMEA Worksheet",
+            "external_url": "https://asq.org/quality-resources/fmea"
+        },
+        {
+            "id": 15,
+            "title": "Gemba Walk",
+            "description": "Gather information firsthand, rather than relying solely on reports",
+            "brief_explanation": "This Japanese word means “the actual place” or “the place where work happens”.",
+            "needs_form": true,
+            "needs_report": true,
+            "typical_record_type": "Checklists",
+            "example_template_name": "Observation forms",
+            "external_url": "https://processnavigation.com/insights/what-is-a-gemba-walk-definition/"
+        }
     ],
-   "q_methodologies": [
+    "q_methodologies": [
         {
             "id": 1,
             "title": "PDCA",
@@ -26,13 +176,39 @@
             "form_schema": {
                 "type": "object",
                 "properties": {
-                    "problem_statement": { "type": "string", "title": "Problem Statement", "format": "textarea" },
-                    "objective": { "type": "string", "title": "Objective" },
-                    "owner": { "type": "string", "title": "Owner" },
-                    "phase": { "enum": ["Plan", "Do", "Check", "Act"], "title": "Current Phase" },
-                    "evidence": { "type": "string", "title": "Evidence/Attachment", "format": "file" }
+                    "problem_statement": {
+                        "type": "string",
+                        "title": "Problem Statement",
+                        "format": "textarea"
+                    },
+                    "objective": {
+                        "type": "string",
+                        "title": "Objective"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "title": "Owner"
+                    },
+                    "phase": {
+                        "enum": [
+                            "Plan",
+                            "Do",
+                            "Check",
+                            "Act"
+                        ],
+                        "title": "Current Phase"
+                    },
+                    "evidence": {
+                        "type": "string",
+                        "title": "Evidence/Attachment",
+                        "format": "file"
+                    }
                 },
-                "required": ["problem_statement", "objective", "phase"]
+                "required": [
+                    "problem_statement",
+                    "objective",
+                    "phase"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -47,16 +223,50 @@
             "brief_explanation": " (Define-Measure-Analyze-Improve-Control). A data-driven quality strategy used to improve processes",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "project_title": { "type": "string", "title": "Project Title" },
-                "belt": { "enum": ["Green Belt", "Black Belt", "Champion", "Team Member"], "title": "Role" },
-                "phase": { "enum": ["Define", "Measure", "Analyze", "Improve", "Control"], "title": "Phase" },
-                "goal": { "type": "string", "title": "Goal (Y)", "format": "textarea" },
-                "baseline": { "type": "string", "title": "Baseline" },
-                "charter_file": { "type": "string", "title": "Charter File", "format": "file" }
-            },
-            "required": ["project_title", "phase"]
+                "type": "object",
+                "properties": {
+                    "project_title": {
+                        "type": "string",
+                        "title": "Project Title"
+                    },
+                    "belt": {
+                        "enum": [
+                            "Green Belt",
+                            "Black Belt",
+                            "Champion",
+                            "Team Member"
+                        ],
+                        "title": "Role"
+                    },
+                    "phase": {
+                        "enum": [
+                            "Define",
+                            "Measure",
+                            "Analyze",
+                            "Improve",
+                            "Control"
+                        ],
+                        "title": "Phase"
+                    },
+                    "goal": {
+                        "type": "string",
+                        "title": "Goal (Y)",
+                        "format": "textarea"
+                    },
+                    "baseline": {
+                        "type": "string",
+                        "title": "Baseline"
+                    },
+                    "charter_file": {
+                        "type": "string",
+                        "title": "Charter File",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "project_title",
+                    "phase"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -84,15 +294,40 @@
             "brief_explanation": "Uses statistical methods to identify and eliminate defects",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "defect_type": { "type": "string", "title": "Defect Type" },
-                "ctq": { "type": "string", "title": "CTQ (Critical to Quality)" },
-                "impact": { "enum": ["Low", "Medium", "High"], "title": "Impact" },
-                "description": { "type": "string", "title": "Issue Description", "format": "textarea" },
-                "supporting_data": { "type": "string", "title": "Supporting Data", "format": "file" }
-            },
-            "required": ["defect_type", "ctq", "impact"]
+                "type": "object",
+                "properties": {
+                    "defect_type": {
+                        "type": "string",
+                        "title": "Defect Type"
+                    },
+                    "ctq": {
+                        "type": "string",
+                        "title": "CTQ (Critical to Quality)"
+                    },
+                    "impact": {
+                        "enum": [
+                            "Low",
+                            "Medium",
+                            "High"
+                        ],
+                        "title": "Impact"
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Issue Description",
+                        "format": "textarea"
+                    },
+                    "supporting_data": {
+                        "type": "string",
+                        "title": "Supporting Data",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "defect_type",
+                    "ctq",
+                    "impact"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -120,15 +355,35 @@
             "brief_explanation": "(Value Stream Mapping). Identifies and analyzes the current process flow to remove waste",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "process_name": { "type": "string", "title": "Process Name" },
-                "current_state": { "type": "string", "title": "Current State Notes", "format": "textarea" },
-                "future_state": { "type": "string", "title": "Future State Goal", "format": "textarea" },
-                "area": { "type": "string", "title": "Area/Line" },
-                "map_file": { "type": "string", "title": "VSM File", "format": "file" }
-            },
-            "required": ["process_name"]
+                "type": "object",
+                "properties": {
+                    "process_name": {
+                        "type": "string",
+                        "title": "Process Name"
+                    },
+                    "current_state": {
+                        "type": "string",
+                        "title": "Current State Notes",
+                        "format": "textarea"
+                    },
+                    "future_state": {
+                        "type": "string",
+                        "title": "Future State Goal",
+                        "format": "textarea"
+                    },
+                    "area": {
+                        "type": "string",
+                        "title": "Area/Line"
+                    },
+                    "map_file": {
+                        "type": "string",
+                        "title": "VSM File",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "process_name"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -143,15 +398,42 @@
             "brief_explanation": "(Root Cause Analysis). Focuses on understanding underlying causes instead of symptoms",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "problem": { "type": "string", "title": "Problem", "format": "textarea" },
-                "tool": { "enum": ["5 Whys", "Fishbone (Ishikawa)", "Fault Tree"], "title": "Tool Used" },
-                "root_cause": { "type": "string", "title": "Root Cause", "format": "textarea" },
-                "corrective_action": { "type": "string", "title": "Corrective Action", "format": "textarea" },
-                "evidence": { "type": "string", "title": "Evidence", "format": "file" }
-            },
-            "required": ["problem", "tool", "root_cause"]
+                "type": "object",
+                "properties": {
+                    "problem": {
+                        "type": "string",
+                        "title": "Problem",
+                        "format": "textarea"
+                    },
+                    "tool": {
+                        "enum": [
+                            "5 Whys",
+                            "Fishbone (Ishikawa)",
+                            "Fault Tree"
+                        ],
+                        "title": "Tool Used"
+                    },
+                    "root_cause": {
+                        "type": "string",
+                        "title": "Root Cause",
+                        "format": "textarea"
+                    },
+                    "corrective_action": {
+                        "type": "string",
+                        "title": "Corrective Action",
+                        "format": "textarea"
+                    },
+                    "evidence": {
+                        "type": "string",
+                        "title": "Evidence",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "problem",
+                    "tool",
+                    "root_cause"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -166,16 +448,42 @@
             "brief_explanation": "Documents problem-solving steps on a single A3 sheet",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "background": { "type": "string", "title": "Background", "format": "textarea" },
-                "current_state": { "type": "string", "title": "Current State", "format": "textarea" },
-                "target": { "type": "string", "title": "Target Condition" },
-                "analysis": { "type": "string", "title": "Analysis", "format": "textarea" },
-                "countermeasures": { "type": "string", "title": "Countermeasures", "format": "textarea" },
-                "a3_file": { "type": "string", "title": "A3 File", "format": "file" }
-            },
-            "required": ["background", "target"]
+                "type": "object",
+                "properties": {
+                    "background": {
+                        "type": "string",
+                        "title": "Background",
+                        "format": "textarea"
+                    },
+                    "current_state": {
+                        "type": "string",
+                        "title": "Current State",
+                        "format": "textarea"
+                    },
+                    "target": {
+                        "type": "string",
+                        "title": "Target Condition"
+                    },
+                    "analysis": {
+                        "type": "string",
+                        "title": "Analysis",
+                        "format": "textarea"
+                    },
+                    "countermeasures": {
+                        "type": "string",
+                        "title": "Countermeasures",
+                        "format": "textarea"
+                    },
+                    "a3_file": {
+                        "type": "string",
+                        "title": "A3 File",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "background",
+                    "target"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -203,15 +511,40 @@
             "brief_explanation": "Identifies gaps by comparing to leading organizations",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "subject": { "type": "string", "title": "Subject/Process" },
-                "benchmark_type": { "enum": ["Internal", "Competitive", "Functional", "Generic"], "title": "Type" },
-                "partner": { "type": "string", "title": "Benchmark Partner" },
-                "gap_summary": { "type": "string", "title": "Gap Summary", "format": "textarea" },
-                "evidence": { "type": "string", "title": "Evidence File", "format": "file" }
-            },
-            "required": ["subject", "benchmark_type"]
+                "type": "object",
+                "properties": {
+                    "subject": {
+                        "type": "string",
+                        "title": "Subject/Process"
+                    },
+                    "benchmark_type": {
+                        "enum": [
+                            "Internal",
+                            "Competitive",
+                            "Functional",
+                            "Generic"
+                        ],
+                        "title": "Type"
+                    },
+                    "partner": {
+                        "type": "string",
+                        "title": "Benchmark Partner"
+                    },
+                    "gap_summary": {
+                        "type": "string",
+                        "title": "Gap Summary",
+                        "format": "textarea"
+                    },
+                    "evidence": {
+                        "type": "string",
+                        "title": "Evidence File",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "subject",
+                    "benchmark_type"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -226,14 +559,37 @@
             "brief_explanation": "(Total Quality Management). Integrates quality improvement into all organizational activities",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "focus_area": { "enum": ["Customer Focus", "Leadership", "Employee Involvement", "Process Approach", "Continuous Improvement"], "title": "Focus Area" },
-                "initiative": { "type": "string", "title": "Initiative Title" },
-                "description": { "type": "string", "title": "Description", "format": "textarea" },
-                "attachment": { "type": "string", "title": "Attachment", "format": "file" }
-            },
-            "required": ["focus_area", "initiative"]
+                "type": "object",
+                "properties": {
+                    "focus_area": {
+                        "enum": [
+                            "Customer Focus",
+                            "Leadership",
+                            "Employee Involvement",
+                            "Process Approach",
+                            "Continuous Improvement"
+                        ],
+                        "title": "Focus Area"
+                    },
+                    "initiative": {
+                        "type": "string",
+                        "title": "Initiative Title"
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "format": "textarea"
+                    },
+                    "attachment": {
+                        "type": "string",
+                        "title": "Attachment",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "focus_area",
+                    "initiative"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -248,15 +604,35 @@
             "brief_explanation": "(Policy Deployment). Ensures organizational goals are deployed to all levels",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "objective": { "type": "string", "title": "Objective" },
-                "kpi": { "type": "string", "title": "KPI" },
-                "owner": { "type": "string", "title": "Owner" },
-                "catchball_notes": { "type": "string", "title": "Catchball Notes", "format": "textarea" },
-                "matrix_file": { "type": "string", "title": "Matrix File", "format": "file" }
-            },
-            "required": ["objective", "kpi"]
+                "type": "object",
+                "properties": {
+                    "objective": {
+                        "type": "string",
+                        "title": "Objective"
+                    },
+                    "kpi": {
+                        "type": "string",
+                        "title": "KPI"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "title": "Owner"
+                    },
+                    "catchball_notes": {
+                        "type": "string",
+                        "title": "Catchball Notes",
+                        "format": "textarea"
+                    },
+                    "matrix_file": {
+                        "type": "string",
+                        "title": "Matrix File",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "objective",
+                    "kpi"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -271,15 +647,46 @@
             "brief_explanation": "Used mainly in automotive and manufacturing to resolve recurring problems",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "team": { "type": "string", "title": "Team/Champion" },
-                "d": { "enum": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"], "title": "Current Discipline" },
-                "problem_desc": { "type": "string", "title": "Problem Description", "format": "textarea" },
-                "permanent_fix": { "type": "string", "title": "Permanent Corrective Action", "format": "textarea" },
-                "evidence": { "type": "string", "title": "Evidence", "format": "file" }
-            },
-            "required": ["team", "d", "problem_desc"]
+                "type": "object",
+                "properties": {
+                    "team": {
+                        "type": "string",
+                        "title": "Team/Champion"
+                    },
+                    "d": {
+                        "enum": [
+                            "D1",
+                            "D2",
+                            "D3",
+                            "D4",
+                            "D5",
+                            "D6",
+                            "D7",
+                            "D8"
+                        ],
+                        "title": "Current Discipline"
+                    },
+                    "problem_desc": {
+                        "type": "string",
+                        "title": "Problem Description",
+                        "format": "textarea"
+                    },
+                    "permanent_fix": {
+                        "type": "string",
+                        "title": "Permanent Corrective Action",
+                        "format": "textarea"
+                    },
+                    "evidence": {
+                        "type": "string",
+                        "title": "Evidence",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "team",
+                    "d",
+                    "problem_desc"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -294,17 +701,79 @@
             "brief_explanation": "(Failure Mode and Effects Analysis). Analyzes potential failure modes and their impact",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "process_step": { "type": "string", "title": "Process/Item" },
-                "failure_mode": { "type": "string", "title": "Failure Mode" },
-                "effect": { "type": "string", "title": "Effect", "format": "textarea" },
-                "severity": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "title": "Severity (1-10)" },
-                "occurrence": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "title": "Occurrence (1-10)" },
-                "detection": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "title": "Detection (1-10)" },
-                "evidence": { "type": "string", "title": "Evidence", "format": "file" }
-            },
-            "required": ["process_step", "failure_mode", "severity", "occurrence", "detection"]
+                "type": "object",
+                "properties": {
+                    "process_step": {
+                        "type": "string",
+                        "title": "Process/Item"
+                    },
+                    "failure_mode": {
+                        "type": "string",
+                        "title": "Failure Mode"
+                    },
+                    "effect": {
+                        "type": "string",
+                        "title": "Effect",
+                        "format": "textarea"
+                    },
+                    "severity": {
+                        "enum": [
+                            "1",
+                            "2",
+                            "3",
+                            "4",
+                            "5",
+                            "6",
+                            "7",
+                            "8",
+                            "9",
+                            "10"
+                        ],
+                        "title": "Severity (1-10)"
+                    },
+                    "occurrence": {
+                        "enum": [
+                            "1",
+                            "2",
+                            "3",
+                            "4",
+                            "5",
+                            "6",
+                            "7",
+                            "8",
+                            "9",
+                            "10"
+                        ],
+                        "title": "Occurrence (1-10)"
+                    },
+                    "detection": {
+                        "enum": [
+                            "1",
+                            "2",
+                            "3",
+                            "4",
+                            "5",
+                            "6",
+                            "7",
+                            "8",
+                            "9",
+                            "10"
+                        ],
+                        "title": "Detection (1-10)"
+                    },
+                    "evidence": {
+                        "type": "string",
+                        "title": "Evidence",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "process_step",
+                    "failure_mode",
+                    "severity",
+                    "occurrence",
+                    "detection"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -319,21 +788,362 @@
             "brief_explanation": "This Japanese word means “the actual place” or “the place where work happens”.",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "area": { "type": "string", "title": "Area/Line" },
-                "observer": { "type": "string", "title": "Observer" },
-                "observation": { "type": "string", "title": "Observation", "format": "textarea" },
-                "action_needed": { "enum": ["None", "Low", "Medium", "High"], "title": "Action Needed" },
-                "photo": { "type": "string", "title": "Photo", "format": "file" }
-            },
-            "required": ["area", "observer", "observation"]
+                "type": "object",
+                "properties": {
+                    "area": {
+                        "type": "string",
+                        "title": "Area/Line"
+                    },
+                    "observer": {
+                        "type": "string",
+                        "title": "Observer"
+                    },
+                    "observation": {
+                        "type": "string",
+                        "title": "Observation",
+                        "format": "textarea"
+                    },
+                    "action_needed": {
+                        "enum": [
+                            "None",
+                            "Low",
+                            "Medium",
+                            "High"
+                        ],
+                        "title": "Action Needed"
+                    },
+                    "photo": {
+                        "type": "string",
+                        "title": "Photo",
+                        "format": "file"
+                    }
+                },
+                "required": [
+                    "area",
+                    "observer",
+                    "observation"
+                ]
             },
             "needs_report": 1,
             "report_schema": null,
             "typical_record_type": "Checklists",
             "example_template_name": "Observation forms",
             "external_url": "https://processnavigation.com/insights/what-is-a-gemba-walk-definition/"
+        },
+        {
+            "id": 16,
+            "title": "EIP Proposal",
+            "icon": null,
+            "description": "Propose improvement ideas in our organization",
+            "brief_explanation": null,
+            "needs_form": 0,
+            "form_schema": {
+                "type": "object",
+                "x-sections": {
+                    "Proposal / Cadangan": {
+                        "grid": {
+                            "default": 2
+                        }
+                    }
+                },
+                "properties": {
+                    "methodology_id": {
+                        "type": "string",
+                        "title": "Methodology",
+                        "x-hidden": true,
+                        "x-section": "Proposed by / Cadangan oleh",
+                        "x-defaultSource": "App\\Models\\Qas\\Methodology::idByName",
+                        "x-defaultArgs": [
+                            "EIP Proposal"
+                        ]
+                    },
+                    "initiator_id": {
+                        "type": "string",
+                        "title": "Name",
+                        "ui:disabled": true,
+                        "x-relationship": {
+                            "name": "initiator",
+                            "label": "name"
+                        },
+                        "ui:preload": true,
+                        "x-section": "Proposed by / Cadangan oleh",
+                        "x-default": "user.staff.id"
+                    },
+                    "initiator_sn": {
+                        "type": "string",
+                        "title": "Employee ID",
+                        "ui:disabled": true,
+                        "x-section": "Proposed by / Cadangan oleh",
+                        "x-default": "user.staff.staff_number"
+                    },
+                    "initiator_ou": {
+                        "type": "string",
+                        "title": "Department",
+                        "ui:disabled": true,
+                        "x-section": "Proposed by / Cadangan oleh",
+                        "x-default": "user.staff.orgUnit.name"
+                    },
+                    "date": {
+                        "type": "string",
+                        "title": "Date",
+                        "format": "date",
+                        "ui:disabled": true,
+                        "x-section": "Subject / Berkenaan",
+                        "x-default": "now:date"
+                    },
+                    "extension number": {
+                        "type": "string",
+                        "title": "Extension Number",
+                        "x-section": "Proposed by / Cadangan oleh"
+                    },
+                    "process": {
+                        "type": "string",
+                        "title": "Process",
+                        "oneOf": [
+                            {
+                                "const": "fol",
+                                "title": "FOL"
+                            },
+                            {
+                                "const": "mol",
+                                "title": "MOL"
+                            },
+                            {
+                                "const": "eol",
+                                "title": "EOL"
+                            },
+                            {
+                                "const": "plating",
+                                "title": "Plating"
+                            },
+                            {
+                                "const": "other",
+                                "title": "Others"
+                            }
+                        ],
+                        "ui:widget": "radio",
+                        "ui:inline": true,
+                        "x-section": "Subject / Berkenaan"
+                    },
+                    "others": {
+                        "type": "string",
+                        "title": "Others? Please specify",
+                        "placeholder": "Others? Please specify",
+                        "x-visibleIf": {
+                            "process": "other"
+                        },
+                        "x-requiredIf": {
+                            "process": "other"
+                        },
+                        "x-section": "Subject / Berkenaan"
+                    },
+                    "location_id": {
+                        "type": "string",
+                        "title": "Location Hierarchy",
+                        "ui:searchable": true,
+                        "ui:preload": true,
+                        "x-optionsSource": "App\\Models\\Location::getLastMileOptions",
+                        "x-section": "Subject / Berkenaan"
+                    },
+                    "eip_type": {
+                        "type": "string",
+                        "title": "EIP Type",
+                        "oneOf": [
+                            {
+                                "const": "q_human_error_reduction",
+                                "title": "Human Error Reduction",
+                                "x-group": "Quality"
+                            },
+                            {
+                                "const": "q_improve_process_job_step",
+                                "title": "Improve Process/Job Step",
+                                "x-group": "Quality"
+                            },
+                            {
+                                "const": "q_quality_up",
+                                "title": "Quality Up",
+                                "x-group": "Quality"
+                            },
+                            {
+                                "const": "q_reduce_defect_rejection_claim",
+                                "title": "Reduce Defect/Rejection/Claim",
+                                "x-group": "Quality"
+                            },
+                            {
+                                "const": "q_improve_defect_detection",
+                                "title": "Improve Defect Detection",
+                                "x-group": "Quality"
+                            },
+                            {
+                                "const": "q_poka-yoke",
+                                "title": "Poka-Yoke",
+                                "x-group": "Quality"
+                            },
+                            {
+                                "const": "q_yield_up",
+                                "title": "Yield Up",
+                                "x-group": "Quality"
+                            },
+                            {
+                                "const": "s_ohsas_safety",
+                                "title": "OHSAS/Safety",
+                                "x-group": "Safety"
+                            },
+                            {
+                                "const": "s_safety_up",
+                                "title": "Safety Up",
+                                "x-group": "Safety"
+                            },
+                            {
+                                "const": "s_security_up",
+                                "title": "Security Up",
+                                "x-group": "Safety"
+                            },
+                            {
+                                "const": "s_near_miss",
+                                "title": "Near Miss",
+                                "x-group": "Safety"
+                            },
+                            {
+                                "const": "s_unsafe_condition",
+                                "title": "Unsafe Condition",
+                                "x-group": "Safety"
+                            },
+                            {
+                                "const": "s_unsafe_act",
+                                "title": "Unsafe Act",
+                                "x-group": "Safety"
+                            },
+                            {
+                                "const": "o_5s",
+                                "title": "5S",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_better_work_environment",
+                                "title": "Better Work Environment",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_cost_down",
+                                "title": "Cost Down",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_effective_communication",
+                                "title": "Effective Communication",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_efficiency_up",
+                                "title": "Efficiency Up",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_ems",
+                                "title": "EMS",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_energy_saving",
+                                "title": "Energy Saving",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_image_up",
+                                "title": "Image Up",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_improve_capacity",
+                                "title": "Improve Capacity",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_improve_material",
+                                "title": "Improve Material",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_improve_method",
+                                "title": "Improve Method",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_knowledge_up",
+                                "title": "Knowledge Up",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_waste_reduction",
+                                "title": "Waste Reduction",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_productivity_up",
+                                "title": "Productivity Up",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_sales_up",
+                                "title": "Sales Up",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_va_cd",
+                                "title": "VA/CD",
+                                "x-group": "Others"
+                            },
+                            {
+                                "const": "o_others",
+                                "title": "Others",
+                                "x-group": "Others"
+                            }
+                        ],
+                        "ui:searchable": true,
+                        "x-section": "Subject / Berkenaan"
+                    },
+                    "current_state": {
+                        "type": "string",
+                        "title": "Current State",
+                        "x-section": "Proposal / Cadangan",
+                        "x-colSpan": 1
+                    },
+                    "propose_state": {
+                        "type": "string",
+                        "title": "Proposed State",
+                        "x-section": "Proposal / Cadangan",
+                        "x-colSpan": 1
+                    },
+                    "before": {
+                        "type": "string",
+                        "title": "Before",
+                        "format": "image",
+                        "x-section": "Proposal / Cadangan",
+                        "x-colSpan": 1
+                    },
+                    "after": {
+                        "type": "string",
+                        "title": "After",
+                        "format": "image",
+                        "x-section": "Proposal / Cadangan",
+                        "x-colSpan": 1
+                    }
+                },
+                "required": [
+                    "process",
+                    "location_id",
+                    "eip_type",
+                    "current_state"
+                ]
+            },
+            "needs_report": 1,
+            "report_schema": null,
+            "typical_record_type": null,
+            "example_template_name": null,
+            "external_url": null,
+            "created_at": "2026-02-26 11:04:05",
+            "updated_at": "2026-02-26 11:04:05"
         }
     ]
 }
