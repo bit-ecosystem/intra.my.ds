@@ -17,6 +17,7 @@ use Filament\Tables\Table;
 class EipProposalResource extends Resource
 {
     protected static ?string $model = RunInitiative::class;
+
     protected static ?string $modelLabel = 'EIP Proposal';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;

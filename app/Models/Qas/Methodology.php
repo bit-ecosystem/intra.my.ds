@@ -27,4 +27,10 @@ class Methodology extends Model
             'needs_report' => 'boolean',
         ];
     }
+
+    // App\Models\Qas\Methodology.php
+    public static function idByName(string $methodology): ?int
+    {
+        return static::where('methodology', $methodology)->value('id');
+    }
 }

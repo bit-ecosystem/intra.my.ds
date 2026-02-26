@@ -9,6 +9,7 @@ use App\Filament\Qas\Resources\RunInitiatives\RunInitiativeResource;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
+use Illuminate\Support\Facades\Auth;
 
 class ViewMethodology extends ViewRecord
 {
@@ -20,7 +21,10 @@ class ViewMethodology extends ViewRecord
             EditAction::make(),
             Action::make('openDynamicForm')
                 ->icon('heroicon-o-arrow-top-right-on-square')
-                ->url(fn ($record): string => RunInitiativeResource::getUrl('create', ['form_id' => $record->id]))
+                ->url(fn($record): string => RunInitiativeResource::getUrl('create', [
+                    'what' => $record->id,
+                    'who' => Auth::id(),
+                ]))
                 // ->openUrlInNewTab() // optional
                 ->label('Run Initiative'),
         ];

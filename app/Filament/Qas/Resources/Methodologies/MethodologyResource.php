@@ -25,7 +25,7 @@ class MethodologyResource extends Resource
 
     protected static ?string $title = 'Quality Tools';
 
-    protected static ?int $navigationSort = 90;
+    protected static ?int $navigationSort = 9;
 
     protected static ?string $recordTitleAttribute = 'methodology';
 

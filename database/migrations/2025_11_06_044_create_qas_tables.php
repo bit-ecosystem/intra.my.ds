@@ -10,8 +10,9 @@ return new class extends Migration
     {
         Schema::create('q_methodologies', function (Blueprint $table) {
             $table->id();
-            $table->string('methodology')->unique();
-            $table->string('purpose')->nullable();
+            $table->string('title')->unique();
+            $table->string('icon')->nullable();
+            $table->string('description')->nullable();
             $table->text('brief_explanation')->nullable();
             $table->boolean('needs_form')->default(false);
             $table->json('form_schema')->nullable();

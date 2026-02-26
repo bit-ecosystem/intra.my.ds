@@ -36,6 +36,10 @@ class QasPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 NavigationGroup::make()
+                    ->label('Quality Tools')
+                    ->icon('myicon-toolbox')
+                    ->collapsed(),
+                NavigationGroup::make()
                     ->label('Quality Events')
                     ->icon(Heroicon::OutlinedBellAlert)
                     ->collapsed(true),
@@ -62,10 +66,6 @@ class QasPanelProvider extends PanelProvider
                 NavigationGroup::make()
                     ->label('Supplier Quality')
                     ->icon('myicon-supplier')
-                    ->collapsed(),
-                NavigationGroup::make()
-                    ->label('Quality Tools')
-                    ->icon('myicon-toolbox')
                     ->collapsed(),
                 NavigationGroup::make()
                     ->label('Analytics')

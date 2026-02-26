@@ -10,15 +10,15 @@ use UnitEnum;
 
 class Fix extends Page
 {
+    protected static ?string $title = 'Report an issue';
+
     protected static string|UnitEnum|null $navigationGroup = 'Emergency';
 
-    protected string $view = 'filament.staff.pages.fix';
-
-    protected static ?string $title = 'Report an issue';
+    protected static string|BackedEnum|null $navigationIcon = 'myicon-s-urgent';
 
     protected static ?int $navigationSort = 61;
 
-    protected static string|BackedEnum|null $navigationIcon = 'myicon-s-urgent';
+    protected string $view = 'filament.staff.pages.fix';
 
     public function getSubheading(): ?string
     {

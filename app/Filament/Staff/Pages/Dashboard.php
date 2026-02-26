@@ -11,11 +11,11 @@ use UnitEnum;
 
 class Dashboard extends BaseDashboard
 {
+    protected static ?string $title = 'Target';
+
     protected static string|UnitEnum|null $navigationGroup = 'To Do';
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-target';
-
-    protected static ?string $title = 'Target';
 
     protected static ?int $navigationSort = 13;
 

@@ -10,15 +10,15 @@ use UnitEnum;
 
 class Biodata extends Page
 {
+    protected static ?string $title = 'Profile';
+
     protected static string|UnitEnum|null $navigationGroup = 'Artifact';
 
-    protected string $view = 'filament.staff.pages.biodata';
-
-    protected static ?string $title = 'Profile';
+    protected static string|BackedEnum|null $navigationIcon = 'myicon-id-staff';
 
     protected static ?int $navigationSort = 21;
 
-    protected static string|BackedEnum|null $navigationIcon = 'myicon-id-staff';
+    protected string $view = 'filament.staff.pages.biodata';
 
     protected function getHeaderWidgets(): array
     {

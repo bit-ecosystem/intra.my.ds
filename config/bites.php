@@ -79,7 +79,12 @@ return [
             'color' => '#0F4B8F',
         ],
     ],
-
+    'emergency' => [
+        'ert' => '03-xxxx xxxx',
+        'fire' => '994',
+        'ambulance' => '999',
+        'security' => 'Ext 555',
+    ],
     'staff_panel' => [
         'route' => 'filament.staff.resources.menus.index',
         'namespace' => 'filament.staff.*', // for routeIs()

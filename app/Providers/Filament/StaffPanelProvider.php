@@ -60,7 +60,7 @@ class StaffPanelProvider extends PanelProvider
                 NavigationItem::make('Learn')
                     ->url('https://intra.my.ds.amkor.com/lms/courses')
                     ->icon('myicon-course')
-                    ->sort(41)
+                    ->sort(42)
                     ->group('Knowledge'),
             ])
             ->discoverResources(in: app_path('Filament/Staff/Resources'), for: 'App\Filament\Staff\Resources')
@@ -71,19 +71,19 @@ class StaffPanelProvider extends PanelProvider
             ->widgets([])
 
             // Socialite Plugin for Keycloak
-            ->plugin(
-                FilamentSocialitePlugin::make()
-                    ->slug('staff')
-                    ->providers([
-                        Provider::make('keycloak')
-                            ->label('AD Account Login')
-                            ->icon('myicon-l-keycloak')
-                            ->color(Color::Gray)
-                            ->outlined(false)
-                            ->stateless(true),
-                    ])
-                    ->registration(true)
-            )
+            // ->plugin(
+            //     FilamentSocialitePlugin::make()
+            //         ->slug('staff')
+            //         ->providers([
+            //             Provider::make('keycloak')
+            //                 ->label('AD Account Login')
+            //                 ->icon('myicon-l-keycloak')
+            //                 ->color(Color::Gray)
+            //                 ->outlined(false)
+            //                 ->stateless(true),
+            //         ])
+            //         ->registration(true)
+            // )
 
             // Middleware stack
             ->middleware([

@@ -10,15 +10,15 @@ use UnitEnum;
 
 class Artifact extends Page
 {
+    protected static ?string $title = 'Assigned Assets';
+
     protected static string|UnitEnum|null $navigationGroup = 'Artifact';
 
-    protected string $view = 'filament.staff.pages.artifact';
-
-    protected static ?string $title = 'Assigned Assets';
+    protected static string|BackedEnum|null $navigationIcon = 'myicon-asset-own';
 
     protected static ?int $navigationSort = 22;
 
-    protected static string|BackedEnum|null $navigationIcon = 'myicon-asset-own';
+    protected string $view = 'filament.staff.pages.artifact';
 
     protected function getHeaderWidgets(): array
     {

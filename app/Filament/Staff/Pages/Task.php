@@ -10,13 +10,15 @@ use UnitEnum;
 
 class Task extends Page
 {
-    protected string $view = 'filament.staff.pages.task';
+    protected static ?string $title = 'To Do';
 
     protected static string|UnitEnum|null $navigationGroup = 'To Do';
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-task';
 
     protected static ?int $navigationSort = 11;
+
+    protected string $view = 'filament.staff.pages.task';
 
     public function getSubheading(): ?string
     {

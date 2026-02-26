@@ -10,8 +10,6 @@ use UnitEnum;
 
 class Workflow extends Page
 {
-    protected string $view = 'filament.staff.pages.workflow';
-
     protected static ?string $title = 'Request for something';
 
     protected static string|UnitEnum|null $navigationGroup = 'Catalog';
@@ -19,6 +17,8 @@ class Workflow extends Page
     protected static string|BackedEnum|null $navigationIcon = 'myicon-w-request';
 
     protected static ?int $navigationSort = 32;
+
+    protected string $view = 'filament.staff.pages.workflow';
 
     public function getSubheading(): ?string
     {

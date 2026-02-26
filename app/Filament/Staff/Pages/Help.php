@@ -12,18 +12,19 @@ use UnitEnum;
 
 class Help extends Page
 {
+    // protected static ?string $title =
     protected static string|UnitEnum|null $navigationGroup = 'Knowledge';
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-book-open';
 
     protected static ?int $navigationSort = 4;
 
+    protected string $view = 'filament.staff.pages.help';
+
     public static function shouldRegisterNavigation(): bool
     {
         return false;
     }
-
-    protected string $view = 'filament.staff.pages.help';
 
     // protected static ?string $slug;
     protected static ?string $slug = 'help/{slug}';

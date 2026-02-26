@@ -32,13 +32,15 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
     use InteractsWithForms;
     use InteractsWithTable;
 
-    protected string $view = 'filament.staff.pages.calendar';
+    protected static ?string $title = 'Calendar';
 
     protected static string|UnitEnum|null $navigationGroup = 'To Do';
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-calendar';
 
     protected static ?int $navigationSort = 12;
+
+    protected string $view = 'filament.staff.pages.calendar';
 
     public $events;
 

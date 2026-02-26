@@ -1,38 +1,38 @@
 {
     "q_methodologies_old": [
-        {"id": 1,"methodology": "PDCA","purpose": "Continuous iterative improvement cycle","brief_explanation": " (Plan-Do-Check-Act). A systematic four-step model for carrying out change to improve processes","needs_form": true,"needs_report": true,"typical_record_type": "Improvement Log","example_template_name": "PDCA Cycle Template","external_url": "https://asq.org/quality-resources/pdca-cycle"},
-        {"id": 2,"methodology": "DMAIC","purpose": "Structured Six Sigma problem-solving process","brief_explanation": " (Define-Measure-Analyze-Improve-Control). A data-driven quality strategy used to improve processes","needs_form": true,"needs_report": true,"typical_record_type": "Six Sigma Project Charter","example_template_name": "DMAIC Project Charter","external_url": "https://asq.org/quality-resources/dmaic"},
-        {"id": 3,"methodology": "Lean","purpose": "Eliminate waste and improve flow","brief_explanation": "Emphasizes value-added activities and removal of non-value-added waste","needs_form": false,"needs_report": true,"typical_record_type": "Value Stream Map","example_template_name": "Lean Improvement Summary","external_url": "https://asq.org/quality-resources/lean"},
-        {"id": 4,"methodology": "Six Sigma","purpose": "Reduce variation and defects","brief_explanation": "Uses statistical methods to identify and eliminate defects","needs_form": true,"needs_report": true,"typical_record_type": "Six Sigma Project File","example_template_name": "Six Sigma Project Form","external_url": "https://asq.org/quality-resources/six-sigma"},
-        {"id": 5,"methodology": "5S","purpose": "Workplace organization and standardization","brief_explanation": "Sort; Set in order; Shine; Standardize; Sustain","needs_form": false,"needs_report": true,"typical_record_type": "5S Audit Record","example_template_name": "5S Checklist","external_url": "https://asq.org/quality-resources/5s"},
-        {"id": 6,"methodology": "VSM","purpose": "Visualize and improve process flow","brief_explanation": "(Value Stream Mapping). Identifies and analyzes the current process flow to remove waste","needs_form": true,"needs_report": true,"typical_record_type": "Process Map","example_template_name": "VSM Template","external_url": "https://asq.org/quality-resources/lean/value-stream-mapping"},
-        {"id": 7,"methodology": "RCA","purpose": "Identify and eliminate causes of problems","brief_explanation": "(Root Cause Analysis). Focuses on understanding underlying causes instead of symptoms","needs_form": true,"needs_report": true,"typical_record_type": "Problem Report","example_template_name": "RCA Worksheet","external_url": "https://asq.org/quality-resources/root-cause-analysis"},
-        {"id": 8,"methodology": "A3 Problem Solving","purpose": "Structured report-based improvement","brief_explanation": "Documents problem-solving steps on a single A3 sheet","needs_form": true,"needs_report": true,"typical_record_type": "Improvement Report","example_template_name": "A3 Template","external_url": "https://asq.org/quality-resources/a3-report"},
-        {"id": 9,"methodology": "Poka-Yoke","purpose": "Prevent errors before they occur","brief_explanation": "Designs fail-safes into processes to prevent mistakes","needs_form": false,"needs_report": true,"typical_record_type": "Process Design Change Log","example_template_name": "Poka-Yoke Report","external_url": "https://asq.org/quality-resources/poka-yoke"},
-        {"id": 10,"methodology": "Benchmarking","purpose": "Compare performance to best practices","brief_explanation": "Identifies gaps by comparing to leading organizations","needs_form": true,"needs_report": true,"typical_record_type": "Benchmark Analysis","example_template_name": "Benchmark Template","external_url": "https://asq.org/quality-resources/benchmarking"},
-        {"id": 11,"methodology": "TQM","purpose": "Company-wide quality approach","brief_explanation": "(Total Quality Management). Integrates quality improvement into all organizational activities","needs_form": true,"needs_report": true,"typical_record_type": "Quality Management Review","example_template_name": "TQM Review Form","external_url": "https://asq.org/quality-resources/total-quality-management"},
-        {"id": 12,"methodology": "Hoshin Kanri","purpose": "Align strategy with execution","brief_explanation": "(Policy Deployment). Ensures organizational goals are deployed to all levels","needs_form": true,"needs_report": true,"typical_record_type": "Strategic Plan","example_template_name": "Hoshin Matrix","external_url": "https://asq.org/quality-resources/hoshin-kanri"},
-        {"id": 13,"methodology": "8D Problem Solving","purpose": "Team-based problem solving","brief_explanation": "Used mainly in automotive and manufacturing to resolve recurring problems","needs_form": true,"needs_report": true,"typical_record_type": "Corrective Action Report","example_template_name": "8D Report","external_url": "https://asq.org/quality-resources/eight-disciplines-8d"},
-        {"id": 14,"methodology": "FMEA","purpose": "Identify potential failures proactively","brief_explanation": "(Failure Mode and Effects Analysis). Analyzes potential failure modes and their impact","needs_form": true,"needs_report": true,"typical_record_type": "Risk Assessment","example_template_name": "FMEA Worksheet","external_url": "https://asq.org/quality-resources/fmea"},
-        {"id": 15,"methodology": "Gemba Walk","purpose": "Gather information firsthand, rather than relying solely on reports","brief_explanation": "This Japanese word means “the actual place” or “the place where work happens”.","needs_form": true,"needs_report": true,"typical_record_type": "Checklists","example_template_name": "Observation forms","external_url": "https://processnavigation.com/insights/what-is-a-gemba-walk-definition/"}
+        {"id": 1,"title": "PDCA","description": "Continuous iterative improvement cycle","brief_explanation": " (Plan-Do-Check-Act). A systematic four-step model for carrying out change to improve processes","needs_form": true,"needs_report": true,"typical_record_type": "Improvement Log","example_template_name": "PDCA Cycle Template","external_url": "https://asq.org/quality-resources/pdca-cycle"},
+        {"id": 2,"title": "DMAIC","description": "Structured Six Sigma problem-solving process","brief_explanation": " (Define-Measure-Analyze-Improve-Control). A data-driven quality strategy used to improve processes","needs_form": true,"needs_report": true,"typical_record_type": "Six Sigma Project Charter","example_template_name": "DMAIC Project Charter","external_url": "https://asq.org/quality-resources/dmaic"},
+        {"id": 3,"title": "Lean","description": "Eliminate waste and improve flow","brief_explanation": "Emphasizes value-added activities and removal of non-value-added waste","needs_form": false,"needs_report": true,"typical_record_type": "Value Stream Map","example_template_name": "Lean Improvement Summary","external_url": "https://asq.org/quality-resources/lean"},
+        {"id": 4,"title": "Six Sigma","description": "Reduce variation and defects","brief_explanation": "Uses statistical methods to identify and eliminate defects","needs_form": true,"needs_report": true,"typical_record_type": "Six Sigma Project File","example_template_name": "Six Sigma Project Form","external_url": "https://asq.org/quality-resources/six-sigma"},
+        {"id": 5,"title": "5S","description": "Workplace organization and standardization","brief_explanation": "Sort; Set in order; Shine; Standardize; Sustain","needs_form": false,"needs_report": true,"typical_record_type": "5S Audit Record","example_template_name": "5S Checklist","external_url": "https://asq.org/quality-resources/5s"},
+        {"id": 6,"title": "VSM","description": "Visualize and improve process flow","brief_explanation": "(Value Stream Mapping). Identifies and analyzes the current process flow to remove waste","needs_form": true,"needs_report": true,"typical_record_type": "Process Map","example_template_name": "VSM Template","external_url": "https://asq.org/quality-resources/lean/value-stream-mapping"},
+        {"id": 7,"title": "RCA","description": "Identify and eliminate causes of problems","brief_explanation": "(Root Cause Analysis). Focuses on understanding underlying causes instead of symptoms","needs_form": true,"needs_report": true,"typical_record_type": "Problem Report","example_template_name": "RCA Worksheet","external_url": "https://asq.org/quality-resources/root-cause-analysis"},
+        {"id": 8,"title": "A3 Problem Solving","description": "Structured report-based improvement","brief_explanation": "Documents problem-solving steps on a single A3 sheet","needs_form": true,"needs_report": true,"typical_record_type": "Improvement Report","example_template_name": "A3 Template","external_url": "https://asq.org/quality-resources/a3-report"},
+        {"id": 9,"title": "Poka-Yoke","description": "Prevent errors before they occur","brief_explanation": "Designs fail-safes into processes to prevent mistakes","needs_form": false,"needs_report": true,"typical_record_type": "Process Design Change Log","example_template_name": "Poka-Yoke Report","external_url": "https://asq.org/quality-resources/poka-yoke"},
+        {"id": 10,"title": "Benchmarking","description": "Compare performance to best practices","brief_explanation": "Identifies gaps by comparing to leading organizations","needs_form": true,"needs_report": true,"typical_record_type": "Benchmark Analysis","example_template_name": "Benchmark Template","external_url": "https://asq.org/quality-resources/benchmarking"},
+        {"id": 11,"title": "TQM","description": "Company-wide quality approach","brief_explanation": "(Total Quality Management). Integrates quality improvement into all organizational activities","needs_form": true,"needs_report": true,"typical_record_type": "Quality Management Review","example_template_name": "TQM Review Form","external_url": "https://asq.org/quality-resources/total-quality-management"},
+        {"id": 12,"title": "Hoshin Kanri","description": "Align strategy with execution","brief_explanation": "(Policy Deployment). Ensures organizational goals are deployed to all levels","needs_form": true,"needs_report": true,"typical_record_type": "Strategic Plan","example_template_name": "Hoshin Matrix","external_url": "https://asq.org/quality-resources/hoshin-kanri"},
+        {"id": 13,"title": "8D Problem Solving","description": "Team-based problem solving","brief_explanation": "Used mainly in automotive and manufacturing to resolve recurring problems","needs_form": true,"needs_report": true,"typical_record_type": "Corrective Action Report","example_template_name": "8D Report","external_url": "https://asq.org/quality-resources/eight-disciplines-8d"},
+        {"id": 14,"title": "FMEA","description": "Identify potential failures proactively","brief_explanation": "(Failure Mode and Effects Analysis). Analyzes potential failure modes and their impact","needs_form": true,"needs_report": true,"typical_record_type": "Risk Assessment","example_template_name": "FMEA Worksheet","external_url": "https://asq.org/quality-resources/fmea"},
+        {"id": 15,"title": "Gemba Walk","description": "Gather information firsthand, rather than relying solely on reports","brief_explanation": "This Japanese word means “the actual place” or “the place where work happens”.","needs_form": true,"needs_report": true,"typical_record_type": "Checklists","example_template_name": "Observation forms","external_url": "https://processnavigation.com/insights/what-is-a-gemba-walk-definition/"}
     ],
    "q_methodologies": [
         {
             "id": 1,
-            "methodology": "PDCA",
-            "purpose": "Continuous iterative improvement cycle",
+            "title": "PDCA",
+            "description": "Continuous iterative improvement cycle",
             "brief_explanation": " (Plan-Do-Check-Act). A systematic four-step model for carrying out change to improve processes",
             "needs_form": 1,
             "form_schema": {
-            "type": "object",
-            "properties": {
-                "problem_statement": { "type": "string", "title": "Problem Statement", "format": "textarea" },
-                "objective": { "type": "string", "title": "Objective" },
-                "owner": { "type": "string", "title": "Owner" },
-                "phase": { "enum": ["Plan", "Do", "Check", "Act"], "title": "Current Phase" },
-                "evidence": { "type": "string", "title": "Evidence/Attachment", "format": "file" }
-            },
-            "required": ["problem_statement", "objective", "phase"]
+                "type": "object",
+                "properties": {
+                    "problem_statement": { "type": "string", "title": "Problem Statement", "format": "textarea" },
+                    "objective": { "type": "string", "title": "Objective" },
+                    "owner": { "type": "string", "title": "Owner" },
+                    "phase": { "enum": ["Plan", "Do", "Check", "Act"], "title": "Current Phase" },
+                    "evidence": { "type": "string", "title": "Evidence/Attachment", "format": "file" }
+                },
+                "required": ["problem_statement", "objective", "phase"]
             },
             "needs_report": 1,
             "report_schema": null,
@@ -42,8 +42,8 @@
         },
         {
             "id": 2,
-            "methodology": "DMAIC",
-            "purpose": "Structured Six Sigma problem-solving process",
+            "title": "DMAIC",
+            "description": "Structured Six Sigma problem-solving process",
             "brief_explanation": " (Define-Measure-Analyze-Improve-Control). A data-driven quality strategy used to improve processes",
             "needs_form": 1,
             "form_schema": {
@@ -66,8 +66,8 @@
         },
         {
             "id": 3,
-            "methodology": "Lean",
-            "purpose": "Eliminate waste and improve flow",
+            "title": "Lean",
+            "description": "Eliminate waste and improve flow",
             "brief_explanation": "Emphasizes value-added activities and removal of non-value-added waste",
             "needs_form": 0,
             "form_schema": null,
@@ -79,8 +79,8 @@
         },
         {
             "id": 4,
-            "methodology": "Six Sigma",
-            "purpose": "Reduce variation and defects",
+            "title": "Six Sigma",
+            "description": "Reduce variation and defects",
             "brief_explanation": "Uses statistical methods to identify and eliminate defects",
             "needs_form": 1,
             "form_schema": {
@@ -102,8 +102,8 @@
         },
         {
             "id": 5,
-            "methodology": "5S",
-            "purpose": "Workplace organization and standardization",
+            "title": "5S",
+            "description": "Workplace organization and standardization",
             "brief_explanation": "Sort; Set in order; Shine; Standardize; Sustain",
             "needs_form": 0,
             "form_schema": null,
@@ -115,8 +115,8 @@
         },
         {
             "id": 6,
-            "methodology": "VSM",
-            "purpose": "Visualize and improve process flow",
+            "title": "VSM",
+            "description": "Visualize and improve process flow",
             "brief_explanation": "(Value Stream Mapping). Identifies and analyzes the current process flow to remove waste",
             "needs_form": 1,
             "form_schema": {
@@ -138,8 +138,8 @@
         },
         {
             "id": 7,
-            "methodology": "RCA",
-            "purpose": "Identify and eliminate causes of problems",
+            "title": "RCA",
+            "description": "Identify and eliminate causes of problems",
             "brief_explanation": "(Root Cause Analysis). Focuses on understanding underlying causes instead of symptoms",
             "needs_form": 1,
             "form_schema": {
@@ -161,8 +161,8 @@
         },
         {
             "id": 8,
-            "methodology": "A3 Problem Solving",
-            "purpose": "Structured report-based improvement",
+            "title": "A3 Problem Solving",
+            "description": "Structured report-based improvement",
             "brief_explanation": "Documents problem-solving steps on a single A3 sheet",
             "needs_form": 1,
             "form_schema": {
@@ -185,8 +185,8 @@
         },
         {
             "id": 9,
-            "methodology": "Poka-Yoke",
-            "purpose": "Prevent errors before they occur",
+            "title": "Poka-Yoke",
+            "description": "Prevent errors before they occur",
             "brief_explanation": "Designs fail-safes into processes to prevent mistakes",
             "needs_form": 0,
             "form_schema": null,
@@ -198,8 +198,8 @@
         },
         {
             "id": 10,
-            "methodology": "Benchmarking",
-            "purpose": "Compare performance to best practices",
+            "title": "Benchmarking",
+            "description": "Compare performance to best practices",
             "brief_explanation": "Identifies gaps by comparing to leading organizations",
             "needs_form": 1,
             "form_schema": {
@@ -221,8 +221,8 @@
         },
         {
             "id": 11,
-            "methodology": "TQM",
-            "purpose": "Company-wide quality approach",
+            "title": "TQM",
+            "description": "Company-wide quality approach",
             "brief_explanation": "(Total Quality Management). Integrates quality improvement into all organizational activities",
             "needs_form": 1,
             "form_schema": {
@@ -243,8 +243,8 @@
         },
         {
             "id": 12,
-            "methodology": "Hoshin Kanri",
-            "purpose": "Align strategy with execution",
+            "title": "Hoshin Kanri",
+            "description": "Align strategy with execution",
             "brief_explanation": "(Policy Deployment). Ensures organizational goals are deployed to all levels",
             "needs_form": 1,
             "form_schema": {
@@ -266,8 +266,8 @@
         },
         {
             "id": 13,
-            "methodology": "8D Problem Solving",
-            "purpose": "Team-based problem solving",
+            "title": "8D Problem Solving",
+            "description": "Team-based problem solving",
             "brief_explanation": "Used mainly in automotive and manufacturing to resolve recurring problems",
             "needs_form": 1,
             "form_schema": {
@@ -289,8 +289,8 @@
         },
         {
             "id": 14,
-            "methodology": "FMEA",
-            "purpose": "Identify potential failures proactively",
+            "title": "FMEA",
+            "description": "Identify potential failures proactively",
             "brief_explanation": "(Failure Mode and Effects Analysis). Analyzes potential failure modes and their impact",
             "needs_form": 1,
             "form_schema": {
@@ -314,8 +314,8 @@
         },
         {
             "id": 15,
-            "methodology": "Gemba Walk",
-            "purpose": "Gather information firsthand, rather than relying solely on reports",
+            "title": "Gemba Walk",
+            "description": "Gather information firsthand, rather than relying solely on reports",
             "brief_explanation": "This Japanese word means “the actual place” or “the place where work happens”.",
             "needs_form": 1,
             "form_schema": {

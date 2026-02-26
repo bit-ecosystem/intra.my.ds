@@ -1,57 +1,180 @@
 {
     "type": "object",
-    "properties": {
-        "date_created": {
-            "type": "string",
-            "title": "Date"
-        },
-        "process": {
-            "enum": [
-                "FOL",
-                "MOL",
-                "EOL",
-                "Plating",
-                "Others"
-            ],
-            "title": "Type"
-        },
-        "other": {
-            "type": "string",
-            "title": "Other"
-        },
-        "location": {
-            "type": "string",
-            "title": "Location"
-        },
-                "specific_location": {
-            "type": "string",
-            "title": "Specific Location"
-        },
-        "eip_type": {
-            "enum": [
-                "Quality",
-                "Safety",
-                "Others"
-            ],
-            "title": "EIP Type"
-        },
-        "partner": {
-            "type": "string",
-            "title": "Benchmark Partner"
-        },
-        "gap_summary": {
-            "type": "string",
-            "title": "Gap Summary",
-            "format": "textarea"
-        },
-        "evidence": {
-            "type": "string",
-            "title": "Evidence File",
-            "format": "file"
+    "x-sections": {
+        "Proposal / Cadangan": {
+            "grid": {
+                "default": 2
+            }
         }
     },
-    "required": [
-        "subject",
-        "benchmark_type"
-    ]
+    "properties": {
+        "methodology_id": {
+            "type": "string",
+            "title": "Methodology",
+            "x-hidden": true,
+            "x-section": "Proposed by / Cadangan oleh",
+            "x-defaultSource": "App\\Models\\Qas\\Methodology::idByName",
+            "x-defaultArgs": [
+                "Six Sigma"
+            ]
+        },
+        "initiator_id": {
+            "type": "string",
+            "title": "Name",
+            "ui:disabled": true,
+            "x-relationship": {
+                "name": "initiator",
+                "label": "name"
+            },
+            "ui:preload": true,
+            "x-section": "Proposed by / Cadangan oleh",
+            "x-default": "user.staff.id"
+        },
+        "initiator_sn": {
+            "type": "string",
+            "title": "Employee ID",
+            "ui:disabled": true,
+            "x-section": "Proposed by / Cadangan oleh",
+            "x-default": "user.staff.staff_number"
+        },
+        "initiator_ou": {
+            "type": "string",
+            "title": "Department",
+            "ui:disabled": true,
+            "x-section": "Proposed by / Cadangan oleh",
+            "x-default": "user.staff.orgUnit.name"
+        },
+        "date": {
+            "type": "string",
+            "title": "Date",
+            "format": "date",
+            "ui:disabled": true,
+            "x-section": "Subject / Berkenaan",
+            "x-default": "now:date"
+        },
+        "extension number": {
+            "type": "string",
+            "title": "Extension Number",
+            "x-section": "Proposed by / Cadangan oleh"
+        },
+        "process": {
+            "type": "string",
+            "title": "Process",
+            "oneOf": [
+                {
+                    "const": "fol",
+                    "title": "FOL"
+                },
+                {
+                    "const": "mol",
+                    "title": "MOL"
+                },
+                {
+                    "const": "eol",
+                    "title": "EOL"
+                },
+                {
+                    "const": "plating",
+                    "title": "Plating"
+                },
+                {
+                    "const": "other",
+                    "title": "Others"
+                }
+            ],
+            "ui:widget": "radio",
+            "ui:inline": true,
+            "x-section": "Subject / Berkenaan"
+        },
+        "others": {
+            "type": "string",
+            "title": "Others? Please specify",
+            "placeholder": "Others? Please specify",
+            "x-visibleIf": {
+                "process": "other"
+            },
+            "x-requiredIf": {
+                "process": "other"
+            },
+            "x-section": "Subject / Berkenaan"
+        },
+        "location_id": {
+            "type": "string",
+            "title": "Location Hierarchy",
+            "ui:searchable": true,
+            "ui:preload": true,
+            "x-optionsSource": "App\\Models\\Location::getLastMileOptions",
+            "x-section": "Subject / Berkenaan"
+        },
+        "eip_type": {
+            "type": "string",
+            "title": "EIP Type",
+            "oneOf": [
+                {
+                    "const": "q_human_error_reduction",
+                    "title": "Human Error Reduction",
+                    "x-group": "Quality"
+                },
+                {
+                    "const": "q_improve_process_job_step",
+                    "title": "Improve Process/Job Step",
+                    "x-group": "Quality"
+                },
+                {
+                    "const": "q_quality_up",
+                    "title": "Quality Up",
+                    "x-group": "Quality"
+                },
+                {
+                    "const": "s_ohsas_safety",
+                    "title": "OHSAS/Safety",
+                    "x-group": "Safety"
+                },
+                {
+                    "const": "s_safety_up",
+                    "title": "Safety Up",
+                    "x-group": "Safety"
+                },
+                {
+                    "const": "o_5s",
+                    "title": "5S",
+                    "x-group": "Others"
+                },
+                {
+                    "const": "o_others",
+                    "title": "Others",
+                    "x-group": "Others"
+                }
+            ],
+            "ui:searchable": true,
+            "x-section": "Subject / Berkenaan"
+        },
+        "current_state": {
+            "type": "string",
+            "title": "Current State",
+            "x-section": "Proposal / Cadangan",
+            "x-colSpan": 1
+        },
+        "propose_state": {
+            "type": "string",
+            "title": "Proposed State",
+            "x-section": "Proposal / Cadangan",
+            "x-colSpan": 1
+        },
+        "before": {
+            "type": "string",
+            "title": "Before",
+            "format": "image",
+            "x-section": "Proposal / Cadangan",
+            "x-colSpan": 1
+        },
+        "after": {
+            "type": "string",
+            "title": "After",
+            "format": "image",
+            "x-section": "Proposal / Cadangan",
+            "x-colSpan": 1
+        }
+    },
+    "required": []
 }
