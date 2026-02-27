@@ -24,6 +24,7 @@ class Artifact extends Page
     {
         return [
             // \App\Filament\Staff\Widgets\UserRolesWidget::class,
+            // \App\Filament\Hrm\Resources\Staff\Widgets\ShiftMixByOrgUnitTable::class,
         ];
     }
 

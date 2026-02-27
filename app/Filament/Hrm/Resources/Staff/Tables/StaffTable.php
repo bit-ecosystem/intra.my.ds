@@ -9,6 +9,8 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns;
 use Filament\Tables\Table;
+use Filament\Actions\ExportAction;
+use App\Filament\Exports\Hrm\StaffExporter;
 
 class StaffTable
 {
@@ -40,6 +42,10 @@ class StaffTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(StaffExporter::class),
             ])
             ->filters([
                 //

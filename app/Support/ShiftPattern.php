@@ -1,0 +1,173 @@
+<?php
+
+namespace App\Support;
+
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+use Illuminate\Support\Arr;
+use InvalidArgumentException;
+
+class ShiftPattern
+{
+    protected string $patternKey;
+    protected Carbon $anchorDate;
+    protected string $timezone;
+    protected array $teams;
+    protected array $segments;
+    protected int $cycleLength;
+    protected bool $showRest;
+
+    public function __construct(
+        string $patternKey,
+        Carbon $anchorDate,
+        string $timezone,
+        array $teams,
+        array $segments,
+        int $cycleLength,
+        bool $showRest = false,
+    ) {
+        $this->patternKey  = $patternKey;
+        $this->anchorDate  = $anchorDate->copy()->startOfDay();
+        $this->timezone    = $timezone;
+        $this->teams       = $teams;
+        $this->segments    = $segments;
+        $this->cycleLength = $cycleLength;
+        $this->showRest    = $showRest;
+
+        $this->anchorDate->setTimezone($this->timezone);
+    }
+
+    public static function fromConfig(string $patternKey): self
+    {
+        $patterns   = config('shift_pattern.patterns', []);
+        $patternKey = $patternKey ?: config('shift_pattern.default', 'WXYZ');
+
+        if (! isset($patterns[$patternKey])) {
+            throw new InvalidArgumentException("Unknown shift pattern: {$patternKey}");
+        }
+
+        $cfg = $patterns[$patternKey];
+
+        return new self(
+            patternKey:  $patternKey,
+            anchorDate:  Carbon::parse($cfg['anchor_date']),
+            timezone:    $cfg['timezone'] ?? config('app.timezone', 'Asia/Kuala_Lumpur'),
+            teams:       $cfg['teams'] ?? [],
+            segments:    $cfg['segments'] ?? [],
+            cycleLength: $cfg['cycle_length'] ?? 24,
+            showRest:    (bool) ($cfg['show_rest'] ?? false),
+        );
+    }
+
+    public function getPatternKey(): string
+    {
+        return $this->patternKey;
+    }
+
+    protected function getSegmentByCode(string $code): ?array
+    {
+        foreach ($this->segments as $seg) {
+            if ($seg['code'] === $code) return $seg;
+        }
+        return null;
+    }
+
+    public function getShiftCode(string $team, Carbon $date): string
+    {
+        $team = strtoupper($team);
+        if (! isset($this->teams[$team])) {
+            throw new InvalidArgumentException("Unknown team '{$team}' for pattern '{$this->patternKey}'.");
+        }
+
+        $date = $date->copy()->startOfDay()->setTimezone($this->timezone);
+
+        $d = $this->anchorDate->diffInDays($date, false);
+        $offset = (int) Arr::get($this->teams[$team], 'offset', 0);
+
+        $t = ($d + $offset) % $this->cycleLength;
+        if ($t < 0) $t += $this->cycleLength;
+
+        // Walk segments to resolve t → code
+        $cursor = 0;
+        foreach ($this->segments as $seg) {
+            $len = (int) $seg['len'];
+            if ($t >= $cursor && $t < $cursor + $len) {
+                return $seg['code']; // 'M'|'A'|'N'|'R'
+            }
+            $cursor += $len;
+        }
+        return 'R';
+    }
+
+    public function getShiftLabel(string $team, Carbon $date): string
+    {
+        $seg = $this->getSegmentByCode($this->getShiftCode($team, $date));
+        return $seg['label'] ?? 'Rest';
+    }
+
+    public function makeEventFor(string $team, Carbon $date): ?array
+    {
+        $team = strtoupper($team);
+        $code = $this->getShiftCode($team, $date);
+        $seg  = $this->getSegmentByCode($code);
+        if (! $seg) return null;
+
+        // Rest
+        if ($code === 'R') {
+            if (! $this->showRest) return null;
+            return [
+                'title'    => sprintf('%s – %s', $team, $seg['label']),
+                'start'    => $date->copy()->startOfDay()->toIso8601String(),
+                'end'      => $date->copy()->endOfDay()->toIso8601String(),
+                'allDay'   => true,
+                'color'    => Arr::get($seg, 'color', '#9ca3af'),
+                'classNames' => ["team-$team", "shift-$code", "pat-{$this->patternKey}"],
+                'extendedProps' => ['shiftCode' => $code, 'team' => $team, 'pattern' => $this->patternKey],
+            ];
+        }
+
+        // Timed event
+        [$sH, $sM] = explode(':', $seg['start']);
+        $endRaw    = $seg['end'];                               // e.g., "07:00(+1)"
+        $plusOne   = str_ends_with($endRaw, '(+1)');
+        $endTime   = $plusOne ? str_replace('(+1)', '', $endRaw) : $endRaw;
+        [$eH, $eM] = explode(':', $endTime);
+
+        $start = $date->copy()->setTime((int)$sH, (int)$sM)->setTimezone($this->timezone);
+        $end   = $date->copy()->setTime((int)$eH, (int)$eM)->setTimezone($this->timezone);
+        if ($plusOne) $end->addDay();
+
+        $color = Arr::get($seg, 'color') ?? Arr::get($this->teams[$team], 'color');
+
+        return [
+            'title'    => sprintf('%s – %s (%s–%s)', $team, $seg['label'], $seg['start'], $seg['end']),
+            'start'    => $start->toIso8601String(),
+            'end'      => $end->toIso8601String(),
+            'allDay'   => false,
+            'color'    => $color,
+            'classNames' => ["team-$team", "shift-$code", "pat-{$this->patternKey}"],
+            'extendedProps' => ['shiftCode' => $code, 'team' => $team, 'pattern' => $this->patternKey],
+        ];
+    }
+
+    public function eventsForTeamInRange(string $team, Carbon $start, Carbon $end): array
+    {
+        $events = [];
+        $period = CarbonPeriod::create(
+            $start->copy()->startOfDay()->setTimezone($this->timezone),
+            $end->copy()->startOfDay()->setTimezone($this->timezone)
+        );
+        foreach ($period as $day) {
+            if ($event = $this->makeEventFor($team, $day)) {
+                $events[] = $event;
+            }
+        }
+        return $events;
+    }
+
+    /** Little helper to check if a team belongs to this pattern */
+    public function hasTeam(string $team): bool
+    {
+        return array_key_exists(strtoupper($team), $this->teams);
+    }
+}

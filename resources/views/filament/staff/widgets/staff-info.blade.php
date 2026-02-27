@@ -1,5 +1,5 @@
 @php
-// Expect: $user, $staff_number, $orgUnitName, $jobPositionName from getViewData()
+// Expect: $staffName, $staff_number, $orgUnitName, $jobPositionName from getViewData()
 @endphp
 
 <x-filament-widgets::widget class="fi-account-widget">
@@ -10,7 +10,8 @@
             loading="lazy" />
         <div class="fi-account-widget-main">
             <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <span class="text-lg text-primary">{{ filament()->getUserName($user) }} </span>
+                <!-- <span class="text-lg text-primary">{{ filament()->getUserName($user) }} </span> -->
+                <span class="text-lg text-primary">{{ $staffName }}</span>
                 <span class="fi-account-widget-user-name"> [ #{{ $staff_number }} ]</span>
             </div>
             <div>

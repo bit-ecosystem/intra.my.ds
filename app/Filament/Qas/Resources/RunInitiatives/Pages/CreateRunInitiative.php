@@ -46,6 +46,7 @@ class CreateRunInitiative extends CreateRecord
     }
     protected function mutateFormDataBeforeCreate(array $data): array
     {
+        $data['methodology'] = Methodology::whereKey($data['methodology_id'])->value('title');
         dd($data);
         return $data;
     }

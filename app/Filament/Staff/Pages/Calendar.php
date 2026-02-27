@@ -25,6 +25,9 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
 use UnitEnum;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Support\ShiftPattern;
 
 class Calendar extends Page implements HasActions, HasForms, HasTable
 {
@@ -158,7 +161,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
         // Returns a LengthAwarePaginator of the *current page* after filters/search/sort
         $paginator = $this->getTableRecords();
 
-        $events = collect($paginator->items())->map(function (Event $event): array {
+        $public_events = collect($paginator->items())->map(function (Event $event): array {
             return [
                 'title' => $event->title,
                 'start' => optional($event->starts_at)->toIso8601String(),
@@ -171,6 +174,43 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
             ];
         })->values();
 
+        $staff = optional(Auth::user())->staff;
+        $teamCode = strtoupper(optional($staff)->shift_code ?? '');
+        $shiftGroup = 'W';
+        $shiftPattern = '4G3S';
+        
+        $shiftEvents = collect();
+
+        if ($shiftPattern) {
+            $patterns = array_keys(config('shift_pattern.patterns', []));
+            $foundPattern = null;
+
+            // Try to detect which pattern contains this team
+            foreach ($patterns as $key) {
+        
+                $pattern = \App\Support\ShiftPattern::fromConfig($key);
+                
+                if ($pattern->hasTeam($shiftGroup)) {
+                    $foundPattern = $pattern;
+                    break;
+                }
+            
+            }
+//    dd($foundPattern);
+            if ($foundPattern) {
+                $tz = config("shift_pattern.patterns.{$foundPattern->getPatternKey()}.timezone", config('app.timezone', 'Asia/Kuala_Lumpur'));
+                $now   = \Carbon\Carbon::now($tz);
+                $start = $now->copy()->startOfMonth()->subDays(7);
+                $end   = $now->copy()->endOfMonth()->addDays(7);
+
+                $shiftEvents = collect($foundPattern->eventsForTeamInRange($shiftGroup, $start, $end));
+            }
+        }
+
+        // 3) Merge (user’s shift pattern + DB events)
+        $events = $shiftEvents->concat($public_events)->values();
+        // dd(config('shift_pattern.patterns', []));
+        // dd($shiftEvents);
         $this->events = $events->toJson();
 
         return parent::render();
