@@ -10,7 +10,7 @@ return [
 
         // === Existing 24-day W/X/Y/Z ===
         '4G3S' => [
-            'anchor_date' => env('SHIFT_ANCHOR_WXYZ', '2026-01-07'), // The Wednesday = Day 1 in your first table
+            'anchor_date' => env('SHIFT_ANCHOR_WXYZ', '2026-01-15'), // The Wednesday = Day 1 in your first table
             'timezone'    => env('APP_TIMEZONE', 'Asia/Kuala_Lumpur'),
             'show_rest'   => false,
             'segments'    => [

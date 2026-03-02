@@ -164,8 +164,8 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
         $public_events = collect($paginator->items())->map(function (Event $event): array {
             return [
                 'title' => $event->title,
-                'start' => optional($event->starts_at)->toIso8601String(),
-                'end' => optional($event->ends_at)->toIso8601String(),
+                'start' => optional($event->starts_at)->toDateString(),
+                // 'end' => optional($event->ends_at)->toIso8601String(),
                 // 'textColor'  => '#000000',
                 'color' => $event->color,
                 // 'backgroundColor'  => '#ffffff',
@@ -178,7 +178,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
         $teamCode = strtoupper(optional($staff)->shift_code ?? '');
         $shiftGroup = 'W';
         $shiftPattern = '4G3S';
-        
+
         $shiftEvents = collect();
 
         if ($shiftPattern) {
@@ -187,23 +187,31 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
 
             // Try to detect which pattern contains this team
             foreach ($patterns as $key) {
-        
+
                 $pattern = \App\Support\ShiftPattern::fromConfig($key);
-                
+
                 if ($pattern->hasTeam($shiftGroup)) {
                     $foundPattern = $pattern;
                     break;
                 }
-            
             }
-//    dd($foundPattern);
+            //    dd($foundPattern);
             if ($foundPattern) {
                 $tz = config("shift_pattern.patterns.{$foundPattern->getPatternKey()}.timezone", config('app.timezone', 'Asia/Kuala_Lumpur'));
                 $now   = \Carbon\Carbon::now($tz);
                 $start = $now->copy()->startOfMonth()->subDays(7);
-                $end   = $now->copy()->endOfMonth()->addDays(7);
+                // $end   = $now->copy()->endOfMonth()->addDays(7);
+                $end = $now->copy()->addYear(3)->endOfMonth()->addDays(7);
 
-                $shiftEvents = collect($foundPattern->eventsForTeamInRange($shiftGroup, $start, $end));
+                $shiftEvents = collect($foundPattern->eventsForTeamInRange($shiftGroup, $start, $end))
+
+                    ->map(function (array $e): array {
+                        // Normalize to single-day, all-day
+                        $e['start'] = Carbon::parse($e['start'])->toDateString(); // 'YYYY-MM-DD'
+                        unset($e['end']);
+                        $e['allDay'] = true;
+                        return $e;
+                    });
             }
         }
 
