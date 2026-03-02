@@ -7,12 +7,15 @@ namespace App\Filament\Staff\Pages;
 use BackedEnum;
 use Filament\Pages\Page;
 use UnitEnum;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Artifact extends Page
 {
-    protected static ?string $title = 'Assigned Assets';
+    // title is translated via lang file
+    protected static ?string $title = null;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Artifact';
+    // group is translated via accessor below
+    protected static string|UnitEnum|null $navigationGroup = null;
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-asset-own';
 
@@ -27,9 +30,22 @@ class Artifact extends Page
             // \App\Filament\Hrm\Resources\Staff\Widgets\ShiftMixByOrgUnitTable::class,
         ];
     }
+    public function getTitle(): string | Htmlable
+    {
+        return __('bites::resources.artifact.title');
+    }
+    public static function getNavigationLabel(): string
+    {
+        return __('bites::resources.artifact.title');
+    }
+
+    public static function getNavigationGroup(): string | UnitEnum | null
+    {
+        return __('bites::resources.artifact.navigation_group');
+    }
 
     public function getSubheading(): ?string
     {
-        return __('Asset/Equipment/Items issued to you or your support group.');
+        return __('bites::resources.artifact.subheading');
     }
 }

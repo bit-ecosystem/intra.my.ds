@@ -5,6 +5,10 @@ import listPlugin from "@fullcalendar/list";
 
 import "flyonui/src/vendor/fullcalendar.css";
 
+
+import './zoomable-image.js';
+
+
 function initCalendar(el) {
     if (!el) return;
     const calendarDefault = new FullCalendar.Calendar(

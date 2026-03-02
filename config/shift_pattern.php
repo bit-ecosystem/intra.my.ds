@@ -28,6 +28,7 @@ return [
                 'Y' => ['label' => 'Team Y', 'offset' => 4,  'color' => '#10b981'],
                 'Z' => ['label' => 'Team Z', 'offset' => 16, 'color' => '#3b82f6'],
             ],
+            
         ],
 
         // === New 12-day A/B/C ===

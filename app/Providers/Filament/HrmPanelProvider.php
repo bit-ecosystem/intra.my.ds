@@ -28,7 +28,7 @@ class HrmPanelProvider extends PanelProvider
             ->id('hrm')
             ->path('hrm')
             ->brandName('HRMS')
-            ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
+            ->homeUrl(fn(): string => route(config('bites.staff_panel.route', '/')))
             ->colors([
                 'primary' => Color::Indigo,
             ])
@@ -55,6 +55,7 @@ class HrmPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 \App\Http\Middleware\RedirectToCoreLogin::class,
+                \App\Http\Middleware\SetLocale::class,
             ]);
     }
 }

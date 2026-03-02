@@ -9,6 +9,7 @@ use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\App;
 
 class RedirectToCoreLogin
 {
@@ -36,7 +37,9 @@ class RedirectToCoreLogin
 
             return redirect()->route('filament.staff.pages.dashboard');
         }
-
+        if (session()->has('locale')) {
+            App::setLocale(session()->get('locale'));
+        }
         return $next($request);
     }
 }

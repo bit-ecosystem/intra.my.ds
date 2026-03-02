@@ -29,3 +29,4 @@ Route::middleware(['web', 'auth']) // align with your Filament guard
         ]);
     })
     ->name('calendar.events');
+    

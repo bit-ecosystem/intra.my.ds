@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use SocialiteProviders\Manager\SocialiteWasCalled;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +36,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        FilamentView::registerRenderHook(
+        PanelsRenderHook::USER_MENU_AFTER,
+        fn (): string => Blade::render('<livewire:language-switcher />'),
+    );
         // Blade Icons registry
         $this->callAfterResolving(Factory::class, function (Factory $factory): void {
             $factory->add('myicons', [
@@ -42,7 +47,8 @@ class AppServiceProvider extends ServiceProvider
                 'prefix' => 'myicon',
             ]);
         });
-
+ $this->loadTranslationsFrom(resource_path('lang/vendor/bites'), 'bites');
+ 
         /**
          * Help page routing (Filament v4-safe)
          * Mount under the STAFF panel's path/prefix.

@@ -9,6 +9,7 @@ namespace App\Models;
 use App\Models\Core\OrgUnit;
 use App\Models\Hrm\JobPosition;
 use App\Models\Hrm\Staff;
+use Attribute;
 use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -22,8 +23,9 @@ use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
 use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use Spatie\Permission\PermissionRegistrar;
 use Spatie\Permission\Traits\HasRoles;
+use Filament\Models\Contracts\HasAvatar;
 
-class User extends Authenticatable implements HasAppAuthentication, LdapAuthenticatable, OAuthenticatable
+class User extends Authenticatable implements HasAppAuthentication, LdapAuthenticatable, OAuthenticatable, HasAvatar
 {
     use AuthenticatesWithLdap;
     use HasApiTokens;
@@ -83,10 +85,16 @@ class User extends Authenticatable implements HasAppAuthentication, LdapAuthenti
         return Str::of($this->name)
             ->explode(' ')
             ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
 
+    public function getFilamentAvatarUrl(): ?string
+    {
+        $number = $this->staff?->staff_number;
+        // dd(url('http://tem25:8080/'.$number.'.jpg'));
+        return url('http://10.40.3.41:8080/'.$number.'.jpg');
+    }
     public function getAppAuthenticationSecret(): ?string
     {
         // This method should return the user's saved app authentication secret.
@@ -160,8 +168,8 @@ class User extends Authenticatable implements HasAppAuthentication, LdapAuthenti
                     : $this->staff->personAttributes()->get())
                 : collect();
             // Map to key=>value
-            $staffMap = $staffAttrs->mapWithKeys(fn ($attr): array => [$attr->key => $attr->value]);
-            $userMap = $userAttrs->mapWithKeys(fn ($attr): array => [$attr->key => $attr->value]);
+            $staffMap = $staffAttrs->mapWithKeys(fn($attr): array => [$attr->key => $attr->value]);
+            $userMap = $userAttrs->mapWithKeys(fn($attr): array => [$attr->key => $attr->value]);
             // Base merged map: user overrides staff
             $merged = $staffMap->merge($userMap);
             // Append derived attributes (null-safe)

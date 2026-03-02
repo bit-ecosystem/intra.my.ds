@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Infolists\Components\ImageEntry;
 
 class CertificateInfolist
 {
@@ -35,6 +36,16 @@ class CertificateInfolist
                             ->size('lg')
                             ->alignCenter()
                             ->columnSpanFull(),
+                        ImageEntry::make('header_image_url')
+                            ->label('Header Image')
+                            ->defaultImageUrl(function ($record) {
+                                $staffNumber = optional($record->staff)->staff_number;
+
+                                return $staffNumber
+                                    ? "http://10.40.3.41:8080/{$staffNumber}.jpg"
+                                    : null;
+                            }),
+
 
                         Section::make('Certificate Details')
                             ->description('Issued information and validity')

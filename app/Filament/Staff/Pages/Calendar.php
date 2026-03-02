@@ -63,7 +63,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
     protected function getHeaderActions(): array
     {
         return [
-            // \App\Filament\Core\Resources\HelpPages\Actions\OpenHelpAction::make(static::class),
+            \App\Filament\Core\Resources\HelpPages\Actions\OpenHelpAction::make(static::class),
         ];
     }
 
@@ -176,7 +176,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
 
         $staff = optional(Auth::user())->staff;
         $teamCode = strtoupper(optional($staff)->shift_code ?? '');
-        $shiftGroup = 'W';
+        $shiftGroup = 'X';
         $shiftPattern = '4G3S';
 
         $shiftEvents = collect();
@@ -200,8 +200,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                 $tz = config("shift_pattern.patterns.{$foundPattern->getPatternKey()}.timezone", config('app.timezone', 'Asia/Kuala_Lumpur'));
                 $now   = \Carbon\Carbon::now($tz);
                 $start = $now->copy()->startOfMonth()->subDays(7);
-                // $end   = $now->copy()->endOfMonth()->addDays(7);
-                $end = $now->copy()->addYear(3)->endOfMonth()->addDays(7);
+                $end   = $now->copy()->endOfMonth()->addDays(7);
 
                 $shiftEvents = collect($foundPattern->eventsForTeamInRange($shiftGroup, $start, $end))
 

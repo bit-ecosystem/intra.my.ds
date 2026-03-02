@@ -11,7 +11,7 @@ use UnitEnum;
 
 class Dashboard extends BaseDashboard
 {
-    protected static ?string $title = 'Target';
+    // protected static ?string $title = 'Target';
 
     protected static string|UnitEnum|null $navigationGroup = 'To Do';
 
