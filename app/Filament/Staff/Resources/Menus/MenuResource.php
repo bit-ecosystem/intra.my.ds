@@ -15,16 +15,24 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use UnitEnum;
+use Illuminate\Contracts\Support\Htmlable;
 
 class MenuResource extends Resource
 {
     protected static ?string $model = Menu::class;
 
+    protected static string|BackedEnum|null $navigationIcon = 'myicon-r-menu';
+    
     protected static ?int $navigationSort = 31;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Catalog';
-
-    protected static string|BackedEnum|null $navigationIcon = 'myicon-r-menu';
+    public function getTitle(): string | Htmlable
+    { return __('Menu'); }
+    public static function getNavigationLabel(): string
+    { return __('Menu'); }
+    public static function getNavigationGroup(): string | UnitEnum | null
+    { return __('Catalog'); }
+    public function getSubheading(): ?string
+    { return __('Catalog of all company links.'); }
 
     public static function form(Schema $schema): Schema
     {

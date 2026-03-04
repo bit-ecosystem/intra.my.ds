@@ -24,29 +24,34 @@ class CertificateInfolist
                     ->description('This certificate is proudly presented to')
                     ->headerActions([])
                     ->schema([
-                        TextEntry::make('staff.name')
-                            ->label('')
-                            ->color('primary')
-                            ->size('lg')
-                            ->weight('bold')
-                            ->alignCenter(),
-                        TextEntry::make('staff.staff_number')
-                            ->label('')
-                            ->placeholder('-')
-                            ->size('lg')
-                            ->alignCenter()
-                            ->columnSpanFull(),
-                        ImageEntry::make('header_image_url')
-                            ->label('Header Image')
-                            ->defaultImageUrl(function ($record) {
-                                $staffNumber = optional($record->staff)->staff_number;
-
-                                return $staffNumber
-                                    ? "http://10.40.3.41:8080/{$staffNumber}.jpg"
-                                    : null;
-                            }),
-
-
+                        Section::make()
+                            ->columns(4)
+                            ->schema([
+                                ImageEntry::make('header_image_url')
+                                    ->hiddenLabel()
+                                    ->imageHeight(200)
+                                    ->circular()
+                                    ->defaultImageUrl(function ($record) {
+                                        $filename = optional($record->staff)->staff_old_number;
+                                        return $filename
+                                            ? "http://10.40.3.41:8080/{$filename}.jpg"
+                                            : null;
+                                    })->columnSpan(1),
+                                Section::make()
+                                    ->schema([
+                                        TextEntry::make('staff.name')
+                                            ->color('primary')
+                                            ->size('lg')
+                                            ->weight('bold')
+                                            ->alignCenter(),
+                                        TextEntry::make('staff.staff_number')
+                                            ->label('')
+                                            ->placeholder('-')
+                                            ->size('lg')
+                                            ->alignCenter()
+                                            ->columnSpanFull(),
+                                    ])->columnSpan(3)
+                            ]),
                         Section::make('Certificate Details')
                             ->description('Issued information and validity')
                             ->columns(2)

@@ -30,6 +30,7 @@ use UnitEnum;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Schemas\Components\Tabs\Tab;
 use App\Enums\LocationType;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Location extends Page implements HasActions, HasForms, HasTable
 {
@@ -37,22 +38,21 @@ class Location extends Page implements HasActions, HasForms, HasTable
     use InteractsWithForms;
     use InteractsWithTable;
 
-    protected static ?string $title = 'Floor Plan';
-
-    protected static string|UnitEnum|null $navigationGroup = 'Location';
-
     protected static string|BackedEnum|null $navigationIcon = 'myicon-location';
 
     protected static ?int $navigationSort = 51;
-
+    public function getTitle(): string | Htmlable
+    { return __('Floor Plan'); }
+    public static function getNavigationLabel(): string
+    { return __('Floor Plan'); }
+    public static function getNavigationGroup(): string | UnitEnum | null
+    { return __('Location'); }
+    public function getSubheading(): ?string
+    { return __('Links to floor plans and maps of the organization buildings and campuses. Ideally includes registered storage locations.'); }
+    
     protected string $view = 'filament.staff.pages.location';
 
     public ?string $scope = 'all';
-
-    public function getSubheading(): ?string
-    {
-        return __('Links to floor plans and maps of the organization buildings and campuses. Ideally includes registered storage locations.');
-    }
 
     public function locationInfolist(Schema $schema): Schema
     {

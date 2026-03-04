@@ -22,7 +22,7 @@ class Methodology extends Model
     {
         return [
             'form_schema' => 'array',
-            'report_schema' => 'array',
+        
             'needs_form' => 'boolean',
             'needs_report' => 'boolean',
         ];

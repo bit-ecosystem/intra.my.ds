@@ -23,6 +23,7 @@ class StaffTable
                 Columns\TextColumn::make('user.name')
                     ->searchable(),
                 Columns\TextColumn::make('staff_number')->searchable()->sortable()->copyable(),
+                 Columns\TextColumn::make('staff_old_number')->searchable(),
                 Columns\TextColumn::make('jobPosition.title')
                     ->searchable(),
                 // ]),

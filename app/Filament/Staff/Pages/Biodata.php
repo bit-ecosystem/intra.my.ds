@@ -7,17 +7,22 @@ namespace App\Filament\Staff\Pages;
 use BackedEnum;
 use Filament\Pages\Page;
 use UnitEnum;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Biodata extends Page
 {
-    protected static ?string $title = 'Profile';
-
-    protected static string|UnitEnum|null $navigationGroup = 'Artifact';
-
     protected static string|BackedEnum|null $navigationIcon = 'myicon-id-staff';
 
     protected static ?int $navigationSort = 21;
-
+    public function getTitle(): string | Htmlable
+    { return __('Profile'); }
+    public static function getNavigationLabel(): string
+    { return __('Profile'); }
+    public static function getNavigationGroup(): string | UnitEnum | null
+    { return __('Artifact'); }
+    public function getSubheading(): ?string
+    { return __('Your profile, roles and qualifications.'); }
+    
     protected string $view = 'filament.staff.pages.biodata';
 
     protected function getHeaderWidgets(): array

@@ -49,21 +49,23 @@ class StaffPanelProvider extends PanelProvider
             // Branding
             // ->brandName(__('bites::components/pagination.label'))
             ->brandName('Staff Panel')
-            
+
             ->colors([
                 'primary' => '#0F4B8F',
             ])
             ->navigationItems([
-                NavigationItem::make('Document')
+                NavigationItem::make()
+                    ->label(fn() => __('Document'))
                     ->url('https://intra.my.ds.amkor.com/dms/documents')
                     ->icon('myicon-book-open-02')
                     ->sort(41)
-                    ->group('Knowledge'),
-                NavigationItem::make('Learn')
+                    ->group(fn() => __('Knowledge')),
+                NavigationItem::make()
+                    ->label(fn() => __('Learn'))
                     ->url('https://intra.my.ds.amkor.com/lms/courses')
                     ->icon('myicon-course')
                     ->sort(42)
-                    ->group('Knowledge'),
+                    ->group(fn() => __('Knowledge')),
             ])
             ->discoverResources(in: app_path('Filament/Staff/Resources'), for: 'App\Filament\Staff\Resources')
             ->resources([])

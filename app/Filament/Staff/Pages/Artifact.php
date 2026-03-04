@@ -11,16 +11,19 @@ use Illuminate\Contracts\Support\Htmlable;
 
 class Artifact extends Page
 {
-    // title is translated via lang file
-    protected static ?string $title = null;
-
-    // group is translated via accessor below
-    protected static string|UnitEnum|null $navigationGroup = null;
-
     protected static string|BackedEnum|null $navigationIcon = 'myicon-asset-own';
 
     protected static ?int $navigationSort = 22;
-
+    
+    public function getTitle(): string | Htmlable
+    { return __('Assigned Assets'); }
+    public static function getNavigationLabel(): string
+    { return __('Assigned Assets'); }
+    public static function getNavigationGroup(): string | UnitEnum | null
+    { return __('Artifact'); }
+    public function getSubheading(): ?string
+    { return __('Asset/Equipment/Items issued to you or your support group.'); }
+    
     protected string $view = 'filament.staff.pages.artifact';
 
     protected function getHeaderWidgets(): array
@@ -30,22 +33,11 @@ class Artifact extends Page
             // \App\Filament\Hrm\Resources\Staff\Widgets\ShiftMixByOrgUnitTable::class,
         ];
     }
-    public function getTitle(): string | Htmlable
+
+public static function myclass()
     {
-        return __('bites::resources.artifact.title');
-    }
-    public static function getNavigationLabel(): string
-    {
-        return __('bites::resources.artifact.title');
+        // Late static binding: resolves to the calling class
+        return static::class;          // e.g., App\Models\User
     }
 
-    public static function getNavigationGroup(): string | UnitEnum | null
-    {
-        return __('bites::resources.artifact.navigation_group');
-    }
-
-    public function getSubheading(): ?string
-    {
-        return __('bites::resources.artifact.subheading');
-    }
 }

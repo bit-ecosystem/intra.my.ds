@@ -91,7 +91,7 @@ class User extends Authenticatable implements HasAppAuthentication, LdapAuthenti
 
     public function getFilamentAvatarUrl(): ?string
     {
-        $number = $this->staff?->staff_number;
+        $number = $this->staff?->staff_old_number;
         // dd(url('http://tem25:8080/'.$number.'.jpg'));
         return url('http://10.40.3.41:8080/'.$number.'.jpg');
     }

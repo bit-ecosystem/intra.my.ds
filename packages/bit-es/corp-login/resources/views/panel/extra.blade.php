@@ -1,5 +1,5 @@
 <div id="slogan">
-    <h2>Commitment and Quality Beyond Customer Expectations</h2>
+    <h2>{{ __('company.slogan') }}</h2>
 </div>
 <style>
     body {
@@ -7,9 +7,9 @@
         background-size: cover;
     }
 
-        */ #slogan {
+    */ #slogan {
         position: fixed;
-        left: 100px;
+        left: 100px; 
         margin-top: 50px;
         color: bisque;
         font-family: Arial;

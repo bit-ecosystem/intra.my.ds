@@ -28,6 +28,7 @@ use UnitEnum;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Support\ShiftPattern;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Calendar extends Page implements HasActions, HasForms, HasTable
 {
@@ -35,22 +36,21 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
     use InteractsWithForms;
     use InteractsWithTable;
 
-    protected static ?string $title = 'Calendar';
-
-    protected static string|UnitEnum|null $navigationGroup = 'To Do';
-
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-calendar';
 
     protected static ?int $navigationSort = 12;
-
+    public function getTitle(): string | Htmlable
+    { return __('Calendar'); }
+    public static function getNavigationLabel(): string
+    { return __('Calendar'); }
+    public static function getNavigationGroup(): string | UnitEnum | null
+    { return __('To Do'); }
+    public function getSubheading(): ?string
+    { return __('Calendar view of workdays, holidays and events.'); }
+    
     protected string $view = 'filament.staff.pages.calendar';
 
     public $events;
-
-    public function getSubheading(): ?string
-    {
-        return __('Calendar view of workdays and events in ATM.');
-    }
 
     protected function getHeaderWidgets(): array
     {

@@ -7,23 +7,23 @@ namespace App\Filament\Staff\Pages;
 use BackedEnum;
 use Filament\Pages\Page;
 use UnitEnum;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Task extends Page
 {
-    protected static ?string $title = 'To Do';
-
-    protected static string|UnitEnum|null $navigationGroup = 'To Do';
-
     protected static string|BackedEnum|null $navigationIcon = 'myicon-task';
 
     protected static ?int $navigationSort = 11;
-
-    protected string $view = 'filament.staff.pages.task';
-
+    public function getTitle(): string | Htmlable
+    { return __('Task'); }
+    public static function getNavigationLabel(): string
+    { return __('Task'); }
+    public static function getNavigationGroup(): string | UnitEnum | null
+    { return __('To Do'); }
     public function getSubheading(): ?string
-    {
-        return __('Task active assignments and to do items, for yourself or your support group.');
-    }
+    { return __('Task active assignments and to do items, for yourself or your support group.'); }
+    
+    protected string $view = 'filament.staff.pages.task';
 
     protected function getHeaderWidgets(): array
     {

@@ -16,30 +16,36 @@ return new class extends Migration
         // -----------------------
         // DOCUMENT MANAGEMENT (POLYMORPHIC)
         // -----------------------
-        Schema::create('d_document_types', function (Blueprint $table) {
+        Schema::create('d_document_classifications', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('d_document_classifications', function (Blueprint $table) {
+        Schema::create('d_document_levels', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Public, Internal, Confidential, Strictly Confidential
+            $table->string('name');
+            $table->enum('level', ['public', 'internal', 'confidential', 'strictly_confidential']); // Public, Internal, Confidential, Strictly Confidential
             $table->text('description')->nullable();
             $table->timestamps();
         });
 
         Schema::create('d_documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('org_unit_id')->constrained('p_org_units')->cascadeOnDelete();
-            $table->foreignId('document_type_id')->constrained('d_document_types')->cascadeOnDelete();
+            $table->foreignId('org_unit_id')->nullable()->constrained('org_units')->cascadeOnDelete();
+            $table->foreignId('document_type_id')->constrained('d_document_levels')->cascadeOnDelete();
             $table->foreignId('classification_id')->constrained('d_document_classifications')->cascadeOnDelete();
             $table->foreignId('owner_staff_id')->nullable()->constrained('staff')->nullOnDelete();
+            $table->foreignId('parent_id')->nullable()->constrained('d_documents')->nullOnDelete();
+            $table->string('code')->unique();                 // from "Key" (e.g., L1-ENTGOV-POL-0001)
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('file_path')->nullable();
-            $table->string('status')->default('draft'); // draft, published, archived
+            $table->enum('status', ['draft', 'published', 'archived'])->default('draft');
+            $table->timestamp('published_at')->nullable();
+            $table->timestamp('effective_at')->nullable();
+            $table->timestamp('retired_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

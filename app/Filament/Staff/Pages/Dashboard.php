@@ -8,21 +8,21 @@ use App\Filament\Staff\Widgets;
 use BackedEnum;
 use Filament\Pages\Dashboard as BaseDashboard;
 use UnitEnum;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Dashboard extends BaseDashboard
 {
-    // protected static ?string $title = 'Target';
-
-    protected static string|UnitEnum|null $navigationGroup = 'To Do';
-
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-target';
 
     protected static ?int $navigationSort = 13;
-
+    public function getTitle(): string | Htmlable
+    { return __('Target'); }
+    public static function getNavigationLabel(): string
+    { return __('Target'); }
+    public static function getNavigationGroup(): string | UnitEnum | null
+    { return __('To Do'); }
     public function getSubheading(): ?string
-    {
-        return __('Target settings and progress overview for your work in ATM.');
-    }
+    { return __('Target settings and progress overview for your work.'); }
 
     public function getColumns(): int|array
     {

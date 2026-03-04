@@ -6,6 +6,7 @@ namespace App\Filament\Qas\Resources\Methodologies\Schemas;
 
 use Filament\Forms\Components;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\CodeEditor\Enums\Language;
 
 class MethodologyForm
 {
@@ -13,9 +14,16 @@ class MethodologyForm
     {
         return $schema
             ->components([
-                Components\TextInput::make('name')->required(),
-                Components\TextInput::make('slug')->required()->unique(ignoreRecord: true),
+                Components\TextInput::make('title')->required(),
                 Components\Toggle::make('is_active')->default(true),
+                Components\TextInput::make('description')->columnSpanFull(),
+                Components\Textarea::make('brief_explanation')
+                    ->label('Brief Explanation')
+                    ->columnSpanFull(),
+
+
+                Components\CodeEditor::make('report_schema')
+                    ->language(Language::Php)->columnSpanFull(),
                 Components\Repeater::make('schema')->label('Sections')
                     ->schema([
                         Components\TextInput::make('label')->label('Section Label')->required(),
@@ -40,10 +48,10 @@ class MethodologyForm
                                 Components\TextInput::make('name')->required(),
                                 Components\TextInput::make('label')->required(),
                                 Components\Toggle::make('required'),
-                                Components\KeyValue::make('options')->visible(fn ($get) => $get('component') === 'select'),
-                                Components\TextInput::make('disk')->default('public')->visible(fn ($get) => in_array($get('component'), ['file', 'image'])),
-                                Components\TextInput::make('directory')->visible(fn ($get) => in_array($get('component'), ['file', 'image'])),
-                                Components\TagsInput::make('accepted_types')->visible(fn ($get) => $get('component') === 'file'),
+                                Components\KeyValue::make('options')->visible(fn($get) => $get('component') === 'select'),
+                                Components\TextInput::make('disk')->default('public')->visible(fn($get) => in_array($get('component'), ['file', 'image'])),
+                                Components\TextInput::make('directory')->visible(fn($get) => in_array($get('component'), ['file', 'image'])),
+                                Components\TagsInput::make('accepted_types')->visible(fn($get) => $get('component') === 'file'),
                             ])
                             ->columnSpanFull(),
                     ])
