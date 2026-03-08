@@ -21,7 +21,7 @@ class ViewMethodology extends ViewRecord
             EditAction::make(),
             Action::make('openDynamicForm')
                 ->icon('heroicon-o-arrow-top-right-on-square')
-                ->url(fn($record): string => RunInitiativeResource::getUrl('create', [
+                ->url(fn ($record): string => RunInitiativeResource::getUrl('create', [
                     'what' => $record->id,
                     'who' => Auth::id(),
                 ]))

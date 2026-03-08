@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Core\Resources\EipProposals\Pages;
 
 use App\Filament\Core\Resources\EipProposals\EipProposalResource;

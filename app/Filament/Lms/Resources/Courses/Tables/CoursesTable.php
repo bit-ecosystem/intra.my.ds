@@ -16,6 +16,9 @@ class CoursesTable
     public static function configure(Table $table): Table
     {
         return $table
+              ->query(
+                \App\Models\Lms\Course::query()->where('status', 'published')
+            )
             ->columns([
                 TextColumn::make('title')
                     ->wrap()

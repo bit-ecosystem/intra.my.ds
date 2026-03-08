@@ -13,11 +13,11 @@ use DutchCodingCompany\FilamentSocialite\Events\Login;
 use Filament\Facades\Filament;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use SocialiteProviders\Manager\SocialiteWasCalled;
-use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
     {
         FilamentView::registerRenderHook(
             PanelsRenderHook::USER_MENU_AFTER,
-            fn(): string => Blade::render('<livewire:language-switcher />'),
+            fn (): string => Blade::render('<livewire:language-switcher />'),
         );
         // Blade Icons registry
         $this->callAfterResolving(Factory::class, function (Factory $factory): void {

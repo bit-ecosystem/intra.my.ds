@@ -7,6 +7,7 @@ namespace App\Filament\Staff\Pages;
 use App\Enums\EventType;
 use App\Models\Event;
 use BackedEnum;
+use Carbon\Carbon;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Actions\CreateAction;
@@ -23,12 +24,12 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Contracts\View\View;
-use UnitEnum;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
-use App\Support\ShiftPattern;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
+use UnitEnum;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Grouping\Group;
 
 class Calendar extends Page implements HasActions, HasForms, HasTable
 {
@@ -39,15 +40,27 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-calendar';
 
     protected static ?int $navigationSort = 12;
-    public function getTitle(): string | Htmlable
-    { return __('Calendar'); }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('Calendar');
+    }
+
     public static function getNavigationLabel(): string
-    { return __('Calendar'); }
-    public static function getNavigationGroup(): string | UnitEnum | null
-    { return __('To Do'); }
+    {
+        return __('Calendar');
+    }
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('To Do');
+    }
+
     public function getSubheading(): ?string
-    { return __('Calendar view of workdays, holidays and events.'); }
-    
+    {
+        return __('Calendar view of workdays, holidays and events.');
+    }
+
     protected string $view = 'filament.staff.pages.calendar';
 
     public $events;
@@ -55,7 +68,6 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
     protected function getHeaderWidgets(): array
     {
         return [
-            // \App\Filament\Staff\Widgets\CalendarWidget::class,
             // \App\Filament\Staff\Widgets\TestCal::class,
         ];
     }
@@ -79,8 +91,25 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                 TextColumn::make('description')->label('Description'),
                 ColorColumn::make('color')->label('Event Color')->sortable(),
                 TextColumn::make('starts_at')->date('D M j, Y')->label('Date')->sortable(),
-                // TextColumn::make('ends_at')->date()->label('End Date'),
             ])
+
+            ->groups([
+                // Group by Month/Year from starts_at
+                Group::make('starts_at')
+                    ->label('Month')
+                    ->getTitleFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->isoFormat('MMMM • YYYY') ?? 'No Date')
+                    ->getKeyFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
+                    ->collapsible(),
+
+                Group::make('iso_week')
+                    ->label('Week')
+                    ->getTitleFromRecordUsing(fn(Event $record) => $record->starts_at ? "{$record->starts_at->format('W')} • {$record->starts_at->format('o')}" : 'No Date')
+                    ->getKeyFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
+                    ->orderQueryUsing(fn (Builder $query, string $direction) => $query->orderBy('starts_at', $direction))
+                    ->collapsible(),
+
+            ])
+
             ->filters([
                 SelectFilter::make('type')
                     ->multiple()
@@ -175,43 +204,41 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
         })->values();
 
         $staff = optional(Auth::user())->staff;
-        $teamCode = strtoupper(optional($staff)->shift_code ?? '');
+        strtoupper(optional($staff)->shift_code ?? '');
         $shiftGroup = 'X';
         $shiftPattern = '4G3S';
 
         $shiftEvents = collect();
+        $patterns = array_keys(config('shift_pattern.patterns', []));
+        $foundPattern = null;
+        // Try to detect which pattern contains this team
+        foreach ($patterns as $key) {
 
-        if ($shiftPattern) {
-            $patterns = array_keys(config('shift_pattern.patterns', []));
-            $foundPattern = null;
+            $pattern = \App\Support\ShiftPattern::fromConfig($key);
 
-            // Try to detect which pattern contains this team
-            foreach ($patterns as $key) {
-
-                $pattern = \App\Support\ShiftPattern::fromConfig($key);
-
-                if ($pattern->hasTeam($shiftGroup)) {
-                    $foundPattern = $pattern;
-                    break;
-                }
+            if ($pattern->hasTeam($shiftGroup)) {
+                $foundPattern = $pattern;
+                break;
             }
-            //    dd($foundPattern);
-            if ($foundPattern) {
-                $tz = config("shift_pattern.patterns.{$foundPattern->getPatternKey()}.timezone", config('app.timezone', 'Asia/Kuala_Lumpur'));
-                $now   = \Carbon\Carbon::now($tz);
-                $start = $now->copy()->startOfMonth()->subDays(7);
-                $end   = $now->copy()->endOfMonth()->addDays(7);
+        }
 
-                $shiftEvents = collect($foundPattern->eventsForTeamInRange($shiftGroup, $start, $end))
+        //    dd($foundPattern);
+        if ($foundPattern instanceof \App\Support\ShiftPattern) {
+            $tz = config(sprintf('shift_pattern.patterns.%s.timezone', $foundPattern->getPatternKey()), config('app.timezone', 'Asia/Kuala_Lumpur'));
+            $now = \Carbon\Carbon::now($tz);
+            $start = $now->copy()->startOfMonth()->subDays(7);
+            $end = $now->copy()->endOfMonth()->addDays(7);
 
-                    ->map(function (array $e): array {
-                        // Normalize to single-day, all-day
-                        $e['start'] = Carbon::parse($e['start'])->toDateString(); // 'YYYY-MM-DD'
-                        unset($e['end']);
-                        $e['allDay'] = true;
-                        return $e;
-                    });
-            }
+            $shiftEvents = collect($foundPattern->eventsForTeamInRange($shiftGroup, $start, $end));
+
+                // ->map(function (array $e): array {
+                //     // Normalize to single-day, all-day
+                //     // $e['start'] = Carbon::parse($e['start'])->toDateString(); // 'YYYY-MM-DD'
+                //     unset($e['end']);
+                //     $e['allDay'] = false;
+
+                //     return $e;
+                // });
         }
 
         // 3) Merge (user’s shift pattern + DB events)

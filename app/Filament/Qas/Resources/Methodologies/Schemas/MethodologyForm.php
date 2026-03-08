@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Filament\Qas\Resources\Methodologies\Schemas;
 
 use Filament\Forms\Components;
-use Filament\Schemas\Schema;
 use Filament\Forms\Components\CodeEditor\Enums\Language;
+use Filament\Schemas\Schema;
 
 class MethodologyForm
 {
@@ -20,7 +20,6 @@ class MethodologyForm
                 Components\Textarea::make('brief_explanation')
                     ->label('Brief Explanation')
                     ->columnSpanFull(),
-
 
                 Components\CodeEditor::make('report_schema')
                     ->language(Language::Php)->columnSpanFull(),
@@ -48,10 +47,10 @@ class MethodologyForm
                                 Components\TextInput::make('name')->required(),
                                 Components\TextInput::make('label')->required(),
                                 Components\Toggle::make('required'),
-                                Components\KeyValue::make('options')->visible(fn($get) => $get('component') === 'select'),
-                                Components\TextInput::make('disk')->default('public')->visible(fn($get) => in_array($get('component'), ['file', 'image'])),
-                                Components\TextInput::make('directory')->visible(fn($get) => in_array($get('component'), ['file', 'image'])),
-                                Components\TagsInput::make('accepted_types')->visible(fn($get) => $get('component') === 'file'),
+                                Components\KeyValue::make('options')->visible(fn ($get): bool => $get('component') === 'select'),
+                                Components\TextInput::make('disk')->default('public')->visible(fn ($get): bool => in_array($get('component'), ['file', 'image'])),
+                                Components\TextInput::make('directory')->visible(fn ($get): bool => in_array($get('component'), ['file', 'image'])),
+                                Components\TagsInput::make('accepted_types')->visible(fn ($get): bool => $get('component') === 'file'),
                             ])
                             ->columnSpanFull(),
                     ])

@@ -31,23 +31,23 @@ class Location extends Model
         return self::query()
             ->doesntHave('children')
             ->get()
-            ->mapWithKeys(fn ($location) => [$location->id => $location->full_path])
+            ->mapWithKeys(fn ($location): array => [$location->id => $location->full_path])
             ->toArray();
     }
 
     /**
      * Accessor to get the full breadcrumb path
      */
-    public function getFullPathAttribute(): string
+    protected function fullPath(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
-        $path = collect([$this->name]);
-        $current = $this->parent;
-
-        while ($current) {
-            $path->prepend($current->name);
-            $current = $current->parent;
-        }
-
-        return $path->implode(' > ');
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+            $path = collect([$this->name]);
+            $current = $this->parent;
+            while ($current) {
+                $path->prepend($current->name);
+                $current = $current->parent;
+            }
+            return $path->implode(' > ');
+        });
     }
 }

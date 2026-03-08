@@ -96,21 +96,19 @@ class Staff extends Model
         return $this->morphMany(PersonAttribute::class, 'attributable');
     }
 
-    
-protected function staffOldNumber(): \Illuminate\Database\Eloquent\Casts\Attribute
-{
-    return \Illuminate\Database\Eloquent\Casts\Attribute::make(
-        get: function () {
-            // Uses eager-loaded collection if present, otherwise queries
-            $attr = $this->relationLoaded('personAttributes')
-                ? $this->personAttributes->firstWhere('key', 'login')
-                : $this->personAttributes()->where('key', 'login')->first();
+    protected function staffOldNumber(): \Illuminate\Database\Eloquent\Casts\Attribute
+    {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(
+            get: function () {
+                // Uses eager-loaded collection if present, otherwise queries
+                $attr = $this->relationLoaded('personAttributes')
+                    ? $this->personAttributes->firstWhere('key', 'login')
+                    : $this->personAttributes()->where('key', 'login')->first();
 
-            return $attr->value ?? null;
-        },
-    );
-}
-
+                return $attr->value ?? null;
+            },
+        );
+    }
 
     protected function shiftCode(): \Illuminate\Database\Eloquent\Casts\Attribute
     {

@@ -7,7 +7,6 @@ namespace App\Filament\Lms\Resources\Certificates\Schemas;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Infolists\Components\ImageEntry;
 use Filament\Schemas\Schema;
 
 class CertificateForm

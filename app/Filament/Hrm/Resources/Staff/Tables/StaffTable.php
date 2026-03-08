@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Filament\Hrm\Resources\Staff\Tables;
 
+use App\Filament\Exports\Hrm\StaffExporter;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ExportAction;
 use Filament\Tables\Columns;
 use Filament\Tables\Table;
-use Filament\Actions\ExportAction;
-use App\Filament\Exports\Hrm\StaffExporter;
 
 class StaffTable
 {
@@ -23,7 +23,7 @@ class StaffTable
                 Columns\TextColumn::make('user.name')
                     ->searchable(),
                 Columns\TextColumn::make('staff_number')->searchable()->sortable()->copyable(),
-                 Columns\TextColumn::make('staff_old_number')->searchable(),
+                Columns\TextColumn::make('staff_old_number')->searchable(),
                 Columns\TextColumn::make('jobPosition.title')
                     ->searchable(),
                 // ]),

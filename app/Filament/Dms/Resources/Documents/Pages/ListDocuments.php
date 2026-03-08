@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Filament\Dms\Resources\Documents\Pages;
 
 use App\Filament\Dms\Resources\Documents\DocumentResource;
@@ -17,10 +15,5 @@ class ListDocuments extends ListRecords
         return [
             CreateAction::make(),
         ];
-    }
-
-    public function getSubheading(): ?string
-    {
-        return __('Documentation, manuals, guides, procedures, policies, and other knowledge resources for staff.');
     }
 }

@@ -7,22 +7,34 @@ namespace App\Filament\Staff\Pages;
 use App\Filament\Staff\Widgets;
 use BackedEnum;
 use Filament\Pages\Dashboard as BaseDashboard;
-use UnitEnum;
 use Illuminate\Contracts\Support\Htmlable;
+use UnitEnum;
 
 class Dashboard extends BaseDashboard
 {
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-target';
 
     protected static ?int $navigationSort = 13;
-    public function getTitle(): string | Htmlable
-    { return __('Target'); }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('Target');
+    }
+
     public static function getNavigationLabel(): string
-    { return __('Target'); }
-    public static function getNavigationGroup(): string | UnitEnum | null
-    { return __('To Do'); }
+    {
+        return __('Target');
+    }
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('To Do');
+    }
+
     public function getSubheading(): ?string
-    { return __('Target settings and progress overview for your work.'); }
+    {
+        return __('Target settings and progress overview for your work.');
+    }
 
     public function getColumns(): int|array
     {

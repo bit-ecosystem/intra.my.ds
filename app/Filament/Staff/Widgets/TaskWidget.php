@@ -15,8 +15,9 @@ class TaskWidget extends TableWidget
 {
     protected int|string|array $columnSpan = 3;
 
-        protected static ?string $heading = 'Credentials';
-    protected static ?string $description  = 'Certificates/Licenses needing action';
+    protected static ?string $heading = 'Credentials';
+
+    protected static ?string $description = 'Certificates/Licenses needing action';
 
     // If you still want to keep your resource mapping for recordUrl
     protected array $map = [

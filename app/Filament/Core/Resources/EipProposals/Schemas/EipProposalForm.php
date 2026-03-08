@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Core\Resources\EipProposals\Schemas;
 
 use App\Models\Core\Location;
@@ -53,7 +55,7 @@ class EipProposalForm
                             //         return [$location->id => $location->full_path];
                             //     });
                             // })
-                            ->options(fn () => Location::getLastMileOptions())
+                            ->options(fn (): array => Location::getLastMileOptions())
                             ->searchable() // Recommended for long lists
                             ->preload(),
                         Components\Select::make('eip_type')

@@ -1,0 +1,26 @@
+code,title,coursegroup,description
+HSE-101,Workplace Health & Safety Essentials,safety,Foundational safety protocols for the manufacturing floor.
+LOTO-201,Lockout/Tagout: Control of Hazardous Energy,safety,Procedures to disable machinery during maintenance.
+FIRE-01,Emergency Evacuation & Fire Training,safety,Procedures for fire emergencies and equipment use.
+PPE-05,Personal Protective Equipment Basics,safety,Selection and maintenance of safety gear for operators.
+SOP-CORE,Standard Operating Procedures (SOP) Basics,technical,Mastering standard workflows for production stations.
+MACH-01,Basic Machine Setup & Calibration,technical,Hands-on guide to starting and calibrating equipment.
+MAIN-202,Preventative Maintenance for Operators,technical,Routine checks to prevent machine downtime.
+BLUE-05,Reading Technical Blueprints,technical,Interpreting engineering drawings and technical specs.
+ISO-9001,Quality Management System Awareness,compliance,Understanding ISO standards for production quality.
+LEGAL-01,Anti-Bribery & Corruption Policy,compliance,Legal guidelines on corporate ethics and reporting.
+DATA-02,Data Privacy & Document Control,compliance,Handling sensitive production data and documentation.
+INTRO-01,Company Mission & Vision,onboarding,Introduction to corporate culture and long-term goals.
+SEC-02,Site Access & Security Protocols,onboarding,Rules for facility entry and physical asset security.
+HAND-01,Employee Handbook Review,onboarding,Overview of company policies and employee rights.
+LEAD-01,Operator to Supervisor Transition,leadership,Skills for moving into a management role on the floor.
+COACH-05,Performance Coaching & Feedback,leadership,Techniques for managing and developing direct reports.
+TEAM-201,Managing Multi-Shift Teams,leadership,Coordination and communication across different shifts.
+LEAN-01,Introduction to Lean Manufacturing,efficiency,Reducing waste and optimizing production flow.
+5S-WORK,5S Methodology: Workspace Organization,efficiency,Standardizing workplace cleanliness and efficiency.
+RCA-202,Root Cause Analysis (RCA),efficiency,Problem-solving using the 5 Whys and Fishbone methods.
+COMM-01,Handover Communication & Scrums,soft_skills,Ensuring clear information flow during shift changes.
+TIME-02,Time Management for Production,soft_skills,Prioritizing tasks to meet strict manufacturing deadlines.
+ERP-101,ERP Navigation & Data Entry,digital,Using the company software to log production and inventory.
+MES-05,Mobile Production Tracking (MES),digital,Real-time tracking of manufacturing execution on tablets.
+CYB-01,Cybersecurity for Factory Workers,digital,Protecting industrial systems from digital threats.

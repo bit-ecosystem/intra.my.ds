@@ -5,32 +5,21 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Pages;
 
 use BackedEnum;
+use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
-use Filament\Actions\Action;
-use Filament\Forms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Pages\Page;
-use Filament\Schemas\Components\Flex;
-use Filament\Schemas\Components\Utilities\Set;
-use Filament\Tables\Columns\ColorColumn;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Filament\Infolists\Components\ImageEntry;
-use Filament\Schemas\Components\Grid;
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Concerns\InteractsWithSchemas;
-use Filament\Schemas\Contracts\HasSchemas;
-use Filament\Schemas\Schema;
-use UnitEnum;
-use Filament\Tables\Enums\FiltersLayout;
-use Filament\Schemas\Components\Tabs\Tab;
-use App\Enums\LocationType;
 use Illuminate\Contracts\Support\Htmlable;
+use UnitEnum;
 
 class Location extends Page implements HasActions, HasForms, HasTable
 {
@@ -41,15 +30,27 @@ class Location extends Page implements HasActions, HasForms, HasTable
     protected static string|BackedEnum|null $navigationIcon = 'myicon-location';
 
     protected static ?int $navigationSort = 51;
-    public function getTitle(): string | Htmlable
-    { return __('Floor Plan'); }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('Floor Plan');
+    }
+
     public static function getNavigationLabel(): string
-    { return __('Floor Plan'); }
-    public static function getNavigationGroup(): string | UnitEnum | null
-    { return __('Location'); }
+    {
+        return __('Floor Plan');
+    }
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('Location');
+    }
+
     public function getSubheading(): ?string
-    { return __('Links to floor plans and maps of the organization buildings and campuses. Ideally includes registered storage locations.'); }
-    
+    {
+        return __('Links to floor plans and maps of the organization buildings and campuses. Ideally includes registered storage locations.');
+    }
+
     protected string $view = 'filament.staff.pages.location';
 
     public ?string $scope = 'all';
@@ -60,7 +61,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
             ->state(config('bites.emergency', []))
             ->schema([
                 Section::make('1st Floor')
-                ->extraAttributes([
+                    ->extraAttributes([
                         // Alpine state lives here
                         'x-data' => '{ height: 800, min: 200, max: 3000, step: 200 }',
                         'id' => 'ground-floor-container',
@@ -150,7 +151,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
                             ]),
                     ])
                     ->columnSpanFull()
-                    ->collapsed()
+                    ->collapsed(),
                 // ========= END GROUND FLOOR =========
             ]);
     }
@@ -160,9 +161,9 @@ class Location extends Page implements HasActions, HasForms, HasTable
         return $table
             ->query(function () {
                 return \App\Models\Core\Location::query()
-                    ->when($this->scope === 'rooms', fn($q) => $q->where('type', 'room'))
-                    ->when($this->scope === 'stores', fn($q) => $q->where('type', 'store'))
-                    ->when($this->scope === 'inactive', fn($q) => $q->whereNotNull('ends_at'));
+                    ->when($this->scope === 'rooms', fn ($q) => $q->where('type', 'room'))
+                    ->when($this->scope === 'stores', fn ($q) => $q->where('type', 'store'))
+                    ->when($this->scope === 'inactive', fn ($q) => $q->whereNotNull('ends_at'));
             })
             ->paginated(['all'])
             ->columns([
@@ -177,9 +178,9 @@ class Location extends Page implements HasActions, HasForms, HasTable
                 Action::make('all')
                     ->label('All')
                     ->icon('heroicon-o-rectangle-stack')
-                    ->color(fn() => $this->scope === 'all' ? 'primary' : 'gray')
-                    ->outlined(fn() => $this->scope !== 'all')
-                    ->action(function () {
+                    ->color(fn (): string => $this->scope === 'all' ? 'primary' : 'gray')
+                    ->outlined(fn (): bool => $this->scope !== 'all')
+                    ->action(function (): void {
                         $this->scope = 'all';
                         $this->resetTablePage();
                     })
@@ -188,9 +189,9 @@ class Location extends Page implements HasActions, HasForms, HasTable
                 Action::make('rooms')
                     ->label('Rooms')
                     ->icon('heroicon-o-home-modern')
-                    ->color(fn() => $this->scope === 'rooms' ? 'primary' : 'gray')
-                    ->outlined(fn() => $this->scope !== 'rooms')
-                    ->action(function () {
+                    ->color(fn (): string => $this->scope === 'rooms' ? 'primary' : 'gray')
+                    ->outlined(fn (): bool => $this->scope !== 'rooms')
+                    ->action(function (): void {
                         $this->scope = 'rooms';
                         $this->resetTablePage();
                     })
@@ -199,9 +200,9 @@ class Location extends Page implements HasActions, HasForms, HasTable
                 Action::make('stores')
                     ->label('Stores')
                     ->icon('heroicon-o-building-storefront')
-                    ->color(fn() => $this->scope === 'stores' ? 'primary' : 'gray')
-                    ->outlined(fn() => $this->scope !== 'stores')
-                    ->action(function () {
+                    ->color(fn (): string => $this->scope === 'stores' ? 'primary' : 'gray')
+                    ->outlined(fn (): bool => $this->scope !== 'stores')
+                    ->action(function (): void {
                         $this->scope = 'stores';
                         $this->resetTablePage();
                     })
@@ -210,9 +211,9 @@ class Location extends Page implements HasActions, HasForms, HasTable
                 Action::make('inactive')
                     ->label('Inactive')
                     ->icon('heroicon-o-archive-box')
-                    ->color(fn() => $this->scope === 'inactive' ? 'warning' : 'gray')
-                    ->outlined(fn() => $this->scope !== 'inactive')
-                    ->action(function () {
+                    ->color(fn (): string => $this->scope === 'inactive' ? 'warning' : 'gray')
+                    ->outlined(fn (): bool => $this->scope !== 'inactive')
+                    ->action(function (): void {
                         $this->scope = 'inactive';
                         $this->resetTablePage();
                     })

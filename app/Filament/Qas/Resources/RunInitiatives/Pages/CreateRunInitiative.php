@@ -8,7 +8,6 @@ use App\Filament\Qas\Resources\RunInitiatives\RunInitiativeResource;
 use App\Models\Qas\Methodology;
 use App\Models\User;
 use Filament\Resources\Pages\CreateRecord;
-use Illuminate\Support\Facades\Auth;
 
 class CreateRunInitiative extends CreateRecord
 {
@@ -18,8 +17,11 @@ class CreateRunInitiative extends CreateRecord
     public ?Methodology $methodology = null;
 
     public ?int $who = null;
+
     public ?int $what = null;
+
     public ?int $where = null;
+
     public ?int $when = null;
 
     public function mount(): void
@@ -44,10 +46,12 @@ class CreateRunInitiative extends CreateRecord
             ]);
         }
     }
+
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['methodology'] = Methodology::whereKey($data['methodology_id'])->value('title');
         dd($data);
+
         return $data;
     }
 }

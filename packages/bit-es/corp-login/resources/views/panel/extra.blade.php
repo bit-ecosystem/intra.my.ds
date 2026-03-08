@@ -1,5 +1,5 @@
 <div id="slogan">
-    <h2>{{ __('company.slogan') }}</h2>
+    <h2>{{ __('Company.Slogan') }}</h2>
 </div>
 <style>
     body {

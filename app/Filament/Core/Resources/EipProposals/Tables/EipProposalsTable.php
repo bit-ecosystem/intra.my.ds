@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Core\Resources\EipProposals\Tables;
 
 use Filament\Actions\BulkActionGroup;

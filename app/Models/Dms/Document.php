@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models\Dms;
 
-use Illuminate\Support\Arr;
 use App\Models\Core\OrgUnit;
 use App\Models\User;
 use App\Observers\DocumentObserver;
@@ -13,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Arr;
 
 #[ObservedBy([DocumentObserver::class])]
 class Document extends Model
@@ -27,7 +27,14 @@ class Document extends Model
     {
         return $this->belongsTo(OrgUnit::class, 'org_unit_id');
     }
-
+    public function classification(): BelongsTo
+    {
+        return $this->belongsTo(DocumentClassification::class, 'classification_id');
+    }
+    public function level(): BelongsTo
+    {
+        return $this->belongsTo(DocumentLevel::class, 'document_type_id');
+    }
     public function vectors(): HasMany
     {
         return $this->hasMany(Vector::class, 'document_id');
@@ -80,24 +87,24 @@ class Document extends Model
             'settings' => 'array',
         ];
     }
-    
+
     public static function resolveCreation(array $record)
     {
         // ---- Normalize incoming payload ------------------------------------
-        $id          = Arr::get($record, 'id');       // may be null
-        $code        = Arr::get($record, 'code');     // unique
-        $title       = Arr::get($record, 'title');
+        $id = Arr::get($record, 'id');       // may be null
+        $code = Arr::get($record, 'code');     // unique
+        $title = Arr::get($record, 'title');
         $description = Arr::get($record, 'description');
-        $orgUnitId   = Arr::get($record, 'org_unit_id');
-        $ownerId     = Arr::get($record, 'owner_staff_id'); // optional
-        $status      = Arr::get($record, 'status');   // optional
+        $orgUnitId = Arr::get($record, 'org_unit_id');
+        $ownerId = Arr::get($record, 'owner_staff_id'); // optional
+        $status = Arr::get($record, 'status');   // optional
         $publishedAt = Arr::get($record, 'published_at');
         $effectiveAt = Arr::get($record, 'effective_at');
-        $retiredAt   = Arr::get($record, 'retired_at');
+        $retiredAt = Arr::get($record, 'retired_at');
 
         // ---- Resolve classification (string -> classification_id) ----------
         $classificationName = trim((string) Arr::get($record, 'classification', ''));
-        $classificationId   = null;
+        $classificationId = null;
 
         if ($classificationName !== '') {
             $classification = DocumentClassification::firstOrCreate(
@@ -114,12 +121,12 @@ class Document extends Model
 
         if ($docTypeName !== '') {
             // Default level to 'internal' unless you pass 'level' in JSON
-            $docLevelValue = Arr::get($record, 'level', 'internal'); 
+            $docLevelValue = Arr::get($record, 'level', 'internal');
             $docType = DocumentLevel::firstOrCreate(
                 ['name' => $docTypeName],
                 [
                     // enum: 'public', 'internal', 'confidential', 'strictly_confidential'
-                    'level' => in_array($docLevelValue, ['public','internal','confidential','strictly_confidential'], true)
+                    'level' => in_array($docLevelValue, ['public', 'internal', 'confidential', 'strictly_confidential'], true)
                         ? $docLevelValue
                         : 'internal',
                     'description' => null,
@@ -132,7 +139,7 @@ class Document extends Model
         $parentId = null;
         $parentKey = Arr::get($record, 'parent');
 
-        if (!is_null($parentKey) && $parentKey !== '') {
+        if (! is_null($parentKey) && $parentKey !== '') {
             $parent = is_numeric($parentKey)
                 ? static::query()->whereKey($parentKey)->first()
                 : static::query()->where('code', $parentKey)->first();
@@ -147,28 +154,37 @@ class Document extends Model
 
         // ---- Build attributes ----------------------------------------------
         $attributes = [
-            'code'               => $code, // keep code consistent with unique index
-            'title'              => $title,
-            'description'        => $description,
-            'org_unit_id'        => $orgUnitId,
-            'owner_staff_id'     => $ownerId,
-            'classification_id'  => $classificationId,
-            'document_type_id'   => $documentTypeId,
-            'parent_id'          => $parentId,
+            'code' => $code, // keep code consistent with unique index
+            'title' => $title,
+            'description' => $description,
+            'org_unit_id' => $orgUnitId,
+            'owner_staff_id' => $ownerId,
+            'classification_id' => $classificationId,
+            'document_type_id' => $documentTypeId,
+            'parent_id' => $parentId,
         ];
 
         // Optional timestamps/status if you include them in JSON
-        if (!is_null($status))      { $attributes['status'] = $status; }
-        if (!is_null($publishedAt)) { $attributes['published_at'] = $publishedAt; }
-        if (!is_null($effectiveAt)) { $attributes['effective_at'] = $effectiveAt; }
-        if (!is_null($retiredAt))   { $attributes['retired_at'] = $retiredAt; }
+        if (! is_null($status)) {
+            $attributes['status'] = $status;
+        }
+
+        if (! is_null($publishedAt)) {
+            $attributes['published_at'] = $publishedAt;
+        }
+
+        if (! is_null($effectiveAt)) {
+            $attributes['effective_at'] = $effectiveAt;
+        }
+
+        if (! is_null($retiredAt)) {
+            $attributes['retired_at'] = $retiredAt;
+        }
 
         // ---- Upsert by id (if provided), else by unique code ---------------
         // Using updateOrCreate ensures id is respected on create, and code uniqueness is preserved.
         $where = $id ? ['id' => $id] : ['code' => $code];
-        $document = static::query()->updateOrCreate($where, $attributes);
-        
-        return $document;
-    }
 
+        return static::query()->updateOrCreate($where, $attributes);
+    }
 }

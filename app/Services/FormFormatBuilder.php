@@ -90,8 +90,8 @@ class FormFormatBuilder
         }
 
         // Append hidden fields last (order doesn’t matter visually)
-        foreach ($hiddenFields as $hidden) {
-            $components[] = $hidden;
+        foreach ($hiddenFields as $hiddenField) {
+            $components[] = $hiddenField;
         }
 
         return $components;
@@ -170,7 +170,7 @@ class FormFormatBuilder
         return $component;
     }
 
-    protected function makeBaseComponent(string $key, string $label, array $props)
+    protected function makeBaseComponent(string $key, string $label, array $props): \Filament\Forms\Components\Radio|\Filament\Forms\Components\Select|\Filament\Forms\Components\FileUpload|\Filament\Forms\Components\DatePicker|\Filament\Forms\Components\DateTimePicker|\Filament\Forms\Components\TimePicker|\Filament\Forms\Components\Textarea|\Filament\Forms\Components\TextInput
     {
         $format = $props['format'] ?? null;
         $widget = $props['ui:widget'] ?? null;
@@ -207,9 +207,11 @@ class FormFormatBuilder
             if (! empty($props['ui:multiple'])) {
                 $select->multiple();
             }
+
             if (! empty($props['ui:searchable'])) {
                 $select->searchable();
             }
+
             if (! empty($props['ui:preload'])) {
                 $select->preload();
             }
@@ -231,6 +233,7 @@ class FormFormatBuilder
                 if ($disk) {
                     $file->disk($disk);
                 }
+
                 if ($dir) {
                     $file->directory($dir);
                 }
@@ -243,9 +246,11 @@ class FormFormatBuilder
         if ($format === 'date') {
             return DatePicker::make($key)->label($label);
         }
+
         if ($format === 'datetime') {
             return DateTimePicker::make($key)->label($label);
         }
+
         if ($format === 'time') {
             return TimePicker::make($key)->label($label);
         }
@@ -302,18 +307,21 @@ class FormFormatBuilder
                 if ($this->isAssoc($src) && $this->isValueLabelMap($src)) {
                     return $src;
                 }
+
                 // Array of objects
                 $grouped = [];
                 foreach ($src as $row) {
                     if (! is_array($row)) {
                         continue;
                     }
+
                     $value = $row['value'] ?? null;
                     $label = $row['label'] ?? (string) $value;
                     $group = $row['group'] ?? null;
                     if ($value === null) {
                         continue;
                     }
+
                     if ($group) {
                         $grouped[$group] ??= [];
                         $grouped[$group][$value] = $label;
@@ -336,6 +344,7 @@ class FormFormatBuilder
                 if ($value === null) {
                     continue;
                 }
+
                 $label = $item['title'] ?? (string) $value;
                 $group = $item['x-group'] ?? null;
                 if ($group) {
@@ -345,9 +354,10 @@ class FormFormatBuilder
                     $flat[$value] = $label;
                 }
             }
+
             // Merge flat into grouped if groups exist
-            if (! empty($grouped)) {
-                if (! empty($flat)) {
+            if ($grouped !== []) {
+                if ($flat !== []) {
                     $grouped['Other'] = ($grouped['Other'] ?? []) + $flat;
                 }
 
@@ -361,7 +371,7 @@ class FormFormatBuilder
         if (! empty($props['enum']) && is_array($props['enum'])) {
             $values = $props['enum'];
             $names = (array) ($props['x-enumNames'] ?? []);
-            if (! empty($names) && count($names) === count($values)) {
+            if ($names !== [] && count($names) === count($values)) {
                 return array_combine($values, $names);
             }
 
@@ -392,12 +402,13 @@ class FormFormatBuilder
 
                 // Normalize arrays like: [ ['id'=>1,'label'=>'A'], ... ]
                 if (is_array($data)) {
-                    if (! empty($data) && isset($data[0]) && is_array($data[0])) {
+                    if ($data !== [] && isset($data[0]) && is_array($data[0])) {
                         $first = $data[0];
                         // id/label pattern
                         if (array_key_exists('id', $first) && array_key_exists('label', $first)) {
-                            return collect($data)->mapWithKeys(fn ($row) => [$row['id'] => $row['label']])->all();
+                            return collect($data)->mapWithKeys(fn ($row): array => [$row['id'] => $row['label']])->all();
                         }
+
                         // value/label (+ group) pattern
                         if (array_key_exists('value', $first) && array_key_exists('label', $first)) {
                             $grouped = [];
@@ -467,6 +478,7 @@ class FormFormatBuilder
             if (! empty($props['x-defaultArgs']) && is_array($props['x-defaultArgs'])) {
                 $args = $props['x-defaultArgs'];
             }
+
             $fromProvider = $this->invokeProvider($props['x-defaultSource'], $args);
 
             // Attempt to coerce type-friendly value for formats
@@ -509,6 +521,7 @@ class FormFormatBuilder
             if (! $user) {
                 return null;
             }
+
             // Resolve nested path after "user"
             $path = explode('.', $token);
             // first is "user", skip it
@@ -519,6 +532,7 @@ class FormFormatBuilder
                 if ($current === null) {
                     return null;
                 }
+
                 // object property or relation
                 if (is_object($current)) {
                     if (isset($current->{$segment})) {
@@ -553,6 +567,7 @@ class FormFormatBuilder
         if (strpos($fqMethod, '::') === false) {
             return null;
         }
+
         [$class, $method] = explode('::', $fqMethod, 2);
         if (! class_exists($class) || ! method_exists($class, $method)) {
             return null;
@@ -588,6 +603,7 @@ class FormFormatBuilder
                 } catch (\Throwable $e) {
                 }
             }
+
             if ($format === 'datetime') {
                 try {
                     $dt = \Carbon\Carbon::parse($value);
@@ -596,6 +612,7 @@ class FormFormatBuilder
                 } catch (\Throwable $e) {
                 }
             }
+
             if ($format === 'time') {
                 try {
                     $dt = \Carbon\Carbon::parse($value);
@@ -640,6 +657,7 @@ class FormFormatBuilder
                 if (isset($cond['field'])) {
                     return $this->evaluateRule($get, $cond);
                 }
+
                 // { field: value } style
                 [$f, $v] = $this->firstKV($cond);
 
@@ -676,7 +694,7 @@ class FormFormatBuilder
         }
 
         // Fallback (unexpected): always true
-        return fn () => true;
+        return fn (): true => true;
     }
 
     protected function evaluateRule(callable $get, array $rule): bool
@@ -685,36 +703,46 @@ class FormFormatBuilder
         if ($field === null) {
             return true;
         }
+
         $value = $get($field);
 
         // Operators
         if (array_key_exists('eq', $rule)) {
             return $value === $rule['eq'];
         }
+
         if (array_key_exists('ne', $rule)) {
             return $value !== $rule['ne'];
         }
+
         if (array_key_exists('in', $rule)) {
             return in_array($value, (array) $rule['in'], true);
         }
+
         if (array_key_exists('notIn', $rule)) {
             return ! in_array($value, (array) $rule['notIn'], true);
         }
+
         if (array_key_exists('truthy', $rule)) {
-            return (bool) $value === true;
+            return (bool) $value;
         }
+
         if (array_key_exists('falsy', $rule)) {
             return (bool) $value === false;
         }
+
         if (array_key_exists('gt', $rule)) {
             return $value > $rule['gt'];
         }
+
         if (array_key_exists('gte', $rule)) {
             return $value >= $rule['gte'];
         }
+
         if (array_key_exists('lt', $rule)) {
             return $value < $rule['lt'];
         }
+
         if (array_key_exists('lte', $rule)) {
             return $value <= $rule['lte'];
         }
@@ -733,7 +761,7 @@ class FormFormatBuilder
 
     protected function makeKey(string $prefix, string $name): string
     {
-        return $prefix !== '' && $prefix !== '0' ? "{$prefix}.{$name}" : $name;
+        return $prefix !== '' && $prefix !== '0' ? sprintf('%s.%s', $prefix, $name) : $name;
     }
 
     protected function humanize(string $name): string
@@ -768,8 +796,8 @@ class FormFormatBuilder
 
     protected function isValueLabelMap(array $map): bool
     {
-        foreach ($map as $k => $v) {
-            if ((is_string($k) || is_int($k)) && (is_string($v) || is_int($v))) {
+        foreach ($map as $v) {
+            if (is_string($v) || is_int($v)) {
                 return true;
             }
         }
@@ -806,6 +834,7 @@ class FormFormatBuilder
         if (! $gridSpec || ! is_array($gridSpec)) {
             return $fields;
         }
+
         $grid = Grid::make($gridSpec);
 
         return [$grid->schema($fields)];

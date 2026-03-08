@@ -6,12 +6,12 @@ new class extends Component
 {
     public string $locale;
 
-    public function mount()
+    public function mount(): void
     {
         $this->locale = session('locale', config('app.locale'));
     }
 
-    public function changeLocale(string $locale)
+    public function changeLocale(string $locale): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
         session()->put('locale', $locale);
         app()->setLocale($locale); // apply immediately

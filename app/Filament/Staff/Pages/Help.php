@@ -7,24 +7,28 @@ namespace App\Filament\Staff\Pages;
 use App\Models\Core\HelpPage;
 use BackedEnum;
 use Filament\Pages\Page;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Str;
 use UnitEnum;
-use Illuminate\Contracts\Support\Htmlable;
 
 class Help extends Page
 {
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-book-open';
 
     protected static ?int $navigationSort = 4;
+
     // public function getTitle(): string | Htmlable
     // { return __('Assigned Assets'); }
     // public static function getNavigationLabel(): string
     // { return __('Assigned Assets'); }
-    public static function getNavigationGroup(): string | UnitEnum | null
-    { return __('Knowledge'); }
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('Knowledge');
+    }
+
     // public function getSubheading(): ?string
     // { return __('Asset/Equipment/Items issued to you or your support group.'); }
-    
+
     protected string $view = 'filament.staff.pages.help';
 
     public static function shouldRegisterNavigation(): bool

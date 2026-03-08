@@ -6,24 +6,35 @@ namespace App\Filament\Staff\Pages;
 
 use BackedEnum;
 use Filament\Pages\Page;
-use UnitEnum;
 use Illuminate\Contracts\Support\Htmlable;
+use UnitEnum;
 
 class Artifact extends Page
 {
     protected static string|BackedEnum|null $navigationIcon = 'myicon-asset-own';
 
     protected static ?int $navigationSort = 22;
-    
-    public function getTitle(): string | Htmlable
-    { return __('Assigned Assets'); }
+
+    public function getTitle(): string|Htmlable
+    {
+        return __('Assigned Assets');
+    }
+
     public static function getNavigationLabel(): string
-    { return __('Assigned Assets'); }
-    public static function getNavigationGroup(): string | UnitEnum | null
-    { return __('Artifact'); }
+    {
+        return __('Assigned Assets');
+    }
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('Artifact');
+    }
+
     public function getSubheading(): ?string
-    { return __('Asset/Equipment/Items issued to you or your support group.'); }
-    
+    {
+        return __('Asset/Equipment/Items issued to you or your support group.');
+    }
+
     protected string $view = 'filament.staff.pages.artifact';
 
     protected function getHeaderWidgets(): array
@@ -34,10 +45,9 @@ class Artifact extends Page
         ];
     }
 
-public static function myclass()
+    public static function myclass(): string
     {
         // Late static binding: resolves to the calling class
         return static::class;          // e.g., App\Models\User
     }
-
 }

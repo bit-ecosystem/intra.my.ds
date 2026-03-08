@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\Certificates\Schemas;
 
 use Carbon\Carbon;
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Filament\Infolists\Components\ImageEntry;
 
 class CertificateInfolist
 {
@@ -33,8 +33,9 @@ class CertificateInfolist
                                     ->circular()
                                     ->defaultImageUrl(function ($record) {
                                         $filename = optional($record->staff)->staff_old_number;
+
                                         return $filename
-                                            ? "http://10.40.3.41:8080/{$filename}.jpg"
+                                            ? sprintf('http://10.40.3.41:8080/%s.jpg', $filename)
                                             : null;
                                     })->columnSpan(1),
                                 Section::make()
@@ -50,7 +51,7 @@ class CertificateInfolist
                                             ->size('lg')
                                             ->alignCenter()
                                             ->columnSpanFull(),
-                                    ])->columnSpan(3)
+                                    ])->columnSpan(3),
                             ]),
                         Section::make('Certificate Details')
                             ->description('Issued information and validity')

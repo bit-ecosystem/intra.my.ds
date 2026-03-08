@@ -12,6 +12,7 @@
         "php": "^8.2",
         "bit-es/attachables": "dev-main",
         "bit-es/corp-login": "dev-main",
+        "bit-es/filament-blueprints": "dev-main",
         "bit-es/idp": "dev-main",
         "bit-es/weaversso": "dev-main",
         "diogogpinto/filament-auth-ui-enhancer": "^2.0",
@@ -35,9 +36,17 @@
                 "canonical": false
             }
         },
-        {
+                {
             "type": "path",
             "url": "packages/bit-es/idp",
+            "options": {
+                "symlink": true,
+                "canonical": false
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/bit-es/filament-blueprints",
             "options": {
                 "symlink": true,
                 "canonical": false

@@ -31,6 +31,7 @@ class ListCourses extends ListRecords
         // Collect unique categories (including null to represent "Uncategorized")
         $categories = Course::query()
             ->select('category')
+            ->where('status', 'published')
             ->distinct()
             ->pluck('category')
             ->toArray();
