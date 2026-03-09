@@ -20,11 +20,11 @@ class CourseSeeder extends Seeder
             ['code' => 'LEGAL-01', 'title' => 'Anti-Bribery & Corruption Policy', 'coursegroup' => CourseGroup::COMPLIANCE, 'description' => 'Legal guidelines on corporate ethics and reporting.', 'status' => 'published'],
             ['code' => 'DATA-02', 'title' => 'Data Privacy & Document Control', 'coursegroup' => CourseGroup::COMPLIANCE, 'description' => 'Handling sensitive production data and documentation.', 'status' => 'published'],
 
-            ['code' => 'QC-101', 'title' => 'Quality Control Basics', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Introduction to inspection standards and defect identification.', 'status' => 'active'],
-            ['code' => 'TQM-02', 'title' => 'Total Quality Management (TQM)', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Long-term approach to success through customer satisfaction.', 'status' => 'active'],
-            ['code' => 'SPC-201', 'title' => 'Statistical Process Control', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Using math and charts to monitor and control production quality.', 'status' => 'active'],
-            ['code' => 'CAL-05', 'title' => 'Instrument Calibration & Care', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Proper handling and zeroing of calipers, micrometers, and gauges.', 'status' => 'active'],
-            ['code' => 'REJ-101', 'title' => 'Non-Conformance & Rejection Handling', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Protocol for tagging and reporting defective materials.', 'status' => 'active'],
+            ['code' => 'QC-101', 'title' => 'Quality Control Basics', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Introduction to inspection standards and defect identification.', 'status' => 'published'],
+            ['code' => 'TQM-02', 'title' => 'Total Quality Management (TQM)', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Long-term approach to success through customer satisfaction.', 'status' => 'published'],
+            ['code' => 'SPC-201', 'title' => 'Statistical Process Control', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Using math and charts to monitor and control production quality.', 'status' => 'published'],
+            ['code' => 'CAL-05', 'title' => 'Instrument Calibration & Care', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Proper handling and zeroing of calipers, micrometers, and gauges.', 'status' => 'published'],
+            ['code' => 'REJ-101', 'title' => 'Non-Conformance & Rejection Handling', 'coursegroup' => CourseGroup::QUALITY, 'description' => 'Protocol for tagging and reporting defective materials.', 'status' => 'published'],
 
             ['code' => 'SOP-CORE', 'title' => 'Standard Operating Procedures (SOP) Basics', 'coursegroup' => CourseGroup::TECHNICAL, 'description' => 'Mastering standard workflows for production stations.', 'status' => 'published'],
             ['code' => 'MACH-01', 'title' => 'Basic Machine Setup & Calibration', 'coursegroup' => CourseGroup::TECHNICAL, 'description' => 'Hands-on guide to starting and calibrating equipment.', 'status' => 'published'],
