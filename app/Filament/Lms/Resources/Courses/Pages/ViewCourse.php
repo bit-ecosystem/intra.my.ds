@@ -18,4 +18,5 @@ class ViewCourse extends ViewRecord
             EditAction::make(),
         ];
     }
+
 }

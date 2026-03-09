@@ -81,12 +81,12 @@ enum CourseGroup: string
             self::SAFETY       => 'success',
             self::COMPLIANCE   => 'warning',
             self::QUALITY      => 'info',
-            self::TECHNICAL    => 'gray',
+            self::TECHNICAL    => 'danger',
 
             // Production
             self::PRODUCT      => 'purple',
             self::PROCESS      => 'blue',
-            self::EQUIPMENT    => 'indigo',
+            self::EQUIPMENT    => 'violet',
 
             // Growth
             self::EFFICIENCY   => 'emerald',

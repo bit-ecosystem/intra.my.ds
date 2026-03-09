@@ -12,11 +12,19 @@ use Filament\Schemas\Components\Tabs\Tab;
 
 class ListCourses extends ListRecords
 {
+    protected int | string | array $columnSpan = 'full';
     protected static string $resource = CourseResource::class;
 
     public function getSubheading(): ?string
     {
         return __('Courses, modules, quizzes and learning materials for staff.');
+    }
+    public function getHeaderWidgets(): array
+    {
+        return [
+            // \App\Filament\Lms\Resources\Courses\Widgets\CourseWidget::class,
+            // \App\Filament\Lms\Resources\Courses\Widgets\FeaturesOverview::class,
+        ];
     }
 
     protected function getHeaderActions(): array
@@ -41,7 +49,7 @@ class ListCourses extends ListRecords
         // "All" tab: no filter, counts all
         $tabs['all'] = Tab::make('All')
             ->badge(Course::count())
-            ->modifyQueryUsing(fn ($query) => $query);
+            ->modifyQueryUsing(fn($query) => $query);
 
         // For each category, add a tab. Handle nulls as "Uncategorized".
         foreach ($categories as $category) {
@@ -51,16 +59,21 @@ class ListCourses extends ListRecords
                 ->badge(
                     Course::query()->when(
                         $category,
-                        fn ($q) => $q->where('category', $category),
-                        fn ($q) => $q->whereNull('category')
+                        fn($q) => $q->where('category', $category),
+                        fn($q) => $q->whereNull('category')
                     )
                         ->count()
                 )
+                // ->label('')
+                ->extraAttributes([
+                    'title' => (string) $label,   // tooltip on hover
+                    'aria-label' => (string) $label,
+                ])
                 ->modifyQueryUsing(function ($query) use ($category) {
                     return $query->when(
                         $category,
-                        fn ($q) => $q->where('category', $category),
-                        fn ($q) => $q->whereNull('category')
+                        fn($q) => $q->where('category', $category),
+                        fn($q) => $q->whereNull('category')
                     );
                 });
         }

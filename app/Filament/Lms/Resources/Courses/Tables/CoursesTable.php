@@ -10,13 +10,15 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Tables\Filters\SelectFilter;
+use App\Enums\CourseGroup;
 
 class CoursesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
-              ->query(
+            ->query(
                 \App\Models\Lms\Course::query()->where('status', 'published')
             )
             ->columns([
@@ -36,18 +38,23 @@ class CoursesTable
                 TextColumn::make('published_at')
                     ->dateTime()
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                // TextColumn::make('created_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true),
+                // TextColumn::make('updated_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true),
             ])
+
             ->filters([
-                //
+                // SelectFilter::make('category')
+                //     ->label('Category')
+                //     ->live(debounce: 300)
+                //     ->options(collect(CourseGroup::cases())->mapWithKeys(fn($c) => [$c->value => $c->getLabel()])),
             ])
+
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
