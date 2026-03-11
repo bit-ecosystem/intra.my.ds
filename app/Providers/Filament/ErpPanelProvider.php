@@ -32,7 +32,7 @@ class ErpPanelProvider extends PanelProvider
             ->brandName('ERP Panel')
             ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             ->colors([
-                'primary' => Color::Lime,
+                'primary' => '#7F174B',
             ])
             ->discoverResources(in: app_path('Filament/Erp/Resources'), for: 'App\Filament\Erp\Resources')
             ->discoverPages(in: app_path('Filament/Erp/Pages'), for: 'App\Filament\Erp\Pages')

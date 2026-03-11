@@ -195,7 +195,7 @@
   },
   {
     "course": "IT Foundations",
-    "category": "ICT",
+    "category": "Digital",
     "description": "Core IT concepts including service management, networking, and cybersecurity fundamentals for modern enterprises.",
     "modules": [
       {
@@ -250,7 +250,7 @@
   },
   {
     "course": "Modern IT Infrastructure",
-    "category": "ICT",
+    "category": "Digital",
     "description": "Advanced IT infrastructure topics including cloud computing, OS management, and DevOps automation.",
     "modules": [
       {
@@ -305,7 +305,7 @@
   },
   {
     "course": "Data Management",
-    "category": "ICT",
+    "category": "Digital",
     "description": "Database systems, storage architectures, and emerging technologies for data-driven enterprises.",
     "modules": [
       {
@@ -344,7 +344,7 @@
   },
   {
     "course": "Manufacturing & Enterprise Integration",
-    "category": "ICT",
+    "category": "Digital",
     "description": "Integration of manufacturing operations with enterprise systems for Industry 4.0 readiness.",
     "modules": [
       {

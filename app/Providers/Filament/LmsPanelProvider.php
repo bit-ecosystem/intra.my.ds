@@ -30,7 +30,7 @@ class LmsPanelProvider extends PanelProvider
             ->brandName('Learn Panel')
             ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             ->colors([
-                'primary' => Color::Violet,
+                'primary' => '#09829F',
             ])
             ->discoverResources(in: app_path('Filament/Lms/Resources'), for: 'App\Filament\Lms\Resources')
             ->discoverPages(in: app_path('Filament/Lms/Pages'), for: 'App\Filament\Lms\Pages')

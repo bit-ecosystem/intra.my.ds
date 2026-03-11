@@ -35,7 +35,7 @@ final class OpenHelpAction
                 return self::createMode($pageKey, $resolvedPage, $recordId);
             }
 
-            // return self::genericMode();
+            return self::genericMode($resolvedPage, $recordId);
         }
 
         return self::viewMode($existing);
@@ -75,7 +75,7 @@ final class OpenHelpAction
                         'content' => $data['content'],
                         'panel_id' => 'core',
                         'org_unit_id' => null,
-                        'title' => 'Help for '.
+                        'title' => 'Help for ' .
                             Str::headline(class_basename($data['page_class'])),
                     ],
                 );
@@ -142,5 +142,27 @@ final class OpenHelpAction
 <strong>A:</strong> …
 </p>
 HTML;
+    }
+    private static function genericMode(string $pageClass, ?int $recordId): Action
+    {
+        $template = self::defaultTemplate($pageClass, $recordId);
+
+        return Action::make('help')
+            ->label(__('Help'))
+            ->icon('heroicon-m-question-mark-circle')
+            ->slideOver()
+            ->modalHeading(__('Help'))
+            ->modalSubmitAction(false)
+            ->modalCancelActionLabel(__('Close'))
+            ->schema([
+                TextEntry::make('content')
+                    ->state(
+                        // Localize this string as you prefer
+                        '<p><em>' . __('No help content has been written for this page yet.') . '</em></p>' .
+                            $template
+                    )
+                    ->html()
+                    ->columnSpanFull(),
+            ]);
     }
 }

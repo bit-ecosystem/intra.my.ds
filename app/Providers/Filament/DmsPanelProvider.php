@@ -30,7 +30,7 @@ class DmsPanelProvider extends PanelProvider
             ->brandName('Document Library')
             ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             ->colors([
-                'primary' => Color::Teal,
+                'primary' => '#464D5A',
             ])
             ->discoverResources(in: app_path('Filament/Dms/Resources'), for: 'App\Filament\Dms\Resources')
             ->discoverPages(in: app_path('Filament/Dms/Pages'), for: 'App\Filament\Dms\Pages')

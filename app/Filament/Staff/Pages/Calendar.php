@@ -67,9 +67,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
 
     protected function getHeaderWidgets(): array
     {
-        return [
-            // \App\Filament\Staff\Widgets\TestCal::class,
-        ];
+        return [];
     }
 
     protected function getHeaderActions(): array
@@ -92,7 +90,6 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                 ColorColumn::make('color')->label('Event Color')->sortable(),
                 TextColumn::make('starts_at')->date('D M j, Y')->label('Date')->sortable(),
             ])
-
             ->groups([
                 // Group by Month/Year from starts_at
                 Group::make('starts_at')
@@ -105,11 +102,10 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                     ->label('Week')
                     ->getTitleFromRecordUsing(fn(Event $record) => $record->starts_at ? "{$record->starts_at->format('W')} • {$record->starts_at->format('o')}" : 'No Date')
                     ->getKeyFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
-                    ->orderQueryUsing(fn (Builder $query, string $direction) => $query->orderBy('starts_at', $direction))
+                    ->orderQueryUsing(fn(Builder $query, string $direction) => $query->orderBy('starts_at', $direction))
                     ->collapsible(),
 
             ])
-
             ->filters([
                 SelectFilter::make('type')
                     ->multiple()
@@ -194,24 +190,22 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
             return [
                 'title' => $event->title,
                 'start' => optional($event->starts_at)->toDateString(),
-                // 'end' => optional($event->ends_at)->toIso8601String(),
-                // 'textColor'  => '#000000',
                 'color' => $event->color,
-                // 'backgroundColor'  => '#ffffff',
-                // 'borderColor'  => $event->color,
                 'allDay' => $event->is_all_day,
             ];
         })->values();
 
         $staff = optional(Auth::user())->staff;
-        strtoupper(optional($staff)->shift_code ?? '');
-        $shiftGroup = 'X';
-        $shiftPattern = '4G3S';
+        $scode = strtoupper(optional($staff)->shift_code ?? '');
+
+        $scode = 'B-3G2S'; // Test shift patterns
+
+        [$shiftGroup, $shiftPattern] = explode('-', $scode);
 
         $shiftEvents = collect();
         $patterns = array_keys(config('shift_pattern.patterns', []));
         $foundPattern = null;
-        // Try to detect which pattern contains this team
+
         foreach ($patterns as $key) {
 
             $pattern = \App\Support\ShiftPattern::fromConfig($key);
@@ -222,7 +216,6 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
             }
         }
 
-        //    dd($foundPattern);
         if ($foundPattern instanceof \App\Support\ShiftPattern) {
             $tz = config(sprintf('shift_pattern.patterns.%s.timezone', $foundPattern->getPatternKey()), config('app.timezone', 'Asia/Kuala_Lumpur'));
             $now = \Carbon\Carbon::now($tz);
@@ -230,21 +223,8 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
             $end = $now->copy()->endOfMonth()->addDays(7);
 
             $shiftEvents = collect($foundPattern->eventsForTeamInRange($shiftGroup, $start, $end));
-
-                // ->map(function (array $e): array {
-                //     // Normalize to single-day, all-day
-                //     // $e['start'] = Carbon::parse($e['start'])->toDateString(); // 'YYYY-MM-DD'
-                //     unset($e['end']);
-                //     $e['allDay'] = false;
-
-                //     return $e;
-                // });
         }
-
-        // 3) Merge (user’s shift pattern + DB events)
         $events = $shiftEvents->concat($public_events)->values();
-        // dd(config('shift_pattern.patterns', []));
-        // dd($shiftEvents);
         $this->events = $events->toJson();
 
         return parent::render();

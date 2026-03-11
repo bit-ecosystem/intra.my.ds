@@ -32,7 +32,7 @@ class QasPanelProvider extends PanelProvider
             ->brandName('Quality Assurance')
             ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             ->colors([
-                'primary' => Color::Rose,
+                'primary' => '#D98D27',
             ])
             ->navigationGroups([
                 NavigationGroup::make()

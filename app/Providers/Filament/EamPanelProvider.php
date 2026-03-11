@@ -30,7 +30,7 @@ class EamPanelProvider extends PanelProvider
             ->brandName('Asset Management Panel')
             ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             ->colors([
-                'primary' => Color::Sky,
+                'primary' => '#4A3E6E',
             ])
             ->discoverResources(in: app_path('Filament/Eam/Resources'), for: 'App\Filament\Eam\Resources')
             ->discoverPages(in: app_path('Filament/Eam/Pages'), for: 'App\Filament\Eam\Pages')

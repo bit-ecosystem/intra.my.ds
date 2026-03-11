@@ -10,14 +10,21 @@ use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Support\Htmlable;
 
 class TaskWidget extends TableWidget
 {
     protected int|string|array $columnSpan = 3;
 
-    protected static ?string $heading = 'Credentials';
+    protected function getHeading(): ?string
+    {
+        return __('Credentials');
+    }
 
-    protected static ?string $description = 'Certificates/Licenses needing action';
+    protected function getDescription(): ?string
+    {
+        return __('Certificates/Licenses needing action');
+    }
 
     // If you still want to keep your resource mapping for recordUrl
     protected array $map = [
@@ -31,7 +38,7 @@ class TaskWidget extends TableWidget
 
         // Defensive: if user has no staff, return an empty builder
         $query = Certificate::query()
-            ->when($staffId, fn (Builder $q) => $q->where('for_staff', $staffId))
+            ->when($staffId, fn(Builder $q) => $q->where('for_staff', $staffId))
             ->whereBetween('expires_at', [now(), now()->addDays(14)])
             ->latest('expires_at')
             ->with(['module', 'examiner', 'staff']); // eager-load what you display
@@ -77,13 +84,13 @@ class TaskWidget extends TableWidget
                     ->label('Expires')
                     ->date('Y-m-d')
                     ->since() // “in 10 days”
-                    ->icon(fn ($record): ?string => now()->greaterThan($record->expires_at) ? 'heroicon-o-exclamation-triangle' : null)
-                    ->color(fn ($record): string => now()->greaterThan($record->expires_at) ? 'danger' : 'warning')
+                    ->icon(fn($record): ?string => now()->greaterThan($record->expires_at) ? 'heroicon-o-exclamation-triangle' : null)
+                    ->color(fn($record): string => now()->greaterThan($record->expires_at) ? 'danger' : 'warning')
                     ->sortable(),
 
                 TextColumn::make('status')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'valid' => 'success',
                         'expired' => 'danger',
                         'revoked' => 'gray',

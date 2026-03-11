@@ -12,6 +12,12 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Filters\SelectFilter;
 use App\Enums\CourseGroup;
+use App\Filament\Tables\Columns\CategoryGroupColumn;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Support\Enums;
+use Filament\Tables\Columns\IconColumn;
 
 class CoursesTable
 {
@@ -22,47 +28,38 @@ class CoursesTable
                 \App\Models\Lms\Course::query()->where('status', 'published')
             )
             ->columns([
-                TextColumn::make('title')
-                    ->wrap()
-                    ->searchable(),
-                TextColumn::make('description')
-                    ->wrap()
-                    ->searchable(),
-                TextColumn::make('status')
+                TextColumn::make('category')
+                    ->label('Group')
                     ->badge()
-                    ->colors([
-                        'warning' => 'draft',
-                        'success' => 'published',
-                        'gray' => 'archived',
+                    ->formatStateUsing(fn(?CourseGroup $state) => $state?->getLabel() ?? '-')
+                    ->color(fn(?CourseGroup $state) => $state?->getColor())
+                    ->tooltip(fn(?CourseGroup $state) => $state?->getDescription()),
+                Split::make([
+                           IconColumn::make('category')
+                    ->label('')
+                    ->icon(fn(?CourseGroup $state) => $state?->getIcon() ?? 'heroicon-o-tag')
+                    ->color(fn(?CourseGroup $state) => $state?->getColor())
+                    ->tooltip(fn(?CourseGroup $state) => $state?->getDescription())
+                    ->sortable(false)
+                    ->grow(false),
+                    Stack::make([
+                        TextColumn::make('title')
+                            ->label('Title')
+                            ->searchable()
+                            ->weight(Enums\FontWeight::SemiBold)
+                            ->color(fn($record) => $record->category?->getColor())
+                            ->tooltip(fn($record) => $record->category?->getDescription()),
+                        TextColumn::make('description')
+                            ->size(Enums\TextSize::ExtraSmall)
+                            ->searchable()
+                            ->wrap(),
                     ]),
-                TextColumn::make('published_at')
-                    ->dateTime()
-                    ->sortable(),
-                // TextColumn::make('created_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-                // TextColumn::make('updated_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-            ])
-
-            ->filters([
-                // SelectFilter::make('category')
-                //     ->label('Category')
-                //     ->live(debounce: 300)
-                //     ->options(collect(CourseGroup::cases())->mapWithKeys(fn($c) => [$c->value => $c->getLabel()])),
-            ])
-
-            ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
                 ]),
+            ])
+            ->paginated(false)
+            ->contentGrid([
+                'md' => 1,
+                'xl' => 4,
             ]);
     }
 }

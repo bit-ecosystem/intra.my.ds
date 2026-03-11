@@ -12,18 +12,11 @@ use InvalidArgumentException;
 class ShiftPattern
 {
     protected string $patternKey;
-
     protected Carbon $anchorDate;
-
     protected string $timezone;
-
     protected array $teams;
-
     protected array $segments;
-
     protected int $cycleLength;
-
-    protected bool $showRest;
 
     public function __construct(
         string $patternKey,
@@ -32,7 +25,7 @@ class ShiftPattern
         array $teams,
         array $segments,
         int $cycleLength,
-        bool $showRest = false,
+
     ) {
         $this->patternKey = $patternKey;
         $this->anchorDate = $anchorDate->copy()->startOfDay();
@@ -40,8 +33,6 @@ class ShiftPattern
         $this->teams = $teams;
         $this->segments = $segments;
         $this->cycleLength = $cycleLength;
-        $this->showRest = $showRest;
-
         $this->anchorDate->setTimezone($this->timezone);
     }
 
@@ -63,7 +54,6 @@ class ShiftPattern
             teams: $cfg['teams'] ?? [],
             segments: $cfg['segments'] ?? [],
             cycleLength: $cfg['cycle_length'] ?? 24,
-            showRest: (bool) ($cfg['show_rest'] ?? false),
         );
     }
 
@@ -100,24 +90,20 @@ class ShiftPattern
             $t += $this->cycleLength;
         }
 
-        // Walk segments to resolve t → code
         $cursor = 0;
         foreach ($this->segments as $segment) {
             $len = (int) $segment['len'];
             if ($t >= $cursor && $t < $cursor + $len) {
                 return $segment['code']; // 'M'|'A'|'N'|'R'
             }
-
             $cursor += $len;
         }
-
-        return 'R';
+        return 'R'; // If not found, default to rest (won't be emitted as event)
     }
 
     public function getShiftLabel(string $team, Carbon $date): string
     {
         $seg = $this->getSegmentByCode($this->getShiftCode($team, $date));
-
         return $seg['label'] ?? 'Rest';
     }
 
@@ -130,22 +116,7 @@ class ShiftPattern
             return null;
         }
 
-        // Rest
-        if ($code === 'R') {
-            if (! $this->showRest) {
-                return null;
-            }
-
-            return [
-                'title' => sprintf('%s – %s', $team, $seg['label']),
-                'start' => $date->copy()->startOfDay()->toIso8601String(),
-                'end' => $date->copy()->endOfDay()->toIso8601String(),
-                'allDay' => false,
-                'color' => Arr::get($seg, 'color', '#9ca3af'),
-                'classNames' => ['team-' . $team, 'shift-' . $code, 'pat-' . $this->patternKey],
-                'extendedProps' => ['shiftCode' => $code, 'team' => $team, 'pattern' => $this->patternKey],
-            ];
-        }
+        if ($code === 'R') { return null; }
 
         // Timed event
         [$sH, $sM] = explode(':', $seg['start']);
@@ -185,7 +156,6 @@ class ShiftPattern
                 $events[] = $event;
             }
         }
-
         return $events;
     }
 

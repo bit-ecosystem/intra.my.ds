@@ -40,7 +40,7 @@ class SyncLdap
                 // $staff = Staff::create([...]);
             }
         }
-
+        $user->bio_readonly = true;
         $user->save();
     }
 }

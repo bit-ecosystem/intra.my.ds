@@ -34,7 +34,7 @@ class CorePanelProvider extends PanelProvider
             ->brandName('Administration')
             ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             ->colors([
-                'primary' => Color::Yellow,
+                'primary' => Color::Rose,
             ])
             ->assets([
                 Css::make('theme-css', resource_path('css/enterprise/theme.css')),

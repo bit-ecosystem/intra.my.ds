@@ -30,7 +30,7 @@ class HrmPanelProvider extends PanelProvider
             ->brandName('HRMS')
             ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             ->colors([
-                'primary' => Color::Indigo,
+                'primary' => '#459B8C',
             ])
             ->discoverResources(in: app_path('Filament/Hrm/Resources'), for: 'App\Filament\Hrm\Resources')
             ->discoverPages(in: app_path('Filament/Hrm/Pages'), for: 'App\Filament\Hrm\Pages')

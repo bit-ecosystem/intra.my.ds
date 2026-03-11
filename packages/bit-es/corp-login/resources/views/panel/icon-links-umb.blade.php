@@ -13,7 +13,7 @@ $currentKB = count($routeParts) > 2 ? implode('.', array_slice($routeParts, 2)) 
 @endphp
 
 
-<x-filament::icon-button icon="myicon-p-info" href="https://bit-ecosystem.github.io" tag="a" target="_blank"
+<x-filament::icon-button icon="bites-p-info" href="https://bit-ecosystem.github.io" tag="a" target="_blank"
     color="gray" tooltip="{{ __('About') }}" />
-<x-filament::icon-button icon="myicon-p-help" href="https://bit-ecosystem.github.io/bites/" tag="a"
+<x-filament::icon-button icon="bites-p-help" href="https://bit-ecosystem.github.io/bites/" tag="a"
     target="_blank" color="gray" tooltip="{{ __('Documentation') }}" />

@@ -5,6 +5,7 @@ namespace App\Enums;
 use BackedEnum;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\HtmlString;
+use Filament\Support\Colors\Color;
 
 enum CourseGroup: string
 {
@@ -48,9 +49,9 @@ enum CourseGroup: string
         return match ($this) {
             // Operations
             self::SAFETY       => 'heroicon-o-shield-check',
-            self::COMPLIANCE   => 'heroicon-o-scale',
-            self::QUALITY      => 'heroicon-o-check-badge',
-            self::TECHNICAL    => 'heroicon-o-cog-6-tooth',
+            self::COMPLIANCE   => 'heroicon-o-clipboard-document-check',
+            self::QUALITY      => 'heroicon-o-star',
+            self::TECHNICAL    => 'heroicon-o-cpu-chip',
 
             // Production
             self::PRODUCT      => 'heroicon-o-cube',
@@ -59,10 +60,10 @@ enum CourseGroup: string
 
             // Growth
             self::EFFICIENCY   => 'heroicon-o-bolt',
-            self::DIGITAL      => 'heroicon-o-device-phone-mobile',
+            self::DIGITAL      => 'heroicon-o-code-bracket',
             self::SOFT_SKILLS  => 'heroicon-o-chat-bubble-left-ellipsis',
-            self::LEADERSHIP   => 'heroicon-o-user-group',
-            self::ONBOARDING   => 'heroicon-o-clipboard-document-check',
+            self::LEADERSHIP   => 'heroicon-o-flag',
+            self::ONBOARDING   => 'heroicon-o-cursor-arrow-ripple',
         };
     }
 
@@ -78,22 +79,22 @@ enum CourseGroup: string
     {
         return match ($this) {
             // Operations
-            self::SAFETY       => 'success',
-            self::COMPLIANCE   => 'warning',
-            self::QUALITY      => 'info',
-            self::TECHNICAL    => 'danger',
+            self::SAFETY       => Color::Cyan,
+            self::COMPLIANCE   => Color::Red,
+            self::QUALITY      => Color::Lime,
+            self::TECHNICAL    => Color::Blue,
 
             // Production
-            self::PRODUCT      => 'purple',
-            self::PROCESS      => 'blue',
-            self::EQUIPMENT    => 'violet',
+            self::PRODUCT      => Color::Emerald,
+            self::PROCESS      => Color::Amber,
+            self::EQUIPMENT    => Color::Violet,
 
             // Growth
-            self::EFFICIENCY   => 'emerald',
-            self::DIGITAL      => 'cyan',
-            self::SOFT_SKILLS  => 'rose',
-            self::LEADERSHIP   => 'amber',
-            self::ONBOARDING   => 'teal',
+            self::EFFICIENCY   => Color::Orange,
+            self::DIGITAL      => Color::Mauve,
+            self::SOFT_SKILLS  => Color::Fuchsia,
+            self::LEADERSHIP   => Color::Sky,
+            self::ONBOARDING   => Color::Yellow,
         };
     }
 

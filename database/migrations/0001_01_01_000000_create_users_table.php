@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('department')->nullable();
             $table->string('title')->nullable();
             $table->string('manager_dn')->nullable();
+            $table->boolean('bio_readonly')->default(false);
 
             $table->timestamps();
             $table->unique('username');

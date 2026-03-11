@@ -22,6 +22,11 @@ class Course extends Model
         'published_at',
     ];
 
+    protected $casts = [
+        'category' => \App\Enums\CourseGroup::class,
+    ];
+
+
     /**
      * 1:N path (because l_modules has course_id).
      */
