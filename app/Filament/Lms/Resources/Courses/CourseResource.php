@@ -17,6 +17,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use UnitEnum;
+use Illuminate\Database\Eloquent\Builder;
 
 class CourseResource extends Resource
 {
@@ -29,6 +30,11 @@ class CourseResource extends Resource
     protected static ?string $modelLabel = 'Courses';
 
     protected static ?int $navigationSort = 3;
+
+    public static function getEloquentQuery(): Builder
+    {
+        return static::getModel()::query(); // ✅ ensure not null
+    }
 
     public static function form(Schema $schema): Schema
     {

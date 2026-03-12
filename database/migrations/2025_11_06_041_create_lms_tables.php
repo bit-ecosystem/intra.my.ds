@@ -8,7 +8,6 @@ return new class extends Migration
 {
     public function up(): void
     {
-
         Schema::create('l_courses', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique(); // e.g., ENT-IT-MFG-101
@@ -42,19 +41,29 @@ return new class extends Migration
 
             $table->unique(['course_id', 'module_id']);
             $table->index(['course_id', 'order_index']); // helps ordered retrieval
-
         });
 
+        // MATERIALS are now independent…
         Schema::create('l_materials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('module_id')->constrained('l_modules')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('title');                // e.g., "NIST CSF Overview"
             $table->string('type')->default('link'); // link|pdf|video|doc|other
-            $table->string('url');                  // absolute or app route
-            $table->unsignedInteger('order_index')->default(0);
+            $table->string('url')->nullable();                  // absolute or app route
             $table->json('meta')->nullable();       // optional (author, length, etc.)
             $table->timestamps();
-            $table->index(['module_id', 'order_index']);
+            // NOTE: module_id removed to allow many-to-many
+        });
+
+        // …and linked to modules via a pivot table
+        Schema::create('l_material_module', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('material_id')->constrained('l_materials')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('module_id')->constrained('l_modules')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->unsignedInteger('order_index')->default(0); // sequence within a module
+            $table->timestamps();
+
+            $table->unique(['material_id', 'module_id']); // prevent duplicates
+            $table->index(['module_id', 'order_index']);   // ordered retrieval by module
         });
 
         Schema::create('l_quizzes', function (Blueprint $table) {
@@ -99,23 +108,22 @@ return new class extends Migration
             $table->string('title')->nullable();            // e.g., "Networking Certificate"
             $table->timestamp('issued_at');
             $table->timestamp('expires_at')->nullable();
-            // store a render-ready payload or fields used by your PDF generator
-            $table->json('payload')->nullable(); // name, module, score, QR, etc.
+            $table->json('payload')->nullable(); // render-ready payload for PDF
             $table->enum('status', ['valid', 'expired', 'revoked'])->default('valid');
             $table->enum('action', ['pending', 'completed', 'none'])->default('pending');
             $table->timestamps();
-            $table->index(['module_id', 'user_id', 'status']);
+
+            // FIX: previously referenced user_id which doesn't exist here
+            $table->index(['module_id', 'for_staff', 'status']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('l_certificates');
         Schema::dropIfExists('l_quiz_attempts');
         Schema::dropIfExists('l_quizzes');
+        Schema::dropIfExists('l_material_module'); // drop pivot before base tables
         Schema::dropIfExists('l_materials');
         Schema::dropIfExists('l_course_module');
         Schema::dropIfExists('l_modules');

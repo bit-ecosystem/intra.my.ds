@@ -28,7 +28,7 @@ class RedirectToCoreLogin
     
         // If user has bio needing update, redirect to biodata page
         if (! Auth::user()->bio_readonly) {
-            return redirect()->route('filament.staff.pages.biodata');
+            return redirect()->to(filament()->getPanel('staff')->getUrl());
         }
 
         if (! Auth::user()->can('go_' . $panelId . '_panel')) {

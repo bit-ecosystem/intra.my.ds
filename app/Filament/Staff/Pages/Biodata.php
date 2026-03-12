@@ -76,7 +76,7 @@ class Biodata extends Page implements HasSchemas, HasActions
     public function form(Schema $schema): Schema
     {
         $postcodes = \App\Support\MalaysiaPostcodes::cityAreaLabels();
-// dd($postcodes);
+        // dd($postcodes);
         return $schema
             ->components([
                 Wizard::make([
@@ -93,13 +93,11 @@ class Biodata extends Page implements HasSchemas, HasActions
                         ->schema([
                             Components\TextInput::make('phone')->tel(), //->required(),
                             Components\TextInput::make('personal_email')->email(), //->required(),
-                            Components\TextInput::make('address_line_1')
+                            Components\TextInput::make('address_line_1')->placeholder('No. & Street'), //->required(),
+                            Components\TextInput::make('address_line_2')
                                 ->datalist($postcodes)      // HTML5 suggestions
                                 ->debounce(300)
                                 ->reactive(),
-
-                            Components\TextInput::make('city'), //->required(),
-                            Components\TextInput::make('postcode')->numeric(), //->required(),
                         ])->columns(2),
 
                     Wizard\Step::make('Emergency Contact')
@@ -116,7 +114,7 @@ class Biodata extends Page implements HasSchemas, HasActions
                             Components\TextInput::make('epf_number'), //->label('EPF/PF Number'),
                             Components\TextInput::make('tax_number'), //->label('Income Tax Number'),
                         ])->columns(2),
-                ])->submitAction(
+                ])->skippable()->disabled(true)->submitAction(
                     Action::make('save')
                         ->label('Submit Biodata')
                         ->action('save'),

@@ -75,7 +75,7 @@ class MalaysiaPostcodes
     {
         $labels = [];
         foreach (self::rows() as $r) {
-            $label = trim(implode(' · ', array_filter([$r['city'] ?? null, $r['area'] ?? null, $r['state'] ?? null, $r['postcode'] ?? null])));
+            $label = trim(implode(' · ', array_filter([$r['state'] ?? null, $r['postcode'] ?? null,$r['city'] ?? null, $r['area'] ?? null])));
             if ($label !== '') $labels[$label] = true;
         }
         return array_keys($labels);

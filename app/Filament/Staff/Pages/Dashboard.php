@@ -46,6 +46,7 @@ class Dashboard extends BaseDashboard
         // Only these widgets appear on the Dashboard
         return [
             Widgets\StaffInfo::class,
+            \App\Filament\Staff\Widgets\BioDataWidget::class,
             Widgets\RolesWidgetMini::class,
         ];
     }

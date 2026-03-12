@@ -7,6 +7,7 @@ namespace App\Models\Lms;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Material extends Model
 {
@@ -22,6 +23,7 @@ class Material extends Model
         'order_index',
         'meta',
     ];
+    protected $casts = ['meta' => 'array'];
 
     public function module(): BelongsTo
     {
@@ -34,5 +36,13 @@ class Material extends Model
             'meta' => 'array',
             'order_index' => 'integer',
         ];
+    }
+
+
+    public function modules(): BelongsToMany
+    {
+        return $this->belongsToMany(Module::class, 'l_material_module')
+            ->withPivot(['order_index'])
+            ->withTimestamps();
     }
 }

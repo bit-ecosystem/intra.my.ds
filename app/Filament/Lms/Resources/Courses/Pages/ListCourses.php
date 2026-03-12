@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\Courses\Pages;
 
 use App\Filament\Lms\Resources\Courses\CourseResource;
+use App\Enums\CourseGroup;
 use App\Models\Lms\Course;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 class ListCourses extends ListRecords
 {
@@ -19,6 +22,7 @@ class ListCourses extends ListRecords
     {
         return __('Courses, modules, quizzes and learning materials for staff.');
     }
+
     public function getHeaderWidgets(): array
     {
         return [
@@ -33,51 +37,61 @@ class ListCourses extends ListRecords
             CreateAction::make(),
         ];
     }
+    public function getDefaultActiveTab(): string | int | null
+    {
+        $onboardingCount = Course::query()
+            ->where('status', 'published')
+            ->where('category', 'Onboarding')
+            ->count();
 
-    // public function getTabs(): array
-    // {
-    //     // Collect unique categories (including null to represent "Uncategorized")
-    //     $categories = Course::query()
-    //         ->select('category')
-    //         ->where('status', 'published')
-    //         ->distinct()
-    //         ->pluck('category')
-    //         ->toArray();
+        return $onboardingCount > 0 ? 'Onboarding' : 'all';
+    }
+    public function getTabs(): array
+    {
+        $counts = Course::query()
+            ->where('status', 'published')
+            ->selectRaw('category, COUNT(*) as total')
+            ->groupBy('category')
+            ->pluck('total', 'category');
 
-    //     $tabs = [];
+        $totalPublished = (int) $counts->sum();
+        $tabs = [];
 
-    //     // "All" tab: no filter, counts all
-    //     $tabs['all'] = Tab::make('All')
-    //         ->badge(Course::count())
-    //         ->modifyQueryUsing(fn($query) => $query);
+        // "All" tab - use a simple string key 'all'
+        $tabs['all'] = Tab::make(__('All'))
+            ->badge($totalPublished)
+            ->badgeColor('primary')
+            ->icon('heroicon-o-rectangle-stack')
+            // Explicitly return the query
+            ->modifyQueryUsing(fn(Builder $query) => $query->where('status', 'published'));
 
-    //     // For each category, add a tab. Handle nulls as "Uncategorized".
-    //     foreach ($categories as $category) {
-    //         $label = $category ?: 'Uncategorized';
+        foreach (CourseGroup::meta() as $key => $meta) {
+            $tabs[$key] = Tab::make($meta['label'])
+                ->badge(
+                    fn() => Course::query()
+                        ->where('status', 'published')
+                        ->where('category', $key) // Uses "Safety", "Compliance", etc.
+                        ->count()
+                )
+                ->badgeColor($meta['color'])
+                ->icon($meta['icon'])
+                //    ->color($meta['color'])
+                ->modifyQueryUsing(
+                    fn(Builder $query) => $query
+                        ->where('status', 'published')
+                        ->where('category', $key)
+                );
+        }
 
-    //         $tabs[$label] = Tab::make($label)
-    //             ->badge(
-    //                 Course::query()->when(
-    //                     $category,
-    //                     fn($q) => $q->where('category', $category),
-    //                     fn($q) => $q->whereNull('category')
-    //                 )
-    //                     ->count()
-    //             )
-    //             // ->label('')
-    //             ->extraAttributes([
-    //                 'title' => (string) $label,   // tooltip on hover
-    //                 'aria-label' => (string) $label,
-    //             ])
-    //             ->modifyQueryUsing(function ($query) use ($category) {
-    //                 return $query->when(
-    //                     $category,
-    //                     fn($q) => $q->where('category', $category),
-    //                     fn($q) => $q->whereNull('category')
-    //                 );
-    //             });
-    //     }
+        $uncategorizedCount = (int) ($counts[null] ?? 0);
+        if ($uncategorizedCount > 0) {
+            $tabs['uncategorized'] = Tab::make(__('Uncategorized'))
+                ->icon('heroicon-o-tag')
+                ->badge($uncategorizedCount)
+                ->badgeColor('gray')
+                ->modifyQueryUsing(fn(Builder $q) => $q->where('status', 'published')->whereNull('category'));
+        }
 
-    //     return $tabs;
-    // }
+        return $tabs;
+    }
 }

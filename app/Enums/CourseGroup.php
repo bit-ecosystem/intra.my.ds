@@ -15,17 +15,54 @@ enum CourseGroup: string
     case QUALITY = 'Quality';
     case TECHNICAL = 'Technical';
 
-    // Tier 2: Production (ISA-95 context)
+        // Tier 2: Production (ISA-95 context)
     case PRODUCT = 'Product';
     case PROCESS = 'Process';
     case EQUIPMENT = 'Equipment';
 
-    // Tier 3: Growth
+        // Tier 3: Growth
     case EFFICIENCY = 'Efficiency';
     case DIGITAL = 'Digital';
     case SOFT_SKILLS = 'Soft Skills';
     case LEADERSHIP = 'Leadership';
     case ONBOARDING = 'Onboarding';
+
+
+    public function dbValue(): string
+    {
+        return match ($this) {
+            self::SAFETY => 'Safety',
+            self::COMPLIANCE => 'Compliance',
+            self::QUALITY => 'Quality',
+            self::TECHNICAL => 'Technical',
+            self::PRODUCT => 'Product',
+            self::PROCESS => 'Process',
+            self::EQUIPMENT => 'Equipment',
+            self::EFFICIENCY => 'Efficiency',
+            self::DIGITAL => 'Digital',
+            self::SOFT_SKILLS => 'Soft Skills',
+            self::LEADERSHIP => 'Leadership',
+            self::ONBOARDING => 'Onboarding',
+        };
+    }
+
+    public function label(): string
+    {
+        return match ($this) {
+            self::SAFETY => __('Safety'),
+            self::COMPLIANCE => __('Compliance'),
+            self::QUALITY => __('Quality'),
+            self::TECHNICAL => __('Technical'),
+            self::PRODUCT => __('Product'),
+            self::PROCESS => __('Process'),
+            self::EQUIPMENT => __('Equipment'),
+            self::EFFICIENCY => __('Efficiency'),
+            self::DIGITAL => __('Digital'),
+            self::SOFT_SKILLS => __('Soft Skills'),
+            self::LEADERSHIP => __('Leadership'),
+            self::ONBOARDING => __('Onboarding'),
+        };
+    }
 
     /**
      * Display label for Filament (tabs, badges, selects).
@@ -131,13 +168,13 @@ enum CourseGroup: string
     {
         return match ($this) {
             self::SAFETY, self::COMPLIANCE, self::QUALITY, self::TECHNICAL
-                => 'Operations',
+            => 'Operations',
 
             self::PRODUCT, self::PROCESS, self::EQUIPMENT
-                => 'Production',
+            => 'Production',
 
             self::EFFICIENCY, self::DIGITAL, self::SOFT_SKILLS, self::LEADERSHIP, self::ONBOARDING
-                => 'Growth',
+            => 'Growth',
         };
     }
 
@@ -156,7 +193,7 @@ enum CourseGroup: string
     {
         return array_values(array_filter(
             self::cases(),
-            fn (self $case) => $case->getTier() === $tier
+            fn(self $case) => $case->getTier() === $tier
         ));
     }
 
