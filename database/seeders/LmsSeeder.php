@@ -163,6 +163,7 @@ class LmsSeeder extends Seeder
                         'certificate_template'       => $moduleData['certificate_template'] ?? [],
                     ]
                 );
+                dd($module->toArray());
             }
 
             // Materials

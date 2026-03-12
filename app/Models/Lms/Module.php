@@ -71,7 +71,7 @@ class Module extends Model
                 'title' => $record['name'] ?? $record['title'] ?? 'Untitled Module',
                 'description' => $record['description'] ?? '',
                 'order_index' => $index + 1,
-                'estimated_duration_minutes' => 60,
+                'estimated_duration_minutes' => $record['estimated_duration_minutes'] ?? 60,
                 'validity_months' => 12,
                 'certificate_template' => [],
 
@@ -80,7 +80,7 @@ class Module extends Model
                 'slug' => Str::slug(($record['name'] ?? $record['title'] ?? 'untitled') . '-' . fake()->unique()->lexify('????')),
             ]
         );
-
+// dd($record);
         // 2) Attach roles if provided
         if (! empty($record['roles'])) {
             $module->attachRolesFromMixed($record['roles'], [

@@ -21,6 +21,7 @@ class ModulesTable
             ->columns([
                 TextColumn::make('title'),
                 TextColumn::make('slug'),
+                TextColumn::make('description'),
                 TextColumn::make('estimated_duration_minutes')
                     ->label('Duration')
                     ->numeric()
