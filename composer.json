@@ -116,7 +116,6 @@
         ],
         "job-seed": [
             "@php artisan db:seed MigrationSeeder",
-            "@php artisan db:seed CourseSeeder",
             "@php artisan bites:make-permissions",
             "@upload"
         ],

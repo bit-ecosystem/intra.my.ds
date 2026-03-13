@@ -80,7 +80,7 @@ class Module extends Model
                 'slug' => Str::slug(($record['name'] ?? $record['title'] ?? 'untitled') . '-' . fake()->unique()->lexify('????')),
             ]
         );
-// dd($record);
+
         // 2) Attach roles if provided
         if (! empty($record['roles'])) {
             $module->attachRolesFromMixed($record['roles'], [

@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-        // $this->call([DBRawJsonSeeder::class,]);
+        $this->call([CourseSeeder::class,]);
         $this->call([LmsSeeder::class]);
         $this->call([QuizSeeder::class]);
         $this->call([ModelJsonSeeder::class]);

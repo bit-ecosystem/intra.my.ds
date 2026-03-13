@@ -3,6 +3,7 @@
 return [
     App\Providers\AppServiceProvider::class,
     App\Providers\DmsServiceProvider::class,
+    App\Providers\FilamentMacroServiceProvider::class,
     App\Providers\Filament\CorePanelProvider::class,
     App\Providers\Filament\DmsPanelProvider::class,
     App\Providers\Filament\EamPanelProvider::class,

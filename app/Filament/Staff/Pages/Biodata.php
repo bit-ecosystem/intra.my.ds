@@ -12,9 +12,11 @@ use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Illuminate\Support\Facades\Auth;
 use UnitEnum;
+use Filament\Schemas\Components\Section;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Schemas\Components\Wizard;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
 use Filament\Actions\Action;
 use App\Models\User;
@@ -67,6 +69,12 @@ class Biodata extends Page implements HasSchemas, HasActions
         $user = User::find($auth);
         // Load existing attributes into the form
         $attributes = $user->personAttributes()->pluck('value', 'key')->toArray();
+
+        // Decode the JSON string back into an array for the Repeater
+        if (isset($attributes['family_members'])) {
+            $attributes['family_members'] = json_decode($attributes['family_members'], true);
+        }
+
         $this->form->fill($attributes);
     }
     // public function form(Schema $schema): Schema
@@ -75,36 +83,74 @@ class Biodata extends Page implements HasSchemas, HasActions
     //         ->components([
     public function form(Schema $schema): Schema
     {
-        $postcodes = \App\Support\MalaysiaPostcodes::cityAreaLabels();
-        // dd($postcodes);
+
         return $schema
             ->components([
                 Wizard::make([
                     Wizard\Step::make('Personal Details')
                         ->schema([
-                            Components\TextInput::make('full_name'), //->required(),
-                            Components\TextInput::make('ic_passport_number')->label('IC / Passport No.'), //->required(),
-                            Components\DatePicker::make('dob')->label('Date of Birth'), //->required(),
-                            Components\Select::make('gender')->options(['male' => 'Male', 'female' => 'Female']),
-                            // Components\FileUpload::make('profile_photo')->image()->avatar(),
-                        ])->columns(2),
+                            Section::make('Self')
+                                // ->description('Prevent abuse by limiting the number of requests per period')
+                                ->columnSpanFull()
+                                ->inlineLabel()
+                                ->schema([
+                                    Components\TextInput::make('full_name')->columnSpan(2)->lockWhenFilled(), //->required(),
+                                    Components\TextInput::make('ic_passport_number')->label('IC / Passport No.')->lockWhenFilled(), //->required(),
+                                    Components\DatePicker::make('dob')->label('Date of Birth')->lockWhenFilled(), //->required(),
+                                    Components\Select::make('gender')->lockWhenFilled()->options(['male' => 'Male', 'female' => 'Female']),
+                                     Components\Select::make('marital')->lockWhenFilled()->options(['single' => 'Single', 'married' => 'Married', 'divorced' => 'Divorced', 'widowed' => 'Widowed']),
+                                ])->columns(3),// Components\FileUpload::make('profile_photo')->image()->avatar(),
+                            //    
 
-                    Wizard\Step::make('Contact & Address')
-                        ->schema([
-                            Components\TextInput::make('phone')->tel(), //->required(),
-                            Components\TextInput::make('personal_email')->email(), //->required(),
-                            Components\TextInput::make('address_line_1')->placeholder('No. & Street'), //->required(),
-                            Components\TextInput::make('address_line_2')
-                                ->datalist($postcodes)      // HTML5 suggestions
-                                ->debounce(300)
-                                ->reactive(),
+                            // Wizard\Step::make('Contact & Address')
+                            //     ->schema([
+                            Components\TextInput::make('phone')->lockWhenFilled(), //->required(),
+                            Components\TextInput::make('personal_email')->lockWhenFilled(), //->required(),
+                            Components\TextInput::make('address_line_1')->lockWhenFilled(), //->required(),
+                            Components\TextInput::make('address_line_2')->lockWhenFilled(),
+                            Action::make('save')
+                            
+                                ->label('Save Biodata')
+                                ->action('save')
                         ])->columns(2),
-
                     Wizard\Step::make('Emergency Contact')
                         ->schema([
-                            Components\TextInput::make('emergency_name')->label('Contact Person Name'), //->required(),
-                            Components\TextInput::make('emergency_relationship')->label('Relationship'), //->required(),
-                            Components\TextInput::make('emergency_phone')->label('Emergency Phone')->tel(), //->required(),
+                            Components\TextInput::make('emergency_name')->label('Contact Person Name')->lockWhenFilled(), //->required(),
+                            Components\TextInput::make('emergency_relationship')->label('Relationship')->lockWhenFilled(), //->required(),
+                            Components\TextInput::make('emergency_phone')->label('Emergency Phone')->tel()->lockWhenFilled(), //->required(),
+                            Action::make('save')
+                                ->label('Save Emergency Contact')
+                                ->action('save')
+                        ]),
+                    Wizard\Step::make('Family Members')
+                        ->schema([
+                            Components\Repeater::make('family_members') // The name of the relationship
+                                ->schema([
+                                    Grid::make(3)
+                                        ->schema([
+                                            Components\TextInput::make('name')
+                                                ->required()
+                                                ->maxLength(255),
+                                            Components\DatePicker::make('date_of_birth')
+                                                ->native(false), // Use Filament's date picker style
+                                            Components\Select::make('relationship_type')
+                                                ->options([
+                                                    'spouse' => 'Spouse',
+                                                    'child' => 'Child',
+                                                    'parent' => 'Parent',
+                                                    'other' => 'Other',
+                                                ])
+                                                ->required(),
+                                        ]),
+                                ])
+                                ->addable(false)->deletable(false)->reorderable(false)
+                                ->addActionLabel('Add Family Member') // Customize the button label
+                                ->columns(1) // Repeater itself occupies one column in the parent grid
+                                ->collapsible() // Optional: allows collapsing items
+                                ->itemLabel(fn(array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
+                            Action::make('save')
+                                ->label('Save Family Info')
+                                ->action('save')
                         ]),
 
                     Wizard\Step::make('Payroll Information')
@@ -113,29 +159,60 @@ class Biodata extends Page implements HasSchemas, HasActions
                             Components\TextInput::make('bank_account_number'), //->required(),
                             Components\TextInput::make('epf_number'), //->label('EPF/PF Number'),
                             Components\TextInput::make('tax_number'), //->label('Income Tax Number'),
+                            Action::make('save')
+                                ->label('Save Payroll Info')
+                                ->action('save')
                         ])->columns(2),
-                ])->skippable()->disabled(true)->submitAction(
-                    Action::make('save')
-                        ->label('Submit Biodata')
-                        ->action('save'),
-                )
+                    Wizard\Step::make('Reminders')
+                        ->schema([
+                            Components\TextInput::make('bank_name'), //->required(),
+                            Components\TextInput::make('bank_account_number'), //->required(),
+                            Components\TextInput::make('epf_number'), //->label('EPF/PF Number'),
+                            Components\TextInput::make('tax_number'), //->label('Income Tax Number'),
+                            Action::make('save')
+                                ->label('Save Reminders')
+                                ->action('save')
+                        ])->columns(2),
+                ])->skippable()
+                    ->submitAction(
+                        Action::make('save')
+                            ->label('Submit Biodata')
+                            ->action('save')
+                    ),
             ])
             ->statePath('data');
     }
     public function save(): void
     {
-        $auth = Auth::user()->id;
-        $user = User::find($auth);
-        // User::updateOrCreate(['id' => Auth::user()->id], $this->form->getState());
+        $authId = Auth::id();
+        $user = User::find($authId);
         $extraFields = $this->form->getState();
+
+        // Check if we should skip specific keys
+        $isReadonly = (bool) $user->bio_readonly;
+
         foreach ($extraFields as $key => $value) {
-            if (! empty($value)) {
+            // Skip family_members if readonly is true
+            if ($isReadonly && $key === 'family_members') {
+                continue;
+            }
+
+            if (!empty($value)) {
+                // Convert array (repeater data) to JSON string
+                $preparedValue = is_array($value) ? json_encode($value) : $value;
+
                 $user->personAttributes()->updateOrCreate(
                     ['key' => $key],
-                    ['value' => $value]
+                    ['value' => $preparedValue]
                 );
             }
         }
+
+        $user->bio_readonly = true;
+        $user->save();
+
+        redirect()->route('filament.staff.pages.biodata');
+
         Notification::make()
             ->title('Staff Biodata Updated')
             ->success()
