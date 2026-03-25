@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Pages;
 
+use App\Filament\Staff\Widgets\TaskWidget;
 use BackedEnum;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
@@ -40,7 +41,7 @@ class Task extends Page
     protected function getHeaderWidgets(): array
     {
         return [
-            \App\Filament\Staff\Widgets\TaskWidget::class,
+            TaskWidget::class,
         ];
     }
 }

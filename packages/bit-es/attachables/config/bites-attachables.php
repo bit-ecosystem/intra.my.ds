@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Menu;
+
 return [
-    'model' => \App\Models\Menu::class,
+    'model' => Menu::class,
 ];

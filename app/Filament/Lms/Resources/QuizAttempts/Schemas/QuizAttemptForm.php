@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\QuizAttempts\Schemas;
 
+use App\Filament\Forms\Components\ViewImage;
 use Filament\Forms;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\TextSize;
@@ -71,7 +73,7 @@ class QuizAttemptForm
                 // Build quiz box
                 $quizComponents = [];
                 if (! empty($data['image'])) {
-                    $quizComponents[] = \App\Filament\Forms\Components\ViewImage::make('quiz_image')
+                    $quizComponents[] = ViewImage::make('quiz_image')
                         ->size('200px')
                         ->image($data['image']);
                 }
@@ -83,7 +85,7 @@ class QuizAttemptForm
                         ->options($options);
                 } else {
                     // Add checkbox list if multiple answers
-                    $quizComponents[] = \Filament\Infolists\Components\TextEntry::make('multiple')
+                    $quizComponents[] = TextEntry::make('multiple')
                         ->hiddenLabel() // hide label
                         ->color('warning')
                         ->badge()
@@ -95,7 +97,7 @@ class QuizAttemptForm
                         ->options($options);
                 }
 
-                $quizComponents[] = \Filament\Infolists\Components\TextEntry::make('data.'.$data['description'])
+                $quizComponents[] = TextEntry::make('data.'.$data['description'])
                     ->hiddenLabel() // hide label
                     ->color('info')
                     ->size(TextSize::ExtraSmall)

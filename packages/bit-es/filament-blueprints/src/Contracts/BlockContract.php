@@ -2,6 +2,7 @@
 
 namespace Bites\FilamentBlueprints\Contracts;
 
+use Bites\FilamentBlueprints\BlockRegistry;
 use Filament\Forms\Components\Builder\Block;
 
 interface BlockContract
@@ -10,7 +11,7 @@ interface BlockContract
 
     public function palette(): Block;
 
-    public function decode(array $payload, \Bites\FilamentBlueprints\BlockRegistry $registry): mixed;
+    public function decode(array $payload, BlockRegistry $registry): mixed;
 
     public function encode(array $payload): array;
 }

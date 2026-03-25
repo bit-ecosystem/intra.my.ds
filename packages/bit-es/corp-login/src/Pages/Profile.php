@@ -15,9 +15,10 @@ class Profile extends BaseEditProfile
     public function form(Schema $schema): Schema
     {
         $temp = (Auth::user()->id);
+
         // DB::table('socialite_users')->where('user_id', $temp)->first()?->provider ?? null;
-// dd($schema);
-//         dd(Auth::user()->staff);
+        // dd($schema);
+        //         dd(Auth::user()->staff);
         return $schema
             ->components([
 

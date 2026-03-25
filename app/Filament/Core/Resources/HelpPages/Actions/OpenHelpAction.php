@@ -75,7 +75,7 @@ final class OpenHelpAction
                         'content' => $data['content'],
                         'panel_id' => 'core',
                         'org_unit_id' => null,
-                        'title' => 'Help for ' .
+                        'title' => 'Help for '.
                             Str::headline(class_basename($data['page_class'])),
                     ],
                 );
@@ -143,6 +143,7 @@ final class OpenHelpAction
 </p>
 HTML;
     }
+
     private static function genericMode(string $pageClass, ?int $recordId): Action
     {
         $template = self::defaultTemplate($pageClass, $recordId);
@@ -158,7 +159,7 @@ HTML;
                 TextEntry::make('content')
                     ->state(
                         // Localize this string as you prefer
-                        '<p><em>' . __('No help content has been written for this page yet.') . '</em></p>' .
+                        '<p><em>'.__('No help content has been written for this page yet.').'</em></p>'.
                             $template
                     )
                     ->html()

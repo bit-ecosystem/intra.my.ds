@@ -72,7 +72,7 @@ class RoleCanView
             // Preselect checkboxes from the **current record** relation
             ->fillForm(function ($model) use ($relationship, $utRoleIds, $stRoleIds, $jtRoleIds, $ouRoleIds, $myRoleIds): array {
                 // dd();
-                if (! $model instanceof \Illuminate\Database\Eloquent\Model) {
+                if (! $model instanceof Model) {
                     // No record yet (e.g., create page) or Filament passed a class-string.
 
                     return [

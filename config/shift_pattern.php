@@ -52,8 +52,8 @@ return [
             ],
         ],
         '3G3S' => [
-            'anchor_date'  => '2026-03-01', // Sunday = Day 1 in the provided table
-            'timezone'     => env('APP_TIMEZONE', 'Asia/Kuala_Lumpur'),
+            'anchor_date' => '2026-03-01', // Sunday = Day 1 in the provided table
+            'timezone' => env('APP_TIMEZONE', 'Asia/Kuala_Lumpur'),
 
             // Base segments: define the three timed shifts (morning/afternoon/night).
             // Days that should not show events (Rest, Off, Holiday) will be handled via overrides below.
@@ -73,7 +73,6 @@ return [
                 'F' => ['label' => 'Team F', 'offset' => 0, 'color' => '#10b981'],
             ],
 
-
-        ]
-    ]
+        ],
+    ],
 ];

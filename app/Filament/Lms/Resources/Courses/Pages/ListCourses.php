@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Courses\Pages;
 
-use App\Filament\Lms\Resources\Courses\CourseResource;
 use App\Enums\CourseGroup;
+use App\Filament\Lms\Resources\Courses\CourseResource;
 use App\Models\Lms\Course;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Arr;
 
 class ListCourses extends ListRecords
 {
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
+
     protected static string $resource = CourseResource::class;
 
     public function getSubheading(): ?string
@@ -37,7 +37,8 @@ class ListCourses extends ListRecords
             CreateAction::make(),
         ];
     }
-    public function getDefaultActiveTab(): string | int | null
+
+    public function getDefaultActiveTab(): string|int|null
     {
         $onboardingCount = Course::query()
             ->where('status', 'published')
@@ -46,6 +47,7 @@ class ListCourses extends ListRecords
 
         return $onboardingCount > 0 ? 'Onboarding' : 'all';
     }
+
     public function getTabs(): array
     {
         $counts = Course::query()
@@ -63,12 +65,12 @@ class ListCourses extends ListRecords
             ->badgeColor('primary')
             ->icon('heroicon-o-rectangle-stack')
             // Explicitly return the query
-            ->modifyQueryUsing(fn(Builder $query) => $query->where('status', 'published'));
+            ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'published'));
 
         foreach (CourseGroup::meta() as $key => $meta) {
             $tabs[$key] = Tab::make($meta['label'])
                 ->badge(
-                    fn() => Course::query()
+                    fn () => Course::query()
                         ->where('status', 'published')
                         ->where('category', $key) // Uses "Safety", "Compliance", etc.
                         ->count()
@@ -77,7 +79,7 @@ class ListCourses extends ListRecords
                 ->icon($meta['icon'])
                 //    ->color($meta['color'])
                 ->modifyQueryUsing(
-                    fn(Builder $query) => $query
+                    fn (Builder $query) => $query
                         ->where('status', 'published')
                         ->where('category', $key)
                 );
@@ -89,7 +91,7 @@ class ListCourses extends ListRecords
                 ->icon('heroicon-o-tag')
                 ->badge($uncategorizedCount)
                 ->badgeColor('gray')
-                ->modifyQueryUsing(fn(Builder $q) => $q->where('status', 'published')->whereNull('category'));
+                ->modifyQueryUsing(fn (Builder $q) => $q->where('status', 'published')->whereNull('category'));
         }
 
         return $tabs;

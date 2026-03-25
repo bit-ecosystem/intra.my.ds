@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\Register;
+use App\Http\Middleware\SetLocale;
+use Bites\CorpLogin\Pages\Login;
+use Bites\CorpLogin\Pages\Profile;
+use Bites\CorpLogin\Pages\ResetPassword;
 use DutchCodingCompany\FilamentSocialite\FilamentSocialitePlugin;
 use DutchCodingCompany\FilamentSocialite\Provider;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
@@ -24,9 +29,9 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Blade;
 
 class StaffPanelProvider extends PanelProvider
 {
@@ -38,13 +43,13 @@ class StaffPanelProvider extends PanelProvider
             // Panel identity & routing
             ->id('staff')
             ->path('staff')
-            ->homeUrl(fn(): string => route(config('bites.staff_panel.route', '/')))
+            ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             // Authentication pages
             // ->login(\Bites\CorpLogin\Pages\Login::class) // Use package-provided login page
-            ->login(\Bites\CorpLogin\Pages\Login::class)
-            ->registration(\App\Filament\Pages\Auth\Register::class)
-            ->profile(\Bites\CorpLogin\Pages\Profile::class)
-            ->passwordReset(\Bites\CorpLogin\Pages\ResetPassword::class)
+            ->login(Login::class)
+            ->registration(Register::class)
+            ->profile(Profile::class)
+            ->passwordReset(ResetPassword::class)
             ->multiFactorAuthentication([AppAuthentication::make()], isRequired: true)
 
             // Branding
@@ -56,17 +61,17 @@ class StaffPanelProvider extends PanelProvider
             ])
             ->navigationItems([
                 NavigationItem::make()
-                    ->label(fn(): string|array|null => __('Document'))
+                    ->label(fn (): string|array|null => __('Document'))
                     ->url('https://intra.my.ds.amkor.com/dms/documents')
                     ->icon('myicon-book-open-02')
                     ->sort(41)
-                    ->group(fn(): string|array|null => __('Knowledge')),
+                    ->group(fn (): string|array|null => __('Knowledge')),
                 NavigationItem::make()
-                    ->label(fn(): string|array|null => __('Learn'))
+                    ->label(fn (): string|array|null => __('Learn'))
                     ->url('https://intra.my.ds.amkor.com/lms/courses')
                     ->icon('myicon-course')
                     ->sort(42)
-                    ->group(fn(): string|array|null => __('Knowledge')),
+                    ->group(fn (): string|array|null => __('Knowledge')),
             ])
             ->discoverResources(in: app_path('Filament/Staff/Resources'), for: 'App\Filament\Staff\Resources')
             ->resources([])
@@ -104,12 +109,12 @@ class StaffPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-                \App\Http\Middleware\SetLocale::class,
+                SetLocale::class,
             ])
 
             // Custom render hooks for UI
-            ->renderHook('panels::auth.login.form.after', fn(): View => view('corp-login::panel.extra'))
-            ->renderHook('panels::auth.register.form.after', fn(): View => view('corp-login::panel.extra'));
+            ->renderHook('panels::auth.login.form.after', fn (): View => view('corp-login::panel.extra'))
+            ->renderHook('panels::auth.register.form.after', fn (): View => view('corp-login::panel.extra'));
     }
 
     public function boot(Panel $panel): void
@@ -117,16 +122,16 @@ class StaffPanelProvider extends PanelProvider
         // Register custom UI hooks
         FilamentView::registerRenderHook(
             PanelsRenderHook::USER_MENU_AFTER,
-            fn(): View => view('corp-login::panel.icon-links-umb'),
+            fn (): View => view('corp-login::panel.icon-links-umb'),
         );
         FilamentView::registerRenderHook(
             PanelsRenderHook::USER_MENU_AFTER,
-            fn(): string => Blade::render('<livewire:language-switcher />'),
+            fn (): string => Blade::render('<livewire:language-switcher />'),
         );
 
         FilamentView::registerRenderHook(
             PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
-            fn(): View => view('corp-login::panel.icon-links-gsb'),
+            fn (): View => view('corp-login::panel.icon-links-gsb'),
         );
 
         // Register custom icons

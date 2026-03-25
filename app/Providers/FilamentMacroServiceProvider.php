@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Support\LockWhenFilledMacro;
+use Illuminate\Support\ServiceProvider;
 
 class FilamentMacroServiceProvider extends ServiceProvider
 {

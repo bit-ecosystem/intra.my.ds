@@ -4,26 +4,24 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Widgets;
 
-use Filament\Widgets\Widget;
-use Filament\Forms\Form;
-use Filament\Forms\Components;
+use App\Models\User;
+use App\Support\MalaysiaPostcodes;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use Filament\Forms\Components;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Wizard;
 use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
+use Filament\Widgets\Widget;
+use Illuminate\Support\Facades\Auth;
 
-class BioDataWidget extends Widget implements HasSchemas, HasActions
+class BioDataWidget extends Widget implements HasActions, HasSchemas
 {
-    use InteractsWithSchemas;
     use InteractsWithActions;
+    use InteractsWithSchemas;
 
     protected string $view = 'filament.staff.widgets.bio-data-widget';
 
@@ -35,6 +33,7 @@ class BioDataWidget extends Widget implements HasSchemas, HasActions
     public static function canView(): bool
     {
         $user = Auth::user();
+
         // dd($user->bio_readonly);
         return $user && (! $user->bio_readonly);
     }
@@ -51,7 +50,8 @@ class BioDataWidget extends Widget implements HasSchemas, HasActions
 
     public function form(Schema $schema): Schema
     {
-        $postcodes = \App\Support\MalaysiaPostcodes::cityAreaLabels();
+        $postcodes = MalaysiaPostcodes::cityAreaLabels();
+
         // dd($postcodes);
         return $schema
             ->components([
@@ -66,9 +66,9 @@ class BioDataWidget extends Widget implements HasSchemas, HasActions
 
                     Wizard\Step::make('Contact & Address')
                         ->schema([
-                        Components\TextInput::make('phone')->tel(), //->required(),
-                            Components\TextInput::make('personal_email')->email(), //->required(),
-                            Components\TextInput::make('address_line_1')->columnSpanFull()->placeholder('No. & Street'), //->required(),
+                            Components\TextInput::make('phone')->tel(), // ->required(),
+                            Components\TextInput::make('personal_email')->email(), // ->required(),
+                            Components\TextInput::make('address_line_1')->columnSpanFull()->placeholder('No. & Street'), // ->required(),
                             Components\TextInput::make('address_line_2')->columnSpanFull()->placeholder('Easy suggestions for area, city, state, postcode')
                                 ->datalist($postcodes)      // HTML5 suggestions
                                 ->debounce(300)
@@ -107,7 +107,7 @@ class BioDataWidget extends Widget implements HasSchemas, HasActions
         $extraFields = $this->form->getState();
 
         foreach ($extraFields as $key => $value) {
-            if (!empty($value)) {
+            if (! empty($value)) {
                 $user->personAttributes()->updateOrCreate(
                     ['key' => $key],
                     ['value' => $value]

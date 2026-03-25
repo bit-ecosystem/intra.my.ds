@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Erp\Resources\Workflow\Nodes\Schemas;
 
+use App\Filament\Core\Resources\Roles\Schemas\RoleCanView;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -29,7 +30,7 @@ class NodeForm
                     ->numeric()
                     ->default(0),
 
-                ...\App\Filament\Core\Resources\Roles\Schemas\RoleCanView::formComponents(
+                ...RoleCanView::formComponents(
                     relationship: 'attachableRoles', // your morphToMany on the model
                     showSelect: false,               // keep the Select hidden (state updated by the Action)
                     actionName: 'choose_roles',      // rename if you include twice in same form

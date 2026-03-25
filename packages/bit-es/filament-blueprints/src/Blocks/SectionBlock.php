@@ -2,11 +2,9 @@
 
 namespace Bites\FilamentBlueprints\Blocks;
 
-
 use Bites\FilamentBlueprints\BlockRegistry;
 use Bites\FilamentBlueprints\Contracts\BlockContract;
 use Bites\FilamentBlueprints\Traits\AppliesProps;
-
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\KeyValue;
@@ -35,8 +33,8 @@ final class SectionBlock implements BlockContract
 
     public function decode(array $payload, BlockRegistry $registry): Section
     {
-        $label    = $payload['label'] ?? 'Section';
-        $props    = (array) ($payload['props'] ?? []);
+        $label = $payload['label'] ?? 'Section';
+        $props = (array) ($payload['props'] ?? []);
         $children = $registry->decodeBuilder($payload['children'] ?? []);
 
         $component = Section::make($label)->schema($children);

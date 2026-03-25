@@ -6,6 +6,7 @@ namespace App\Filament\Core\Resources\HelpPages\Tables;
 
 use Filament\Actions;
 use Filament\Facades\Filament;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Tables\Columns;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
@@ -79,7 +80,7 @@ class HelpPagesTable
                         dd($html);
 
                         return [
-                            \Filament\Infolists\Components\TextEntry::make('content')
+                            TextEntry::make('content')
                                 ->label('')
                                 ->html($html),
                         ];

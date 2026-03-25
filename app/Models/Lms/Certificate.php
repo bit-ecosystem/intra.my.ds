@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models\Lms;
 
 use App\Models\Concerns\CanMakeTask;
+use App\Models\Hrm\Staff;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -38,12 +39,12 @@ class Certificate extends Model
 
     public function staff(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Hrm\Staff::class, 'for_staff');
+        return $this->belongsTo(Staff::class, 'for_staff');
     }
 
     public function examiner(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Hrm\Staff::class, 'by_staff');
+        return $this->belongsTo(Staff::class, 'by_staff');
     }
 
     public function attempt(): BelongsTo

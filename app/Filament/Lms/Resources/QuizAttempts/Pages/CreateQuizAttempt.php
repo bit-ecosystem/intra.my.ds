@@ -99,7 +99,7 @@ class CreateQuizAttempt extends CreateRecord
         // Store as decimal (percentage)
         $data['score'] = round($score, 2); // e.g., 60.00 for 3/5
         $start = empty($data['started_at']) ? null : Carbon::parse($data['started_at']);
-        $data['time_taken'] = $start instanceof \Illuminate\Support\Carbon ? round($start->diffInMilliseconds(Carbon::now()) / 100) / 10 : null;
+        $data['time_taken'] = $start instanceof Carbon ? round($start->diffInMilliseconds(Carbon::now()) / 100) / 10 : null;
         $data['result'] = $data['score'] >= (float) $form->passing_mark;
         if (empty($data['for_staff'])) {
             $data['for_staff'] = $data['by_staff'];

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
+use Filament\Support\Colors\Color;
+
 enum DocClass: string
 {
     case L1 = 'L1';
@@ -18,6 +20,16 @@ enum DocClass: string
             self::L2 => 'General',
             self::L3 => 'Confidential',
             self::L4 => 'Highly Confidential',
+        };
+    }
+
+    public function getColor(): string|array|null
+    {
+        return match ($this) {
+            self::L1 => Color::Green,
+            self::L2 => Color::Blue,
+            self::L3 => Color::Amber,
+            self::L4 => Color::Red,
         };
     }
 }

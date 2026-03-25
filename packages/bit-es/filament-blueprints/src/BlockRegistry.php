@@ -11,7 +11,7 @@ final class BlockRegistry
     private array $byName = [];
 
     /**
-     * @param iterable<BlockContract> $services
+     * @param  iterable<BlockContract>  $services
      */
     public function __construct(iterable $services)
     {

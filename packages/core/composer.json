@@ -1,0 +1,30 @@
+{
+    "name": "bit-es/core",
+    "description": "Core domain package providing identity, organization structure, and authorization logic.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BIT Ecosystem",
+            "email": "bit.ecosystem@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "bit-es/shared": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bites\\Core\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bites\\Core\\CoreServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

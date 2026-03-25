@@ -1,17 +1,30 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use App\Providers\DmsServiceProvider;
+use App\Providers\Filament\CorePanelProvider;
+use App\Providers\Filament\DmsPanelProvider;
+use App\Providers\Filament\EamPanelProvider;
+use App\Providers\Filament\ErpPanelProvider;
+use App\Providers\Filament\HrmPanelProvider;
+use App\Providers\Filament\LmsPanelProvider;
+use App\Providers\Filament\MesPanelProvider;
+use App\Providers\Filament\QasPanelProvider;
+use App\Providers\Filament\StaffPanelProvider;
+use App\Providers\FilamentMacroServiceProvider;
+
 return [
-    App\Providers\AppServiceProvider::class,
-    App\Providers\DmsServiceProvider::class,
-    App\Providers\FilamentMacroServiceProvider::class,
-    App\Providers\Filament\CorePanelProvider::class,
-    App\Providers\Filament\DmsPanelProvider::class,
-    App\Providers\Filament\EamPanelProvider::class,
-    App\Providers\Filament\ErpPanelProvider::class,
-    App\Providers\Filament\HrmPanelProvider::class,
-    App\Providers\Filament\LmsPanelProvider::class,
-    App\Providers\Filament\MesPanelProvider::class,
-    App\Providers\Filament\QasPanelProvider::class,
-    App\Providers\Filament\StaffPanelProvider::class,
+    AppServiceProvider::class,
+    DmsServiceProvider::class,
+    FilamentMacroServiceProvider::class,
+    CorePanelProvider::class,
+    DmsPanelProvider::class,
+    EamPanelProvider::class,
+    ErpPanelProvider::class,
+    HrmPanelProvider::class,
+    LmsPanelProvider::class,
+    MesPanelProvider::class,
+    QasPanelProvider::class,
+    StaffPanelProvider::class,
     // App\Services\RagService::class,
 ];

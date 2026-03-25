@@ -3,9 +3,11 @@
 namespace App\Filament\Tables\Columns;
 
 use App\Filament\Lms\Resources\Courses\CourseResource; // ← adjust if your resource class differs
+use App\Models\LCourse;
 use App\Models\Lms\Course;
 use Filament\Support\Components\Contracts\HasEmbeddedView;
 use Filament\Tables\Columns\Column;
+use Illuminate\Support\Collection;
 
 class CategoryGroupColumn extends Column implements HasEmbeddedView
 {
@@ -22,12 +24,14 @@ class CategoryGroupColumn extends Column implements HasEmbeddedView
 
     /**
      * Cache siblings keyed by category string.
-     * @var array<string, \Illuminate\Support\Collection<int, \App\Models\LCourse>>
+     *
+     * @var array<string, Collection<int, LCourse>>
      */
     protected static array $byCategoryCache = [];
 
     /**
      * Tailwind color classes for the dot; we pick a stable color per category.
+     *
      * @var string[]
      */
     protected array $dotPalette = [
@@ -39,6 +43,7 @@ class CategoryGroupColumn extends Column implements HasEmbeddedView
     public function limit(int $limit): static
     {
         $this->limit = $limit;
+
         return $this;
     }
 
@@ -46,6 +51,7 @@ class CategoryGroupColumn extends Column implements HasEmbeddedView
     public function linkAction(string $action): static
     {
         $this->linkAction = in_array($action, ['view', 'edit'], true) ? $action : 'view';
+
         return $this;
     }
 
@@ -53,6 +59,7 @@ class CategoryGroupColumn extends Column implements HasEmbeddedView
     public function resource(string $resourceClass): static
     {
         $this->resourceClass = $resourceClass;
+
         return $this;
     }
 
@@ -60,6 +67,7 @@ class CategoryGroupColumn extends Column implements HasEmbeddedView
     public function excludeCurrent(bool $exclude = true): static
     {
         $this->excludeCurrent = $exclude;
+
         return $this;
     }
 
@@ -125,14 +133,15 @@ class CategoryGroupColumn extends Column implements HasEmbeddedView
         $trim = function (?string $text, int $max = 140): string {
             $text = (string) $text;
             $text = trim(preg_replace('/\s+/', ' ', $text));
-            return mb_strlen($text) > $max ? mb_substr($text, 0, $max - 1) . '…' : $text;
+
+            return mb_strlen($text) > $max ? mb_substr($text, 0, $max - 1).'…' : $text;
         };
 
         // Build HTML
         ob_start();
 
         foreach ($visible as $item) {
-            /** @var \App\Models\LCourse $item */
+            /** @var LCourse $item */
             $url = $this->resourceClass
                 ? $this->resourceClass::getUrl($this->linkAction, ['record' => $item])
                 : '#';
@@ -152,11 +161,11 @@ class CategoryGroupColumn extends Column implements HasEmbeddedView
                         </span>
                     </div>
 
-                    <?php if (filled($item->description)) : ?>
+                    <?php if (filled($item->description)) { ?>
                         <p class="mt-0.5 text-xs leading-relaxed text-gray-400 dark:text-gray-500">
                             <?= e($trim($item->description)) ?>
                         </p>
-                    <?php endif; ?>
+                    <?php } ?>
                 </div>
 
             </a>

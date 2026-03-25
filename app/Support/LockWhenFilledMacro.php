@@ -3,13 +3,12 @@
 namespace App\Support;
 
 use Filament\Forms\Components\Field;
-use Filament\Schemas\Components\Utilities\Get;
 
 final class LockWhenFilledMacro
 {
     public static function register(): void
     {
-        static::registerLockWhenFilled();
+        self::registerLockWhenFilled();
     }
 
     private static function registerLockWhenFilled(): void
@@ -18,7 +17,6 @@ final class LockWhenFilledMacro
         if (method_exists(Field::class, 'lockWhenFilled')) {
             return;
         }
-
 
         Field::macro('lockWhenFilled', function (
             ?callable $bypass = null,
@@ -32,7 +30,7 @@ final class LockWhenFilledMacro
                 }
 
                 // 2. If the initial hydrated state is not blank, lock it
-                if (!blank($state)) {
+                if (! blank($state)) {
                     $readOnly
                         ? $component->readOnly()
                         : $component->disabled()->dehydrated(); // dehydrated keeps it in the save request

@@ -1,0 +1,32 @@
+{
+    "name": "bit-es/oum",
+    "description": "Operations orchestration module coordinating cross-domain processes and system interactions.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BIT Ecosystem",
+            "email": "bit.ecosystem@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "bit-es/shared": "*",
+        "bit-es/workflow": "*",
+        "bit-es/core": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bites\\Oum\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bites\\Oum\\OumServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

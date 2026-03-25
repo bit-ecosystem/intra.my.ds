@@ -70,7 +70,7 @@ class GenerateWithAIAction
                 $schema = $data['schema']; // This is the JSON schema we filled in mountUsing()
 
                 // ✅ Call OllamaService
-                $ollamaService = app(\App\Services\OllamaService::class);
+                $ollamaService = app(OllamaService::class);
                 $response = $ollamaService->generateStructured($prompt, $schema);
 
                 // ✅ Fill the original form with AI-generated values

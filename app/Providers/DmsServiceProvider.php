@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Services\EmbeddingService;
+use App\Services\RagService;
 use Illuminate\Support\ServiceProvider;
 
 class DmsServiceProvider extends ServiceProvider
@@ -14,8 +16,8 @@ class DmsServiceProvider extends ServiceProvider
     public function register(): void
     {
         // $this->mergeConfigFrom(__DIR__ . '/../config/bites.php', 'dms');
-        $this->app->singleton(\App\Services\EmbeddingService::class);
-        $this->app->singleton(\App\Services\RagService::class);
+        $this->app->singleton(EmbeddingService::class);
+        $this->app->singleton(RagService::class);
     }
 
     /**

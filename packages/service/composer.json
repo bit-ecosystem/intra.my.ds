@@ -1,0 +1,31 @@
+{
+    "name": "bit-es/service",
+    "description": "Service catalog, service items, SLAs, and request execution engine for enterprise workflows.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BIT Ecosystem",
+            "email": "bit.ecosystem@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "bit-es/shared": "*",
+        "bit-es/workflow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bites\\Services\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bites\\Services\\ServiceServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

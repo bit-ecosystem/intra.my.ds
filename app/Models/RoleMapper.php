@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Core\OrgUnit;
+use App\Models\Hrm\JobPosition;
+use App\Models\Hrm\Staff;
 use App\Observers\RoleMapperObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -29,24 +33,24 @@ class RoleMapper extends Model
     // Relationships (adjust namespaces/models to your app structure)
     public function staff()
     {
-        return $this->belongsToMany(\App\Models\Hrm\Staff::class, 'role_staff', 'role_id', 'staff_id')
+        return $this->belongsToMany(Staff::class, 'role_staff', 'role_id', 'staff_id')
             ->withPivot(['org_unit_id', 'enabled', 'starts_at', 'ends_at', 'note', 'link_priority'])
             ->withTimestamps();
     }
 
     public function orgUnit(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Core\OrgUnit::class);
+        return $this->belongsTo(OrgUnit::class);
     }
 
     public function ou()
     {
-        return $this->belongsTo(\App\Models\Core\OrgUnit::class, 'org_unit_id');
+        return $this->belongsTo(OrgUnit::class, 'org_unit_id');
     }
 
     public function jobPosition()
     {
-        return $this->belongsTo(\App\Models\Hrm\JobPosition::class, 'job_position_id');
+        return $this->belongsTo(JobPosition::class, 'job_position_id');
     }
 
     /* ---------- Query Scopes ---------- */
@@ -54,7 +58,7 @@ class RoleMapper extends Model
     /**
      * Scope: enabled rows only.
      */
-    #[\Illuminate\Database\Eloquent\Attributes\Scope]
+    #[Scope]
     protected function enabled($query)
     {
         return $query->where('enabled', true);
@@ -63,7 +67,7 @@ class RoleMapper extends Model
     /**
      * Scope: by scope ('global' or 'ou').
      */
-    #[\Illuminate\Database\Eloquent\Attributes\Scope]
+    #[Scope]
     protected function forScope($query, string $scope)
     {
         return $query->where('scope', $scope);
@@ -72,7 +76,7 @@ class RoleMapper extends Model
     /**
      * Scope: OU-aware—prefer specific OU maps but include generic (null) as fallback.
      */
-    #[\Illuminate\Database\Eloquent\Attributes\Scope]
+    #[Scope]
     protected function forOrgUnitOrGeneric($query, ?int $orgUnitId)
     {
         return $query->where(function ($q) use ($orgUnitId): void {
@@ -94,7 +98,7 @@ class RoleMapper extends Model
         if (! isset($record['org_unit_id'])) {
             $ouName = $record['org_unit_name'] ?? null;
             if ($ouName) {
-                $ouQuery = \App\Models\Core\OrgUnit::query();
+                $ouQuery = OrgUnit::query();
                 if ($ouName) {
                     $ouQuery->where('name', $ouName);
                 }
@@ -112,7 +116,7 @@ class RoleMapper extends Model
             $posTitle = $record['job_position_title'] ?? null;
 
             if ($posCode || $posTitle) {
-                $jpQuery = \App\Models\Hrm\JobPosition::query();
+                $jpQuery = JobPosition::query();
                 if ($posCode) {
                     $jpQuery->where('code', $posCode);
                 }

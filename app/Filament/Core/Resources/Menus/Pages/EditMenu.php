@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Core\Resources\Menus\Pages;
 
 use App\Filament\Core\Resources\Menus\MenuResource;
+use App\Models\Menu;
 use Filament\Resources\Pages\EditRecord;
 
 class EditMenu extends EditRecord
@@ -22,7 +23,7 @@ class EditMenu extends EditRecord
      */
     protected function syncOuRolesForTeams(): void
     {
-        /** @var \App\Models\Menu $menu */
+        /** @var Menu $menu */
         $menu = $this->record;
 
         $state = $this->form->getState();

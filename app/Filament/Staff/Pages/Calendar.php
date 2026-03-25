@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Pages;
 
 use App\Enums\EventType;
+use App\Filament\Core\Resources\HelpPages\Actions\OpenHelpAction;
 use App\Models\Event;
+use App\Support\ShiftPattern;
 use BackedEnum;
 use Carbon\Carbon;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -23,13 +25,13 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use UnitEnum;
-use Illuminate\Database\Eloquent\Builder;
-use Filament\Tables\Grouping\Group;
 
 class Calendar extends Page implements HasActions, HasForms, HasTable
 {
@@ -73,7 +75,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
     protected function getHeaderActions(): array
     {
         return [
-            \App\Filament\Core\Resources\HelpPages\Actions\OpenHelpAction::make(static::class),
+            OpenHelpAction::make(static::class),
         ];
     }
 
@@ -81,7 +83,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
     {
         return $table
             ->query(
-                \App\Models\Event::query()
+                Event::query()
             )
             ->paginated(['all'])
             ->columns([
@@ -94,15 +96,15 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                 // Group by Month/Year from starts_at
                 Group::make('starts_at')
                     ->label('Month')
-                    ->getTitleFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->isoFormat('MMMM • YYYY') ?? 'No Date')
-                    ->getKeyFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
+                    ->getTitleFromRecordUsing(fn (Event $record) => optional($record->starts_at)?->isoFormat('MMMM • YYYY') ?? 'No Date')
+                    ->getKeyFromRecordUsing(fn (Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
                     ->collapsible(),
 
                 Group::make('iso_week')
                     ->label('Week')
-                    ->getTitleFromRecordUsing(fn(Event $record) => $record->starts_at ? "{$record->starts_at->format('W')} • {$record->starts_at->format('o')}" : 'No Date')
-                    ->getKeyFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
-                    ->orderQueryUsing(fn(Builder $query, string $direction) => $query->orderBy('starts_at', $direction))
+                    ->getTitleFromRecordUsing(fn (Event $record) => $record->starts_at ? "{$record->starts_at->format('W')} • {$record->starts_at->format('o')}" : 'No Date')
+                    ->getKeyFromRecordUsing(fn (Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
+                    ->orderQueryUsing(fn (Builder $query, string $direction) => $query->orderBy('starts_at', $direction))
                     ->collapsible(),
 
             ])
@@ -110,7 +112,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                 SelectFilter::make('type')
                     ->multiple()
                     ->options(
-                        collect(\App\Enums\EventType::cases())->mapWithKeys(function ($case): array {
+                        collect(EventType::cases())->mapWithKeys(function ($case): array {
                             return [$case->value => $case->getLabel()];
                         })->toArray()
                     ),
@@ -121,7 +123,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                     ->schema([
                         Forms\Components\Select::make('type')->label('Event Type')
                             ->options(
-                                collect(\App\Enums\EventType::cases())->mapWithKeys(function ($case): array {
+                                collect(EventType::cases())->mapWithKeys(function ($case): array {
                                     return [$case->value => $case->getLabel()];
                                 })->toArray()
                             )
@@ -155,7 +157,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                             Forms\Components\DateTimePicker::make('ends_at')->label('End Date'),
                             Forms\Components\Select::make('type')->label('Event Type')
                                 ->options(
-                                    collect(\App\Enums\EventType::cases())->mapWithKeys(function ($case): array {
+                                    collect(EventType::cases())->mapWithKeys(function ($case): array {
                                         return [$case->value => $case->getLabel()];
                                     })->toArray()
                                 )
@@ -208,7 +210,7 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
 
         foreach ($patterns as $key) {
 
-            $pattern = \App\Support\ShiftPattern::fromConfig($key);
+            $pattern = ShiftPattern::fromConfig($key);
 
             if ($pattern->hasTeam($shiftGroup)) {
                 $foundPattern = $pattern;
@@ -216,9 +218,9 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
             }
         }
 
-        if ($foundPattern instanceof \App\Support\ShiftPattern) {
+        if ($foundPattern instanceof ShiftPattern) {
             $tz = config(sprintf('shift_pattern.patterns.%s.timezone', $foundPattern->getPatternKey()), config('app.timezone', 'Asia/Kuala_Lumpur'));
-            $now = \Carbon\Carbon::now($tz);
+            $now = Carbon::now($tz);
             $start = $now->copy()->startOfMonth()->subDays(7);
             $end = $now->copy()->endOfMonth()->addDays(7);
 

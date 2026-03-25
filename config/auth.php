@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 return [
 
     /*
@@ -66,12 +68,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'ldap',
-            'model' => \LdapRecord\Models\ActiveDirectory\User::class,
+            'model' => LdapRecord\Models\ActiveDirectory\User::class,
             'rules' => [
                 // \LdapRecord\Laravel\Auth\Rules\OnlyImported::class,
             ],
             'database' => [
-                'model' => \App\Models\User::class,
+                'model' => User::class,
                 'sync_passwords' => false, // LDAP source of truth
                 'sync_attributes' => [
                     // Local column => AD attribute

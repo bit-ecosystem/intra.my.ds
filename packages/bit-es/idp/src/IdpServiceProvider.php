@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace Bites\Idp;
 
+use App\Listeners\RevokePassportTokensOnLogout;
 use Illuminate\Auth\Events\Logout;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Console\ClientCommand;
 use Laravel\Passport\Passport;
 
 class IdpServiceProvider extends ServiceProvider
@@ -25,10 +29,10 @@ class IdpServiceProvider extends ServiceProvider
         // Passport::authorizationView('bites::oauth.authorize');
 
         $this->commands([
-            \Laravel\Passport\Console\ClientCommand::class,
+            ClientCommand::class,
         ]);
 
-        Passport::authorizationView(function ($parameters): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View {
+        Passport::authorizationView(function ($parameters): Factory|View {
             // dd($parameters);
             return view('bites::oauth.authorize', $parameters);
             // return view('filament.idp.pages.o-auth-authorize', $parameters);
@@ -48,7 +52,7 @@ class IdpServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
-        Event::listen(Logout::class, [\App\Listeners\RevokePassportTokensOnLogout::class, 'handle']);
+        Event::listen(Logout::class, [RevokePassportTokensOnLogout::class, 'handle']);
         // Default token TTLs, can be overridden by config
         // Passport::tokensExpireIn(now()->addMinutes(config('bit-es-idp-passport.access_token_minutes', 60)));
         // Passport::refreshTokensExpireIn(now()->addDays(config('bit-es-idp-passport.refresh_token_days', 30)));

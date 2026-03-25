@@ -36,6 +36,7 @@ trait AppliesProps
                 return str_contains($value, '.') ? (float) $value : (int) $value;
             }
         }
+
         return $value;
     }
 }

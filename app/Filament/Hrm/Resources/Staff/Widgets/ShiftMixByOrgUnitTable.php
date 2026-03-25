@@ -67,7 +67,7 @@ class ShiftMixByOrgUnitTable extends TableWidget
 
         // "All" tab — no org_unit filter
         $tabs['all'] = Tab::make('All')
-            ->modifyQueryUsing(fn (Builder $query): \Illuminate\Database\Eloquent\Builder => $query);
+            ->modifyQueryUsing(fn (Builder $query): Builder => $query);
 
         // Build an OrgUnit tab for each unit
         OrgUnit::query()

@@ -12,10 +12,15 @@ use InvalidArgumentException;
 class ShiftPattern
 {
     protected string $patternKey;
+
     protected Carbon $anchorDate;
+
     protected string $timezone;
+
     protected array $teams;
+
     protected array $segments;
+
     protected int $cycleLength;
 
     public function __construct(
@@ -42,7 +47,7 @@ class ShiftPattern
         $patternKey = $patternKey ?: config('shift_pattern.default', 'WXYZ');
 
         if (! isset($patterns[$patternKey])) {
-            throw new InvalidArgumentException('Unknown shift pattern: ' . $patternKey);
+            throw new InvalidArgumentException('Unknown shift pattern: '.$patternKey);
         }
 
         $cfg = $patterns[$patternKey];
@@ -98,12 +103,14 @@ class ShiftPattern
             }
             $cursor += $len;
         }
+
         return 'R'; // If not found, default to rest (won't be emitted as event)
     }
 
     public function getShiftLabel(string $team, Carbon $date): string
     {
         $seg = $this->getSegmentByCode($this->getShiftCode($team, $date));
+
         return $seg['label'] ?? 'Rest';
     }
 
@@ -116,7 +123,9 @@ class ShiftPattern
             return null;
         }
 
-        if ($code === 'R') { return null; }
+        if ($code === 'R') {
+            return null;
+        }
 
         // Timed event
         [$sH, $sM] = explode(':', $seg['start']);
@@ -139,7 +148,7 @@ class ShiftPattern
             'end' => $start->copy()->addHour()->toIso8601String(),
             'allDay' => false,
             'color' => $color,
-            'classNames' => ['team-' . $team, 'shift-' . $code, 'pat-' . $this->patternKey],
+            'classNames' => ['team-'.$team, 'shift-'.$code, 'pat-'.$this->patternKey],
             'extendedProps' => ['shiftCode' => $code, 'team' => $team, 'pattern' => $this->patternKey],
         ];
     }
@@ -156,6 +165,7 @@ class ShiftPattern
                 $events[] = $event;
             }
         }
+
         return $events;
     }
 

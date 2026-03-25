@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Providers\Filament;
 
 use App\Http\Middleware\Authenticate;
-use DiogoGPinto\AuthUIEnhancer\AuthUIEnhancerPlugin;
+use App\Http\Middleware\RedirectToCoreLogin;
+use Bites\FilamentBlueprints\Resources\Blueprints\BlueprintResource;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -40,6 +41,9 @@ class CorePanelProvider extends PanelProvider
                 Css::make('theme-css', resource_path('css/enterprise/theme.css')),
             ])
             ->discoverResources(in: app_path('Filament/Core/Resources'), for: 'App\Filament\Core\Resources')
+            ->resources([
+                BlueprintResource::class,
+            ])
             ->discoverPages(in: app_path('Filament/Core/Pages'), for: 'App\Filament\Core\Pages')
             ->pages([
                 // Dashboard::class,
@@ -49,12 +53,6 @@ class CorePanelProvider extends PanelProvider
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
-            ->plugins([
-                // AuthUIEnhancerPlugin::make()
-                //     ->formPanelPosition('left')
-                //     ->formPanelWidth('40%'),
-            ])
-
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -68,7 +66,7 @@ class CorePanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->authMiddleware([
-                \App\Http\Middleware\RedirectToCoreLogin::class,
+                RedirectToCoreLogin::class,
 
             ]);
     }

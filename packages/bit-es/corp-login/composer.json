@@ -17,7 +17,6 @@
     ],
     "require": {
         "php": "^8.2",
-        "dutchcodingcompany/filament-socialite": "^3.0",
         "filament/upgrade": "^5.0"
     },
     "require-dev": {

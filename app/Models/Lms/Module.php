@@ -47,7 +47,7 @@ class Module extends Model
             ->withPivot('order_index');
     }
 
-    public function materials() : BelongsToMany
+    public function materials(): BelongsToMany
     {
         return $this->belongsToMany(Material::class, 'l_material_module')
             ->withPivot(['order_index'])
@@ -66,7 +66,7 @@ class Module extends Model
 
         $module = self::updateOrCreate(
             // If you *really* want to match by id, only pass it when it exists
-            isset($record['id']) ? ['id' => $record['id']] : ['slug' => Str::slug(($record['name'] ?? $record['title'] ?? 'untitled') . '-' . fake()->unique()->lexify('????'))],
+            isset($record['id']) ? ['id' => $record['id']] : ['slug' => Str::slug(($record['name'] ?? $record['title'] ?? 'untitled').'-'.fake()->unique()->lexify('????'))],
             [
                 'title' => $record['name'] ?? $record['title'] ?? 'Untitled Module',
                 'description' => $record['description'] ?? '',
@@ -77,7 +77,7 @@ class Module extends Model
 
                 // IMPORTANT: If the match doesn’t include slug, include slug here too
                 // to ensure INSERT will have a slug
-                'slug' => Str::slug(($record['name'] ?? $record['title'] ?? 'untitled') . '-' . fake()->unique()->lexify('????')),
+                'slug' => Str::slug(($record['name'] ?? $record['title'] ?? 'untitled').'-'.fake()->unique()->lexify('????')),
             ]
         );
 

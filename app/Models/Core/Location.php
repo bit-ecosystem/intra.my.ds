@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Core;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
@@ -38,15 +39,16 @@ class Location extends Model
     /**
      * Accessor to get the full breadcrumb path
      */
-    protected function fullPath(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function fullPath(): Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+        return Attribute::make(get: function () {
             $path = collect([$this->name]);
             $current = $this->parent;
             while ($current) {
                 $path->prepend($current->name);
                 $current = $current->parent;
             }
+
             return $path->implode(' > ');
         });
     }

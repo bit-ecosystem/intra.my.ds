@@ -11,19 +11,22 @@
     "require": {
         "php": "^8.2",
         "bit-es/attachables": "dev-main",
+        "bit-es/core": "dev-main",
         "bit-es/corp-login": "dev-main",
         "bit-es/filament-blueprints": "dev-main",
+        "bit-es/hrm": "dev-main",
         "bit-es/idp": "dev-main",
+        "bit-es/kbm": "dev-main",
+        "bit-es/oum": "dev-main",
+        "bit-es/service": "dev-main",
+        "bit-es/shared": "dev-main",
         "bit-es/weaversso": "dev-main",
-        "diogogpinto/filament-auth-ui-enhancer": "^2.0",
+        "bit-es/workflow": "dev-main",
         "directorytree/ldaprecord-laravel": "^3.4",
-        "dutchcodingcompany/filament-socialite": "^3.0",
         "filament/filament": "^5.0",
         "hugomyb/filament-media-action": "^5.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "laravel/workos": "^0.5.0",
-        "socialiteproviders/keycloak": "^5.3",
         "spatie/laravel-model-info": "^2.0",
         "spatie/laravel-permission": "^6.21"
     },
@@ -31,6 +34,62 @@
         {
             "type": "path",
             "url": "packages/bit-es/attachables",
+            "options": {
+                "symlink": true,
+                "canonical": false
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/core",
+            "options": {
+                "symlink": true,
+                "canonical": false
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/hrm",
+            "options": {
+                "symlink": true,
+                "canonical": false
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/kbm",
+            "options": {
+                "symlink": true,
+                "canonical": false
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/oum",
+            "options": {
+                "symlink": true,
+                "canonical": false
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/service",
+            "options": {
+                "symlink": true,
+                "canonical": false
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/shared",
+            "options": {
+                "symlink": true,
+                "canonical": false
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/workflow",
             "options": {
                 "symlink": true,
                 "canonical": false

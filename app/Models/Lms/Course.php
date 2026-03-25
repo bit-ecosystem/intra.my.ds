@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Lms;
 
+use App\Enums\CourseGroup;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,9 +24,8 @@ class Course extends Model
     ];
 
     protected $casts = [
-        'category' => \App\Enums\CourseGroup::class,
+        'category' => CourseGroup::class,
     ];
-
 
     /**
      * 1:N path (because l_modules has course_id).

@@ -6,7 +6,7 @@ use App\Models\Lms\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Lms\Course>
+ * @extends Factory<Course>
  */
 class CourseFactory extends Factory
 {

@@ -29,17 +29,19 @@ class LmsSeeder extends Seeder
     {
         if (! File::exists($jsonPath)) {
             $this->command?->warn("Skipping courses: JSON not found at $jsonPath");
+
             return;
         }
 
         $data = json_decode(File::get($jsonPath), true);
-        if (!is_array($data)) {
+        if (! is_array($data)) {
             $this->command?->error("Invalid courses JSON at $jsonPath");
+
             return;
         }
 
         foreach ($data as $courseData) {
-            if (!is_array($courseData)) {
+            if (! is_array($courseData)) {
                 // Allow a simple string course title
                 $courseData = ['course' => (string) $courseData];
             }
@@ -49,10 +51,10 @@ class LmsSeeder extends Seeder
             $course = Course::firstOrCreate(
                 ['title' => $courseTitle],
                 [
-                    'code'         => strtoupper(str_replace(' ', '_', $courseTitle)),
-                    'description'  => $courseData['description'] ?? '',
-                    'category'     => $courseData['category'] ?? 'factory',
-                    'status'       => 'draft',
+                    'code' => strtoupper(str_replace(' ', '_', $courseTitle)),
+                    'description' => $courseData['description'] ?? '',
+                    'category' => $courseData['category'] ?? 'factory',
+                    'status' => 'draft',
                     'published_at' => now(),
                 ]
             );
@@ -66,21 +68,21 @@ class LmsSeeder extends Seeder
 
                 // If you have custom creation logic
                 if (method_exists(Module::class, 'resolveCreation')) {
-                    /** @var \App\Models\Lms\Module $module */
+                    /** @var Module $module */
                     $module = Module::resolveCreation($moduleData, $moduleOrder - 1);
                 } else {
-                    $name = $moduleData['name'] ?? ('Module ' . $moduleOrder);
+                    $name = $moduleData['name'] ?? ('Module '.$moduleOrder);
                     $slug = $moduleData['slug'] ?? Str::slug($name);
 
                     $module = Module::firstOrCreate(
                         ['slug' => $slug],
                         [
-                            'title'                      => $name,
-                            'description'                => $moduleData['description'] ?? '',
-                            'order_index'                => $moduleData['order_index'] ?? $moduleOrder,
+                            'title' => $name,
+                            'description' => $moduleData['description'] ?? '',
+                            'order_index' => $moduleData['order_index'] ?? $moduleOrder,
                             'estimated_duration_minutes' => $moduleData['estimated_duration_minutes'] ?? 60,
-                            'validity_months'            => $moduleData['validity_months'] ?? 12,
-                            'certificate_template'       => $moduleData['certificate_template'] ?? [],
+                            'validity_months' => $moduleData['validity_months'] ?? 12,
+                            'certificate_template' => $moduleData['certificate_template'] ?? [],
                         ]
                     );
                 }
@@ -97,21 +99,21 @@ class LmsSeeder extends Seeder
                 foreach ($materials as $materialData) {
                     $materialOrder++;
 
-                    $title = $materialData['title'] ?? ('Material ' . $materialOrder);
-                    $url   = $materialData['url']   ?? '';
-                    $type  = $materialData['type']  ?? 'other';
-                    $meta  = $materialData['meta']  ?? [];
+                    $title = $materialData['title'] ?? ('Material '.$materialOrder);
+                    $url = $materialData['url'] ?? '';
+                    $type = $materialData['type'] ?? 'other';
+                    $meta = $materialData['meta'] ?? [];
 
                     // Prefer URL as unique key; fallback to title
-                    $uniqueWhere = !empty($url) ? ['url' => $url] : ['title' => $title];
+                    $uniqueWhere = ! empty($url) ? ['url' => $url] : ['title' => $title];
 
                     $material = Material::firstOrCreate(
                         $uniqueWhere,
                         [
                             'title' => $title,
-                            'type'  => $type,
-                            'url'   => $url,
-                            'meta'  => $meta,
+                            'type' => $type,
+                            'url' => $url,
+                            'meta' => $meta,
                         ]
                     );
 
@@ -133,6 +135,7 @@ class LmsSeeder extends Seeder
     {
         if (! File::exists($jsonPath)) {
             $this->command?->warn("Skipping modules-only: JSON not found at $jsonPath");
+
             return;
         }
 
@@ -149,18 +152,18 @@ class LmsSeeder extends Seeder
             if (method_exists(Module::class, 'resolveCreation')) {
                 $module = Module::resolveCreation($moduleData, $moduleOrder - 1);
             } else {
-                $name = $moduleData['name'] ?? ('Module ' . $moduleOrder);
+                $name = $moduleData['name'] ?? ('Module '.$moduleOrder);
                 $slug = $moduleData['slug'] ?? Str::slug($name);
 
                 $module = Module::firstOrCreate(
                     ['slug' => $slug],
                     [
-                        'title'                      => $name,
-                        'description'                => $moduleData['description'] ?? '',
-                        'order_index'                => $moduleData['order_index'] ?? $moduleOrder,
+                        'title' => $name,
+                        'description' => $moduleData['description'] ?? '',
+                        'order_index' => $moduleData['order_index'] ?? $moduleOrder,
                         'estimated_duration_minutes' => $moduleData['estimated_duration_minutes'] ?? 60,
-                        'validity_months'            => $moduleData['validity_months'] ?? 12,
-                        'certificate_template'       => $moduleData['certificate_template'] ?? [],
+                        'validity_months' => $moduleData['validity_months'] ?? 12,
+                        'certificate_template' => $moduleData['certificate_template'] ?? [],
                     ]
                 );
             }
@@ -172,20 +175,20 @@ class LmsSeeder extends Seeder
             foreach ($materials as $materialData) {
                 $materialOrder++;
 
-                $title = $materialData['title'] ?? ('Material ' . $materialOrder);
-                $url   = $materialData['url']   ?? '';
-                $type  = $materialData['type']  ?? 'other';
-                $meta  = $materialData['meta']  ?? [];
+                $title = $materialData['title'] ?? ('Material '.$materialOrder);
+                $url = $materialData['url'] ?? '';
+                $type = $materialData['type'] ?? 'other';
+                $meta = $materialData['meta'] ?? [];
 
-                $uniqueWhere = !empty($url) ? ['url' => $url] : ['title' => $title];
+                $uniqueWhere = ! empty($url) ? ['url' => $url] : ['title' => $title];
 
                 $material = Material::firstOrCreate(
                     $uniqueWhere,
                     [
                         'title' => $title,
-                        'type'  => $type,
-                        'url'   => $url,
-                        'meta'  => $meta,
+                        'type' => $type,
+                        'url' => $url,
+                        'meta' => $meta,
                     ]
                 );
 
@@ -213,7 +216,9 @@ class LmsSeeder extends Seeder
      */
     private function normalizeModules(mixed $raw): array
     {
-        if ($raw === null) return [];
+        if ($raw === null) {
+            return [];
+        }
 
         // Single string (possibly comma-separated)
         if (is_string($raw)) {
@@ -223,6 +228,7 @@ class LmsSeeder extends Seeder
 
             return array_map(function ($name) {
                 $name = $name === '' ? 'Module' : $name;
+
                 return [
                     'name' => $name,
                     'slug' => Str::slug($name),
@@ -230,7 +236,7 @@ class LmsSeeder extends Seeder
             }, $parts);
         }
 
-        if (!is_array($raw)) {
+        if (! is_array($raw)) {
             return [];
         }
 
@@ -239,6 +245,7 @@ class LmsSeeder extends Seeder
             return array_map(function ($name) {
                 $name = trim($name);
                 $name = $name === '' ? 'Module' : $name;
+
                 return [
                     'name' => $name,
                     'slug' => Str::slug($name),
@@ -255,7 +262,7 @@ class LmsSeeder extends Seeder
                 $out[] = ['name' => $name, 'slug' => Str::slug($name)];
             } elseif (is_array($row)) {
                 $name = $row['name'] ?? ($row['title'] ?? null);
-                if (!$name || trim($name) === '') {
+                if (! $name || trim($name) === '') {
                     $name = 'Module';
                 }
                 $slug = $row['slug'] ?? Str::slug($name);
@@ -273,9 +280,13 @@ class LmsSeeder extends Seeder
      */
     private function isList(array $array): bool
     {
-        if ($array === []) return true;
+        if ($array === []) {
+            return true;
+        }
+
         return array_keys($array) === range(0, count($array) - 1);
     }
+
     /**
      * Normalize materials into a list of arrays with keys:
      *   - title (string)
@@ -305,17 +316,18 @@ class LmsSeeder extends Seeder
 
             return array_map(function (string $title) {
                 $title = $title === '' ? 'Untitled' : $title;
+
                 return [
                     'title' => $title,
-                    'type'  => 'other',
-                    'url'   => '',
-                    'meta'  => [],
+                    'type' => 'other',
+                    'url' => '',
+                    'meta' => [],
                 ];
             }, $parts);
         }
 
         // 3) Not an array? give up gracefully
-        if (!is_array($raw)) {
+        if (! is_array($raw)) {
             return [];
         }
 
@@ -330,9 +342,9 @@ class LmsSeeder extends Seeder
 
                 $normalized[] = [
                     'title' => $t,
-                    'type'  => 'other',
-                    'url'   => '',
-                    'meta'  => [],
+                    'type' => 'other',
+                    'url' => '',
+                    'meta' => [],
                 ];
             } elseif (is_array($row)) {
                 // Object-like shape; normalize keys with defaults
@@ -342,9 +354,9 @@ class LmsSeeder extends Seeder
 
                 $normalized[] = [
                     'title' => $title,
-                    'type'  => isset($row['type']) ? (string) $row['type'] : 'other',
-                    'url'   => isset($row['url'])  ? (string) $row['url']  : '',
-                    'meta'  => isset($row['meta']) && is_array($row['meta']) ? $row['meta'] : [],
+                    'type' => isset($row['type']) ? (string) $row['type'] : 'other',
+                    'url' => isset($row['url']) ? (string) $row['url'] : '',
+                    'meta' => isset($row['meta']) && is_array($row['meta']) ? $row['meta'] : [],
                 ];
             }
             // Any other data types are ignored

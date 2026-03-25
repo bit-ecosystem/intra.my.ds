@@ -9,6 +9,7 @@ use App\Models\PersonAttribute;
 use App\Models\User;
 use App\Observers\StaffObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -96,9 +97,9 @@ class Staff extends Model
         return $this->morphMany(PersonAttribute::class, 'attributable');
     }
 
-    protected function staffOldNumber(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function staffOldNumber(): Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(
+        return Attribute::make(
             get: function () {
                 // Uses eager-loaded collection if present, otherwise queries
                 $attr = $this->relationLoaded('personAttributes')
@@ -110,9 +111,9 @@ class Staff extends Model
         );
     }
 
-    protected function shiftCode(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function shiftCode(): Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+        return Attribute::make(get: function () {
             // Retrieves the 'shift_code' PersonAttribute value (if present).
             return $this->personAttributes()
                 ->where('key', 'shift_code')
@@ -127,9 +128,9 @@ class Staff extends Model
         return $attr->value ?? $default;
     }
 
-    protected function isPeopleManager(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function isPeopleManager(): Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+        return Attribute::make(get: function () {
             $position = $this->jobPosition;
             if (! $position) {
                 return false;

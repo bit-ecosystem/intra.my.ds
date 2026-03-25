@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\Courses\Widgets;
 
 use App\Enums\CourseGroup;
+use App\Filament\Lms\Resources\Courses\CourseResource;
 use App\Models\Lms\Course;
 use Filament\Facades\Filament;
 use Filament\Widgets\Widget;
@@ -44,17 +45,17 @@ class CourseWidget extends Widget
             // Example assumes the resource index is: /admin/resources/courses
             // $panel = Filament::getCurrentPanel();
             // $indexUrl = $panel->getUrl(null); // <-- change 'courses' if your slug differs
-            $indexUrl = \App\Filament\Lms\Resources\Courses\CourseResource::getUrl('index');
+            $indexUrl = CourseResource::getUrl('index');
             // Helper to build a filter link (uses Filament Table filter named "category")
             $filterUrl = function (string $groupValue) use ($indexUrl): string {
-                return $indexUrl . '?filters[category][value]=' . urlencode($groupValue);
+                return $indexUrl.'?filters[category][value]='.urlencode($groupValue);
             };
 
             // Map a tier to a top-level "category" card with color & icon (must match the Blade’s $colors keys)
             $tierMeta = [
                 'Operations' => ['icon' => 'heroicon-o-cog-6-tooth', 'color' => 'blue'],
                 'Production' => ['icon' => 'heroicon-o-cube',        'color' => 'violet'],
-                'Growth'     => ['icon' => 'heroicon-o-bolt',        'color' => 'emerald'],
+                'Growth' => ['icon' => 'heroicon-o-bolt',        'color' => 'emerald'],
             ];
 
             $categories = [];
@@ -66,17 +67,17 @@ class CourseWidget extends Widget
                 foreach ($groups as $group) {
                     $value = $group->value;
                     $features[] = [
-                        'name'        => $group->getLabel(),                      // e.g. "Safety"
-                        'url'         => $filterUrl($value),                      // click to open index filtered by category
-                        'resource'    => ($counts[$value] ?? 0) . ' ' . str('course')->plural($counts[$value] ?? 0),
+                        'name' => $group->getLabel(),                      // e.g. "Safety"
+                        'url' => $filterUrl($value),                      // click to open index filtered by category
+                        'resource' => ($counts[$value] ?? 0).' '.str('course')->plural($counts[$value] ?? 0),
                         'description' => $group->getDescription(),
                     ];
                 }
 
                 $categories[] = [
-                    'name'     => $tierName,
-                    'icon'     => $tierMeta[$tierName]['icon'],
-                    'color'    => $tierMeta[$tierName]['color'], // must be one of the blade's palette keys
+                    'name' => $tierName,
+                    'icon' => $tierMeta[$tierName]['icon'],
+                    'color' => $tierMeta[$tierName]['color'], // must be one of the blade's palette keys
                     'features' => $features,
                 ];
             }
@@ -92,7 +93,7 @@ class CourseWidget extends Widget
     protected function getViewData(): array
     {
         return [
-            'categories'   => $this->getCategories(),
+            'categories' => $this->getCategories(),
         ];
     }
 }

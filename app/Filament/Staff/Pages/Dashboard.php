@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Pages;
 
 use App\Filament\Staff\Widgets;
+use App\Filament\Staff\Widgets\BioDataWidget;
 use BackedEnum;
 use Filament\Pages\Dashboard as BaseDashboard;
 use Illuminate\Contracts\Support\Htmlable;
@@ -46,7 +47,7 @@ class Dashboard extends BaseDashboard
         // Only these widgets appear on the Dashboard
         return [
             Widgets\StaffInfo::class,
-            \App\Filament\Staff\Widgets\BioDataWidget::class,
+            BioDataWidget::class,
             Widgets\RolesWidgetMini::class,
         ];
     }

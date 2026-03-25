@@ -166,7 +166,7 @@ final class MakeHelp
 
     private static function extractRecordMeta(?Model $record): array
     {
-        if (! $record instanceof \Illuminate\Database\Eloquent\Model) {
+        if (! $record instanceof Model) {
             return [
                 'record_id' => null,
                 'record_label' => null,

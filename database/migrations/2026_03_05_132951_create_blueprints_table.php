@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint as SchemaBlueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends \Illuminate\Database\Migrations\Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Schema::create('blueprints', function (SchemaBlueprint $table) {

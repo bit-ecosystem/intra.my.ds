@@ -2,19 +2,15 @@
 
 namespace Bites\FilamentBlueprints\Blocks;
 
-
 use Bites\FilamentBlueprints\BlockRegistry;
 use Bites\FilamentBlueprints\Contracts\BlockContract;
 use Bites\FilamentBlueprints\Traits\AppliesProps;
-
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Wizard;
 use Filament\Schemas\Components\Wizard\Step;
-
-
 
 final class WizardBlock implements BlockContract
 {

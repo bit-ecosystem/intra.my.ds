@@ -2,16 +2,13 @@
 
 namespace Bites\FilamentBlueprints\Blocks;
 
-
 use Bites\FilamentBlueprints\BlockRegistry;
 use Bites\FilamentBlueprints\Contracts\BlockContract;
 use Bites\FilamentBlueprints\Traits\AppliesProps;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\KeyValue;
-use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
-
 
 final class GridBlock implements BlockContract
 {
@@ -35,15 +32,15 @@ final class GridBlock implements BlockContract
 
     public function decode(array $payload, BlockRegistry $registry): Grid
     {
-        $columns  = (array) ($payload['columns'] ?? []);
-        $props    = (array) ($payload['props'] ?? []);
+        $columns = (array) ($payload['columns'] ?? []);
+        $props = (array) ($payload['props'] ?? []);
         $children = $registry->decodeBuilder($payload['children'] ?? []);
 
         $component = Grid::make()->schema($children);
 
         if (! empty($columns)) {
             // columns accepts array map or int – pass as is, after coercion
-            $component->columns(array_map(fn($v) => $this->coerceValue($v), $columns));
+            $component->columns(array_map(fn ($v) => $this->coerceValue($v), $columns));
         }
 
         $allowed = [

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Attachables\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
@@ -58,9 +59,9 @@ class AttachableExtLink extends Model
         // });
     }
 
-    protected function url(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function url(): Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(set: function ($value): array {
+        return Attribute::make(set: function ($value): array {
             return ['url' => trim((string) ($value ?? ''))];
         });
     }

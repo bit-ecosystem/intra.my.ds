@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
+use App\Models\User;
 use Closure;
 use Filament\Actions\Action;
 use Filament\Actions\Contracts\HasActions;
@@ -13,6 +14,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Support\Enums\Width;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Support\Facades\Hash;
 
 class VerifyTotp
 {
@@ -47,7 +49,7 @@ class VerifyTotp
                     }),
 
             ])
-            ->modalSubmitAction(fn (Action $action): \Filament\Actions\Action => $action
+            ->modalSubmitAction(fn (Action $action): Action => $action
                 ->label('Reset')
                 ->color('danger'))
             ->action(function (Action $action, HasActions $hasActions, array $data): void {
@@ -62,8 +64,8 @@ class VerifyTotp
                     return;
                 }
 
-                /** @var \App\Models\User|null $user */
-                $user = \App\Models\User::where('email', $email)->first();
+                /** @var User|null $user */
+                $user = User::where('email', $email)->first();
 
                 if (! $user) {
                     Notification::make()
@@ -110,7 +112,7 @@ class VerifyTotp
                             return;
                         }
 
-                        $user = \App\Models\User::find($userId);
+                        $user = User::find($userId);
 
                         if (! $user) {
                             Notification::make()
@@ -121,7 +123,7 @@ class VerifyTotp
                             return;
                         }
 
-                        $user->password = \Illuminate\Support\Facades\Hash::make($data['new_password']);
+                        $user->password = Hash::make($data['new_password']);
                         $user->save();
 
                         Notification::make()

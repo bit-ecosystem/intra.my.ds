@@ -6,6 +6,7 @@ namespace App\Providers;
 
 use App\Filament\Staff\Pages\Help;
 use App\Listeners\SyncKeycloakAttributes;
+use App\Listeners\SyncLdap;
 use App\Models\Core\HelpPage;
 use App\Socialite\KeycloakProvider;
 use BladeUI\Icons\Factory;
@@ -17,19 +18,20 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use LdapRecord\Laravel\Events\Import\Synchronized;
 use SocialiteProviders\Manager\SocialiteWasCalled;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        Event::listen(SocialiteWasCalled::class, function (SocialiteWasCalled $socialiteWasCalled): void {
-            $socialiteWasCalled->extendSocialite('keycloak', KeycloakProvider::class);
-        });
+        // Event::listen(SocialiteWasCalled::class, function (SocialiteWasCalled $socialiteWasCalled): void {
+        //     $socialiteWasCalled->extendSocialite('keycloak', KeycloakProvider::class);
+        // });
 
-        Event::listen(Login::class, [SyncKeycloakAttributes::class, 'handle']);
-        Event::listen(\LdapRecord\Laravel\Events\Import\Synchronized::class, [
-            \App\Listeners\SyncLdap::class,
+        // Event::listen(Login::class, [SyncKeycloakAttributes::class, 'handle']);
+        Event::listen(Synchronized::class, [
+            SyncLdap::class,
             'handle',
         ]);
     }

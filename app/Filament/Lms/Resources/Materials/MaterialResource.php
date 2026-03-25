@@ -15,7 +15,6 @@ use App\Models\Lms\Material;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class MaterialResource extends Resource

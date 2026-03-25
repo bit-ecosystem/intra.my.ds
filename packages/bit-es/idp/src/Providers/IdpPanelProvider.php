@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace Bites\Idp\Providers;
 
+use App\Http\Middleware\RedirectToCoreLogin;
+use Bites\Idp\Resources\AuthCodes\AuthCodeResource;
+use Bites\Idp\Resources\Clients\ClientResource;
+use Bites\Idp\Resources\DeviceCodes\DeviceCodeResource;
+use Bites\Idp\Resources\RefreshTokens\RefreshTokenResource;
+use Bites\Idp\Resources\Tokens\TokenResource;
+use Bites\Idp\Resources\Users\UserResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -34,12 +41,12 @@ class IdpPanelProvider extends PanelProvider
             ])
             ->discoverResources(in: app_path('Filament/Idp/Resources'), for: 'App\Filament\Idp\Resources')
             ->resources([
-                \Bites\Idp\Resources\AuthCodes\AuthCodeResource::class,
-                \Bites\Idp\Resources\Clients\ClientResource::class,
-                \Bites\Idp\Resources\DeviceCodes\DeviceCodeResource::class,
-                \Bites\Idp\Resources\RefreshTokens\RefreshTokenResource::class,
-                \Bites\Idp\Resources\Tokens\TokenResource::class,
-                \Bites\Idp\Resources\Users\UserResource::class,
+                AuthCodeResource::class,
+                ClientResource::class,
+                DeviceCodeResource::class,
+                RefreshTokenResource::class,
+                TokenResource::class,
+                UserResource::class,
             ])
             ->discoverPages(in: app_path('Filament/Idp/Pages'), for: 'App\Filament\Idp\Pages')
             ->pages([])
@@ -61,7 +68,7 @@ class IdpPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 // Authenticate::class,
-                \App\Http\Middleware\RedirectToCoreLogin::class,
+                RedirectToCoreLogin::class,
             ]);
     }
 }

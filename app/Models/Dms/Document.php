@@ -8,6 +8,7 @@ use App\Models\Core\OrgUnit;
 use App\Models\User;
 use App\Observers\DocumentObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,14 +28,17 @@ class Document extends Model
     {
         return $this->belongsTo(OrgUnit::class, 'org_unit_id');
     }
+
     public function classification(): BelongsTo
     {
         return $this->belongsTo(DocumentClassification::class, 'classification_id');
     }
+
     public function level(): BelongsTo
     {
         return $this->belongsTo(DocumentLevel::class, 'document_type_id');
     }
+
     public function vectors(): HasMany
     {
         return $this->hasMany(Vector::class, 'document_id');
@@ -51,10 +55,10 @@ class Document extends Model
      * - staff of a unit: their unit Level1-3, other units Level1-2
      * - non-staff authenticated: Level1 only
      */
-    #[\Illuminate\Database\Eloquent\Attributes\Scope]
+    #[Scope]
     protected function visibleTo($query, ?User $user)
     {
-        if (! $user instanceof \App\Models\User) {
+        if (! $user instanceof User) {
             return $query->where('classification_level', 1);
         }
 

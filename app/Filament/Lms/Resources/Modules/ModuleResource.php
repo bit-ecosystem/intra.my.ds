@@ -15,7 +15,6 @@ use App\Models\Lms\Module;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use UnitEnum;
 
@@ -27,7 +26,7 @@ class ModuleResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Learning';
 
-        protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 4;
     // public static function shouldRegisterNavigation(): bool
     // {
     //     return false;

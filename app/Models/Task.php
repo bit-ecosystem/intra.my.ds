@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Hrm\Staff;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,29 +30,29 @@ class Task extends Model
 
     public function staff()
     {
-        return $this->belongsTo(\App\Models\Hrm\Staff::class);
+        return $this->belongsTo(Staff::class);
     }
 
     public function roleMapper()
     {
-        return $this->belongsTo(\App\Models\RoleMapper::class);
+        return $this->belongsTo(RoleMapper::class);
     }
 
     /* ---- Useful scopes ---- */
 
-    #[\Illuminate\Database\Eloquent\Attributes\Scope]
+    #[Scope]
     protected function pending($query)
     {
         return $query->where('status', 'pending');
     }
 
-    #[\Illuminate\Database\Eloquent\Attributes\Scope]
+    #[Scope]
     protected function due($query)
     {
         return $query->whereNotNull('due_at')->orderBy('due_at');
     }
 
-    #[\Illuminate\Database\Eloquent\Attributes\Scope]
+    #[Scope]
     protected function overdue($query)
     {
         return $query->where('status', '!=', 'done')
@@ -57,9 +60,9 @@ class Task extends Model
             ->where('due_at', '<', now());
     }
 
-    protected function modelStatus(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function modelStatus(): Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+        return Attribute::make(get: function () {
             $this->loadMissing('taskable');
             $owner = $this->taskable;
             if (! $owner) {

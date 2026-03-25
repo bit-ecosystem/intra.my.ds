@@ -2,11 +2,9 @@
 
 namespace Bites\FilamentBlueprints\Blocks;
 
-
 use Bites\FilamentBlueprints\BlockRegistry;
 use Bites\FilamentBlueprints\Contracts\BlockContract;
 use Bites\FilamentBlueprints\Traits\AppliesProps;
-
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
@@ -60,12 +58,12 @@ final class TextInputBlock implements BlockContract
             ]);
     }
 
-    public function decode(array $payload, \Bites\FilamentBlueprints\BlockRegistry $registry): TextInput
+    public function decode(array $payload, BlockRegistry $registry): TextInput
     {
-        $name        = $payload['name']   ?? 'text_input';
-        $label       = $payload['label']  ?? null;
-        $sbehavior   = (array) ($payload['sbehavior'] ?? []);
-        $visibility  = (array) ($payload['visibility'] ?? []);
+        $name = $payload['name'] ?? 'text_input';
+        $label = $payload['label'] ?? null;
+        $sbehavior = (array) ($payload['sbehavior'] ?? []);
+        $visibility = (array) ($payload['visibility'] ?? []);
 
         $component = TextInput::make($name);
 
@@ -96,8 +94,8 @@ final class TextInputBlock implements BlockContract
             'hidden' => 'hidden',
         ];
 
-        $component = $this->applyProps($component, array_filter($sbehavior, fn($v) => $v !== null), $allowedBehavior);
-        $component = $this->applyProps($component, array_filter($visibility, fn($v) => $v !== null), $allowedVisibility);
+        $component = $this->applyProps($component, array_filter($sbehavior, fn ($v) => $v !== null), $allowedBehavior);
+        $component = $this->applyProps($component, array_filter($visibility, fn ($v) => $v !== null), $allowedVisibility);
 
         return $component;
     }

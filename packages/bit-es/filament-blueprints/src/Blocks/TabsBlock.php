@@ -2,11 +2,9 @@
 
 namespace Bites\FilamentBlueprints\Blocks;
 
-
 use Bites\FilamentBlueprints\BlockRegistry;
 use Bites\FilamentBlueprints\Contracts\BlockContract;
 use Bites\FilamentBlueprints\Traits\AppliesProps;
-
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\KeyValue;
@@ -58,10 +56,10 @@ final class TabsBlock implements BlockContract
             $tab = Tab::make($label)->schema($children);
 
             $tab = $this->applyProps($tab, (array) ($data['props'] ?? []), [
-                'icon'    => 'icon',
-                'badge'   => 'badge',
+                'icon' => 'icon',
+                'badge' => 'badge',
                 'visible' => 'visible',
-                'hidden'  => 'hidden',
+                'hidden' => 'hidden',
             ]);
 
             $tabs[] = $tab;
@@ -72,9 +70,9 @@ final class TabsBlock implements BlockContract
 
         return $this->applyProps($component, $props, [
             'columnSpan' => 'columnSpan',
-            'contained'  => 'contained',
-            'visible'    => 'visible',
-            'hidden'     => 'hidden',
+            'contained' => 'contained',
+            'visible' => 'visible',
+            'hidden' => 'hidden',
         ]);
     }
 

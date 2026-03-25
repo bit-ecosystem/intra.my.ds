@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Bites\CorpLogin\Pages;
 
 use App\Models\User;
+use Filament\Actions\Action;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
+use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
 use Filament\Auth\Pages\PasswordReset\RequestPasswordReset as BaseResetPassword;
 use Filament\Forms\Components\OneTimeCodeInput;
 use Filament\Forms\Components\TextInput;
@@ -14,6 +16,7 @@ use Filament\Schemas\Schema;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Password;
 
 class ResetPassword extends BaseResetPassword
 {
@@ -37,7 +40,7 @@ class ResetPassword extends BaseResetPassword
                 ->label('New Password')
                 ->password()
                 ->required()
-                ->rule(\Illuminate\Validation\Rules\Password::defaults())
+                ->rule(Password::defaults())
                 ->visible(fn (): bool => $this->verified),
 
             TextInput::make('passwordConfirmation')
@@ -76,7 +79,7 @@ class ResetPassword extends BaseResetPassword
             return;
         }
 
-        if (! $user instanceof \Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication) {
+        if (! $user instanceof HasAppAuthentication) {
             Notification::make()
                 ->title('User does not support app authentication.')
                 ->danger()
@@ -148,12 +151,12 @@ class ResetPassword extends BaseResetPassword
     protected function getFormActions(): array
     {
         return [
-            \Filament\Actions\Action::make('verifyTotp')
+            Action::make('verifyTotp')
                 ->label('Verify TOTP')
                 ->action('verifyTotp')
                 ->visible(fn (): bool => ! $this->verified),
 
-            \Filament\Actions\Action::make('resetPassword')
+            Action::make('resetPassword')
                 ->label('Reset Password')
                 ->action('resetPassword')
                 ->visible(fn (): bool => $this->verified),

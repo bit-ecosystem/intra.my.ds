@@ -4,29 +4,29 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Pages;
 
+use App\Filament\Staff\Widgets\StaffInfo;
+use App\Models\User;
 use BackedEnum;
-use Filament\Pages\Page;
-use Filament\Forms\Components;
-use Illuminate\Contracts\Support\Htmlable;
-use Filament\Schemas\Concerns\InteractsWithSchemas;
-use Filament\Schemas\Contracts\HasSchemas;
-use Illuminate\Support\Facades\Auth;
-use UnitEnum;
-use Filament\Schemas\Components\Section;
+use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
-use Filament\Schemas\Components\Wizard;
-use Filament\Schemas\Components\Grid;
-use Filament\Schemas\Schema;
-use Filament\Actions\Action;
-use App\Models\User;
+use Filament\Forms\Components;
 use Filament\Notifications\Notification;
+use Filament\Pages\Page;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Wizard;
+use Filament\Schemas\Concerns\InteractsWithSchemas;
+use Filament\Schemas\Contracts\HasSchemas;
+use Filament\Schemas\Schema;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Auth;
+use UnitEnum;
 
-class Biodata extends Page implements HasSchemas, HasActions
+class Biodata extends Page implements HasActions, HasSchemas
 {
-    use InteractsWithSchemas;
     use InteractsWithActions;
-
+    use InteractsWithSchemas;
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-id-staff';
 
@@ -57,10 +57,11 @@ class Biodata extends Page implements HasSchemas, HasActions
     protected function getHeaderWidgets(): array
     {
         return [
-            \App\Filament\Staff\Widgets\StaffInfo::class,
+            StaffInfo::class,
             // \App\Filament\Staff\Widgets\RolesWidget::class,
         ];
     }
+
     public ?array $data = [];
 
     public function mount(): void
@@ -77,6 +78,7 @@ class Biodata extends Page implements HasSchemas, HasActions
 
         $this->form->fill($attributes);
     }
+
     // public function form(Schema $schema): Schema
     // {
     //     return $schema
@@ -94,33 +96,33 @@ class Biodata extends Page implements HasSchemas, HasActions
                                 ->columnSpanFull()
                                 ->inlineLabel()
                                 ->schema([
-                                    Components\TextInput::make('full_name')->columnSpan(2)->lockWhenFilled(), //->required(),
-                                    Components\TextInput::make('ic_passport_number')->label('IC / Passport No.')->lockWhenFilled(), //->required(),
-                                    Components\DatePicker::make('dob')->label('Date of Birth')->lockWhenFilled(), //->required(),
+                                    Components\TextInput::make('full_name')->columnSpan(2)->lockWhenFilled(), // ->required(),
+                                    Components\TextInput::make('ic_passport_number')->label('IC / Passport No.')->lockWhenFilled(), // ->required(),
+                                    Components\DatePicker::make('dob')->label('Date of Birth')->lockWhenFilled(), // ->required(),
                                     Components\Select::make('gender')->lockWhenFilled()->options(['male' => 'Male', 'female' => 'Female']),
-                                     Components\Select::make('marital')->lockWhenFilled()->options(['single' => 'Single', 'married' => 'Married', 'divorced' => 'Divorced', 'widowed' => 'Widowed']),
-                                ])->columns(3),// Components\FileUpload::make('profile_photo')->image()->avatar(),
-                            //    
+                                    Components\Select::make('marital')->lockWhenFilled()->options(['single' => 'Single', 'married' => 'Married', 'divorced' => 'Divorced', 'widowed' => 'Widowed']),
+                                ])->columns(3), // Components\FileUpload::make('profile_photo')->image()->avatar(),
+                            //
 
                             // Wizard\Step::make('Contact & Address')
                             //     ->schema([
-                            Components\TextInput::make('phone')->lockWhenFilled(), //->required(),
-                            Components\TextInput::make('personal_email')->lockWhenFilled(), //->required(),
-                            Components\TextInput::make('address_line_1')->lockWhenFilled(), //->required(),
+                            Components\TextInput::make('phone')->lockWhenFilled(), // ->required(),
+                            Components\TextInput::make('personal_email')->lockWhenFilled(), // ->required(),
+                            Components\TextInput::make('address_line_1')->lockWhenFilled(), // ->required(),
                             Components\TextInput::make('address_line_2')->lockWhenFilled(),
                             Action::make('save')
-                            
+
                                 ->label('Save Biodata')
-                                ->action('save')
+                                ->action('save'),
                         ])->columns(2),
                     Wizard\Step::make('Emergency Contact')
                         ->schema([
-                            Components\TextInput::make('emergency_name')->label('Contact Person Name')->lockWhenFilled(), //->required(),
-                            Components\TextInput::make('emergency_relationship')->label('Relationship')->lockWhenFilled(), //->required(),
-                            Components\TextInput::make('emergency_phone')->label('Emergency Phone')->tel()->lockWhenFilled(), //->required(),
+                            Components\TextInput::make('emergency_name')->label('Contact Person Name')->lockWhenFilled(), // ->required(),
+                            Components\TextInput::make('emergency_relationship')->label('Relationship')->lockWhenFilled(), // ->required(),
+                            Components\TextInput::make('emergency_phone')->label('Emergency Phone')->tel()->lockWhenFilled(), // ->required(),
                             Action::make('save')
                                 ->label('Save Emergency Contact')
-                                ->action('save')
+                                ->action('save'),
                         ]),
                     Wizard\Step::make('Family Members')
                         ->schema([
@@ -147,31 +149,31 @@ class Biodata extends Page implements HasSchemas, HasActions
                                 ->addActionLabel('Add Family Member') // Customize the button label
                                 ->columns(1) // Repeater itself occupies one column in the parent grid
                                 ->collapsible() // Optional: allows collapsing items
-                                ->itemLabel(fn(array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
+                                ->itemLabel(fn (array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
                             Action::make('save')
                                 ->label('Save Family Info')
-                                ->action('save')
+                                ->action('save'),
                         ]),
 
                     Wizard\Step::make('Payroll Information')
                         ->schema([
-                            Components\TextInput::make('bank_name'), //->required(),
-                            Components\TextInput::make('bank_account_number'), //->required(),
-                            Components\TextInput::make('epf_number'), //->label('EPF/PF Number'),
-                            Components\TextInput::make('tax_number'), //->label('Income Tax Number'),
+                            Components\TextInput::make('bank_name'), // ->required(),
+                            Components\TextInput::make('bank_account_number'), // ->required(),
+                            Components\TextInput::make('epf_number'), // ->label('EPF/PF Number'),
+                            Components\TextInput::make('tax_number'), // ->label('Income Tax Number'),
                             Action::make('save')
                                 ->label('Save Payroll Info')
-                                ->action('save')
+                                ->action('save'),
                         ])->columns(2),
                     Wizard\Step::make('Reminders')
                         ->schema([
-                            Components\TextInput::make('bank_name'), //->required(),
-                            Components\TextInput::make('bank_account_number'), //->required(),
-                            Components\TextInput::make('epf_number'), //->label('EPF/PF Number'),
-                            Components\TextInput::make('tax_number'), //->label('Income Tax Number'),
+                            Components\TextInput::make('bank_name'), // ->required(),
+                            Components\TextInput::make('bank_account_number'), // ->required(),
+                            Components\TextInput::make('epf_number'), // ->label('EPF/PF Number'),
+                            Components\TextInput::make('tax_number'), // ->label('Income Tax Number'),
                             Action::make('save')
                                 ->label('Save Reminders')
-                                ->action('save')
+                                ->action('save'),
                         ])->columns(2),
                 ])->skippable()
                     ->submitAction(
@@ -182,6 +184,7 @@ class Biodata extends Page implements HasSchemas, HasActions
             ])
             ->statePath('data');
     }
+
     public function save(): void
     {
         $authId = Auth::id();
@@ -197,7 +200,7 @@ class Biodata extends Page implements HasSchemas, HasActions
                 continue;
             }
 
-            if (!empty($value)) {
+            if (! empty($value)) {
                 // Convert array (repeater data) to JSON string
                 $preparedValue = is_array($value) ? json_encode($value) : $value;
 

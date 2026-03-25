@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Lms;
 
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -37,7 +38,7 @@ class Quiz extends Model
     }
 
     /** Scope: active quizzes only */
-    #[\Illuminate\Database\Eloquent\Attributes\Scope]
+    #[Scope]
     protected function active(Builder $builder): Builder
     {
         return $builder->where('is_active', true);

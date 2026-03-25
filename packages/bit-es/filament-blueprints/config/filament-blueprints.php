@@ -1,5 +1,14 @@
 <?php
 
+use Bites\FilamentBlueprints\Blocks\GridBlock;
+use Bites\FilamentBlueprints\Blocks\RepeaterBlock;
+use Bites\FilamentBlueprints\Blocks\SectionBlock;
+use Bites\FilamentBlueprints\Blocks\SelectBlock;
+use Bites\FilamentBlueprints\Blocks\TabsBlock;
+use Bites\FilamentBlueprints\Blocks\TextareaBlock;
+use Bites\FilamentBlueprints\Blocks\TextInputBlock;
+use Bites\FilamentBlueprints\Blocks\WizardBlock;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -8,14 +17,14 @@ return [
     | You can add your own block class strings here from your app or other packages.
     */
     'blocks' => [
-        Bites\FilamentBlueprints\Blocks\SectionBlock::class,
-        Bites\FilamentBlueprints\Blocks\GridBlock::class,
-        Bites\FilamentBlueprints\Blocks\TabsBlock::class,
-        Bites\FilamentBlueprints\Blocks\WizardBlock::class,
-        Bites\FilamentBlueprints\Blocks\TextInputBlock::class,
-        Bites\FilamentBlueprints\Blocks\SelectBlock::class,
-        Bites\FilamentBlueprints\Blocks\TextareaBlock::class,
-        Bites\FilamentBlueprints\Blocks\RepeaterBlock::class,
+        SectionBlock::class,
+        GridBlock::class,
+        TabsBlock::class,
+        WizardBlock::class,
+        TextInputBlock::class,
+        SelectBlock::class,
+        TextareaBlock::class,
+        RepeaterBlock::class,
     ],
 
     /*

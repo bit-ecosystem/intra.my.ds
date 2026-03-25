@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Widgets;
 
+use App\Models\Event;
 use Filament\Widgets\Widget;
 use Illuminate\Support\Carbon;
 
@@ -88,7 +89,7 @@ class TestCal extends Widget
      */
     protected function buildWeeks(?Carbon $from = null, int $weeks = 0): void
     {
-        $start = $from instanceof \Illuminate\Support\Carbon ? $from->copy()->startOfWeek(Carbon::MONDAY) : $this->visibleStart();
+        $start = $from instanceof Carbon ? $from->copy()->startOfWeek(Carbon::MONDAY) : $this->visibleStart();
         $end = $from && $weeks > 0
             ? $start->copy()->addWeeks($weeks - 1)->endOfWeek(Carbon::SUNDAY)
             : $this->visibleEnd();
@@ -133,7 +134,7 @@ class TestCal extends Widget
             : [$this->visibleStart(), $this->visibleEnd()];
 
         // Example schema: Event with start_date (and optional end_date)
-        $events = \App\Models\Event::query()
+        $events = Event::query()
             ->whereDate('end_date', '>=', $start->toDateString())
             ->whereDate('start_date', '<=', $end->toDateString())
             ->orderBy('start_date')

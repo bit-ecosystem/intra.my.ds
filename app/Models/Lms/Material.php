@@ -23,6 +23,7 @@ class Material extends Model
         'order_index',
         'meta',
     ];
+
     protected $casts = ['meta' => 'array'];
 
     public function module(): BelongsTo
@@ -37,7 +38,6 @@ class Material extends Model
             'order_index' => 'integer',
         ];
     }
-
 
     public function modules(): BelongsToMany
     {

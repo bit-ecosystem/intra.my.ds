@@ -128,7 +128,7 @@ class StaffSeeder extends Seeder
         $skippedSameOrg = 0;
         $skippedNoOrgUnit = 0;
 
-        \App\Models\Hrm\JobPosition::with(['orgUnit', 'superior.orgUnit'])
+        JobPosition::with(['orgUnit', 'superior.orgUnit'])
             ->whereHas('orgUnit')
             ->orderBy('id')
             ->chunk($chunk, function ($positions) use (&$updated, &$eligible, &$skippedSameOrg, &$skippedNoOrgUnit) {

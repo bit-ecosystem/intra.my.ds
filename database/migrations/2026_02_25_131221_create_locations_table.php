@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\LocationType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('code')->unique();
-            $table->enum('type', array_column(\App\Enums\LocationType::cases(), 'value'))->nullable();
+            $table->enum('type', array_column(LocationType::cases(), 'value'))->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('locations')->nullOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies')->onDelete('cascade');
             $table->text('description')->nullable();

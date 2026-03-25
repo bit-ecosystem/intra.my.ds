@@ -11,11 +11,13 @@ use App\Models\Hrm\JobPosition;
 use App\Models\Hrm\Staff;
 use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
 use Filament\Models\Contracts\HasAvatar;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Laravel\Passport\Contracts\OAuthenticatable;
 use Laravel\Passport\HasApiTokens;
@@ -23,7 +25,6 @@ use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
 use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use Spatie\Permission\PermissionRegistrar;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Support\Facades\Http;
 
 class User extends Authenticatable implements HasAppAuthentication, HasAvatar, LdapAuthenticatable, OAuthenticatable
 {
@@ -89,32 +90,32 @@ class User extends Authenticatable implements HasAppAuthentication, HasAvatar, L
             ->implode('');
     }
 
+    public function getFilamentAvatarUrl(): ?string
+    {
+        $number = $this->staff?->staff_old_number;
 
-public function getFilamentAvatarUrl(): ?string
-{
-    $number = $this->staff?->staff_old_number;
+        // Always have a safe default
+        $default = asset('images/unknown_user.png');
 
-    // Always have a safe default
-    $default = asset('images/unknown_user.png');
-
-    if (!$number) { return $default; }
-
-    $url = "http://10.40.3.41:8080/{$number}.jpg";
-
-    try {
-        // Lightweight check without downloading the file body
-        $response = Http::timeout(1.5)->head($url);
-
-        if ($response->ok()) {
-            return $url;
+        if (! $number) {
+            return $default;
         }
-    } catch (\Throwable $e) {
-        // Swallow network/timeout errors and fall back
+
+        $url = "http://10.40.3.41:8080/{$number}.jpg";
+
+        try {
+            // Lightweight check without downloading the file body
+            $response = Http::timeout(1.5)->head($url);
+
+            if ($response->ok()) {
+                return $url;
+            }
+        } catch (\Throwable $e) {
+            // Swallow network/timeout errors and fall back
+        }
+
+        return $default;
     }
-
-    return $default;
-}
-
 
     public function getAppAuthenticationSecret(): ?string
     {
@@ -176,9 +177,9 @@ public function getFilamentAvatarUrl(): ?string
         return $record?->provider ?? config('app.name');
     }
 
-    protected function peopleAttributes(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function peopleAttributes(): Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+        return Attribute::make(get: function () {
             // Get collections of PersonAttribute models (already loaded or lazy-loaded)
             $userAttrs = $this->relationLoaded('personAttributes')
                 ? $this->personAttributes
@@ -203,9 +204,9 @@ public function getFilamentAvatarUrl(): ?string
         });
     }
 
-    protected function jobAttributes(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function jobAttributes(): Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function (): array {
+        return Attribute::make(get: function (): array {
             // Resolve org unit display (adjust the field name if yours differs)
             $orgUnitName = $this->staff?->orgUnit?->name ?? null;
             $orgUnitCode = $this->staff?->orgUnit?->code ?? null;

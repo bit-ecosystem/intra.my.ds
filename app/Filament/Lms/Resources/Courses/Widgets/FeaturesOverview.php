@@ -2,8 +2,8 @@
 
 namespace App\Filament\Lms\Resources\Courses\Widgets;
 
-use App\Filament\Pages\ShopDashboard;
 use App\Filament\Lms\Resources\Courses\CourseResource;
+use App\Filament\Pages\ShopDashboard;
 use App\Models\Lms\Course;
 use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +12,7 @@ class FeaturesOverview extends Widget
 {
     protected string $view = 'filament.lms.resources.courses.widgets.features-overview';
 
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     protected static bool $isLazy = false;
 
@@ -96,19 +96,19 @@ class FeaturesOverview extends Widget
             'icon' => 'heroicon-o-bolt',
             'color' => 'amber',
             'features' => [
-            //     ['name' => 'Action groups', 'description' => 'Dropdown menu grouping multiple actions — click the "..." button on any row', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
-            //     ['name' => 'Slide-over modals', 'description' => 'Click "Ship" on a processing order to see a full-height slide-over panel', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
-            //     ['name' => 'Modal forms', 'description' => 'Click "Send email" on any row to open a form modal', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
-            //     ['name' => 'Modal icon & color', 'description' => 'Click "..." then "Adjust price" on any row to see the custom modal icon and color', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
-            //     ['name' => 'Custom confirmation', 'description' => 'Click "Put on hold" on an active project row', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
-            //     ['name' => 'URL actions', 'description' => 'Click the globe icon to visit the brand\'s website', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
-            //     ['name' => 'Tooltips', 'description' => 'Hover over the row action icons to see tooltips', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
-            //     ['name' => 'Dynamic state', 'description' => 'Click "..." on any row — the toggle action shows different icon, label & color per record', 'url' => EmployeeResource::getUrl('index'), 'resource' => 'Employees'],
-            //     ['name' => 'Lifecycle hooks', 'description' => 'Click "Submit" on a draft expense row — validates total > 0 before running', 'url' => ExpenseResource::getUrl('index'), 'resource' => 'Expenses'],
-            //     ['name' => 'Infolist modals', 'description' => 'Click "View profile" in the row dropdown for a read-only slide-over', 'url' => EmployeeResource::getUrl('index'), 'resource' => 'Employees'],
-            //     ['name' => 'Bulk actions', 'description' => 'Select rows with checkboxes, then use the bulk action dropdown', 'url' => ProductResource::getUrl('index'), 'resource' => 'Products'],
-            //     ['name' => 'Conditional logic', 'description' => 'Click "..." on different order rows — each status shows different actions', 'url' => OrderResource::getUrl('index'), 'resource' => 'Orders'],
-            //     ['name' => 'Extra modal footer actions', 'description' => 'Additional buttons in modal footer — click "Ship" then see "Ship & notify"', 'url' => OrderResource::getUrl('index'), 'resource' => 'Orders'],
+                //     ['name' => 'Action groups', 'description' => 'Dropdown menu grouping multiple actions — click the "..." button on any row', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
+                //     ['name' => 'Slide-over modals', 'description' => 'Click "Ship" on a processing order to see a full-height slide-over panel', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
+                //     ['name' => 'Modal forms', 'description' => 'Click "Send email" on any row to open a form modal', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
+                //     ['name' => 'Modal icon & color', 'description' => 'Click "..." then "Adjust price" on any row to see the custom modal icon and color', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
+                //     ['name' => 'Custom confirmation', 'description' => 'Click "Put on hold" on an active project row', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
+                //     ['name' => 'URL actions', 'description' => 'Click the globe icon to visit the brand\'s website', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
+                //     ['name' => 'Tooltips', 'description' => 'Hover over the row action icons to see tooltips', 'url' => CourseResource::getUrl('index'), 'resource' => 'Courses'],
+                //     ['name' => 'Dynamic state', 'description' => 'Click "..." on any row — the toggle action shows different icon, label & color per record', 'url' => EmployeeResource::getUrl('index'), 'resource' => 'Employees'],
+                //     ['name' => 'Lifecycle hooks', 'description' => 'Click "Submit" on a draft expense row — validates total > 0 before running', 'url' => ExpenseResource::getUrl('index'), 'resource' => 'Expenses'],
+                //     ['name' => 'Infolist modals', 'description' => 'Click "View profile" in the row dropdown for a read-only slide-over', 'url' => EmployeeResource::getUrl('index'), 'resource' => 'Employees'],
+                //     ['name' => 'Bulk actions', 'description' => 'Select rows with checkboxes, then use the bulk action dropdown', 'url' => ProductResource::getUrl('index'), 'resource' => 'Products'],
+                //     ['name' => 'Conditional logic', 'description' => 'Click "..." on different order rows — each status shows different actions', 'url' => OrderResource::getUrl('index'), 'resource' => 'Orders'],
+                //     ['name' => 'Extra modal footer actions', 'description' => 'Additional buttons in modal footer — click "Ship" then see "Ship & notify"', 'url' => OrderResource::getUrl('index'), 'resource' => 'Orders'],
             ],
         ];
     }
@@ -123,12 +123,12 @@ class FeaturesOverview extends Widget
             'icon' => 'heroicon-o-rectangle-stack',
             'color' => 'rose',
             'features' => array_values(array_filter([
-            //     $order ? ['name' => 'Replicate action', 'description' => 'Click "Replicate" in the edit page header', 'url' => OrderResource::getUrl('edit', ['record' => $order]), 'resource' => 'Orders'] : null,
-            //     $post ? ['name' => 'Keyboard shortcuts', 'description' => 'Press Cmd+Shift+P on the view page to quick-publish (only on unpublished posts)', 'url' => PostResource::getUrl('view', ['record' => $post]), 'resource' => 'Posts'] : null,
-            //     ['name' => 'Export action', 'description' => 'Click "Export" in the page header', 'url' => AuthorResource::getUrl('index'), 'resource' => 'Authors'],
-            //     ['name' => 'Import action', 'description' => 'Click "Import" in the page header', 'url' => BlogCategoryResource::getUrl('index'), 'resource' => 'Blog Categories'],
-            //     ['name' => 'Badge on action', 'description' => 'Dynamic count badge on action buttons — see "Leave Requests" in the page header', 'url' => EmployeeResource::getUrl('index'), 'resource' => 'Employees'],
-            //     $expense ? ['name' => 'Status workflow', 'description' => 'Actions shown depend on expense status — try a submitted expense\'s view page', 'url' => ExpenseResource::getUrl('view', ['record' => $expense]), 'resource' => 'Expenses'] : null,
+                //     $order ? ['name' => 'Replicate action', 'description' => 'Click "Replicate" in the edit page header', 'url' => OrderResource::getUrl('edit', ['record' => $order]), 'resource' => 'Orders'] : null,
+                //     $post ? ['name' => 'Keyboard shortcuts', 'description' => 'Press Cmd+Shift+P on the view page to quick-publish (only on unpublished posts)', 'url' => PostResource::getUrl('view', ['record' => $post]), 'resource' => 'Posts'] : null,
+                //     ['name' => 'Export action', 'description' => 'Click "Export" in the page header', 'url' => AuthorResource::getUrl('index'), 'resource' => 'Authors'],
+                //     ['name' => 'Import action', 'description' => 'Click "Import" in the page header', 'url' => BlogCategoryResource::getUrl('index'), 'resource' => 'Blog Categories'],
+                //     ['name' => 'Badge on action', 'description' => 'Dynamic count badge on action buttons — see "Leave Requests" in the page header', 'url' => EmployeeResource::getUrl('index'), 'resource' => 'Employees'],
+                //     $expense ? ['name' => 'Status workflow', 'description' => 'Actions shown depend on expense status — try a submitted expense\'s view page', 'url' => ExpenseResource::getUrl('view', ['record' => $expense]), 'resource' => 'Expenses'] : null,
             ])),
         ];
     }
@@ -143,17 +143,17 @@ class FeaturesOverview extends Widget
             'icon' => 'heroicon-o-pencil-square',
             'color' => 'emerald',
             'features' => array_values(array_filter([
-            //     ['name' => 'Wizard', 'description' => 'The create form uses a step wizard at the top', 'url' => OrderResource::getUrl('create'), 'resource' => 'Orders'],
-            //     $order ? ['name' => 'Repeater', 'description' => 'See the order items table with existing line items', 'url' => OrderResource::getUrl('edit', ['record' => $order]), 'resource' => 'Orders'] : null,
-            //     $project ? ['name' => 'Builder blocks', 'description' => 'See the "Plan" tab for existing milestone and task group blocks', 'url' => ProjectResource::getUrl('edit', ['record' => $project]), 'resource' => 'Projects'] : null,
-            //     $post ? ['name' => 'Rich editor', 'description' => 'WYSIWYG content editing with existing content', 'url' => PostResource::getUrl('edit', ['record' => $post]), 'resource' => 'Posts'] : null,
-            //     $product ? ['name' => 'Media uploads', 'description' => 'Multiple images with reordering', 'url' => ProductResource::getUrl('edit', ['record' => $product]), 'resource' => 'Products'] : null,
-            //     ['name' => 'Color picker', 'description' => 'Open the create/edit modal to see the color field', 'url' => DepartmentResource::getUrl('index'), 'resource' => 'Departments'],
-            //     ['name' => 'Inline create', 'description' => 'Click the "+" icon in the Customer select to create a new customer inline', 'url' => OrderResource::getUrl('create'), 'resource' => 'Orders'],
-            //     $employee ? ['name' => 'Conditional fields', 'description' => 'Change "Employment type" to see salary vs hourly rate toggle', 'url' => EmployeeResource::getUrl('edit', ['record' => $employee]), 'resource' => 'Employees'] : null,
-            //     $post ? ['name' => 'Tags input', 'description' => 'See existing tags on the post form', 'url' => PostResource::getUrl('edit', ['record' => $post]), 'resource' => 'Posts'] : null,
-            //     $expense ? ['name' => 'Reactive fields', 'description' => 'Edit line items and watch the total auto-calculate as you type', 'url' => ExpenseResource::getUrl('edit', ['record' => $expense]), 'resource' => 'Expenses'] : null,
-            //     $employee ? ['name' => 'Form tabs', 'description' => 'See Personal, Employment & Documents tabs with existing data', 'url' => EmployeeResource::getUrl('edit', ['record' => $employee]), 'resource' => 'Employees'] : null,
+                //     ['name' => 'Wizard', 'description' => 'The create form uses a step wizard at the top', 'url' => OrderResource::getUrl('create'), 'resource' => 'Orders'],
+                //     $order ? ['name' => 'Repeater', 'description' => 'See the order items table with existing line items', 'url' => OrderResource::getUrl('edit', ['record' => $order]), 'resource' => 'Orders'] : null,
+                //     $project ? ['name' => 'Builder blocks', 'description' => 'See the "Plan" tab for existing milestone and task group blocks', 'url' => ProjectResource::getUrl('edit', ['record' => $project]), 'resource' => 'Projects'] : null,
+                //     $post ? ['name' => 'Rich editor', 'description' => 'WYSIWYG content editing with existing content', 'url' => PostResource::getUrl('edit', ['record' => $post]), 'resource' => 'Posts'] : null,
+                //     $product ? ['name' => 'Media uploads', 'description' => 'Multiple images with reordering', 'url' => ProductResource::getUrl('edit', ['record' => $product]), 'resource' => 'Products'] : null,
+                //     ['name' => 'Color picker', 'description' => 'Open the create/edit modal to see the color field', 'url' => DepartmentResource::getUrl('index'), 'resource' => 'Departments'],
+                //     ['name' => 'Inline create', 'description' => 'Click the "+" icon in the Customer select to create a new customer inline', 'url' => OrderResource::getUrl('create'), 'resource' => 'Orders'],
+                //     $employee ? ['name' => 'Conditional fields', 'description' => 'Change "Employment type" to see salary vs hourly rate toggle', 'url' => EmployeeResource::getUrl('edit', ['record' => $employee]), 'resource' => 'Employees'] : null,
+                //     $post ? ['name' => 'Tags input', 'description' => 'See existing tags on the post form', 'url' => PostResource::getUrl('edit', ['record' => $post]), 'resource' => 'Posts'] : null,
+                //     $expense ? ['name' => 'Reactive fields', 'description' => 'Edit line items and watch the total auto-calculate as you type', 'url' => ExpenseResource::getUrl('edit', ['record' => $expense]), 'resource' => 'Expenses'] : null,
+                //     $employee ? ['name' => 'Form tabs', 'description' => 'See Personal, Employment & Documents tabs with existing data', 'url' => EmployeeResource::getUrl('edit', ['record' => $employee]), 'resource' => 'Employees'] : null,
             ])),
         ];
     }
@@ -168,9 +168,9 @@ class FeaturesOverview extends Widget
             'icon' => 'heroicon-o-eye',
             'color' => 'cyan',
             'features' => array_values(array_filter([
-            //     $post ? ['name' => 'Rich text entries', 'description' => 'Formatted text, icons, badges & prose', 'url' => PostResource::getUrl('view', ['record' => $post]), 'resource' => 'Posts'] : null,
-            //     $post ? ['name' => 'Media entries', 'description' => 'Display Spatie Media Library images', 'url' => PostResource::getUrl('view', ['record' => $post]), 'resource' => 'Posts'] : null,
-            //     $expense ? ['name' => 'Repeatable entries', 'description' => 'Table-style related record display', 'url' => ExpenseResource::getUrl('view', ['record' => $expense]), 'resource' => 'Expenses'] : null,
+                //     $post ? ['name' => 'Rich text entries', 'description' => 'Formatted text, icons, badges & prose', 'url' => PostResource::getUrl('view', ['record' => $post]), 'resource' => 'Posts'] : null,
+                //     $post ? ['name' => 'Media entries', 'description' => 'Display Spatie Media Library images', 'url' => PostResource::getUrl('view', ['record' => $post]), 'resource' => 'Posts'] : null,
+                //     $expense ? ['name' => 'Repeatable entries', 'description' => 'Table-style related record display', 'url' => ExpenseResource::getUrl('view', ['record' => $expense]), 'resource' => 'Expenses'] : null,
             ])),
         ];
     }
@@ -185,15 +185,15 @@ class FeaturesOverview extends Widget
             'icon' => 'heroicon-o-squares-2x2',
             'color' => 'gray',
             'features' => array_values(array_filter([
-            //     ['name' => 'Navigation badges', 'description' => 'Live record counts on sidebar items', 'url' => OrderResource::getUrl('index'), 'resource' => 'Orders'],
-            //     $post ? ['name' => 'Sub-navigation', 'description' => 'See the tabs at the top switching between View, Edit, and Comments', 'url' => PostResource::getUrl('view', ['record' => $post]), 'resource' => 'Posts'] : null,
-            //     ['name' => 'Page tabs', 'description' => 'Filter table content with tab toggles', 'url' => EmployeeResource::getUrl('index'), 'resource' => 'Employees'],
-            //     ['name' => 'Dashboard widgets', 'description' => 'See the stats, line charts, and order table on this page', 'url' => ShopDashboard::getUrl(), 'resource' => 'Shop'],
-            //     ['name' => 'Manage records', 'description' => 'Create, edit, and delete authors without leaving the list page', 'url' => AuthorResource::getUrl('index'), 'resource' => 'Authors'],
-            //     $product ? ['name' => 'Relation managers', 'description' => 'Scroll below the form to see the Comments relation manager', 'url' => ProductResource::getUrl('edit', ['record' => $product]), 'resource' => 'Products'] : null,
-            //     ['name' => 'Soft deletes', 'description' => 'See Restore & Force Delete in the edit page header, and TrashedFilter in filters', 'url' => OrderResource::getUrl('index'), 'resource' => 'Orders'],
-            //     ['name' => 'Global search', 'description' => 'Use the search bar (Cmd+K) in the top navigation', 'url' => ProductResource::getUrl('index'), 'resource' => 'Try it!'],
-            //     $post ? ['name' => 'Manage related records', 'description' => 'Dedicated page for child records — see the Comments tab in sub-navigation', 'url' => PostResource::getUrl('comments', ['record' => $post]), 'resource' => 'Posts'] : null,
+                //     ['name' => 'Navigation badges', 'description' => 'Live record counts on sidebar items', 'url' => OrderResource::getUrl('index'), 'resource' => 'Orders'],
+                //     $post ? ['name' => 'Sub-navigation', 'description' => 'See the tabs at the top switching between View, Edit, and Comments', 'url' => PostResource::getUrl('view', ['record' => $post]), 'resource' => 'Posts'] : null,
+                //     ['name' => 'Page tabs', 'description' => 'Filter table content with tab toggles', 'url' => EmployeeResource::getUrl('index'), 'resource' => 'Employees'],
+                //     ['name' => 'Dashboard widgets', 'description' => 'See the stats, line charts, and order table on this page', 'url' => ShopDashboard::getUrl(), 'resource' => 'Shop'],
+                //     ['name' => 'Manage records', 'description' => 'Create, edit, and delete authors without leaving the list page', 'url' => AuthorResource::getUrl('index'), 'resource' => 'Authors'],
+                //     $product ? ['name' => 'Relation managers', 'description' => 'Scroll below the form to see the Comments relation manager', 'url' => ProductResource::getUrl('edit', ['record' => $product]), 'resource' => 'Products'] : null,
+                //     ['name' => 'Soft deletes', 'description' => 'See Restore & Force Delete in the edit page header, and TrashedFilter in filters', 'url' => OrderResource::getUrl('index'), 'resource' => 'Orders'],
+                //     ['name' => 'Global search', 'description' => 'Use the search bar (Cmd+K) in the top navigation', 'url' => ProductResource::getUrl('index'), 'resource' => 'Try it!'],
+                //     $post ? ['name' => 'Manage related records', 'description' => 'Dedicated page for child records — see the Comments tab in sub-navigation', 'url' => PostResource::getUrl('comments', ['record' => $post]), 'resource' => 'Posts'] : null,
             ])),
         ];
     }

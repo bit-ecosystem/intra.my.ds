@@ -22,7 +22,7 @@ class StaffObserver
     {
         // app(RoleSyncService::class)->attachRoles($staff);
         $roleSyncService = app(RoleSyncService::class);
-        
+
         if ($staff->isDirty('user_id')) {
             $oldUserId = $staff->getOriginal('user_id');
             if ($oldUserId && ($oldUser = User::find($oldUserId))) {

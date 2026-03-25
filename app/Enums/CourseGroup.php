@@ -3,9 +3,9 @@
 namespace App\Enums;
 
 use BackedEnum;
+use Filament\Support\Colors\Color;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\HtmlString;
-use Filament\Support\Colors\Color;
 
 enum CourseGroup: string
 {
@@ -15,18 +15,17 @@ enum CourseGroup: string
     case QUALITY = 'Quality';
     case TECHNICAL = 'Technical';
 
-        // Tier 2: Production (ISA-95 context)
+    // Tier 2: Production (ISA-95 context)
     case PRODUCT = 'Product';
     case PROCESS = 'Process';
     case EQUIPMENT = 'Equipment';
 
-        // Tier 3: Growth
+    // Tier 3: Growth
     case EFFICIENCY = 'Efficiency';
     case DIGITAL = 'Digital';
     case SOFT_SKILLS = 'Soft Skills';
     case LEADERSHIP = 'Leadership';
     case ONBOARDING = 'Onboarding';
-
 
     public function dbValue(): string
     {
@@ -67,7 +66,7 @@ enum CourseGroup: string
     /**
      * Display label for Filament (tabs, badges, selects).
      */
-    public function getLabel(): string | Htmlable | null
+    public function getLabel(): string|Htmlable|null
     {
         // If you ever want to return rich HTML, return new HtmlString('<strong>...</strong>')
         return $this->value;
@@ -81,26 +80,26 @@ enum CourseGroup: string
      * - 'heroicon-o-shield-check'
      * - 'heroicon-o-clipboard-document-check'
      */
-    public function getIcon(): string | BackedEnum | Htmlable | null
+    public function getIcon(): string|BackedEnum|Htmlable|null
     {
         return match ($this) {
             // Operations
-            self::SAFETY       => 'heroicon-o-shield-check',
-            self::COMPLIANCE   => 'heroicon-o-clipboard-document-check',
-            self::QUALITY      => 'heroicon-o-star',
-            self::TECHNICAL    => 'heroicon-o-cpu-chip',
+            self::SAFETY => 'heroicon-o-shield-check',
+            self::COMPLIANCE => 'heroicon-o-clipboard-document-check',
+            self::QUALITY => 'heroicon-o-star',
+            self::TECHNICAL => 'heroicon-o-cpu-chip',
 
             // Production
-            self::PRODUCT      => 'heroicon-o-cube',
-            self::PROCESS      => 'heroicon-o-arrow-path',
-            self::EQUIPMENT    => 'heroicon-o-wrench-screwdriver',
+            self::PRODUCT => 'heroicon-o-cube',
+            self::PROCESS => 'heroicon-o-arrow-path',
+            self::EQUIPMENT => 'heroicon-o-wrench-screwdriver',
 
             // Growth
-            self::EFFICIENCY   => 'heroicon-o-bolt',
-            self::DIGITAL      => 'heroicon-o-code-bracket',
-            self::SOFT_SKILLS  => 'heroicon-o-chat-bubble-left-ellipsis',
-            self::LEADERSHIP   => 'heroicon-o-flag',
-            self::ONBOARDING   => 'heroicon-o-cursor-arrow-ripple',
+            self::EFFICIENCY => 'heroicon-o-bolt',
+            self::DIGITAL => 'heroicon-o-code-bracket',
+            self::SOFT_SKILLS => 'heroicon-o-chat-bubble-left-ellipsis',
+            self::LEADERSHIP => 'heroicon-o-flag',
+            self::ONBOARDING => 'heroicon-o-cursor-arrow-ripple',
         };
     }
 
@@ -112,52 +111,52 @@ enum CourseGroup: string
      * info, gray, slate, zinc, neutral, stone, amber, indigo, purple, pink, rose,
      * emerald, teal, cyan, sky, blue, violet, lime, fuchsia, etc.
      */
-    public function getColor(): string | array | null
+    public function getColor(): string|array|null
     {
         return match ($this) {
             // Operations
-            self::SAFETY       => Color::Cyan,
-            self::COMPLIANCE   => Color::Red,
-            self::QUALITY      => Color::Lime,
-            self::TECHNICAL    => Color::Blue,
+            self::SAFETY => Color::Cyan,
+            self::COMPLIANCE => Color::Red,
+            self::QUALITY => Color::Lime,
+            self::TECHNICAL => Color::Blue,
 
             // Production
-            self::PRODUCT      => Color::Emerald,
-            self::PROCESS      => Color::Amber,
-            self::EQUIPMENT    => Color::Violet,
+            self::PRODUCT => Color::Emerald,
+            self::PROCESS => Color::Amber,
+            self::EQUIPMENT => Color::Violet,
 
             // Growth
-            self::EFFICIENCY   => Color::Orange,
-            self::DIGITAL      => Color::Mauve,
-            self::SOFT_SKILLS  => Color::Fuchsia,
-            self::LEADERSHIP   => Color::Sky,
-            self::ONBOARDING   => Color::Yellow,
+            self::EFFICIENCY => Color::Orange,
+            self::DIGITAL => Color::Mauve,
+            self::SOFT_SKILLS => Color::Fuchsia,
+            self::LEADERSHIP => Color::Sky,
+            self::ONBOARDING => Color::Yellow,
         };
     }
 
     /**
      * A short description for tooltips, cards, or helper text.
      */
-    public function getDescription(): string | Htmlable | null
+    public function getDescription(): string|Htmlable|null
     {
         return match ($this) {
             // Operations
-            self::SAFETY       => 'Workplace HSE, LOTO, PPE, and emergency readiness.',
-            self::COMPLIANCE   => 'Policies, legal, anti-bribery, and data governance.',
-            self::QUALITY      => 'QC methods, SPC, calibration, and non-conformance.',
-            self::TECHNICAL    => 'SOPs, machine setup, maintenance, and blueprints.',
+            self::SAFETY => 'Workplace HSE, LOTO, PPE, and emergency readiness.',
+            self::COMPLIANCE => 'Policies, legal, anti-bribery, and data governance.',
+            self::QUALITY => 'QC methods, SPC, calibration, and non-conformance.',
+            self::TECHNICAL => 'SOPs, machine setup, maintenance, and blueprints.',
 
             // Production
-            self::PRODUCT      => 'Product/material-focused competencies and standards.',
-            self::PROCESS      => 'Process segments and manufacturing workflows.',
-            self::EQUIPMENT    => 'Equipment classes, operation, and maintenance topics.',
+            self::PRODUCT => 'Product/material-focused competencies and standards.',
+            self::PROCESS => 'Process segments and manufacturing workflows.',
+            self::EQUIPMENT => 'Equipment classes, operation, and maintenance topics.',
 
             // Growth
-            self::EFFICIENCY   => 'Lean, 5S, value-streams, and continuous improvement.',
-            self::DIGITAL      => 'MES/ERP usage, cybersecurity, and digital tools.',
-            self::SOFT_SKILLS  => 'Communication, teamwork, and collaboration.',
-            self::LEADERSHIP   => 'Coaching, delegation, and frontline leadership.',
-            self::ONBOARDING   => 'Company intro, site security, and handbook.',
+            self::EFFICIENCY => 'Lean, 5S, value-streams, and continuous improvement.',
+            self::DIGITAL => 'MES/ERP usage, cybersecurity, and digital tools.',
+            self::SOFT_SKILLS => 'Communication, teamwork, and collaboration.',
+            self::LEADERSHIP => 'Coaching, delegation, and frontline leadership.',
+            self::ONBOARDING => 'Company intro, site security, and handbook.',
         };
     }
 
@@ -167,14 +166,11 @@ enum CourseGroup: string
     public function getTier(): string
     {
         return match ($this) {
-            self::SAFETY, self::COMPLIANCE, self::QUALITY, self::TECHNICAL
-            => 'Operations',
+            self::SAFETY, self::COMPLIANCE, self::QUALITY, self::TECHNICAL => 'Operations',
 
-            self::PRODUCT, self::PROCESS, self::EQUIPMENT
-            => 'Production',
+            self::PRODUCT, self::PROCESS, self::EQUIPMENT => 'Production',
 
-            self::EFFICIENCY, self::DIGITAL, self::SOFT_SKILLS, self::LEADERSHIP, self::ONBOARDING
-            => 'Growth',
+            self::EFFICIENCY, self::DIGITAL, self::SOFT_SKILLS, self::LEADERSHIP, self::ONBOARDING => 'Growth',
         };
     }
 
@@ -193,7 +189,7 @@ enum CourseGroup: string
     {
         return array_values(array_filter(
             self::cases(),
-            fn(self $case) => $case->getTier() === $tier
+            fn (self $case) => $case->getTier() === $tier
         ));
     }
 
@@ -206,6 +202,7 @@ enum CourseGroup: string
         foreach (self::cases() as $case) {
             $out[$case->value] = $case->getLabel();
         }
+
         return $out;
     }
 
@@ -226,6 +223,7 @@ enum CourseGroup: string
                 'is_scope' => $case->isScope(),
             ];
         }
+
         return $meta;
     }
 }

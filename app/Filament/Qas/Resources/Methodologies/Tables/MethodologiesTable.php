@@ -8,6 +8,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Support\Enums\TextSize;
 use Filament\Tables\Columns;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -69,12 +70,12 @@ class MethodologiesTable
                         ->grow(false)
                         ->defaultImageUrl('https://raw.githubusercontent.com/bit-ecosystem/bites/refs/heads/main/menu/business-idea.svg'), // to chanage to Str::kebab($record->title)
                     Columns\Layout\Stack::make([
-                        Columns\TextColumn::make('title')
+                        TextColumn::make('title')
                             ->label('Title')
                             // ->searchable()
                             ->color('primary'),
-                        Columns\TextColumn::make('description')
-                            ->size(\Filament\Support\Enums\TextSize::ExtraSmall)
+                        TextColumn::make('description')
+                            ->size(TextSize::ExtraSmall)
                             ->wrap(),
                     ]),
                 ]),

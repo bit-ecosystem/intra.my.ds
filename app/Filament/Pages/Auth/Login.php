@@ -10,11 +10,13 @@ use Filament\Auth\Http\Responses\Contracts\LoginResponse;
 use Filament\Auth\Pages\Login as BaseLogin;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
+use Filament\Models\Contracts\FilamentUser;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use LdapRecord\Models\ActiveDirectory\User as AdUser;
+use LdapRecord\Models\Model;
 
 class Login extends BaseLogin
 {
@@ -69,7 +71,7 @@ class Login extends BaseLogin
             ? AdUser::where('mail', $loginVal)->first()
             : AdUser::where('samaccountname', $loginVal)->first();
 
-        if (! $ldapUser instanceof \LdapRecord\Models\Model) {
+        if (! $ldapUser instanceof Model) {
             // 2) LDAP user not found -> local fallback (Eloquent)
             $local = $isEmail
                 ? AppUser::where('email', $loginVal)->first()
@@ -82,7 +84,7 @@ class Login extends BaseLogin
 
                     // Optional: respect Filament's panel gate
                     if (
-                        $local instanceof \Filament\Models\Contracts\FilamentUser
+                        $local instanceof FilamentUser
                         && ! $local->canAccessPanel(Filament::getCurrentPanel())
                     ) {
                         Filament::auth()->logout();
@@ -130,7 +132,7 @@ class Login extends BaseLogin
         // 5) Optional: panel access gate
         $user = Filament::auth()->user();
         if (
-            $user instanceof \Filament\Models\Contracts\FilamentUser
+            $user instanceof FilamentUser
             && ! $user->canAccessPanel(Filament::getCurrentPanel())
         ) {
             Filament::auth()->logout();

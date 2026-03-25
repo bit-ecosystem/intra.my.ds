@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Core\Resources\Menus\Pages;
 
 use App\Filament\Core\Resources\Menus\MenuResource;
+use App\Models\Menu;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateMenu extends CreateRecord
@@ -18,7 +19,7 @@ class CreateMenu extends CreateRecord
 
     protected function attachOuRoles(): void
     {
-        /** @var \App\Models\Menu $menu */
+        /** @var Menu $menu */
         $menu = $this->record;
 
         $state = $this->form->getState();

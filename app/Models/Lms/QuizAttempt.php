@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models\Lms;
 
 use App\Models\Hrm\Staff;
+use App\Models\User;
 use App\Observers\QuizAttemptObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -43,17 +44,17 @@ class QuizAttempt extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function staff(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Hrm\Staff::class, 'for_staff');
+        return $this->belongsTo(Staff::class, 'for_staff');
     }
 
     public function examiner(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Hrm\Staff::class, 'by_staff');
+        return $this->belongsTo(Staff::class, 'by_staff');
     }
 
     public static function resolveCreation(array $data): self

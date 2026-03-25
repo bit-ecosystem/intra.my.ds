@@ -30,7 +30,7 @@ class CourseSeeder extends Seeder
             ['code' => 'MACH-01', 'title' => 'Basic Machine Setup & Calibration', 'coursegroup' => CourseGroup::TECHNICAL, 'description' => 'Hands-on guide to starting and calibrating equipment.', 'status' => 'published'],
             ['code' => 'MAIN-202', 'title' => 'Preventative Maintenance for Operators', 'coursegroup' => CourseGroup::TECHNICAL, 'description' => 'Routine checks to prevent machine downtime.', 'status' => 'published'],
             ['code' => 'BLUE-05', 'title' => 'Reading Technical Blueprints', 'coursegroup' => CourseGroup::TECHNICAL, 'description' => 'Interpreting engineering drawings and technical specs.', 'status' => 'published'],
-            
+
             // ---------------- New OSAT: PRODUCT (material-focused) ----------------
             ['code' => 'PROD-QFN',     'title' => 'QFN/DFN Packaging Fundamentals',   'coursegroup' => CourseGroup::PRODUCT, 'description' => 'Product/material-focused competencies and standards for QFN/DFN families.', 'status' => 'published'],
             ['code' => 'PROD-BGA',     'title' => 'BGA/uBGA/FBGA Packaging Basics',   'coursegroup' => CourseGroup::PRODUCT, 'description' => 'Product/material-focused competencies and standards for BGA families.', 'status' => 'published'],

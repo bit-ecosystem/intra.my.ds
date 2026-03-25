@@ -5,14 +5,17 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
+use Laravel\Passport\Client;
 use Spatie\ModelInfo\ModelFinder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class ModelJsonSeeder extends Seeder
 {
     public static $manualModels = [
-        'roles' => \Spatie\Permission\Models\Role::class,
-        'permissions' => \Spatie\Permission\Models\Permission::class,
-        'oauth_clients' => \Laravel\Passport\Client::class,
+        'roles' => Role::class,
+        'permissions' => Permission::class,
+        'oauth_clients' => Client::class,
         // Add any other vendor or custom models here
     ];
 

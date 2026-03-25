@@ -40,21 +40,23 @@ class MalaysiaPostcodes
             }
 
             while (($data = fgetcsv($fh)) !== false) {
-                if (count($data) !== count($headers)) continue;
+                if (count($data) !== count($headers)) {
+                    continue;
+                }
 
                 $raw = array_combine($headers, $data);
 
                 $rows[] = [
-                    'postcode' => $raw['postcode']    ?? $raw['poscode'] ?? $raw['zip'] ?? null,
-                    'state'    => $raw['state']       ?? $raw['negeri'] ?? $raw['state_name'] ?? null,
-                    'city'     => $raw['post_office']        ?? $raw['district'] ?? $raw['bandar'] ?? $raw['daerah'] ?? null,
-                    'area'     => $raw['location']        ?? $raw['locality'] ?? $raw['mukim'] ?? $raw['place'] ?? null,
-                    '_raw'     => $raw,
+                    'postcode' => $raw['postcode'] ?? $raw['poscode'] ?? $raw['zip'] ?? null,
+                    'state' => $raw['state'] ?? $raw['negeri'] ?? $raw['state_name'] ?? null,
+                    'city' => $raw['post_office'] ?? $raw['district'] ?? $raw['bandar'] ?? $raw['daerah'] ?? null,
+                    'area' => $raw['location'] ?? $raw['locality'] ?? $raw['mukim'] ?? $raw['place'] ?? null,
+                    '_raw' => $raw,
                 ];
             }
             fclose($fh);
 
-            return array_values(array_filter($rows, fn ($r) => !empty($r['postcode'])));
+            return array_values(array_filter($rows, fn ($r) => ! empty($r['postcode'])));
         });
     }
 
@@ -75,30 +77,43 @@ class MalaysiaPostcodes
     {
         $labels = [];
         foreach (self::rows() as $r) {
-            $label = trim(implode(' · ', array_filter([$r['state'] ?? null, $r['postcode'] ?? null,$r['city'] ?? null, $r['area'] ?? null])));
-            if ($label !== '') $labels[$label] = true;
+            $label = trim(implode(' · ', array_filter([$r['state'] ?? null, $r['postcode'] ?? null, $r['city'] ?? null, $r['area'] ?? null])));
+            if ($label !== '') {
+                $labels[$label] = true;
+            }
         }
+
         return array_keys($labels);
     }
 
     /** First row by exact postcode. */
     public static function byPostcode(?string $postcode): ?array
     {
-        if (!$postcode) return null;
-        foreach (self::rows() as $r) {
-            if ((string)$r['postcode'] === (string)$postcode) return $r;
+        if (! $postcode) {
+            return null;
         }
+        foreach (self::rows() as $r) {
+            if ((string) $r['postcode'] === (string) $postcode) {
+                return $r;
+            }
+        }
+
         return null;
     }
 
     /** First row where the "label" matches exactly a datalist choice. */
     public static function byCityAreaLabel(?string $label): ?array
     {
-        if (!$label) return null;
+        if (! $label) {
+            return null;
+        }
         foreach (self::rows() as $r) {
             $candidate = trim(implode(' · ', array_filter([$r['city'] ?? null, $r['area'] ?? null, $r['state'] ?? null, $r['postcode'] ?? null])));
-            if ($candidate === $label) return $r;
+            if ($candidate === $label) {
+                return $r;
+            }
         }
+
         return null;
     }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Filament\Erp\Resources\Workflow\Workflows\Schemas;
 
+use App\Filament\Core\Resources\Roles\Schemas\RoleCanView;
+use App\Models\Workflow\Node;
 use Filament\Forms\Components;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
@@ -54,7 +56,7 @@ class WorkflowForm
                                     //     ->searchable()
                                     //     ->preload()
                                     //     ->columnSpan(6),
-                                    ...\App\Filament\Core\Resources\Roles\Schemas\RoleCanView::formComponents(
+                                    ...RoleCanView::formComponents(
                                         relationship: 'attachableRoles', // your morphToMany on the model
                                         showSelect: false,               // keep the Select hidden (state updated by the Action)
                                         actionName: 'choose_roles',      // rename if you include twice in same form
@@ -111,7 +113,7 @@ class WorkflowForm
                                         ->options(function (callable $get, ?Model $model) {
                                             // Prefer persisted nodes of this workflow
                                             if ($model && $model->id) {
-                                                return \App\Models\Workflow\Node::query()
+                                                return Node::query()
                                                     ->where('workflow_id', $model->id)
                                                     ->orderBy('sort')
                                                     ->pluck('name', 'id');
@@ -133,7 +135,7 @@ class WorkflowForm
                                         ->searchable()
                                         ->options(function (callable $get, ?Model $model) {
                                             if ($model && $model->id) {
-                                                return \App\Models\Workflow\Node::query()
+                                                return Node::query()
                                                     ->where('workflow_id', $model->id)
                                                     ->orderBy('sort')
                                                     ->pluck('name', 'id');

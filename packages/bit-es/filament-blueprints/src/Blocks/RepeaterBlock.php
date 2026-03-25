@@ -2,11 +2,9 @@
 
 namespace Bites\FilamentBlueprints\Blocks;
 
-
 use Bites\FilamentBlueprints\BlockRegistry;
 use Bites\FilamentBlueprints\Contracts\BlockContract;
 use Bites\FilamentBlueprints\Traits\AppliesProps;
-
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Repeater;
@@ -33,12 +31,12 @@ final class RepeaterBlock implements BlockContract
             ]);
     }
 
-   public function decode(array $payload, \Bites\FilamentBlueprints\BlockRegistry $registry): TextInput
-     {
-        $name    = $payload['name'] ?? 'select';
-        $label   = $payload['label'] ?? null;
+    public function decode(array $payload, BlockRegistry $registry): TextInput
+    {
+        $name = $payload['name'] ?? 'select';
+        $label = $payload['label'] ?? null;
         $options = (array) ($payload['options'] ?? []);
-        $props   = (array) ($payload['props'] ?? []);
+        $props = (array) ($payload['props'] ?? []);
 
         $component = Repeater::make($name)->options($options);
         if (! empty($label)) {

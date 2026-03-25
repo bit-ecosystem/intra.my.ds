@@ -2,14 +2,14 @@
 
 namespace Bites\FilamentBlueprints;
 
-use Illuminate\Support\ServiceProvider;
 use Bites\FilamentBlueprints\Contracts\BlockContract;
+use Illuminate\Support\ServiceProvider;
 
 final class BlueprintServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/filament-blueprints.php', 'filament-blueprints');
+        $this->mergeConfigFrom(__DIR__.'/../config/filament-blueprints.php', 'filament-blueprints');
 
         // Tag block services listed in config
         $blockClasses = (array) config('filament-blueprints.blocks', []);
@@ -29,7 +29,7 @@ final class BlueprintServiceProvider extends ServiceProvider
     {
         // Publish config
         $this->publishes([
-            __DIR__ . '/../config/filament-blueprints.php' => config_path('filament-blueprints.php'),
+            __DIR__.'/../config/filament-blueprints.php' => config_path('filament-blueprints.php'),
         ], 'filament-blueprints-config');
 
         // (optional) load routes/views if you ship demos

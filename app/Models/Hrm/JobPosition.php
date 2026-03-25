@@ -6,8 +6,10 @@ namespace App\Models\Hrm;
 
 use App\Models\Core\OrgRole;
 use App\Models\Core\OrgUnit;
+use App\Models\User;
 use App\Observers\JobPositionObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -47,8 +49,8 @@ class JobPosition extends Model
     public function user()
     {
         return $this->hasOneThrough(
-            \App\Models\User::class,      // Final model
-            \App\Models\Hrm\Staff::class, // Intermediate model
+            User::class,      // Final model
+            Staff::class, // Intermediate model
             'job_position_id',            // Foreign key on Staff table
             'id',                         // Foreign key on User table
             'id',                         // Local key on JobPosition table
@@ -66,9 +68,9 @@ class JobPosition extends Model
         return $this->hasMany(JobPosition::class, 'superior_id');
     }
 
-    protected function isPeopleManager(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function isPeopleManager(): Attribute
     {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(get: function () {
+        return Attribute::make(get: function () {
             // returns true if there exists at least one subordinate
             return $this->subordinates()->exists();
         });
