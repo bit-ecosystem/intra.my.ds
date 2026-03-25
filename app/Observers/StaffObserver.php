@@ -6,7 +6,7 @@ namespace App\Observers;
 
 use App\Models\Hrm\Staff;
 use App\Models\User;
-use App\Services\RoleSyncService;
+use Bites\Service\Services\RoleSyncService;
 
 class StaffObserver
 {
