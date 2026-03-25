@@ -9,7 +9,7 @@ use App\Filament\Erp\Resources\Workflow\Transitions\Pages\EditTransition;
 use App\Filament\Erp\Resources\Workflow\Transitions\Pages\ListTransitions;
 use App\Filament\Erp\Resources\Workflow\Transitions\Schemas\TransitionForm;
 use App\Filament\Erp\Resources\Workflow\Transitions\Tables\TransitionsTable;
-use App\Models\Workflow\Transition;
+use Bites\Workflow\Models\Transition;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

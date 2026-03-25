@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Jobs;
 
-use App\Models\Dms\Document;
-use App\Models\Dms\Vector;
+use Bites\Kbm\Dms\Models\Document;
+use Bites\Kbm\Dms\Models\Vector;
 use App\Services\OllamaService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

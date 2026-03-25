@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Core\HelpPage;
+use Bites\Shared\Models\HelpPage;
 use Filament\Facades\Filament;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -14,34 +14,34 @@ class HelpPageSeeder extends Seeder
      */
     protected array $targetModels = [
         "App\Models\User",
-        "App\Models\Core\Company",
-        "App\Models\Core\OrgUnit",
-        "App\Models\Core\OrgRole",
-        "App\Models\Core\HelpPage",
+        "Bites\Core\Organization\Models\Company",
+        "Bites\Core\Organization\Models\OrgUnit",
+        "Bites\Core\Organization\Models\OrgRole",
+        "Bites\Shared\Models\HelpPage",
         "App\Models\Menu",
-        "App\Models\Hrm\Application",
-        "App\Models\Hrm\ApplicationStatusHistory",
-        "App\Models\Hrm\Interview",
-        "App\Models\Hrm\JobVacancy",
-        "App\Models\Hrm\JobPosition",
-        "App\Models\Hrm\WorkforcePlan",
-        "App\Models\Hrm\Offer",
-        "App\Models\Hrm\Screening",
-        "App\Models\Hrm\Skill",
-        "App\Models\Hrm\Staff",
-        "App\Models\Hrm\JobDescriptionTemplate",
+        "Bites\Hrm\Models\Application",
+        "Bites\Hrm\Models\ApplicationStatusHistory",
+        "Bites\Hrm\Models\Interview",
+        "Bites\Hrm\Models\JobVacancy",
+        "Bites\Core\Organization\Models\JobPosition",
+        "Bites\Hrm\Models\WorkforcePlan",
+        "Bites\Hrm\Models\Offer",
+        "Bites\Hrm\Models\Screening",
+        "Bites\Hrm\Models\Skill",
+        "Bites\Hrm\Models\Staff",
+        "Bites\Hrm\Models\JobDescriptionTemplate",
         "App\Models\Workflow\Turtle",
         "App\Models\PersonAttribute",
-        "App\Models\Dms\Document",
-        "App\Models\Dms\Vector",
+        "Bites\Kbm\Dms\Models\Document",
+        "Bites\Kbm\Dms\Models\Vector",
         "App\Models\Qas\Methodology",
         "App\Models\Qas\RunInitiative",
-        "App\Models\Lms\Course",
-        "App\Models\Lms\Module",
-        "App\Models\Lms\Quiz",
-        "App\Models\Lms\QuizAttempt",
-        "App\Models\Lms\Certificate",
-        "App\Models\Lms\Material",
+        "Bites\Kbm\Lms\Models\Course",
+        "Bites\Kbm\Lms\Models\Module",
+        "Bites\Kbm\Lms\Models\Quiz",
+        "Bites\Kbm\Lms\Models\QuizAttempt",
+        "Bites\Kbm\Lms\Models\Certificate",
+        "Bites\Kbm\Lms\Models\Material",
     ];
 
     public function run(): void

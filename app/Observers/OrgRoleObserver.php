@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Observers;
 
-use App\Models\Core\OrgRole;
+use Bites\Core\Organization\Models\OrgRole;
 use Bites\Service\Services\RoleSyncService;
 
 class OrgRoleObserver

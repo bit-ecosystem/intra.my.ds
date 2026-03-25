@@ -9,7 +9,7 @@ use App\Filament\Hrm\Resources\JobPositions\Pages\EditJobPosition;
 use App\Filament\Hrm\Resources\JobPositions\Pages\ListJobPositions;
 use App\Filament\Hrm\Resources\JobPositions\Schemas\JobPositionForm;
 use App\Filament\Hrm\Resources\JobPositions\Tables\JobPositionsTable;
-use App\Models\Hrm\JobPosition;
+use Bites\Core\Organization\Models\JobPosition;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

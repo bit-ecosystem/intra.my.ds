@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Erp\Resources\WorkforcePlans\Tables;
 
-use App\Models\Core\OrgUnit;
+use Bites\Core\Organization\Models\OrgUnit;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;

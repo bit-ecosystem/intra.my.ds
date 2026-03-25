@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\QuizAttempts\Pages;
 
 use App\Filament\Lms\Resources\QuizAttempts\QuizAttemptResource;
-use App\Models\Lms\Certificate;
-use App\Models\Lms\Module;
-use App\Models\Lms\Quiz;
+use Bites\Kbm\Lms\Models\Certificate;
+use Bites\Kbm\Lms\Models\Module;
+use Bites\Kbm\Lms\Models\Quiz;
 use App\Services\QuizScoringService;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
@@ -114,7 +114,7 @@ class CreateQuizAttempt extends CreateRecord
      */
     // protected function afterCreate(): void
     // {
-    //     /** @var \App\Models\Lms\QuizAttempt $attempt */
+    //     /** @var \Bites\Kbm\Lms\Models\QuizAttempt $attempt */
     //     $attempt = $this->record;
 
     //     // Only issue certificate on pass

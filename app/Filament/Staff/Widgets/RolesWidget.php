@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Widgets;
 
-use App\Models\Core\OrgUnit;
+use Bites\Core\Organization\Models\OrgUnit;
 use Filament\Actions\BulkActionGroup;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;

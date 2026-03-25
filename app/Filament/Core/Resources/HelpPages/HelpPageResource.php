@@ -11,7 +11,7 @@ use App\Filament\Core\Resources\HelpPages\Pages\ViewHelpPage;
 use App\Filament\Core\Resources\HelpPages\Schemas\HelpPageForm;
 use App\Filament\Core\Resources\HelpPages\Schemas\HelpPageInfolist;
 use App\Filament\Core\Resources\HelpPages\Tables\HelpPagesTable;
-use App\Models\Core\HelpPage;
+use Bites\Shared\Models\HelpPage;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

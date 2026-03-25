@@ -11,7 +11,7 @@ use App\Filament\Core\Resources\Companies\Pages\ViewCompany;
 use App\Filament\Core\Resources\Companies\Schemas\CompanyForm;
 use App\Filament\Core\Resources\Companies\Schemas\CompanyInfolist;
 use App\Filament\Core\Resources\Companies\Tables\CompaniesTable;
-use App\Models\Core\Company;
+use Bites\Core\Organization\Models\Company;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

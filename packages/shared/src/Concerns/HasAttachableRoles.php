@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Concerns;
+namespace Bites\Shared\Concerns;
 
-use App\Models\Core\OrgUnit;
+use Bites\Core\Organization\Models\OrgUnit;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Arr;

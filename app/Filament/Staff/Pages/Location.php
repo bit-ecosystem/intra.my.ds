@@ -160,7 +160,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
     {
         return $table
             ->query(function () {
-                return \App\Models\Core\Location::query()
+                return \Bites\Core\Organization\Models\Location::query()
                     ->when($this->scope === 'rooms', fn ($q) => $q->where('type', 'room'))
                     ->when($this->scope === 'stores', fn ($q) => $q->where('type', 'store'))
                     ->when($this->scope === 'inactive', fn ($q) => $q->whereNotNull('ends_at'));
@@ -184,7 +184,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
                         $this->scope = 'all';
                         $this->resetTablePage();
                     })
-                    ->badge(\App\Models\Core\Location::count()),
+                    ->badge(\Bites\Core\Organization\Models\Location::count()),
 
                 Action::make('rooms')
                     ->label('Rooms')
@@ -195,7 +195,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
                         $this->scope = 'rooms';
                         $this->resetTablePage();
                     })
-                    ->badge(\App\Models\Core\Location::where('type', 'room')->count()),
+                    ->badge(\Bites\Core\Organization\Models\Location::where('type', 'room')->count()),
 
                 Action::make('stores')
                     ->label('Stores')
@@ -206,7 +206,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
                         $this->scope = 'stores';
                         $this->resetTablePage();
                     })
-                    ->badge(\App\Models\Core\Location::where('type', 'store')->count()),
+                    ->badge(\Bites\Core\Organization\Models\Location::where('type', 'store')->count()),
 
                 Action::make('inactive')
                     ->label('Inactive')
@@ -217,7 +217,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
                         $this->scope = 'inactive';
                         $this->resetTablePage();
                     })
-                    ->badge(\App\Models\Core\Location::whereNotNull('ends_at')->count()),
+                    ->badge(\Bites\Core\Organization\Models\Location::whereNotNull('ends_at')->count()),
             ]);
     }
 }

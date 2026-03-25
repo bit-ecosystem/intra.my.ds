@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Filament\Hrm\Resources\Staff\Widgets;
 
-use App\Models\Core\OrgUnit;
-use App\Models\Hrm\Staff;
+use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Hrm\Models\Staff;
 use Filament\Actions\BulkActionGroup;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Tables\Columns\TextColumn;

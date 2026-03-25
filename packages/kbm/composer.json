@@ -16,9 +16,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Bites\\Kbm\\": "src/",
-            "Bites\\Lms\\": "src/LMS/",
-            "Bites\\Dms\\": "src/DMS/"
+            "Bites\\Lms\\": "src/Lms/",
+            "Bites\\Dms\\": "src/Dms/",
+            "Bites\\Kbm\\": "src/"
         }
     },
     "extra": {

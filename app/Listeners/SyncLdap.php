@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Listeners;
 
-use App\Models\Hrm\Staff;
+use Bites\Hrm\Models\Staff;
 use Illuminate\Support\Str;
 use LdapRecord\Laravel\Events\Import\Synchronized;
 use LdapRecord\Models\Attributes\Guid;

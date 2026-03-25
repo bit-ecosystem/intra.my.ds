@@ -6,7 +6,7 @@ namespace App\Filament\Dms\Resources\Attachments\Pages;
 
 use App\Enums\DocType;
 use App\Filament\Dms\Resources\Attachments\AttachmentResource;
-use App\Models\Dms\Attachment;
+use Bites\Kbm\Dms\Models\Attachment;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;

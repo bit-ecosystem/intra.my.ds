@@ -9,7 +9,7 @@ use App\Filament\Core\Resources\OrgUnits\Pages\EditOrgUnit;
 use App\Filament\Core\Resources\OrgUnits\Pages\ListOrgUnits;
 use App\Filament\Core\Resources\OrgUnits\Schemas\OrgUnitForm;
 use App\Filament\Core\Resources\OrgUnits\Tables\OrgUnitsTable;
-use App\Models\Core\OrgUnit;
+use Bites\Core\Organization\Models\OrgUnit;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Widgets;
 
-use App\Models\Hrm\Staff;
+use Bites\Hrm\Models\Staff;
 use App\Models\User;
 use Filament\Facades\Filament;
 use Filament\Widgets\Widget;

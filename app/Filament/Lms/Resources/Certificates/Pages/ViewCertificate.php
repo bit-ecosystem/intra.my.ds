@@ -6,7 +6,7 @@ namespace App\Filament\Lms\Resources\Certificates\Pages;
 
 use App\Filament\Lms\Resources\Certificates\CertificateResource;
 use App\Filament\Lms\Resources\Quizzes\QuizResource;
-use App\Models\Lms\Certificate;
+use Bites\Kbm\Lms\Models\Certificate;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 

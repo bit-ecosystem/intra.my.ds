@@ -344,7 +344,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/kbm",
-                "reference": "56553a31f265b73075ca9b4d4af29814cdfcd437"
+                "reference": "82844b56349e5151184fe5f16bcf55652595c775"
             },
             "require": {
                 "bit-es/core": "*",
@@ -361,9 +361,9 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Bites\\Kbm\\": "src/",
-                    "Bites\\Lms\\": "src/LMS/",
-                    "Bites\\Dms\\": "src/DMS/"
+                    "Bites\\Lms\\": "src/Lms/",
+                    "Bites\\Dms\\": "src/Dms/",
+                    "Bites\\Kbm\\": "src/"
                 }
             },
             "license": [

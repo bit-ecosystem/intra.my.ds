@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Hrm\Resources\OrgUnits\Schemas;
 
-use App\Models\Hrm\JobPosition;
+use Bites\Core\Organization\Models\JobPosition;
 use Filament\Forms;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;

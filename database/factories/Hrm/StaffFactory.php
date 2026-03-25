@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Hrm;
 
-use App\Models\Hrm\Staff;
+use Bites\Hrm\Models\Staff;
 use App\Models\PersonAttribute;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;

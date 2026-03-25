@@ -11,7 +11,7 @@ use App\Filament\Lms\Resources\Quizzes\Pages\ViewQuiz;
 use App\Filament\Lms\Resources\Quizzes\Schemas\QuizForm;
 use App\Filament\Lms\Resources\Quizzes\Schemas\QuizInfolist;
 use App\Filament\Lms\Resources\Quizzes\Tables\QuizzesTable;
-use App\Models\Lms\Quiz;
+use Bites\Kbm\Lms\Models\Quiz;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

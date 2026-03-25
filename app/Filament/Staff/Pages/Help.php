@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Pages;
 
-use App\Models\Core\HelpPage;
+use Bites\Shared\Models\HelpPage;
 use BackedEnum;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;

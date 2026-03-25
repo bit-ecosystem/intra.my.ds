@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
-use App\Models\Lms\Course;
+use Bites\Kbm\Lms\Models\Course;
 use App\Models\User;
 
 class CoursePolicy

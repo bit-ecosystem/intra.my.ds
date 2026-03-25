@@ -9,7 +9,7 @@ use App\Filament\Core\Resources\OrgRoles\Pages\EditOrgRole;
 use App\Filament\Core\Resources\OrgRoles\Pages\ListOrgRoles;
 use App\Filament\Core\Resources\OrgRoles\Schemas\OrgRoleForm;
 use App\Filament\Core\Resources\OrgRoles\Tables\OrgRolesTable;
-use App\Models\Core\OrgRole;
+use Bites\Core\Organization\Models\OrgRole;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

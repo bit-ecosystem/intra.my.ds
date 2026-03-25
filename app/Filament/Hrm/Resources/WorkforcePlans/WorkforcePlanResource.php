@@ -9,7 +9,7 @@ use App\Filament\Hrm\Resources\WorkforcePlans\Pages\EditWorkforcePlan;
 use App\Filament\Hrm\Resources\WorkforcePlans\Pages\ListWorkforcePlans;
 use App\Filament\Hrm\Resources\WorkforcePlans\Schemas\WorkforcePlanForm;
 use App\Filament\Hrm\Resources\WorkforcePlans\Tables\WorkforcePlansTable;
-use App\Models\Hrm\WorkforcePlan;
+use Bites\Hrm\Models\WorkforcePlan;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Concerns;
+namespace Bites\Shared\Concerns;
 
-use App\Models\Hrm\Staff;
+use Bites\Hrm\Models\Staff;
 use App\Models\RoleMapper;
-use App\Models\Task;
+use Bites\Shared\Models\Task;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Arr;
 

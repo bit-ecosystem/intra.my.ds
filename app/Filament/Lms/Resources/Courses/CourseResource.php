@@ -11,7 +11,7 @@ use App\Filament\Lms\Resources\Courses\Pages\ViewCourse;
 use App\Filament\Lms\Resources\Courses\Schemas\CourseForm;
 use App\Filament\Lms\Resources\Courses\Schemas\CourseInfolist;
 use App\Filament\Lms\Resources\Courses\Tables\CoursesTable;
-use App\Models\Lms\Course;
+use Bites\Kbm\Lms\Models\Course;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

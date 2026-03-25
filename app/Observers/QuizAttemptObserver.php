@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Observers;
 
-use App\Models\Lms\Certificate;
-use App\Models\Lms\Module;
-use App\Models\Lms\QuizAttempt;
+use Bites\Kbm\Lms\Models\Certificate;
+use Bites\Kbm\Lms\Models\Module;
+use Bites\Kbm\Lms\Models\QuizAttempt;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 

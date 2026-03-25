@@ -6,7 +6,7 @@ namespace App\Filament\Lms\Resources\Courses\Pages;
 
 use App\Enums\CourseGroup;
 use App\Filament\Lms\Resources\Courses\CourseResource;
-use App\Models\Lms\Course;
+use Bites\Kbm\Lms\Models\Course;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Erp\Resources\Workflow\Workflows\Schemas;
 
 use App\Filament\Core\Resources\Roles\Schemas\RoleCanView;
-use App\Models\Workflow\Node;
+use Bites\Workflow\Models\Node;
 use Filament\Forms\Components;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;

@@ -11,7 +11,7 @@ use App\Filament\Dms\Resources\Attachments\Pages\ViewAttachment;
 use App\Filament\Dms\Resources\Attachments\Schemas\AttachmentForm;
 use App\Filament\Dms\Resources\Attachments\Schemas\AttachmentInfolist;
 use App\Filament\Dms\Resources\Attachments\Tables\AttachmentsTable;
-use App\Models\Dms\Attachment;
+use Bites\Kbm\Dms\Models\Attachment;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

@@ -9,7 +9,7 @@ use App\Filament\Hrm\Resources\JobDescriptionTemplates\Pages\EditJobDescriptionT
 use App\Filament\Hrm\Resources\JobDescriptionTemplates\Pages\ListJobDescriptionTemplates;
 use App\Filament\Hrm\Resources\JobDescriptionTemplates\Schemas\JobDescriptionTemplateForm;
 use App\Filament\Hrm\Resources\JobDescriptionTemplates\Tables\JobDescriptionTemplatesTable;
-use App\Models\Hrm\JobDescriptionTemplate;
+use Bites\Hrm\Models\JobDescriptionTemplate;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

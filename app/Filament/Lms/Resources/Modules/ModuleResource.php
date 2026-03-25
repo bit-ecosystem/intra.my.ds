@@ -11,7 +11,7 @@ use App\Filament\Lms\Resources\Modules\Pages\ViewModule;
 use App\Filament\Lms\Resources\Modules\Schemas\ModuleForm;
 use App\Filament\Lms\Resources\Modules\Schemas\ModuleInfolist;
 use App\Filament\Lms\Resources\Modules\Tables\ModulesTable;
-use App\Models\Lms\Module;
+use Bites\Kbm\Lms\Models\Module;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

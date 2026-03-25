@@ -11,7 +11,7 @@ use App\Filament\Lms\Resources\Certificates\Pages\ViewCertificate;
 use App\Filament\Lms\Resources\Certificates\Schemas\CertificateForm;
 use App\Filament\Lms\Resources\Certificates\Schemas\CertificateInfolist;
 use App\Filament\Lms\Resources\Certificates\Tables\CertificatesTable;
-use App\Models\Lms\Certificate;
+use Bites\Kbm\Lms\Models\Certificate;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

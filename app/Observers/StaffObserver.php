@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Observers;
 
-use App\Models\Hrm\Staff;
+use Bites\Hrm\Models\Staff;
 use App\Models\User;
 use Bites\Service\Services\RoleSyncService;
 

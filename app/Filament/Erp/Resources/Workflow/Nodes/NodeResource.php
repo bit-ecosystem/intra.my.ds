@@ -9,7 +9,7 @@ use App\Filament\Erp\Resources\Workflow\Nodes\Pages\EditNode;
 use App\Filament\Erp\Resources\Workflow\Nodes\Pages\ListNodes;
 use App\Filament\Erp\Resources\Workflow\Nodes\Schemas\NodeForm;
 use App\Filament\Erp\Resources\Workflow\Nodes\Tables\NodesTable;
-use App\Models\Workflow\Node;
+use Bites\Workflow\Models\Node;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

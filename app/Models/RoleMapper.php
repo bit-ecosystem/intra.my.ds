@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Models\Core\OrgUnit;
-use App\Models\Hrm\JobPosition;
-use App\Models\Hrm\Staff;
+use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\Models\JobPosition;
+use Bites\Hrm\Models\Staff;
 use App\Observers\RoleMapperObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\Scope;

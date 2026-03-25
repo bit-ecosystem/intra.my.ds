@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Observers;
 
 use App\Jobs\VectorizeDocument;
-use App\Models\Dms\Document;
+use Bites\Kbm\Dms\Models\Document;
 
 class DocumentObserver
 {

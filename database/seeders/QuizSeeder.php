@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Lms\Course;
-use App\Models\Lms\Module;
-use App\Models\Lms\Quiz;
+use Bites\Kbm\Lms\Models\Course;
+use Bites\Kbm\Lms\Models\Module;
+use Bites\Kbm\Lms\Models\Quiz;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;

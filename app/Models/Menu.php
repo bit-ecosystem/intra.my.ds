@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Models\Concerns\HasAttachableRoles;
+use Bites\Shared\Concerns\HasAttachableRoles;
 use Bites\Attachables\Models\Concerns\HasAttachableExtLink;
 use Illuminate\Database\Eloquent\Model;
 

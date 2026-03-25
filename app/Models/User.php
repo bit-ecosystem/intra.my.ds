@@ -6,9 +6,9 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Models\Core\OrgUnit;
-use App\Models\Hrm\JobPosition;
-use App\Models\Hrm\Staff;
+use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\Models\JobPosition;
+use Bites\Hrm\Models\Staff;
 use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
 use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Database\Eloquent\Casts\Attribute;

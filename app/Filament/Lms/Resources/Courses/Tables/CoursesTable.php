@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\Courses\Tables;
 
 use App\Enums\CourseGroup;
-use App\Models\Lms\Course;
+use Bites\Kbm\Lms\Models\Course;
 use Filament\Support\Enums;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\Layout\Split;

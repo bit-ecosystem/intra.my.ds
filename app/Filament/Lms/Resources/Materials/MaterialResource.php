@@ -11,7 +11,7 @@ use App\Filament\Lms\Resources\Materials\Pages\ViewMaterial;
 use App\Filament\Lms\Resources\Materials\Schemas\MaterialForm;
 use App\Filament\Lms\Resources\Materials\Schemas\MaterialInfolist;
 use App\Filament\Lms\Resources\Materials\Tables\MaterialsTable;
-use App\Models\Lms\Material;
+use Bites\Kbm\Lms\Models\Material;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;

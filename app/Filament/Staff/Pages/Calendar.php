@@ -6,7 +6,7 @@ namespace App\Filament\Staff\Pages;
 
 use App\Enums\EventType;
 use App\Filament\Core\Resources\HelpPages\Actions\OpenHelpAction;
-use App\Models\Event;
+use Bites\Shared\Models\Event;
 use App\Support\ShiftPattern;
 use BackedEnum;
 use Carbon\Carbon;

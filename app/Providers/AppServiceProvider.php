@@ -7,7 +7,7 @@ namespace App\Providers;
 use App\Filament\Staff\Pages\Help;
 use App\Listeners\SyncKeycloakAttributes;
 use App\Listeners\SyncLdap;
-use App\Models\Core\HelpPage;
+use Bites\Shared\Models\HelpPage;
 use App\Socialite\KeycloakProvider;
 use BladeUI\Icons\Factory;
 use DutchCodingCompany\FilamentSocialite\Events\Login;

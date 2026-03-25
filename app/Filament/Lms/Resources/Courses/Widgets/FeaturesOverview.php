@@ -4,7 +4,7 @@ namespace App\Filament\Lms\Resources\Courses\Widgets;
 
 use App\Filament\Lms\Resources\Courses\CourseResource;
 use App\Filament\Pages\ShopDashboard;
-use App\Models\Lms\Course;
+use Bites\Kbm\Lms\Models\Course;
 use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Model;
 
