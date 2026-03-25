@@ -15,6 +15,6 @@ class SharedServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'shared');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'shared');
+        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'shared');
     }
 }

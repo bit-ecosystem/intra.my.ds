@@ -1,6 +1,6 @@
 <?php
 
-namespace Bites\Services;
+namespace Bites\Service;
 
 use Illuminate\Support\ServiceProvider;
 

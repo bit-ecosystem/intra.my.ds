@@ -429,7 +429,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/service",
-                "reference": "95ba8d2eb421d8734eb9a9364956b986155bc8bd"
+                "reference": "d25f5cd91af15ed56de63935895f70c77208691f"
             },
             "require": {
                 "bit-es/shared": "*",
@@ -440,13 +440,13 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Bites\\Services\\ServiceServiceProvider"
+                        "Bites\\Service\\ServiceServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Bites\\Services\\": "src/"
+                    "Bites\\Service\\": "src/"
                 }
             },
             "license": [

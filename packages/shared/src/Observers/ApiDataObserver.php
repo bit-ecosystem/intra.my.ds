@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Shared\Observers;
 
-use App\Jobs\SeedStaffFromApiData;
+use Bites\Service\Jobs\SeedStaffFromApiData;
 use Bites\Shared\Models\ApiData;
 
 class ApiDataObserver

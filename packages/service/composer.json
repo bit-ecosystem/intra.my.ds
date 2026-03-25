@@ -16,13 +16,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Bites\\Services\\": "src/"
+            "Bites\\Service\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Bites\\Services\\ServiceServiceProvider"
+                "Bites\\Service\\ServiceServiceProvider"
             ]
         }
     },
