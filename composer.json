@@ -170,7 +170,7 @@
             "@php artisan queue:work --queue=weaver-seed --tries=3 --timeout=100"
         ],
         "job-seed": [
-            "@php artisan db:seed MigrationSeeder",
+            "php artisan db:seed --class=MigrationSeeder",
             "@php artisan bites:make-permissions",
             "@upload"
         ],

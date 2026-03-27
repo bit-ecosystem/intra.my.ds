@@ -19,6 +19,13 @@ class DatabaseSeeder extends Seeder
         $this->call([LmsSeeder::class]);
         $this->call([QuizSeeder::class]);
         $this->call([ModelJsonSeeder::class]);
+        // $this->callWith(
+        //     \Database\Seeders\ModelJsonSeeder::class,
+        //     [
+        //         'dir' => 'database/seeds',
+        //     ]
+        // );
+
         // User::factory()->create([
         //     'name' => 'faros',
         //     'email' => 'faros@email.com',
