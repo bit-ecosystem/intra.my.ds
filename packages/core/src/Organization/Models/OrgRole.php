@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Bites\Core\Organization\Models;
 
-use Bites\Core\Organization\Models\JobPosition;
-use Bites\Workflow\Models\Turtle;
 use App\Observers\OrgRoleObserver;
+use Bites\Workflow\Models\Turtle;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Bites\Service\Services;
 
-use Bites\Core\Organization\Models\OrgUnit;
 use Bites\Core\Organization\Models\JobPosition;
+use Bites\Core\Organization\Models\OrgUnit;
 use Bites\Hrm\Models\Staff;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;

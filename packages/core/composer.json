@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": "^8.2",
-        "bit-es/shared": "*"
+        "bit-es/shared": "*",
+        "laravel/passport": "^13.0"
     },
     "autoload": {
         "psr-4": {
@@ -21,7 +22,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Bites\\Core\\CoreServiceProvider"
+                "Bites\\Core\\CoreServiceProvider",
+                "Bites\\Core\\Providers\\IdpPanelProvider"
             ]
         }
     },

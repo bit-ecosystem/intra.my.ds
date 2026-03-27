@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Observers;
 
-use Bites\Core\Organization\Models\OrgUnit;
 use App\Models\RoleMapper;
+use Bites\Core\Organization\Models\OrgUnit;
 
 class OrgUnitObserver
 {

@@ -14,7 +14,7 @@ class ListCertificates extends ListRecords
 
     public function getSubheading(): ?string
     {
-        return __('Custom Page Subheading');
+        return __('All certificates issued to staff, for quizzes and courses. View details, or recertify if applicable. Expiring certs will appear in To Do > Task');
     }
 
     protected function getHeaderActions(): array

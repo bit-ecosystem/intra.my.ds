@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bites\Core\Identity\Resources\RefreshTokens\Tables;
+
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+
+class RefreshTokensTable
+{
+    public static function configure(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('id')
+                    ->label('ID')
+                    ->searchable(),
+                TextColumn::make('accessToken.name')
+                    ->searchable(),
+                IconColumn::make('revoked')
+                    ->boolean(),
+                TextColumn::make('expires_at')
+                    ->dateTime()
+                    ->sortable(),
+            ])
+            ->filters([
+                //
+            ])
+            ->recordActions([
+                EditAction::make(),
+            ])
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+}

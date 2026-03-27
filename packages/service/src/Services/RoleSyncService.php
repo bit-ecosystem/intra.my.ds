@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Bites\Service\Services;
 
-use Bites\Core\Organization\Models\OrgUnit;
-use Bites\Hrm\Models\Staff;
 use App\Models\RoleMapper;
 use App\Models\User;
+use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Hrm\Models\Staff;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Spatie\Permission\PermissionRegistrar;

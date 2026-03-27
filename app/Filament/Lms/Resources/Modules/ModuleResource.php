@@ -11,8 +11,8 @@ use App\Filament\Lms\Resources\Modules\Pages\ViewModule;
 use App\Filament\Lms\Resources\Modules\Schemas\ModuleForm;
 use App\Filament\Lms\Resources\Modules\Schemas\ModuleInfolist;
 use App\Filament\Lms\Resources\Modules\Tables\ModulesTable;
-use Bites\Kbm\Lms\Models\Module;
 use BackedEnum;
+use Bites\Kbm\Lms\Models\Module;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
@@ -24,7 +24,7 @@ class ModuleResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-modules';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Learning';
+    protected static string|UnitEnum|null $navigationGroup = 'Classroom';
 
     protected static ?int $navigationSort = 4;
     // public static function shouldRegisterNavigation(): bool

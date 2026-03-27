@@ -6,11 +6,9 @@ namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\Register;
 use App\Http\Middleware\SetLocale;
-use Bites\CorpLogin\Pages\Login;
-use Bites\CorpLogin\Pages\Profile;
-use Bites\CorpLogin\Pages\ResetPassword;
-use DutchCodingCompany\FilamentSocialite\FilamentSocialitePlugin;
-use DutchCodingCompany\FilamentSocialite\Provider;
+use Bites\Core\Identity\Pages\Login;
+use Bites\Core\Identity\Pages\Profile;
+use Bites\Core\Identity\Pages\ResetPassword;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -54,7 +52,7 @@ class StaffPanelProvider extends PanelProvider
 
             // Branding
             // ->brandName(__('bites::components/pagination.label'))
-            ->brandName('Staff Panel')
+            ->brandName('ATM Staff Intranet')
 
             ->colors([
                 'primary' => '#0F4B8F',
@@ -62,7 +60,7 @@ class StaffPanelProvider extends PanelProvider
             ->navigationItems([
                 NavigationItem::make()
                     ->label(fn (): string|array|null => __('Document'))
-                    ->url('https://intra.my.ds.amkor.com/dms/documents')
+                    ->url('https://intra.my.ds.amkor.com/lms/attachments')
                     ->icon('myicon-book-open-02')
                     ->sort(41)
                     ->group(fn (): string|array|null => __('Knowledge')),

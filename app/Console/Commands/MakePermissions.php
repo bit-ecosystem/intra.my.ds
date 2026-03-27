@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use Bites\Hrm\Models\Staff;
 use App\Models\RoleMapper;
+use Bites\Hrm\Models\Staff;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;

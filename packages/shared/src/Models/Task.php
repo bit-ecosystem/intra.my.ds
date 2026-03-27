@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Bites\Shared\Models;
 
-use Bites\Hrm\Models\Staff;
 use App\Models\RoleMapper;
+use Bites\Hrm\Models\Staff;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

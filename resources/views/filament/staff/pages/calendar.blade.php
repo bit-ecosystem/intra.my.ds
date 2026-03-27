@@ -27,6 +27,8 @@
 
             calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
+                weekNumbers: true,
+                firstDay: 1, // Start week on Monday
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
@@ -36,7 +38,7 @@
                 events: JSON.parse($wire.events),
 
                 // ⬇️ Add this: show full title on hover
-                eventDidMount: function (info) {
+                eventDidMount: function(info) {
                     // Set the native title attribute for a simple tooltip
                     info.el.setAttribute('title', info.event.title || '');
                 },

@@ -11,8 +11,8 @@ use App\Filament\Lms\Resources\Certificates\Pages\ViewCertificate;
 use App\Filament\Lms\Resources\Certificates\Schemas\CertificateForm;
 use App\Filament\Lms\Resources\Certificates\Schemas\CertificateInfolist;
 use App\Filament\Lms\Resources\Certificates\Tables\CertificatesTable;
-use Bites\Kbm\Lms\Models\Certificate;
 use BackedEnum;
+use Bites\Kbm\Lms\Models\Certificate;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
@@ -24,7 +24,7 @@ class CertificateResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-certificate';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Learning';
+    protected static string|UnitEnum|null $navigationGroup = 'Report Card';
 
     protected static ?string $modelLabel = 'Certificates';
 

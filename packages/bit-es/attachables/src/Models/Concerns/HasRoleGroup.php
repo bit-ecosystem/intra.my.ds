@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Bites\Attachables\Models\Concerns;
 
-use Bites\Core\Organization\Models\OrgUnit;
 use Bites\Attachables\Models\RoleGroup;
+use Bites\Core\Organization\Models\OrgUnit;
 
 trait HasRoleGroup
 {

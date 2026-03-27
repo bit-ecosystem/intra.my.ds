@@ -27,7 +27,7 @@ class MethodologyResource extends Resource
 
     protected static ?int $navigationSort = 9;
 
-    protected static ?string $recordTitleAttribute = 'methodology';
+    protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema
     {

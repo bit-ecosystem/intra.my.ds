@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Bites\Attachables\Models\Concerns;
+namespace Bites\Shared\Concerns;
 
-use Bites\Attachables\Models\AttachableExtLink;
+use Bites\Shared\Models\AttachableExtLink;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;

@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Pages;
 
-use App\Filament\Staff\Widgets\TaskWidget;
+use App\Filament\Staff\Widgets;
 use BackedEnum;
+use Bites\Shared\Concerns\HasHelp;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
 use UnitEnum;
 
 class Task extends Page
 {
+    use HasHelp;
+
     protected static string|BackedEnum|null $navigationIcon = 'myicon-task';
 
     protected static ?int $navigationSort = 11;
@@ -41,7 +44,9 @@ class Task extends Page
     protected function getHeaderWidgets(): array
     {
         return [
-            TaskWidget::class,
+            Widgets\ExpiringCert::class,
+            Widgets\ReminderWidget::class,
+            Widgets\TaskWidget::class,
         ];
     }
 }

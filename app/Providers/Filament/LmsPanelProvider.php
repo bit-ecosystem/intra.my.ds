@@ -27,7 +27,7 @@ class LmsPanelProvider extends PanelProvider
         return $panel
             ->id('lms')
             ->path('lms')
-            ->brandName('Learn Panel')
+            ->brandName('Digital Campus')
             ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             ->colors([
                 'primary' => '#09829F',

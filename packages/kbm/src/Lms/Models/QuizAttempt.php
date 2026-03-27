@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Bites\Kbm\Lms\Models;
 
-use Bites\Hrm\Models\Staff;
 use App\Models\User;
 use App\Observers\QuizAttemptObserver;
+use Bites\Hrm\Models\Staff;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

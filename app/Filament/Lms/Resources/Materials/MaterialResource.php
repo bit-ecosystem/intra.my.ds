@@ -11,17 +11,20 @@ use App\Filament\Lms\Resources\Materials\Pages\ViewMaterial;
 use App\Filament\Lms\Resources\Materials\Schemas\MaterialForm;
 use App\Filament\Lms\Resources\Materials\Schemas\MaterialInfolist;
 use App\Filament\Lms\Resources\Materials\Tables\MaterialsTable;
-use Bites\Kbm\Lms\Models\Material;
 use BackedEnum;
+use Bites\Kbm\Lms\Models\Material;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class MaterialResource extends Resource
 {
     protected static ?string $model = Material::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-book-open-duotone';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Library';
 
     // public static function shouldRegisterNavigation(): bool
     // {

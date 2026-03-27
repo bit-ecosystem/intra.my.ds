@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Observers;
 
-use Bites\Hrm\Models\JobDescriptionTemplate;
 use Bites\Core\Organization\Models\JobPosition;
+use Bites\Hrm\Models\JobDescriptionTemplate;
 use Bites\Hrm\Models\WorkforcePlan;
 
 class JobPositionObserver

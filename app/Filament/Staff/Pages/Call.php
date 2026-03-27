@@ -18,7 +18,8 @@ use UnitEnum;
 class Call extends Page implements HasSchemas
 {
     use InteractsWithSchemas;
-
+    use \Bites\Shared\Concerns\HasHelp;
+    
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-phone-call';
 
     protected static ?int $navigationSort = 62;

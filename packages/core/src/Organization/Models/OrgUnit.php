@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Bites\Core\Organization\Models;
 
-use Bites\Kbm\Dms\Models\Document;
-use Bites\Core\Organization\Models\JobPosition;
-use Bites\Hrm\Models\WorkforcePlan;
 use App\Models\RoleMapper;
-use Bites\Workflow\Models\Turtle;
 use App\Observers\OrgUnitObserver;
+use Bites\Hrm\Models\WorkforcePlan;
+use Bites\Kbm\Dms\Models\Document;
+use Bites\Workflow\Models\Turtle;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 

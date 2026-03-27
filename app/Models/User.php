@@ -6,8 +6,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Bites\Core\Organization\Models\OrgUnit;
 use Bites\Core\Organization\Models\JobPosition;
+use Bites\Core\Organization\Models\OrgUnit;
 use Bites\Hrm\Models\Staff;
 use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
 use Filament\Models\Contracts\HasAvatar;
@@ -141,6 +141,10 @@ class User extends Authenticatable implements HasAppAuthentication, HasAvatar, L
         return $this->email;
     }
 
+/**
+ * @property \Illuminate\Database\Eloquent\Collection $personAttributes
+ * @method \Illuminate\Database\Eloquent\Relations\MorphMany personAttributes()
+ */
     public function personAttributes()
     {
         return $this->morphMany(PersonAttribute::class, 'attributable');

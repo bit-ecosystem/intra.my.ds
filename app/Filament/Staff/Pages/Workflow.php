@@ -12,6 +12,8 @@ use UnitEnum;
 
 class Workflow extends Page
 {
+    use \Bites\Shared\Concerns\HasHelp;
+
     protected static string|BackedEnum|null $navigationIcon = 'myicon-w-request';
 
     protected static ?int $navigationSort = 32;

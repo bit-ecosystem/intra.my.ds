@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Bites\Hrm\Models\Staff;
 use App\Models\User;
+use Bites\Hrm\Models\Staff;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

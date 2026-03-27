@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Bites\Kbm\Dms\Models;
 
-use Bites\Core\Organization\Models\OrgUnit;
 use App\Models\User;
 use App\Observers\DocumentObserver;
+use Bites\Core\Organization\Models\OrgUnit;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

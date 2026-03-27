@@ -2,9 +2,9 @@
 
 namespace Database\Factories\Hrm;
 
-use Bites\Hrm\Models\Staff;
 use App\Models\PersonAttribute;
 use App\Models\User;
+use Bites\Hrm\Models\Staff;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StaffFactory extends Factory

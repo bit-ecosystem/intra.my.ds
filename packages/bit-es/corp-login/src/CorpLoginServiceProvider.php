@@ -16,7 +16,7 @@ class CorpLoginServiceProvider extends ServiceProvider
         $this->callAfterResolving(Factory::class, function (Factory $factory): void {
             $factory->add('corp-login', [
                 'path' => __DIR__.'/../resources/svg',
-                'prefix' => 'bites',
+                'prefix' => 'corp-login',
             ]);
         });
     }

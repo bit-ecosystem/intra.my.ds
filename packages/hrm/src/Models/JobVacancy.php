@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Bites\Hrm\Models;
 
 use App\Models\User;
+use Bites\Core\Organization\Models\JobPosition;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Bites\Core\Organization\Models\JobPosition;
 
 class JobVacancy extends Model
 {

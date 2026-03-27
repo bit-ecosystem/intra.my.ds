@@ -21,11 +21,15 @@ use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use UnitEnum;
 
+use Filament\Infolists\Components\ViewEntry;
+use Filament\Support\Contracts\Collapsible;
+
 class Location extends Page implements HasActions, HasForms, HasTable
 {
     use InteractsWithActions;
     use InteractsWithForms;
     use InteractsWithTable;
+    use \Bites\Shared\Concerns\HasHelp;
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-location';
 
@@ -61,97 +65,68 @@ class Location extends Page implements HasActions, HasForms, HasTable
             ->state(config('bites.emergency', []))
             ->schema([
                 Section::make('1st Floor')
-                    ->extraAttributes([
-                        // Alpine state lives here
-                        'x-data' => '{ height: 800, min: 200, max: 3000, step: 200 }',
-                        'id' => 'ground-floor-container',
-                    ])
-                    ->headerActions([
-                        Action::make('zoomIn')
-                            ->iconButton()
-                            ->icon('heroicon-m-magnifying-glass-plus')
-                            ->extraAttributes([
-                                // Directly change height (no custom event)
-                                '@click' => 'height = Math.min(max, height + step)',
-                            ]),
+                ->description('Hold Ctrl and scroll to zoom')
+                ->columnSpanFull()
+                ->schema([
+                    ViewEntry::make('floor_plan')
+                    ->view('filament.infolists.components.floor-plan-view')
+                    ->columnSpanFull(),
 
-                        Action::make('zoomOut')
-                            ->iconButton()
-                            ->icon('heroicon-m-magnifying-glass-minus')
-                            ->extraAttributes([
-                                '@click' => 'height = Math.max(min, height - step)',
-                            ]),
+                ])
 
-                        Action::make('resetZoom')
-                            ->iconButton()
-                            ->icon('myicon-refresh2')
-                            ->tooltip('Reset zoom')
-                            ->extraAttributes([
-                                '@click' => 'height = 800',
-                            ]),
-                    ])
-                    ->schema([
-                        ImageEntry::make('floor_plan')
-                            ->hiddenLabel()
-                            ->state(asset('images/floorplan_1.png'))
-                            ->extraImgAttributes([
-                                'class' => 'max-w-none transition-all duration-300 select-none',
-                                'x-bind:style' => '`height: ${height}px`',
-                            ])
-                            ->extraAttributes([
-                                'style' => 'max-height: 600px; overflow: auto;',
-                                'class' => 'ring-1 ring-gray-200 rounded-lg bg-gray-50 p-2',
-                            ]),
-                    ])
-                    ->columnSpanFull()
+
                     ->collapsed(),
 
                 // ========= GROUND FLOOR (height-based zoom) =========
                 Section::make('Ground Floor')
-                    ->extraAttributes([
-                        // Alpine state lives here
-                        'x-data' => '{ height: 800, min: 200, max: 3000, step: 200 }',
-                        'id' => 'ground-floor-container',
-                    ])
-                    ->headerActions([
-                        Action::make('zoomIn')
-                            ->iconButton()
-                            ->icon('heroicon-m-magnifying-glass-plus')
-                            ->extraAttributes([
-                                // Directly change height (no custom event)
-                                '@click' => 'height = Math.min(max, height + step)',
-                            ]),
+                ->extraAttributes([
+                    // Alpine state lives here
+                    'x-data' => '{
+                    zoom: 1,
+                    zoomMin: 0.5,
+                    zoomMax: 3,
+                    zoomStep: 0.1,}',
+                    'id' => 'ground-floor-container',
+                ])
+                // ->headerActions([
+                //     Action::make('zoomIn')
+                //         ->iconButton()
+                //         ->icon('heroicon-m-magnifying-glass-plus')
+                //         ->extraAttributes([
+                //             // Directly change height (no custom event)
+                //             '@click' => 'height = Math.min(max, height + step)',
+                //         ]),
 
-                        Action::make('zoomOut')
-                            ->iconButton()
-                            ->icon('heroicon-m-magnifying-glass-minus')
-                            ->extraAttributes([
-                                '@click' => 'height = Math.max(min, height - step)',
-                            ]),
+                //     Action::make('zoomOut')
+                //         ->iconButton()
+                //         ->icon('heroicon-m-magnifying-glass-minus')
+                //         ->extraAttributes([
+                //             '@click' => 'height = Math.max(min, height - step)',
+                //         ]),
 
-                        Action::make('resetZoom')
-                            ->iconButton()
-                            ->icon('myicon-refresh2')
-                            ->tooltip('Reset zoom')
-                            ->extraAttributes([
-                                '@click' => 'height = 800',
-                            ]),
-                    ])
-                    ->schema([
-                        ImageEntry::make('floor_plan_g')
-                            ->hiddenLabel()
-                            ->state(asset('images/floorplan_G.png'))
-                            ->extraImgAttributes([
-                                'class' => 'max-w-none transition-all duration-300 select-none',
-                                'x-bind:style' => '`height: ${height}px`',
-                            ])
-                            ->extraAttributes([
-                                'style' => 'max-height: 600px; overflow: auto;',
-                                'class' => 'ring-1 ring-gray-200 rounded-lg bg-gray-50 p-2',
-                            ]),
-                    ])
-                    ->columnSpanFull()
-                    ->collapsed(),
+                //     Action::make('resetZoom')
+                //         ->iconButton()
+                //         ->icon('myicon-refresh2')
+                //         ->tooltip('Reset zoom')
+                //         ->extraAttributes([
+                //             '@click' => 'height = 800',
+                //         ]),
+                // ])
+                ->schema([
+                    ImageEntry::make('floor_plan_g')
+                        ->hiddenLabel()
+                        ->state(asset('images/floorplan_G.png'))
+                        ->extraImgAttributes([
+                            'class' => 'max-w-none transition-all duration-300 select-none',
+                            'x-bind:style' => '`height: ${height}px`',
+                        ])
+                        ->extraAttributes([
+                            'style' => 'max-height: 600px; overflow: auto;',
+                            'class' => 'ring-1 ring-gray-200 rounded-lg bg-gray-50 p-2',
+                        ]),
+                ])
+                ->columnSpanFull()
+                ->collapsed(),
                 // ========= END GROUND FLOOR =========
             ]);
     }
@@ -161,9 +136,9 @@ class Location extends Page implements HasActions, HasForms, HasTable
         return $table
             ->query(function () {
                 return \Bites\Core\Organization\Models\Location::query()
-                    ->when($this->scope === 'rooms', fn ($q) => $q->where('type', 'room'))
-                    ->when($this->scope === 'stores', fn ($q) => $q->where('type', 'store'))
-                    ->when($this->scope === 'inactive', fn ($q) => $q->whereNotNull('ends_at'));
+                    ->when($this->scope === 'rooms', fn($q) => $q->where('type', 'room'))
+                    ->when($this->scope === 'stores', fn($q) => $q->where('type', 'store'))
+                    ->when($this->scope === 'inactive', fn($q) => $q->whereNotNull('ends_at'));
             })
             ->paginated(['all'])
             ->columns([
@@ -178,8 +153,8 @@ class Location extends Page implements HasActions, HasForms, HasTable
                 Action::make('all')
                     ->label('All')
                     ->icon('heroicon-o-rectangle-stack')
-                    ->color(fn (): string => $this->scope === 'all' ? 'primary' : 'gray')
-                    ->outlined(fn (): bool => $this->scope !== 'all')
+                    ->color(fn(): string => $this->scope === 'all' ? 'primary' : 'gray')
+                    ->outlined(fn(): bool => $this->scope !== 'all')
                     ->action(function (): void {
                         $this->scope = 'all';
                         $this->resetTablePage();
@@ -189,8 +164,8 @@ class Location extends Page implements HasActions, HasForms, HasTable
                 Action::make('rooms')
                     ->label('Rooms')
                     ->icon('heroicon-o-home-modern')
-                    ->color(fn (): string => $this->scope === 'rooms' ? 'primary' : 'gray')
-                    ->outlined(fn (): bool => $this->scope !== 'rooms')
+                    ->color(fn(): string => $this->scope === 'rooms' ? 'primary' : 'gray')
+                    ->outlined(fn(): bool => $this->scope !== 'rooms')
                     ->action(function (): void {
                         $this->scope = 'rooms';
                         $this->resetTablePage();
@@ -200,8 +175,8 @@ class Location extends Page implements HasActions, HasForms, HasTable
                 Action::make('stores')
                     ->label('Stores')
                     ->icon('heroicon-o-building-storefront')
-                    ->color(fn (): string => $this->scope === 'stores' ? 'primary' : 'gray')
-                    ->outlined(fn (): bool => $this->scope !== 'stores')
+                    ->color(fn(): string => $this->scope === 'stores' ? 'primary' : 'gray')
+                    ->outlined(fn(): bool => $this->scope !== 'stores')
                     ->action(function (): void {
                         $this->scope = 'stores';
                         $this->resetTablePage();
@@ -211,8 +186,8 @@ class Location extends Page implements HasActions, HasForms, HasTable
                 Action::make('inactive')
                     ->label('Inactive')
                     ->icon('heroicon-o-archive-box')
-                    ->color(fn (): string => $this->scope === 'inactive' ? 'warning' : 'gray')
-                    ->outlined(fn (): bool => $this->scope !== 'inactive')
+                    ->color(fn(): string => $this->scope === 'inactive' ? 'warning' : 'gray')
+                    ->outlined(fn(): bool => $this->scope !== 'inactive')
                     ->action(function (): void {
                         $this->scope = 'inactive';
                         $this->resetTablePage();

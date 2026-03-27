@@ -11,8 +11,8 @@ use App\Filament\Lms\Resources\Courses\Pages\ViewCourse;
 use App\Filament\Lms\Resources\Courses\Schemas\CourseForm;
 use App\Filament\Lms\Resources\Courses\Schemas\CourseInfolist;
 use App\Filament\Lms\Resources\Courses\Tables\CoursesTable;
-use Bites\Kbm\Lms\Models\Course;
 use BackedEnum;
+use Bites\Kbm\Lms\Models\Course;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
@@ -25,7 +25,7 @@ class CourseResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-course';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Learning';
+    protected static string|UnitEnum|null $navigationGroup = 'Classroom';
 
     protected static ?string $modelLabel = 'Courses';
 

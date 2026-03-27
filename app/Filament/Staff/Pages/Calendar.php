@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Pages;
 
 use App\Enums\EventType;
-use App\Filament\Core\Resources\HelpPages\Actions\OpenHelpAction;
-use Bites\Shared\Models\Event;
 use App\Support\ShiftPattern;
 use BackedEnum;
+use Bites\Shared\Models\Event;
 use Carbon\Carbon;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -35,6 +34,7 @@ use UnitEnum;
 
 class Calendar extends Page implements HasActions, HasForms, HasTable
 {
+    use \Bites\Shared\Concerns\HasHelp;
     use InteractsWithActions;
     use InteractsWithForms;
     use InteractsWithTable;
@@ -66,18 +66,6 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
     protected string $view = 'filament.staff.pages.calendar';
 
     public $events;
-
-    protected function getHeaderWidgets(): array
-    {
-        return [];
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            OpenHelpAction::make(static::class),
-        ];
-    }
 
     public function table(Table $table): Table
     {

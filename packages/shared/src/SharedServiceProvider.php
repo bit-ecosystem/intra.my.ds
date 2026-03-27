@@ -13,8 +13,8 @@ class SharedServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'shared');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'shared');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'shared');
+        // $this->loadViewsFrom(__DIR__ . '/../resources/views', 'bites-shared');
     }
 }

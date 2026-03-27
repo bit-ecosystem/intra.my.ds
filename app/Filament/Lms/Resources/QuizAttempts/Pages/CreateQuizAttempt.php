@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\QuizAttempts\Pages;
 
 use App\Filament\Lms\Resources\QuizAttempts\QuizAttemptResource;
+use App\Services\QuizScoringService;
 use Bites\Kbm\Lms\Models\Certificate;
 use Bites\Kbm\Lms\Models\Module;
 use Bites\Kbm\Lms\Models\Quiz;
-use App\Services\QuizScoringService;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Carbon;

@@ -11,6 +11,7 @@ use UnitEnum;
 
 class Fix extends Page
 {
+    use \Bites\Shared\Concerns\HasHelp;
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-urgent';
 
     protected static ?int $navigationSort = 61;

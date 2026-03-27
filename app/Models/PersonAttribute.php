@@ -18,6 +18,10 @@ class PersonAttribute extends Model
         'attributable_type',
     ];
 
+    protected $casts = [
+        'value' => 'encrypted',
+    ];
+
     public function attributable()
     {
         return $this->morphTo();

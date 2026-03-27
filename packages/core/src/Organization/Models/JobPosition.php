@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Bites\Core\Organization\Models;
 
-use Bites\Core\Organization\Models\OrgRole;
-use Bites\Core\Organization\Models\OrgUnit;
 use App\Models\User;
 use App\Observers\JobPositionObserver;
-use Bites\Hrm\Models\Staff;
 use Bites\Hrm\Models\JobVacancy;
 use Bites\Hrm\Models\Skill;
+use Bites\Hrm\Models\Staff;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

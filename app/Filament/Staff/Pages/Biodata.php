@@ -7,6 +7,7 @@ namespace App\Filament\Staff\Pages;
 use App\Filament\Staff\Widgets\StaffInfo;
 use App\Models\User;
 use BackedEnum;
+use Bites\Shared\Concerns\HasHelp;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -25,6 +26,7 @@ use UnitEnum;
 
 class Biodata extends Page implements HasActions, HasSchemas
 {
+    use HasHelp;
     use InteractsWithActions;
     use InteractsWithSchemas;
 
@@ -74,6 +76,10 @@ class Biodata extends Page implements HasActions, HasSchemas
         // Decode the JSON string back into an array for the Repeater
         if (isset($attributes['family_members'])) {
             $attributes['family_members'] = json_decode($attributes['family_members'], true);
+        }
+
+        if (isset($attributes['reminders'])) {
+            $attributes['reminders'] = json_decode($attributes['reminders'], true);
         }
 
         $this->form->fill($attributes);
@@ -127,29 +133,32 @@ class Biodata extends Page implements HasActions, HasSchemas
                     Wizard\Step::make('Family Members')
                         ->schema([
                             Components\Repeater::make('family_members') // The name of the relationship
-                                ->schema([
-                                    Grid::make(3)
-                                        ->schema([
-                                            Components\TextInput::make('name')
-                                                ->required()
-                                                ->maxLength(255),
-                                            Components\DatePicker::make('date_of_birth')
-                                                ->native(false), // Use Filament's date picker style
-                                            Components\Select::make('relationship_type')
-                                                ->options([
-                                                    'spouse' => 'Spouse',
-                                                    'child' => 'Child',
-                                                    'parent' => 'Parent',
-                                                    'other' => 'Other',
-                                                ])
-                                                ->required(),
-                                        ]),
+                                ->table([
+                                    Components\Repeater\TableColumn::make('Name'),
+                                    Components\Repeater\TableColumn::make('Date of Birth'),
+                                    Components\Repeater\TableColumn::make('Relationship Type'),
                                 ])
-                                ->addable(false)->deletable(false)->reorderable(false)
+                                ->schema([
+                                    Components\TextInput::make('name')
+                                        ->required()
+                                        ->maxLength(255),
+                                    Components\DatePicker::make('date_of_birth')
+                                        ->native(false), // Use Filament's date picker style
+                                    Components\Select::make('relationship_type')
+                                        ->options([
+                                            'spouse' => 'Spouse',
+                                            'child' => 'Child',
+                                            'parent' => 'Parent',
+                                            'other' => 'Other',
+                                        ])
+                                        ->required(),
+                                ])
+                                // ->addable(false)->deletable(false)->reorderable(false)
+                                ->compact()
                                 ->addActionLabel('Add Family Member') // Customize the button label
                                 ->columns(1) // Repeater itself occupies one column in the parent grid
                                 ->collapsible() // Optional: allows collapsing items
-                                ->itemLabel(fn (array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
+                                ->itemLabel(fn(array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
                             Action::make('save')
                                 ->label('Save Family Info')
                                 ->action('save'),
@@ -167,14 +176,29 @@ class Biodata extends Page implements HasActions, HasSchemas
                         ])->columns(2),
                     Wizard\Step::make('Reminders')
                         ->schema([
-                            Components\TextInput::make('bank_name'), // ->required(),
-                            Components\TextInput::make('bank_account_number'), // ->required(),
-                            Components\TextInput::make('epf_number'), // ->label('EPF/PF Number'),
-                            Components\TextInput::make('tax_number'), // ->label('Income Tax Number'),
+                            Components\Repeater::make('reminders') // The name of the relationship
+                                ->table([
+                                    Components\Repeater\TableColumn::make('Name'),
+                                    Components\Repeater\TableColumn::make('Expiry Date')->width('200px'),
+                                    // Components\Repeater\TableColumn::make('Relationship Type'),
+                                ])
+                                ->schema([
+                                    Components\TextInput::make('name')
+                                        ->required()
+                                        ->maxLength(255),
+                                    Components\DatePicker::make('expiry_date')
+                                        ->native(false), // Use Filament's date picker style
+                                ])
+                                // ->addable(false)->deletable(false)->reorderable(false)
+                                ->compact()
+                                ->addActionLabel('Add Reminder') // Customize the button label
+                                ->columns(1) // Repeater itself occupies one column in the parent grid
+                                ->collapsible() // Optional: allows collapsing items
+                                ->itemLabel(fn(array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
                             Action::make('save')
-                                ->label('Save Reminders')
+                                ->label('Save Reminder Info')
                                 ->action('save'),
-                        ])->columns(2),
+                        ]),
                 ])->skippable()
                     ->submitAction(
                         Action::make('save')

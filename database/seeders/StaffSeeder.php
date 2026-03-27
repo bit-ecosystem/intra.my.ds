@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Bites\Core\Organization\Models\OrgUnit;
 use Bites\Core\Organization\Models\JobPosition;
+use Bites\Core\Organization\Models\OrgUnit;
 use Bites\Hrm\Models\Staff;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Observers;
 
-use Bites\Hrm\Models\Staff;
 use App\Models\User;
+use Bites\Hrm\Models\Staff;
 use Bites\Service\Services\RoleSyncService;
 
 class StaffObserver

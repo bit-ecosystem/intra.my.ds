@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Bites\Hrm\Models;
 
-use Bites\Core\Organization\Models\OrgUnit;
 use App\Models\PersonAttribute;
 use App\Models\User;
 use App\Observers\StaffObserver;
+use Bites\Core\Organization\Models\JobPosition;
+use Bites\Core\Organization\Models\OrgUnit;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
-use Bites\Core\Organization\Models\JobPosition;
 
 #[ObservedBy([StaffObserver::class])]
 class Staff extends Model

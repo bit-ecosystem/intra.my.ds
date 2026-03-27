@@ -115,10 +115,10 @@ enum CourseGroup: string
     {
         return match ($this) {
             // Operations
-            self::SAFETY => Color::Cyan,
-            self::COMPLIANCE => Color::Red,
-            self::QUALITY => Color::Lime,
-            self::TECHNICAL => Color::Blue,
+            self::SAFETY => Color::Orange,
+            self::COMPLIANCE => Color::Lime,
+            self::QUALITY => Color::Blue,
+            self::TECHNICAL => Color::Red,
 
             // Production
             self::PRODUCT => Color::Emerald,
@@ -126,10 +126,12 @@ enum CourseGroup: string
             self::EQUIPMENT => Color::Violet,
 
             // Growth
-            self::EFFICIENCY => Color::Orange,
+            self::EFFICIENCY => Color::Cyan,
             self::DIGITAL => Color::Mauve,
             self::SOFT_SKILLS => Color::Fuchsia,
             self::LEADERSHIP => Color::Sky,
+
+            // Newbie
             self::ONBOARDING => Color::Yellow,
         };
     }

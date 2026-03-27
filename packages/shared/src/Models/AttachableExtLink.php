@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bites\Attachables\Models;
+namespace Bites\Shared\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
