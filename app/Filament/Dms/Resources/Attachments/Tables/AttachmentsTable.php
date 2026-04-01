@@ -10,7 +10,6 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Hugomyb\FilamentMediaAction\Actions\MediaAction;
 use Illuminate\Database\Eloquent\Model;
 
 class AttachmentsTable
@@ -28,8 +27,6 @@ class AttachmentsTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
-                MediaAction::make('media-url')
-                    ->media(fn ($record) => $record->file_path ?? '#'),
             ])
             ->recordUrl(fn (Model $model): string => ($model->file_path))
             ->openRecordUrlInNewTab()
