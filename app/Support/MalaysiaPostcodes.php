@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Support;
 
 use Illuminate\Support\Facades\Cache;
@@ -20,15 +22,15 @@ class MalaysiaPostcodes
      */
     public static function rows(): array
     {
-        return Cache::remember('postcode_my.csv:rows:v1', now()->addDays(7), function () {
-            $resp = Http::timeout(15)->get(self::RAW_URL);
-            if (! $resp->ok()) {
+        return Cache::remember('postcode_my.csv:rows:v1', now()->addDays(7), function (): array {
+            $response = Http::timeout(15)->get(self::RAW_URL);
+            if (! $response->ok()) {
                 return [];
             }
 
             $rows = [];
             $fh = fopen('php://temp', 'r+');
-            fwrite($fh, $resp->body());
+            fwrite($fh, $response->body());
             rewind($fh);
 
             $headers = [];
@@ -54,9 +56,10 @@ class MalaysiaPostcodes
                     '_raw' => $raw,
                 ];
             }
+
             fclose($fh);
 
-            return array_values(array_filter($rows, fn ($r) => ! empty($r['postcode'])));
+            return array_values(array_filter($rows, fn (array $r): bool => ! empty($r['postcode'])));
         });
     }
 
@@ -66,7 +69,7 @@ class MalaysiaPostcodes
         return array_values(
             array_unique(
                 array_filter(
-                    array_map(fn ($r) => $r['postcode'] ?? null, self::rows())
+                    array_map(fn (array $r) => $r['postcode'] ?? null, self::rows())
                 )
             )
         );
@@ -92,8 +95,9 @@ class MalaysiaPostcodes
         if (! $postcode) {
             return null;
         }
+
         foreach (self::rows() as $r) {
-            if ((string) $r['postcode'] === (string) $postcode) {
+            if ((string) $r['postcode'] === $postcode) {
                 return $r;
             }
         }
@@ -107,6 +111,7 @@ class MalaysiaPostcodes
         if (! $label) {
             return null;
         }
+
         foreach (self::rows() as $r) {
             $candidate = trim(implode(' · ', array_filter([$r['city'] ?? null, $r['area'] ?? null, $r['state'] ?? null, $r['postcode'] ?? null])));
             if ($candidate === $label) {

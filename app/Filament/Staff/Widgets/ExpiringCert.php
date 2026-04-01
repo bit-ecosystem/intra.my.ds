@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Staff\Widgets;
 
 use Bites\Kbm\Lms\Models\Certificate;
@@ -28,7 +30,7 @@ class ExpiringCert extends TableWidget
             ->columns([
                 TextColumn::make('module.title'),
                 TextColumn::make('certificate_number')
-                    ->color(fn ($record) => $record->expires_at->isPast() ? 'danger' : 'info'),
+                    ->color(fn ($record): string => $record->expires_at->isPast() ? 'danger' : 'info'),
                 TextColumn::make('issued_at')
                     ->dateTime()
                     ->sortable(),
@@ -36,7 +38,7 @@ class ExpiringCert extends TableWidget
                     ->label('Expires')
                     ->since()
                     ->dateTimeTooltip()
-                    ->color(fn ($record) => $record->expires_at->isPast() ? 'danger' : 'info')
+                    ->color(fn ($record): string => $record->expires_at->isPast() ? 'danger' : 'info')
                     ->sortable(),
             ])
             ->paginated(false)

@@ -81,7 +81,7 @@ class CategoryGroupColumn extends Column implements HasEmbeddedView
         $category = (string) $record->category;
 
         // Build a per-page cache for all categories present on the current page (if possible).
-        if (empty(static::$byCategoryCache)) {
+        if (static::$byCategoryCache === []) {
             $livewire = $this->getLivewire();
             $tableRecords = method_exists($livewire, 'getTableRecords')
                 ? $livewire->getTableRecords()
@@ -90,8 +90,8 @@ class CategoryGroupColumn extends Column implements HasEmbeddedView
             if ($tableRecords && $tableRecords->isNotEmpty()) {
                 $categories = $tableRecords
                     ->pluck('category')
-                    ->filter(fn ($c) => filled($c))
-                    ->map(fn ($c) => (string) $c)
+                    ->filter(fn ($c): bool => filled($c))
+                    ->map(fn ($c): string => (string) $c)
                     ->unique()
                     ->values();
 

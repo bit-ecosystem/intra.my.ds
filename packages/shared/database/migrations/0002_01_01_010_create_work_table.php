@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table): void {
             $table->id();
             $table->morphs('taskable');
             $table->string('title');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('org_unit_id')->nullable()->constrained('org_units')->nullOnDelete(); // Multi-team / org scoping
             $table->foreignId('owner_id')->nullable()->constrained('staff')->nullOnDelete(); // Ownership / organizer

@@ -65,13 +65,13 @@ class StaffImportService
 
             // OrgUnit
             $orgUnitName = trim((string) ($item['org_unit'] ?? ''));
-            $counters['org_units_checked']++;
+            ++$counters['org_units_checked'];
             $orgUnit = OrgUnit::firstOrCreate(
                 ['name' => $orgUnitName],
                 ['description' => $orgUnitName, 'created_at' => $createdAt]
             );
             if ($orgUnit->wasRecentlyCreated) {
-                $counters['org_units_created']++;
+                ++$counters['org_units_created'];
             }
 
             // JobPosition by stable code (UUID)
@@ -89,7 +89,7 @@ class StaffImportService
             }
 
             // Upsert JobPosition by code
-            $counters['job_positions_checked']++;
+            ++$counters['job_positions_checked'];
             $jobPosition = JobPosition::updateOrCreate(
                 ['code' => $jobCode],
                 [
@@ -99,11 +99,11 @@ class StaffImportService
                 ]
             );
             if ($jobPosition->wasRecentlyCreated) {
-                $counters['job_positions_created']++;
+                ++$counters['job_positions_created'];
             }
 
             // Ensure Staff points to this JobPosition
-            $counters['staff_checked']++;
+            ++$counters['staff_checked'];
             $staff = Staff::updateOrCreate(
                 ['staff_number' => $staffNumber],
                 [
@@ -137,7 +137,7 @@ class StaffImportService
                         ['key' => $key],
                         ['value' => $value]
                     );
-                    $counters['attributes_saved']++;
+                    ++$counters['attributes_saved'];
                 }
             }
         }
@@ -177,7 +177,7 @@ class StaffImportService
             if ($currentJobPosition->superior_id !== $managerJobPosition->id) {
                 $currentJobPosition->superior_id = $managerJobPosition->id;
                 $currentJobPosition->save();
-                $counters['superiors_linked']++;
+                ++$counters['superiors_linked'];
 
                 // Log::debug('StaffImportService: Linked superior', [
                 //     'staff_number'            => $currentStaffNumber,
@@ -251,7 +251,7 @@ class StaffImportService
                     $orgUnit = $position->orgUnit;
 
                     if (! $orgUnit) {
-                        $skippedNoOrgUnit++;
+                        ++$skippedNoOrgUnit;
 
                         continue;
                     }
@@ -260,14 +260,14 @@ class StaffImportService
 
                     $isSameOrgUnit = $superiorOrgUnit && $superiorOrgUnit->is($orgUnit);
                     if ($isSameOrgUnit) {
-                        $skippedSameOrg++;
+                        ++$skippedSameOrg;
 
                         continue;
                     }
 
-                    $eligible++;
+                    ++$eligible;
                     $orgUnit->update(['owner_id' => $position->id]);
-                    $updated++;
+                    ++$updated;
                 }
             });
 

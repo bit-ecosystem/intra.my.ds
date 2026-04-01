@@ -16,14 +16,14 @@ return new class extends Migration
         // -----------------------
         // DOCUMENT MANAGEMENT (POLYMORPHIC)
         // -----------------------
-        Schema::create('d_document_classifications', function (Blueprint $table) {
+        Schema::create('d_document_classifications', function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('d_document_levels', function (Blueprint $table) {
+        Schema::create('d_document_levels', function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->enum('level', ['public', 'internal', 'confidential', 'strictly_confidential']); // Public, Internal, Confidential, Strictly Confidential
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('d_documents', function (Blueprint $table) {
+        Schema::create('d_documents', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('org_unit_id')->nullable()->constrained('org_units')->cascadeOnDelete();
             $table->foreignId('document_type_id')->constrained('d_document_levels')->cascadeOnDelete();
@@ -50,7 +50,7 @@ return new class extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('d_document_versions', function (Blueprint $table) {
+        Schema::create('d_document_versions', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('document_id')->constrained('d_documents')->cascadeOnDelete();
             $table->integer('version_number');
@@ -61,7 +61,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('d_document_approvals', function (Blueprint $table) {
+        Schema::create('d_document_approvals', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('document_version_id')->constrained('d_document_versions')->cascadeOnDelete();
             $table->foreignId('approver_staff_id')->constrained('staff')->cascadeOnDelete();
@@ -71,7 +71,7 @@ return new class extends Migration
         });
 
         // allow documents to attach to any model (documentables)
-        Schema::create('d_documentables', function (Blueprint $table) {
+        Schema::create('d_documentables', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('document_id')->constrained('d_documents')->cascadeOnDelete();
             $table->morphs('documentable'); // documentable_id, documentable_type
@@ -80,7 +80,7 @@ return new class extends Migration
         });
 
         // attachments polymorphic: files attached to many models
-        Schema::create('d_attachments', function (Blueprint $table) {
+        Schema::create('d_attachments', function (Blueprint $table): void {
             $table->id();
             $table->string('file_path');
             $table->enum('class', array_column(DocClass::cases(), 'value'))->nullable();
@@ -94,7 +94,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('d_vectors', function (Blueprint $table) {
+        Schema::create('d_vectors', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('document_id')->constrained('d_documents')->cascadeOnDelete();
             $table->string('model')->nullable();

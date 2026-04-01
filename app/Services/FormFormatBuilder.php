@@ -86,10 +86,8 @@ class FormFormatBuilder
         }
 
         // Root-level (no section)
-        if (! empty($grouped['__root__'])) {
-            foreach ($grouped['__root__'] as $field) {
-                $components[] = $field;
-            }
+        foreach ($grouped['__root__'] as $field) {
+            $components[] = $field;
         }
 
         // Append hidden fields last (order doesn’t matter visually)
@@ -126,7 +124,7 @@ class FormFormatBuilder
     // Field builders
     // ------------------------------
 
-    protected function buildFieldComponent(string $key, string $label, bool $isRequired, array $props)
+    protected function buildFieldComponent(string $key, string $label, bool $isRequired, array $props): \Filament\Forms\Components\DateTimePicker|\Filament\Forms\Components\FileUpload|\Filament\Forms\Components\Radio|\Filament\Forms\Components\Select|\Filament\Forms\Components\Textarea|\Filament\Forms\Components\TextInput
     {
         $component = $this->makeBaseComponent($key, $label, $props);
 

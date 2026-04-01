@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\Kbm\Factories;
 
 use Bites\Kbm\Lms\Models\Course;
@@ -14,31 +16,31 @@ class CourseFactory extends Factory
 
     public function definition(): array
     {
-        $dept = strtoupper($this->faker->randomElement(['ENT', 'OPS', 'IT', 'HR', 'MFG']));
-        $domain = strtoupper($this->faker->randomElement(['SEC', 'NET', 'QA', 'SM']));
-        $num = $this->faker->numberBetween(100, 499);
+        $dept = strtoupper(fake()->randomElement(['ENT', 'OPS', 'IT', 'HR', 'MFG']));
+        $domain = strtoupper(fake()->randomElement(['SEC', 'NET', 'QA', 'SM']));
+        $num = fake()->numberBetween(100, 499);
 
         return [
-            'code' => "{$dept}-{$domain}-{$num}",
-            'title' => $this->faker->sentence(3),
-            'description' => $this->faker->optional()->paragraph(),
-            'status' => $this->faker->randomElement(['draft', 'published', 'archived']),
-            'published_at' => $this->faker->optional()->dateTimeBetween('-6 months', 'now'),
+            'code' => sprintf('%s-%s-%d', $dept, $domain, $num),
+            'title' => fake()->sentence(3),
+            'description' => fake()->optional()->paragraph(),
+            'status' => fake()->randomElement(['draft', 'published', 'archived']),
+            'published_at' => fake()->optional()->dateTimeBetween('-6 months', 'now'),
         ];
     }
 
     public function draft(): self
     {
-        return $this->state(fn () => ['status' => 'draft', 'published_at' => null]);
+        return $this->state(fn (): array => ['status' => 'draft', 'published_at' => null]);
     }
 
     public function published(): self
     {
-        return $this->state(fn () => ['status' => 'published', 'published_at' => now()]);
+        return $this->state(fn (): array => ['status' => 'published', 'published_at' => now()]);
     }
 
     public function archived(): self
     {
-        return $this->state(fn () => ['status' => 'archived']);
+        return $this->state(fn (): array => ['status' => 'archived']);
     }
 }

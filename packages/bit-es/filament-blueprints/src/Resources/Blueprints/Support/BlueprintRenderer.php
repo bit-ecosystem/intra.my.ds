@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Resources\Blueprints\Support;
 
 use Filament\Actions\Action;
@@ -94,12 +96,13 @@ class BlueprintRenderer
             if (($block['type'] ?? null) !== 'action') {
                 continue;
             }
+
             $data = $block['data'] ?? [];
             $props = self::props($data['props'] ?? []);
 
             $action = Action::make($data['name'])
                 ->label($data['label'] ?? ucfirst($data['name'] ?? 'Action'))
-                ->action(fn () => null); // wire later or use dispatch
+                ->action(fn (): null => null); // wire later or use dispatch
 
             self::applyProps($action, $props);
             $actions[] = $action;

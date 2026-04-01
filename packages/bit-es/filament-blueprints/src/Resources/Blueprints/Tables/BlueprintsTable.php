@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Resources\Blueprints\Tables;
 
 use Filament\Actions\BulkActionGroup;

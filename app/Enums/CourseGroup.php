@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 use BackedEnum;
@@ -191,7 +193,7 @@ enum CourseGroup: string
     {
         return array_values(array_filter(
             self::cases(),
-            fn (self $case) => $case->getTier() === $tier
+            fn (self $case): bool => $case->getTier() === $tier
         ));
     }
 

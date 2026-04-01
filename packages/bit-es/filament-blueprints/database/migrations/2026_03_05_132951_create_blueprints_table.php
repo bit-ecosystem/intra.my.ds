@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('blueprints', function (SchemaBlueprint $table) {
+        Schema::create('blueprints', function (SchemaBlueprint $table): void {
             $table->id();
             $table->string('name');
             $table->json('form_blocks')->nullable();

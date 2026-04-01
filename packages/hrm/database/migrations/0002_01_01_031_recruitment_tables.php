@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         // Job Vacancies table
-        Schema::create('r_job_vacancies', function (Blueprint $table) {
+        Schema::create('r_job_vacancies', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('job_position_id')->constrained('job_positions')->onDelete('cascade');
             $table->string('location');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
         });
         // Applications table
-        Schema::create('r_applications', function (Blueprint $table) {
+        Schema::create('r_applications', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('job_vacancy_id')->constrained('r_job_vacancies')->onDelete('cascade');
             // $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
@@ -38,7 +38,7 @@ return new class extends Migration
         });
 
         // Application Status History table
-        Schema::create('r_application_status_history', function (Blueprint $table) {
+        Schema::create('r_application_status_history', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('application_id')->constrained('r_applications')->onDelete('cascade');
             $table->enum('status', ['applied', 'shortlisted', 'rejected']);
@@ -48,7 +48,7 @@ return new class extends Migration
         });
 
         // Screenings table
-        Schema::create('r_screenings', function (Blueprint $table) {
+        Schema::create('r_screenings', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('application_id')->constrained('r_applications')->onDelete('cascade');
             $table->integer('score')->nullable();
@@ -58,7 +58,7 @@ return new class extends Migration
         });
 
         // Interviews table
-        Schema::create('r_interviews', function (Blueprint $table) {
+        Schema::create('r_interviews', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('application_id')->constrained('r_applications')->onDelete('cascade');
             $table->foreignId('interviewer_id')->constrained('users')->onDelete('cascade');
@@ -70,7 +70,7 @@ return new class extends Migration
         });
 
         // Offers table
-        Schema::create('r_offers', function (Blueprint $table) {
+        Schema::create('r_offers', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('application_id')->constrained('r_applications')->onDelete('cascade');
             $table->string('offer_letter_path');
@@ -80,13 +80,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('r_skills', function (Blueprint $table) {
+        Schema::create('r_skills', function (Blueprint $table): void {
             $table->id();
             $table->string('name')->unique();
             $table->timestamps();
         });
 
-        Schema::create('r_skillables', function (Blueprint $table) {
+        Schema::create('r_skillables', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('skill_id')->constrained('r_skills')->cascadeOnDelete();
             $table->morphs('skillable'); // skillable_id, skillable_type

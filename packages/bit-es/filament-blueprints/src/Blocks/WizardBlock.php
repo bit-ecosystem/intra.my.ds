@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Blocks;
 
 use Bites\FilamentBlueprints\BlockRegistry;
@@ -46,8 +48,8 @@ final class WizardBlock implements BlockContract
 
         $steps = [];
 
-        foreach ($stepsState as $item) {
-            $data = (array) ($item['data'] ?? $item);
+        foreach ($stepsState as $stepState) {
+            $data = (array) ($stepState['data'] ?? $stepState);
             $label = $data['label'] ?? 'Step';
             $children = $registry->decodeBuilder($data['children'] ?? []);
 
@@ -62,9 +64,9 @@ final class WizardBlock implements BlockContract
             $steps[] = $step;
         }
 
-        $component = Wizard::make($steps);
+        $wizard = Wizard::make($steps);
 
-        return $this->applyProps($component, $props, [
+        return $this->applyProps($wizard, $props, [
             'skippable' => 'skippable',
             'contained' => 'contained',
             'columnSpan' => 'columnSpan',

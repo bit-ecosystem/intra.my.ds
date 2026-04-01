@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Staff\Widgets;
 
 use App\Models\PersonAttribute;
@@ -13,7 +15,6 @@ use Illuminate\Support\Facades\Auth;
 class ReminderWidget extends TableWidget
 {
     protected static ?string $heading = 'Personal Reminders';
-    // protected int|string|array $columnSpan = 'full';
 
     public function table(Table $table): Table
     {
@@ -44,7 +45,7 @@ class ReminderWidget extends TableWidget
                 $today = now();
                 $limit = now()->addDays(14);
 
-                $filtered = collect($items)->filter(function ($item) use ($today, $limit) {
+                $filtered = collect($items)->filter(function (array $item) use ($today, $limit): bool {
                     if (! isset($item['expiry_date'])) {
                         return false;
                     }
@@ -60,7 +61,7 @@ class ReminderWidget extends TableWidget
                 // Build rows
                 return $filtered
                     ->values()
-                    ->map(fn ($item, $index) => [
+                    ->map(fn ($item, $index): array => [
                         'id' => $index,
                         'name' => $item['name'] ?? '(No name)',
                         'expiry_date' => $item['expiry_date'] ?? null,
@@ -75,10 +76,10 @@ class ReminderWidget extends TableWidget
                     ->since()
                     ->dateTooltip()
                     // ->formatStateUsing(fn($state) => \Carbon\Carbon::parse($state)->toFormattedDateString())
-                    ->color(fn ($state) => Carbon::parse($state)->isPast() ? 'danger' : 'info'),
+                    ->color(fn ($state): string => Carbon::parse($state)->isPast() ? 'danger' : 'info'),
 
             ])
-            ->recordUrl(fn ($record) => route('filament.staff.pages.biodata', [
+            ->recordUrl(fn ($record): string => route('filament.staff.pages.biodata', [
                 'step' => 'reminders',
             ]))
             ->filters([

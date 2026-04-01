@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 // not used
@@ -15,7 +17,7 @@ class ScanModelsCommand extends Command
 
     protected $description = 'Scan PHP files for classes extending Model and output table => FQCN mapping';
 
-    public function handle()
+    public function handle(): int
     {
         // Default scan path = app/Models
         $basePath = $this->argument('path')
@@ -33,8 +35,8 @@ class ScanModelsCommand extends Command
 
         $results = [];
 
-        foreach ($directories as $dir) {
-            $this->scanDirectory($dir, $results);
+        foreach ($directories as $directory) {
+            $this->scanDirectory($directory, $results);
         }
 
         ksort($results);
@@ -45,10 +47,10 @@ class ScanModelsCommand extends Command
         return Command::SUCCESS;
     }
 
-    private function scanDirectory(string $dir, array &$results)
+    private function scanDirectory(string $dir, array &$results): void
     {
         if (! is_dir($dir)) {
-            $this->error("❌ Directory not found: {$dir}");
+            $this->error('❌ Directory not found: ' . $dir);
 
             return;
         }
@@ -74,7 +76,7 @@ class ScanModelsCommand extends Command
             $namespace = $nsMatch[1] ?? null;
 
             // Extract class
-            preg_match('/class\s+([A-Za-z0-9_]+)/', $contents, $classMatch);
+            preg_match('/class\s+(\w+)/', $contents, $classMatch);
             $className = $classMatch[1] ?? null;
 
             if (! $namespace || ! $className) {

@@ -23,10 +23,6 @@ class Course extends Model
         'published_at',
     ];
 
-    protected $casts = [
-        'category' => CourseGroup::class,
-    ];
-
     /**
      * 1:N path (because l_modules has course_id).
      */
@@ -35,5 +31,12 @@ class Course extends Model
         return $this->belongsToMany(Module::class, 'l_course_module', 'course_id', 'module_id')
             ->withPivot(['order_index'])
             ->withTimestamps();
+    }
+    
+    protected function casts(): array
+    {
+        return [
+            'category' => CourseGroup::class,
+        ];
     }
 }

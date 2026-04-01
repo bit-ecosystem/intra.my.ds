@@ -81,6 +81,7 @@ class Biodata extends Page implements HasActions, HasSchemas
         if (isset($attributes['reminders'])) {
             $attributes['reminders'] = json_decode($attributes['reminders'], true);
         }
+
         $this->form->fill($attributes);
 
         // ✅ Jump to step if query param exists

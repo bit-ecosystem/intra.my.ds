@@ -25,15 +25,15 @@ class CoursesTable
                 TextColumn::make('category')
                     ->label('Group')
                     ->badge()
-                    ->formatStateUsing(fn (?CourseGroup $state) => $state?->getLabel() ?? '-')
-                    ->color(fn (?CourseGroup $state) => $state?->getColor())
-                    ->tooltip(fn (?CourseGroup $state) => $state?->getDescription()),
+                    ->formatStateUsing(fn (?CourseGroup $state): string|\Illuminate\Contracts\Support\Htmlable => $state?->getLabel() ?? '-')
+                    ->color(fn (?CourseGroup $state): string|array|null => $state?->getColor())
+                    ->tooltip(fn (?CourseGroup $state): string|\Illuminate\Contracts\Support\Htmlable|null => $state?->getDescription()),
                 Split::make([
                     IconColumn::make('category')
                         ->label('')
-                        ->icon(fn (?CourseGroup $state) => $state?->getIcon() ?? 'heroicon-o-tag')
-                        ->color(fn (?CourseGroup $state) => $state?->getColor())
-                        ->tooltip(fn (?CourseGroup $state) => $state?->getDescription())
+                        ->icon(fn (?CourseGroup $state): string|\BackedEnum|\Illuminate\Contracts\Support\Htmlable => $state?->getIcon() ?? 'heroicon-o-tag')
+                        ->color(fn (?CourseGroup $state): string|array|null => $state?->getColor())
+                        ->tooltip(fn (?CourseGroup $state): string|\Illuminate\Contracts\Support\Htmlable|null => $state?->getDescription())
                         ->sortable(false)
                         ->grow(false),
                     Stack::make([

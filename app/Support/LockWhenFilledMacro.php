@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Support;
 
 use Filament\Forms\Components\Field;
@@ -23,7 +25,7 @@ final class LockWhenFilledMacro
             bool $readOnly = false,
         ) {
             /** @var Field $this */
-            return $this->afterStateHydrated(function (Field $component, $state) use ($bypass, $readOnly) {
+            return $this->afterStateHydrated(function (Field $component, $state) use ($bypass, $readOnly): void {
                 // 1. Check if we should ignore the lock (e.g. for Admins)
                 if (is_callable($bypass) && $bypass($component, $state)) {
                     return;

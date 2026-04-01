@@ -101,7 +101,7 @@ class Chat extends Page implements HasForms
         // ✅ Stream chunks
         $ollamaService->streamChat($prompt, $this->selectedModel, function (string $chunk) use ($assistantIndex): void {
             // Stream to Livewire
-            $this->stream(to: 'stream', content: $chunk);
+            $this->stream(content: $chunk, to: 'stream');
 
             // Append chunk to messages
             $this->messages[$assistantIndex]['content'] .= $chunk;

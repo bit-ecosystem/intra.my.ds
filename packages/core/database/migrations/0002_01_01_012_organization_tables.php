@@ -10,7 +10,7 @@ return new class extends Migration // packages core core_tables
     public function up(): void
     {
         // Companies (optional high-level)
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table): void {
             $table->id();
             $table->string('name')->nullable();
             $table->string('code')->nullable();
@@ -21,7 +21,7 @@ return new class extends Migration // packages core core_tables
         });
 
         // ORG UNITS (company/division/department/team tree)
-        Schema::create('org_units', function (Blueprint $table) {
+        Schema::create('org_units', function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->string('code')->nullable();
@@ -34,7 +34,7 @@ return new class extends Migration // packages core core_tables
             $table->timestamps();
         });
 
-        Schema::create('org_roles', function (Blueprint $table) {
+        Schema::create('org_roles', function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->string('code')->nullable();
@@ -46,7 +46,7 @@ return new class extends Migration // packages core core_tables
 
             $table->unique(['job_position_id', 'name', 'scope']);
         });
-        Schema::create('job_description_templates', function (Blueprint $table) {
+        Schema::create('job_description_templates', function (Blueprint $table): void {
             $table->id();
             $table->string('title'); // Job title
             $table->longText('description'); // Detailed description
@@ -57,7 +57,7 @@ return new class extends Migration // packages core core_tables
             $table->timestamps();
         });
 
-        Schema::create('workforce_plans', function (Blueprint $table) {
+        Schema::create('workforce_plans', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('org_unit_id')->nullable()->constrained('org_units')->nullOnDelete();
             $table->foreignId('job_title_id')->nullable()->constrained('job_description_templates')->nullOnDelete();
@@ -67,7 +67,7 @@ return new class extends Migration // packages core core_tables
             $table->unique(['org_unit_id', 'title'], 'org_unit_title_unique');
         });
 
-        Schema::create('job_positions', function (Blueprint $table) {
+        Schema::create('job_positions', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('org_unit_id')->constrained('org_units')->cascadeOnDelete();
             $table->string('title');

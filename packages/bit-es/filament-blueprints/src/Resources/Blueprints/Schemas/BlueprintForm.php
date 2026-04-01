@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Resources\Blueprints\Schemas;
 
 use Bites\FilamentBlueprints\BlockRegistry;
@@ -63,12 +65,12 @@ class BlueprintForm
 
     protected static function formBuilder(): Builder
     {
-        /** @var BlockRegistry $registry */
-        $registry = app(BlockRegistry::class);
+        /** @var BlockRegistry $blockRegistry */
+        $blockRegistry = app(BlockRegistry::class);
 
         return Builder::make('form_blocks')
             ->label('Form Blocks')
-            ->blocks($registry->paletteBlocks());
+            ->blocks($blockRegistry->paletteBlocks());
     }
 
     protected static function formBlocks(): array

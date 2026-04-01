@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\Core;
 
 use App\Listeners\RevokePassportTokensOnLogout;
@@ -14,7 +16,7 @@ use Laravel\Passport\Passport;
 
 class CoreServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'corp-login');

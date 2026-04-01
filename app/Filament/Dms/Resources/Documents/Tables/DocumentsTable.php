@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Dms\Resources\Documents\Tables;
 
 use Filament\Actions\BulkActionGroup;

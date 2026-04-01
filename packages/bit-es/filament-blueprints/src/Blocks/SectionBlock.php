@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Blocks;
 
 use Bites\FilamentBlueprints\BlockRegistry;
@@ -37,7 +39,7 @@ final class SectionBlock implements BlockContract
         $props = (array) ($payload['props'] ?? []);
         $children = $registry->decodeBuilder($payload['children'] ?? []);
 
-        $component = Section::make($label)->schema($children);
+        $section = Section::make($label)->schema($children);
 
         $allowed = [
             'collapsible' => 'collapsible',
@@ -48,7 +50,7 @@ final class SectionBlock implements BlockContract
             'columnSpan' => 'columnSpan',
         ];
 
-        return $this->applyProps($component, $props, $allowed);
+        return $this->applyProps($section, $props, $allowed);
     }
 
     public function encode(array $payload): array

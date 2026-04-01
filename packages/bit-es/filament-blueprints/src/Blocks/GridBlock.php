@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Blocks;
 
 use Bites\FilamentBlueprints\BlockRegistry;
@@ -36,11 +38,11 @@ final class GridBlock implements BlockContract
         $props = (array) ($payload['props'] ?? []);
         $children = $registry->decodeBuilder($payload['children'] ?? []);
 
-        $component = Grid::make()->schema($children);
+        $grid = Grid::make()->schema($children);
 
-        if (! empty($columns)) {
+        if ($columns !== []) {
             // columns accepts array map or int – pass as is, after coercion
-            $component->columns(array_map(fn ($v) => $this->coerceValue($v), $columns));
+            $grid->columns(array_map(fn ($v): mixed => $this->coerceValue($v), $columns));
         }
 
         $allowed = [
@@ -49,7 +51,7 @@ final class GridBlock implements BlockContract
             'hidden' => 'hidden',
         ];
 
-        return $this->applyProps($component, $props, $allowed);
+        return $this->applyProps($grid, $props, $allowed);
     }
 
     public function encode(array $payload): array

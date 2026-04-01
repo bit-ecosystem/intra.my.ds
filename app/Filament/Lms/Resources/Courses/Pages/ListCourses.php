@@ -23,11 +23,9 @@ class ListCourses extends ListRecords
         return __('Courses, modules, quizzes and learning materials for staff.');
     }
 
-    public function getHeaderWidgets(): array
+    protected function getHeaderWidgets(): array
     {
         return [
-            // \App\Filament\Lms\Resources\Courses\Widgets\CourseWidget::class,
-            // \App\Filament\Lms\Resources\Courses\Widgets\FeaturesOverview::class,
         ];
     }
 

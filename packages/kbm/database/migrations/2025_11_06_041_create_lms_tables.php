@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('l_courses', function (Blueprint $table) {
+        Schema::create('l_courses', function (Blueprint $table): void {
             $table->id();
             $table->string('code')->unique(); // e.g., ENT-IT-MFG-101
             $table->string('title');
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->index(['status']);
         });
 
-        Schema::create('l_modules', function (Blueprint $table) {
+        Schema::create('l_modules', function (Blueprint $table): void {
             $table->id();
             $table->string('slug')->unique();             // e.g., itil, networking, isa-95-level-3-mom
             $table->string('title');                      // display name
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('l_course_module', function (Blueprint $table) {
+        Schema::create('l_course_module', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('course_id')->constrained('l_courses')->cascadeOnDelete();
             $table->foreignId('module_id')->constrained('l_modules')->cascadeOnDelete();
@@ -44,7 +44,7 @@ return new class extends Migration
         });
 
         // MATERIALS are now independent…
-        Schema::create('l_materials', function (Blueprint $table) {
+        Schema::create('l_materials', function (Blueprint $table): void {
             $table->id();
             $table->string('title');                // e.g., "NIST CSF Overview"
             $table->string('type')->default('link'); // link|pdf|video|doc|other
@@ -55,7 +55,7 @@ return new class extends Migration
         });
 
         // …and linked to modules via a pivot table
-        Schema::create('l_material_module', function (Blueprint $table) {
+        Schema::create('l_material_module', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('material_id')->constrained('l_materials')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('module_id')->constrained('l_modules')->cascadeOnUpdate()->cascadeOnDelete();
@@ -66,7 +66,7 @@ return new class extends Migration
             $table->index(['module_id', 'order_index']);   // ordered retrieval by module
         });
 
-        Schema::create('l_quizzes', function (Blueprint $table) {
+        Schema::create('l_quizzes', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('module_id')->constrained('l_modules')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('code')->unique();
@@ -79,7 +79,7 @@ return new class extends Migration
             $table->index(['module_id', 'is_active']);
         });
 
-        Schema::create('l_quiz_attempts', function (Blueprint $table) {
+        Schema::create('l_quiz_attempts', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('quiz_id')->constrained('l_quizzes')->cascadeOnDelete();
             $table->json('data'); // stores filled form data
@@ -97,7 +97,7 @@ return new class extends Migration
             $table->index(['module_id']);
         });
 
-        Schema::create('l_certificates', function (Blueprint $table) {
+        Schema::create('l_certificates', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('module_id')->constrained('l_modules')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('for_staff')->nullable()->constrained('staff')->cascadeOnDelete();

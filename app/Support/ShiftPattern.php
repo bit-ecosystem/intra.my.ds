@@ -101,6 +101,7 @@ class ShiftPattern
             if ($t >= $cursor && $t < $cursor + $len) {
                 return $segment['code']; // 'M'|'A'|'N'|'R'
             }
+
             $cursor += $len;
         }
 

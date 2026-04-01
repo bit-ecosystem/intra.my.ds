@@ -5,6 +5,36 @@ return [
     'default' => env('SHIFT_PATTERN_DEFAULT', 'WXYZ'),
 
     'patterns' => [
+        'Normal' => [
+            'anchor_date' => env('SHIFT_ANCHOR_NORMAL', '2026-01-05'), // Monday
+            'timezone' => env('APP_TIMEZONE', 'Asia/Kuala_Lumpur'),
+
+            // 5 workdays, then 2 rest days
+            'segments' => [
+                [
+                    'len'   => 5,
+                    'code'  => 'D',
+                    'label' => '🐓',
+                    'start' => '08:30',
+                    'end'   => '17:30',
+                    'color' => '#22c55e',
+                ],
+                [
+                    'len'  => 2,
+                    'code' => 'R', // Weekend rest (hidden)
+                ],
+            ],
+
+            'cycle_length' => 7,
+
+            'teams' => [
+                '1' => [
+                    'label'  => 'Normal Hours',
+                    'offset' => 0,
+                    'color'  => '#22c55e',
+                ],
+            ],
+        ],
 
         // === 24-day W/X/Y/Z pattern ===
         '4G3S' => [

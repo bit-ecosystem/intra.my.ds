@@ -297,7 +297,7 @@ class RoleSyncService
                     $this->attachRoles($staff);
                 });
 
-                $processed++;
+                ++$processed;
                 if ($processed % 200 === 0) {
                     Log::info(sprintf('RoleSyncService: processed %d staff...', $processed));
                 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Traits;
 
 trait AppliesProps
@@ -32,6 +34,7 @@ trait AppliesProps
             if ($lower === 'true' || $lower === 'false') {
                 return $lower === 'true';
             }
+
             if (is_numeric($value)) {
                 return str_contains($value, '.') ? (float) $value : (int) $value;
             }

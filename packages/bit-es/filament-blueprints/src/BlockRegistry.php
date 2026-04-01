@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints;
 
 use Bites\FilamentBlueprints\Contracts\BlockContract;
@@ -15,15 +17,15 @@ final class BlockRegistry
      */
     public function __construct(iterable $services)
     {
-        foreach ($services as $svc) {
-            $this->byName[$svc::name()] = $svc;
+        foreach ($services as $service) {
+            $this->byName[$service::name()] = $service;
         }
     }
 
     /** @return Block[] */
     public function paletteBlocks(): array
     {
-        return array_values(array_map(fn ($svc) => $svc->palette(), $this->byName));
+        return array_values(array_map(fn (\Bites\FilamentBlueprints\Contracts\BlockContract $svc): \Filament\Forms\Components\Builder\Block => $svc->palette(), $this->byName));
     }
 
     /** @return array of decoded Filament components */

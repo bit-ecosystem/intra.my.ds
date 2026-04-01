@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Resources\Blueprints\Pages;
 
 use Bites\FilamentBlueprints\Resources\Blueprints\BlueprintResource;

@@ -21,12 +21,12 @@ class DocumentObserver
 
     protected function maybeDispatchVectorJob(Document $document): void
     {
-        if ($document->classification_level <= 2) {
-            if (config('dms.vectorize_sync')) {
-                VectorizeDocument::dispatchSync($document->id);
-            } else {
-                VectorizeDocument::dispatch($document->id);
-            }
-        }
+        // if ($document->classification_level <= 2) {
+        //     if (config('dms.vectorize_sync')) {
+        //         VectorizeDocument::dispatchSync($document->id);
+        //     } else {
+        //         VectorizeDocument::dispatch($document->id);
+        //     }
+        // }
     }
 }

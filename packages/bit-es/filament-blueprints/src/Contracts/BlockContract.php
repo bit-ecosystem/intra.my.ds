@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Contracts;
 
 use Bites\FilamentBlueprints\BlockRegistry;

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use Bites\Core\Organization\Models\JobPosition;
 use Bites\Core\Organization\Models\OrgUnit;
 use Bites\Hrm\Models\Staff;
@@ -102,7 +100,7 @@ class User extends Authenticatable implements HasAppAuthentication, HasAvatar, L
             return $default;
         }
 
-        $url = "http://10.40.3.41:8080/{$number}.jpg";
+        $url = sprintf('http://10.40.3.41:8080/%s.jpg', $number);
 
         try {
             // Lightweight check without downloading the file body
@@ -111,7 +109,7 @@ class User extends Authenticatable implements HasAppAuthentication, HasAvatar, L
             if ($response->ok()) {
                 return $url;
             }
-        } catch (\Throwable $e) {
+        } catch (\Throwable $throwable) {
             // Swallow network/timeout errors and fall back
         }
 
@@ -245,20 +243,6 @@ class User extends Authenticatable implements HasAppAuthentication, HasAvatar, L
         });
     }
 
-    // public function teams(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(OrgUnit::class);
-    // }
-
-    // public function getTenants(Panel $panel): Collection
-    // {
-    //     return $this->teams;
-    // }
-
-    // public function canAccessTenant(Model $tenant): bool
-    // {
-    //     return $this->teams()->whereKey($tenant)->exists();
-    // }
     protected static function booted(): void
     {
         // Apply the team context to Spatie Permission

@@ -31,7 +31,7 @@ class CertificateInfolist
                                     ->hiddenLabel()
                                     ->imageHeight(200)
                                     ->circular()
-                                    ->defaultImageUrl(function ($record) {
+                                    ->defaultImageUrl(function ($record): ?string {
                                         $filename = optional($record->staff)->staff_old_number;
 
                                         return $filename

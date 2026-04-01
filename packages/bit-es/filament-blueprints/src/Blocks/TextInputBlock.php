@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Blocks;
 
 use Bites\FilamentBlueprints\BlockRegistry;
@@ -94,10 +96,9 @@ final class TextInputBlock implements BlockContract
             'hidden' => 'hidden',
         ];
 
-        $component = $this->applyProps($component, array_filter($sbehavior, fn ($v) => $v !== null), $allowedBehavior);
-        $component = $this->applyProps($component, array_filter($visibility, fn ($v) => $v !== null), $allowedVisibility);
+        $component = $this->applyProps($component, array_filter($sbehavior, fn ($v): bool => $v !== null), $allowedBehavior);
 
-        return $component;
+        return $this->applyProps($component, array_filter($visibility, fn ($v): bool => $v !== null), $allowedVisibility);
     }
 
     public function encode(array $payload): array

@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('w_turtles', function (Blueprint $table) {
+        Schema::create('w_turtles', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('org_unit_id')->nullable()->constrained('org_units')->onDelete('cascade');
             $table->string('name');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('w_workflows', function (Blueprint $table) {
+        Schema::create('w_workflows', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('turtle_id')->constrained('w_turtles')->cascadeOnDelete();
             $table->foreignId('org_unit_id')->nullable()->constrained('org_units')->onDelete('cascade');
@@ -39,14 +39,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('w_workflowables', function (Blueprint $table) {
+        Schema::create('w_workflowables', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('workflow_id')->constrained('w_workflows')->cascadeOnDelete();
             $table->morphs('workflowable'); // workflowable_id, workflowable_type
             $table->timestamps();
         });
 
-        Schema::create('w_nodes', function (Blueprint $table) {
+        Schema::create('w_nodes', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('workflow_id')->constrained('w_workflows')->cascadeOnDelete();
             $table->string('name');
@@ -57,7 +57,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('w_transitions', function (Blueprint $table) {
+        Schema::create('w_transitions', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('workflow_id')->constrained('w_workflows')->cascadeOnDelete();
             $table->foreignId('from_state_id')->constrained('w_nodes')->cascadeOnDelete();
@@ -67,7 +67,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('w_requests', function (Blueprint $table) {
+        Schema::create('w_requests', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('workflow_id')->constrained('w_workflows')->cascadeOnDelete();
             $table->foreignId('current_state_id')->nullable()->constrained('w_nodes')->nullOnDelete();
@@ -76,7 +76,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('w_activities', function (Blueprint $table) {
+        Schema::create('w_activities', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('workflow_id')->constrained('w_workflows')->cascadeOnDelete();
             $table->string('name');

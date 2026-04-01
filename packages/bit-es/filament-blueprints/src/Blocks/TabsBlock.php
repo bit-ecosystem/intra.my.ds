@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Blocks;
 
 use Bites\FilamentBlueprints\BlockRegistry;
@@ -48,8 +50,8 @@ final class TabsBlock implements BlockContract
 
         $tabs = [];
 
-        foreach ($tabsState as $item) {
-            $data = (array) ($item['data'] ?? $item); // support raw or Builder-shape
+        foreach ($tabsState as $tabState) {
+            $data = (array) ($tabState['data'] ?? $tabState); // support raw or Builder-shape
             $label = $data['label'] ?? 'Tab';
             $children = $registry->decodeBuilder($data['children'] ?? []);
 

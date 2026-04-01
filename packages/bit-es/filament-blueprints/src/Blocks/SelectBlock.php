@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bites\FilamentBlueprints\Blocks;
 
 use Bites\FilamentBlueprints\BlockRegistry;
@@ -38,9 +40,9 @@ final class SelectBlock implements BlockContract
         $options = (array) ($payload['options'] ?? []);
         $props = (array) ($payload['props'] ?? []);
 
-        $component = SelectField::make($name)->options($options);
+        $select = SelectField::make($name)->options($options);
         if (! empty($label)) {
-            $component->label($label);
+            $select->label($label);
         }
 
         $allowed = [
@@ -57,7 +59,7 @@ final class SelectBlock implements BlockContract
             'hidden' => 'hidden',
         ];
 
-        return $this->applyProps($component, $props, $allowed);
+        return $this->applyProps($select, $props, $allowed);
     }
 
     public function encode(array $payload): array

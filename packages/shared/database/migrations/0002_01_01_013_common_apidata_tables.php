@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('api_data', function (Blueprint $table) {
+        Schema::create('api_data', function (Blueprint $table): void {
             $table->id();
             $table->string('source')->nullable(); // optional: where the data came from
             $table->json('content'); // stores user data in JSON format

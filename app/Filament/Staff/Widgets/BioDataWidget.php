@@ -114,8 +114,10 @@ class BioDataWidget extends Widget implements HasActions, HasSchemas
                 );
             }
         }
+
         $user->bio_readonly = true;
         $user->save();
+
         redirect()->route('filament.staff.pages.biodata');
         Notification::make()
             ->title('Staff Biodata Updated')
