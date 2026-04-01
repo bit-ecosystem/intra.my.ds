@@ -41,7 +41,7 @@ class QuizSeeder extends Seeder
             $course = Course::factory()->create([
                 'title' => $courseTitle,
                 'code' => strtoupper(str_replace(' ', '-', $courseTitle)).'-'.uniqid(),
-                'category' => 'factory',
+                'category' => 'Digital',
                 'status' => 'published',
                 'published_at' => now(),
             ]);

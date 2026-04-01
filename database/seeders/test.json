@@ -103,7 +103,7 @@
             "title": "Location Hierarchy",
             "ui:searchable": true,
             "ui:preload": true,
-            "x-optionsSource": "App\\Models\\Location::getLastMileOptions",
+            "x-optionsSource": "Bites\\Core\\Organization\\Models\\Location::getLastMileOptions",
             "x-section": "Subject / Berkenaan"
         },
         "eip_type": {

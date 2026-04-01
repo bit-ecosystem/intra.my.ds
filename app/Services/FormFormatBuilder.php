@@ -40,6 +40,7 @@ class FormFormatBuilder
         $grouped = [];        // [sectionName|null => [components...]]
         $hiddenFields = [];   // always appended outside sections (not visible)
         $sectionOrder = [];   // preserve first-seen order of sections
+        $grouped = ['__root__' => [],];
 
         foreach ($schema['properties'] ?? [] as $name => $props) {
             $key = $this->makeKey($prefix, $name);
@@ -407,7 +408,7 @@ class FormFormatBuilder
                         $first = $data[0];
                         // id/label pattern
                         if (array_key_exists('id', $first) && array_key_exists('label', $first)) {
-                            return collect($data)->mapWithKeys(fn ($row): array => [$row['id'] => $row['label']])->all();
+                            return collect($data)->mapWithKeys(fn($row): array => [$row['id'] => $row['label']])->all();
                         }
 
                         // value/label (+ group) pattern
@@ -695,7 +696,7 @@ class FormFormatBuilder
         }
 
         // Fallback (unexpected): always true
-        return fn (): true => true;
+        return fn(): true => true;
     }
 
     protected function evaluateRule(callable $get, array $rule): bool

@@ -24,30 +24,20 @@ class AttachmentsTable
             ])
 
             // ✅ Make the entire row clickable
-            ->recordUrl(fn (Model $record): ?string => Str::startsWith($record->file_path, 'doc-attachments')
-                   ? AttachmentResource::getUrl('view', ['record' => $record])
-                    : $record->file_path
+
+            ->recordUrl(
+                fn(Model $record): ?string =>
+                \Bites\Shared\Helpers\AttachmentLinkResolver::recordUrl($record)
             )
 
             // ✅ Open external URLs in new tab
-            ->openRecordUrlInNewTab(fn (Model $record): bool => ! Str::startsWith($record->file_path, 'doc-attachments')
+            ->openRecordUrlInNewTab(
+                fn(Model $record): bool =>
+                \Bites\Shared\Helpers\AttachmentLinkResolver::openInNewTab($record->file_path)
             )
 
             ->recordActions([
-                // ViewAction::make()
-                //     ->visible(fn (Model $record) =>
-                //         Str::startsWith($record->file_path, 'doc-attachments')
-                //     ),
-
                 EditAction::make(),
-
-                // Action::make('media-url')
-                //     ->label('Open File')
-                //     ->url(fn (Model $record) => $record->file_path)
-                //     ->openUrlInNewTab()
-                //     ->visible(fn (Model $record) =>
-                //         ! Str::startsWith($record->file_path, 'doc-attachments')
-                //     ),
             ]);
     }
 }

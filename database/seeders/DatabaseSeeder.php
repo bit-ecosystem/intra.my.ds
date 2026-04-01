@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         $this->call([CourseSeeder::class]);
-        $this->call([LmsSeeder::class]);
         $this->call([QuizSeeder::class]);
+        $this->call([LmsSeeder::class]);
         $this->call([ModelJsonSeeder::class]);
         // $this->callWith(
         //     \Database\Seeders\ModelJsonSeeder::class,

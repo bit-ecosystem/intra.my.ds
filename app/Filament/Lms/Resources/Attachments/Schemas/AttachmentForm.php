@@ -6,6 +6,7 @@ namespace App\Filament\Lms\Resources\Attachments\Schemas;
 
 use Filament\Forms\Components;
 use Filament\Schemas\Schema;
+use Bites\Shared\Concerns\HasAttachableExtLink;
 
 class AttachmentForm
 {
@@ -14,6 +15,7 @@ class AttachmentForm
         return $schema
             ->components([
                 Components\TextInput::make('file_name'),
+                HasAttachableExtLink::FormComponent(),
                 Components\FileUpload::make('file_path')
                     ->disk('public')
                     ->directory('doc-attachments')

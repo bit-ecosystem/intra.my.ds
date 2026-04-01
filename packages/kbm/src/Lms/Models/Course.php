@@ -6,12 +6,15 @@ namespace Bites\Kbm\Lms\Models;
 
 use App\Enums\CourseGroup;
 use Bites\Kbm\Factories\CourseFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Model;
 
 #[UseFactory(CourseFactory::class)]
 class Course extends Model
 {
+    use HasFactory;
+
     protected $table = 'l_courses';
 
     protected $fillable = [
