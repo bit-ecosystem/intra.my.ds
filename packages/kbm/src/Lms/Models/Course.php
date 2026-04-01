@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace Bites\Kbm\Lms\Models;
 
 use App\Enums\CourseGroup;
+use Bites\Kbm\Factories\CourseFactory;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Model;
-use Bites\Kbm\Factories\CourseFactory;
 
 #[UseFactory(CourseFactory::class)]
 class Course extends Model
 {
-
     protected $table = 'l_courses';
 
     protected $fillable = [

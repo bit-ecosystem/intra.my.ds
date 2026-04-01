@@ -2,11 +2,12 @@
 
 namespace App\Filament\Staff\Widgets;
 
-use App\Models\User;
 use App\Models\PersonAttribute;
-use Filament\Widgets\TableWidget;
-use Filament\Tables\Table;
+use App\Models\User;
+use Carbon\Carbon;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Filament\Widgets\TableWidget;
 use Illuminate\Support\Facades\Auth;
 
 class ReminderWidget extends TableWidget
@@ -48,7 +49,7 @@ class ReminderWidget extends TableWidget
                         return false;
                     }
 
-                    $date = \Carbon\Carbon::parse($item['expiry_date']);
+                    $date = Carbon::parse($item['expiry_date']);
 
                     return
                         $date->isPast() ||                // ✅ Already expired
@@ -59,9 +60,9 @@ class ReminderWidget extends TableWidget
                 // Build rows
                 return $filtered
                     ->values()
-                    ->map(fn($item, $index) => [
-                        'id'          => $index,
-                        'name'        => $item['name'] ?? '(No name)',
+                    ->map(fn ($item, $index) => [
+                        'id' => $index,
+                        'name' => $item['name'] ?? '(No name)',
                         'expiry_date' => $item['expiry_date'] ?? null,
                     ])
                     ->all();
@@ -70,12 +71,18 @@ class ReminderWidget extends TableWidget
                 TextColumn::make('name')
                     ->label('Item'),
                 TextColumn::make('expiry_date')
-                    ->label('Expiry')
+                    ->label('Expires')
                     ->since()
                     ->dateTooltip()
                     // ->formatStateUsing(fn($state) => \Carbon\Carbon::parse($state)->toFormattedDateString())
-                    ->color(fn($state) => \Carbon\Carbon::parse($state)->isPast() ? 'danger' : 'info')
+                    ->color(fn ($state) => Carbon::parse($state)->isPast() ? 'danger' : 'info'),
 
+            ])
+            ->recordUrl(fn ($record) => route('filament.staff.pages.biodata', [
+                'step' => 'reminders',
+            ]))
+            ->filters([
+                //
             ]);
     }
 }

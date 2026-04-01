@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Resources\Menus\Pages;
 
+use App\Filament\Core\Resources\HelpPages\Actions\OpenHelpAction;
 use App\Filament\Staff\Resources\Menus\MenuResource;
 use App\Models\Menu;
-use Bites\Shared\Concerns\HasHelp;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
@@ -20,7 +20,7 @@ class ListMenus extends ListRecords
     {
         return [
             CreateAction::make(),
-            \App\Filament\Core\Resources\HelpPages\Actions\OpenHelpAction::make(static::class),
+            OpenHelpAction::make(static::class),
         ];
     }
 

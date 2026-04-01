@@ -6,13 +6,14 @@ namespace App\Filament\Staff\Pages;
 
 use App\Filament\Staff\Widgets\RequestWidget;
 use BackedEnum;
+use Bites\Shared\Concerns\HasHelp;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
 use UnitEnum;
 
 class Workflow extends Page
 {
-    use \Bites\Shared\Concerns\HasHelp;
+    use HasHelp;
 
     protected static string|BackedEnum|null $navigationIcon = 'myicon-w-request';
 

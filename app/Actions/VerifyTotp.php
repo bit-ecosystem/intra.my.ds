@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 // not used
+
 namespace App\Actions;
 
 use App\Models\User;

@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Attachments\Schemas;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Section;
 use Filament\Infolists\Components\ViewEntry;
-use Filament\Actions\Action;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 
 class AttachmentInfolist
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema->components([
-            Section::make('Contract Document')
+            Section::make('Document')
                 ->description('Zoom in/out using the controls')
                 ->columnSpanFull()
 

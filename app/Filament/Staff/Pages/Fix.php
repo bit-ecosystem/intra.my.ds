@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Pages;
 
 use BackedEnum;
+use Bites\Shared\Concerns\HasHelp;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
 use UnitEnum;
 
 class Fix extends Page
 {
-    use \Bites\Shared\Concerns\HasHelp;
+    use HasHelp;
+
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-urgent';
 
     protected static ?int $navigationSort = 61;

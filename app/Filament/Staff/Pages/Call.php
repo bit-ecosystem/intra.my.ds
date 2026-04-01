@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Pages;
 
 use BackedEnum;
+use Bites\Shared\Concerns\HasHelp;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Grid;
@@ -17,9 +18,9 @@ use UnitEnum;
 
 class Call extends Page implements HasSchemas
 {
+    use HasHelp;
     use InteractsWithSchemas;
-    use \Bites\Shared\Concerns\HasHelp;
-    
+
     protected static string|BackedEnum|null $navigationIcon = 'myicon-s-phone-call';
 
     protected static ?int $navigationSort = 62;

@@ -31,18 +31,20 @@ class ModelJsonSeeder extends Seeder
 
             $data = json_decode(file_get_contents($file->getRealPath()), true);
 
-            if (!is_array($data)) {
+            if (! is_array($data)) {
                 continue;
             }
 
             foreach ($data as $table => $records) {
-                if (!Schema::hasTable($table)) {
+                if (! Schema::hasTable($table)) {
                     echo "⚠️ Skipped: Table '{$table}' does not exist\n";
+
                     continue;
                 }
 
-                if (!isset($models[$table])) {
+                if (! isset($models[$table])) {
                     echo "⚠️ Skipped: No model found for table '{$table}'\n";
+
                     continue;
                 }
 
@@ -70,7 +72,7 @@ class ModelJsonSeeder extends Seeder
         $results = [];
 
         foreach ($directories as $dir) {
-            if (!is_dir($dir)) {
+            if (! is_dir($dir)) {
                 continue;
             }
 
@@ -79,14 +81,14 @@ class ModelJsonSeeder extends Seeder
             );
 
             foreach ($iterator as $file) {
-                if (!$file->isFile() || $file->getExtension() !== 'php') {
+                if (! $file->isFile() || $file->getExtension() !== 'php') {
                     continue;
                 }
 
                 $contents = file_get_contents($file->getRealPath());
 
                 // Must contain "extends Model"
-                if (!str_contains($contents, 'extends Model')) {
+                if (! str_contains($contents, 'extends Model')) {
                     continue;
                 }
 
@@ -98,11 +100,11 @@ class ModelJsonSeeder extends Seeder
                 preg_match('/class\s+([A-Za-z0-9_]+)/', $contents, $classMatch);
                 $class = $classMatch[1] ?? null;
 
-                if (!$namespace || !$class) {
+                if (! $namespace || ! $class) {
                     continue;
                 }
 
-                $fqcn = $namespace . '\\' . $class;
+                $fqcn = $namespace.'\\'.$class;
 
                 // Try creating instance to extract table name
                 try {

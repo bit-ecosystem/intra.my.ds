@@ -3,23 +3,24 @@
 namespace App\Filament\Staff\Widgets;
 
 use Bites\Kbm\Lms\Models\Certificate;
-use Filament\Actions\BulkActionGroup;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class ExpiringCert extends TableWidget
 {
     protected static ?string $heading = 'Certificates Expiring';
-    protected int | string | array $columnSpan = 'full';
+
+    protected int|string|array $columnSpan = 'full';
+
     public function table(Table $table): Table
     {
         // dd(Auth::user()->staff);
         return $table
-            ->query(fn(): Builder => Certificate::query()->where('status', 'valid')
+            ->query(fn (): Builder => Certificate::query()->where('status', 'valid')
                 ->whereNotNull('expires_at')
                 ->where('for_staff', Auth::user()->staff->id)
                 ->where('expires_at', '<=', now()->addMonth())
@@ -27,7 +28,7 @@ class ExpiringCert extends TableWidget
             ->columns([
                 TextColumn::make('module.title'),
                 TextColumn::make('certificate_number')
-                    ->color(fn($record) => $record->expires_at->isPast() ? 'danger' : 'info'),
+                    ->color(fn ($record) => $record->expires_at->isPast() ? 'danger' : 'info'),
                 TextColumn::make('issued_at')
                     ->dateTime()
                     ->sortable(),
@@ -35,7 +36,7 @@ class ExpiringCert extends TableWidget
                     ->label('Expires')
                     ->since()
                     ->dateTimeTooltip()
-                    ->color(fn($record) => $record->expires_at->isPast() ? 'danger' : 'info')
+                    ->color(fn ($record) => $record->expires_at->isPast() ? 'danger' : 'info')
                     ->sortable(),
             ])
             ->paginated(false)
@@ -43,7 +44,7 @@ class ExpiringCert extends TableWidget
                 //
             ])
             ->recordUrl(
-                fn(Model $record): string => route('filament.lms.resources.certificates.view', ['record' => $record]),
+                fn (Model $record): string => route('filament.lms.resources.certificates.view', ['record' => $record]),
             );
     }
 }

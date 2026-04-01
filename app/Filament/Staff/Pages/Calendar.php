@@ -7,6 +7,7 @@ namespace App\Filament\Staff\Pages;
 use App\Enums\EventType;
 use App\Support\ShiftPattern;
 use BackedEnum;
+use Bites\Shared\Concerns\HasHelp;
 use Bites\Shared\Models\Event;
 use Carbon\Carbon;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -34,7 +35,7 @@ use UnitEnum;
 
 class Calendar extends Page implements HasActions, HasForms, HasTable
 {
-    use \Bites\Shared\Concerns\HasHelp;
+    use HasHelp;
     use InteractsWithActions;
     use InteractsWithForms;
     use InteractsWithTable;

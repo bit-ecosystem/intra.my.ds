@@ -12,6 +12,7 @@ use Bites\Hrm\Models\Staff;
 use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
 use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -141,10 +142,11 @@ class User extends Authenticatable implements HasAppAuthentication, HasAvatar, L
         return $this->email;
     }
 
-/**
- * @property \Illuminate\Database\Eloquent\Collection $personAttributes
- * @method \Illuminate\Database\Eloquent\Relations\MorphMany personAttributes()
- */
+    /**
+     * @property Collection $personAttributes
+     *
+     * @method \Illuminate\Database\Eloquent\Relations\MorphMany personAttributes()
+     */
     public function personAttributes()
     {
         return $this->morphMany(PersonAttribute::class, 'attributable');

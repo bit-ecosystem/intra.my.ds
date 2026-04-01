@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Console\Commands;
+
 // not used
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
@@ -26,7 +26,7 @@ class ScanModelsCommand extends Command
 
         // Include vendor if requested
         if ($this->option('vendor')) {
-            $this->warn("⚠️ Scanning vendor directory (may be slow)...");
+            $this->warn('⚠️ Scanning vendor directory (may be slow)...');
             $directories[] = base_path('packages');
             $directories[] = base_path('vendor');
         }
@@ -47,8 +47,9 @@ class ScanModelsCommand extends Command
 
     private function scanDirectory(string $dir, array &$results)
     {
-        if (!is_dir($dir)) {
+        if (! is_dir($dir)) {
             $this->error("❌ Directory not found: {$dir}");
+
             return;
         }
 
@@ -57,14 +58,14 @@ class ScanModelsCommand extends Command
         );
 
         foreach ($rii as $file) {
-            if (!$file->isFile() || $file->getExtension() !== 'php') {
+            if (! $file->isFile() || $file->getExtension() !== 'php') {
                 continue;
             }
 
             $contents = file_get_contents($file->getRealPath());
 
             // Only consider classes extending Model
-            if (!str_contains($contents, 'extends Model')) {
+            if (! str_contains($contents, 'extends Model')) {
                 continue;
             }
 
@@ -76,11 +77,11 @@ class ScanModelsCommand extends Command
             preg_match('/class\s+([A-Za-z0-9_]+)/', $contents, $classMatch);
             $className = $classMatch[1] ?? null;
 
-            if (!$namespace || !$className) {
+            if (! $namespace || ! $className) {
                 continue;
             }
 
-            $fqcn = $namespace . '\\' . $className;
+            $fqcn = $namespace.'\\'.$className;
 
             // Instantiate to get table name
             try {
