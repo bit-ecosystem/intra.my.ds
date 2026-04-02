@@ -15,7 +15,7 @@ class Evaluation extends Model
 {
     use HasFactory;
 
-    protected $table = 'l_feedbacks';
+    protected $table = 'l_evaluations';
 
     protected $fillable = [
         'module_id',

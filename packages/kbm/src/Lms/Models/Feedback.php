@@ -16,17 +16,15 @@ class Feedback extends Model
 {
     use HasFactory;
 
-    protected $table = 'l_quiz_attempts';
+    protected $table = 'l_feedbacks';
 
     protected $fillable = [
-        'quiz_id',
+        'evaluation_id',
         'module_id',
         'user_id',
         'for_staff',
         'by_staff',
         'data',          // JSON answers / filled form
-        'result',        // pass|fail|incomplete|pending
-        'score',         // DECIMAL(8,2) per your schema (define % vs ratio in your app logic)
         'started_at',
         'time_taken',
     ];
