@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Bites\Core\Resources\LocationResource;
+use Bites\Core\Organization\Models\Location;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -49,3 +51,27 @@ Route::post('/slo/revoke', function (Request $request) {
 
     return response()->json(['revoked' => $tokens->count()]);
 });
+
+Route::get('/locations/{location?}', function (?Location $location) {
+    if ($location) {
+        return $location->toResource();
+    }
+
+    return LocationResource::collection(
+        Location::with(['parent', 'company'])->get()
+    );
+});
+
+Route::get('/get_data/{resource}', function (string $resource) {
+    $map = config("api_resources.$resource");
+
+    abort_if(! $map, 404, 'Unknown resource');
+
+    $models = $map['model']::query()
+        ->with($map['with'] ?? [])
+        ->get();
+
+    return $map['resource']::collection($models);
+});
+
+

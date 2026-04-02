@@ -6,22 +6,29 @@ namespace Bites\Core\Organization\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Attributes\UseResource;
+ 
+#[UseResource(\Bites\Core\Resources\LocationResource::class)]
 class Location extends Model
 {
     // protected $table = 'locations';
 
     protected $guarded = [];
 
-    public function parent()
+    public function parent(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         // Adding with('parent') makes it recursive
         return $this->belongsTo(Location::class, 'parent_id')->with('parent');
     }
 
-    public function children()
+    public function children(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Location::class, 'parent_id');
+    }
+    
+    public function company(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Company::class);
     }
 
     /**
@@ -32,7 +39,7 @@ class Location extends Model
         return self::query()
             ->doesntHave('children')
             ->get()
-            ->mapWithKeys(fn ($location): array => [$location->id => $location->full_path])
+            ->mapWithKeys(fn($location): array => [$location->id => $location->full_path])
             ->toArray();
     }
 

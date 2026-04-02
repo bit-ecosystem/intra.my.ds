@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
 #[UseFactory(ModuleFactory::class)]
@@ -58,9 +58,14 @@ class Module extends Model
             ->orderBy('l_material_module.order_index');
     }
 
-    public function quizzes(): HasMany
+    public function quizzes(): HasOne
     {
-        return $this->hasMany(Quiz::class, 'module_id')->orderBy('is_active', 'desc');
+        return $this->hasOne(Quiz::class, 'module_id')->orderBy('is_active', 'desc');
+    }
+
+        public function evaluations(): HasOne
+    {
+        return $this->hasOne(Evaluation::class, 'evaluation_id');
     }
 
     public static function resolveCreation(array $record, $index)

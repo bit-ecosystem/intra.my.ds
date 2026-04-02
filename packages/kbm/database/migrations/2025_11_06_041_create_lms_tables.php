@@ -96,6 +96,28 @@ return new class extends Migration
             $table->index(['quiz_id', 'user_id', 'result']);
             $table->index(['module_id']);
         });
+        Schema::create('l_evaluations', function (Blueprint $table): void {
+            $table->id();
+            $table->foreignId('module_id')->constrained('l_modules')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('code')->unique();
+            $table->string('name')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->json('schema'); // Filament form schema
+            $table->timestamps();
+        });
+
+        Schema::create('l_feedbacks', function (Blueprint $table): void {
+            $table->id();
+            $table->foreignId('evaluation_id')->constrained('l_evaluations')->cascadeOnDelete();
+            $table->json('data'); // stores filled form data
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('for_staff')->nullable()->constrained('staff')->cascadeOnDelete();
+            $table->foreignId('by_staff')->nullable()->constrained('staff')->cascadeOnDelete();
+            $table->foreignId('module_id')->constrained('l_modules')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->timestamp('started_at')->nullable();
+            $table->integer('time_taken')->nullable();
+            $table->timestamps();
+        });
 
         Schema::create('l_certificates', function (Blueprint $table): void {
             $table->id();
