@@ -48,6 +48,7 @@ class ModuleResource extends Resource
         return [
             RelationManagers\MaterialsRelationManager::class,
             RelationManagers\QuizzesRelationManager::class,
+            RelationManagers\EvaluationsRelationManager::class,
         ];
     }
 

@@ -30,11 +30,11 @@ class QuizzesRelationManager extends RelationManager
 
                         return $data;
                     }),
-                CreateAction::make()
-                    ->using(function (array $data) {
-                        // Ensure module_id is not coming from the client
-                        return $this->getRelationship()->create($data);
-                    }),
+                // CreateAction::make()
+                //     ->using(function (array $data) {
+                //         // Ensure module_id is not coming from the client
+                //         return $this->getRelationship()->create($data);
+                //     }),
             ])
 
             ->recordActions([
@@ -50,7 +50,7 @@ class QuizzesRelationManager extends RelationManager
     public static function getTabComponent(Model $module, string $pageClass): Tab
     {
         return Tab::make('Quizzes')
-            ->badge($module->quizzes->count())
+            // ->badge($module->quizzes->count())
             ->icon('myicon-quiz')
             ->badgeTooltip('Number of Quizzes');
     }

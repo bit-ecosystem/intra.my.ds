@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Courses\Schemas;
 
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components;
 use Filament\Schemas\Schema;
 
 class CourseForm
@@ -16,16 +13,25 @@ class CourseForm
     {
         return $schema
             ->components([
-                TextInput::make('code')
+                Components\TextInput::make('code')
                     ->required(),
-                TextInput::make('title')
+                Components\TextInput::make('title')
                     ->required(),
-                Textarea::make('description')
+                Components\Textarea::make('description')
                     ->columnSpanFull(),
-                Select::make('status')
+                Components\Select::make('status')
                     ->options(['draft' => 'Draft', 'published' => 'Published', 'archived' => 'Archived'])
                     ->required(),
-                DateTimePicker::make('published_at'),
+                Components\Repeater::make('stakeHolder')
+                    ->relationship()
+                    ->schema([
+                        Components\Select::make('role_id')
+                            ->relationship('role', 'name'),
+
+                        Components\Toggle::make('can_view'),
+                        Components\Toggle::make('can_edit'),
+                    ]),
+                Components\DateTimePicker::make('published_at'),
             ]);
     }
 }

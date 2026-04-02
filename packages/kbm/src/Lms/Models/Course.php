@@ -6,6 +6,7 @@ namespace Bites\Kbm\Lms\Models;
 
 use App\Enums\CourseGroup;
 use Bites\Kbm\Factories\CourseFactory;
+use Bites\Shared\Concerns\HasStakeHolder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 #[UseFactory(CourseFactory::class)]
 class Course extends Model
 {
-    use HasFactory;
+    use HasFactory, HasStakeHolder;
 
     protected $table = 'l_courses';
 

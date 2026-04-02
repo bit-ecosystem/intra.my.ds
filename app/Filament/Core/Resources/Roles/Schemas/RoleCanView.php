@@ -39,7 +39,7 @@ class RoleCanView
         string $relationship = 'attachableRoles',
         bool $showSelect = false,
         string $actionName = 'choose_roles',
-        string $superUserRole = 'su',
+        string $superUserRole = 'jt_developer',
         int $recordId = 1,
     ): array {
         // ----- Build all role options (labels), descriptions, and id sets -----
