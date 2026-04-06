@@ -10,7 +10,7 @@ use App\Filament\Core\Resources\OrgUnits\Pages\ListOrgUnits;
 use App\Filament\Core\Resources\OrgUnits\Schemas\OrgUnitForm;
 use App\Filament\Core\Resources\OrgUnits\Tables\OrgUnitsTable;
 use BackedEnum;
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\OrgUnit;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Shared\Concerns;
 
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\OrgUnit;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Arr;

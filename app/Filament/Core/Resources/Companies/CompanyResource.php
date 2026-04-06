@@ -12,7 +12,7 @@ use App\Filament\Core\Resources\Companies\Schemas\CompanyForm;
 use App\Filament\Core\Resources\Companies\Schemas\CompanyInfolist;
 use App\Filament\Core\Resources\Companies\Tables\CompaniesTable;
 use BackedEnum;
-use Bites\Core\Organization\Models\Company;
+use Bites\Core\Organization\Company;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bites\Attachables\Models\Concerns;
 
 use Bites\Attachables\Models\RoleGroup;
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\OrgUnit;
 
 trait HasRoleGroup
 {

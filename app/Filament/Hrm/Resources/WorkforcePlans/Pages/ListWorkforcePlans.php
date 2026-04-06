@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Hrm\Resources\WorkforcePlans\Pages;
 
 use App\Filament\Hrm\Resources\WorkforcePlans\WorkforcePlanResource;
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\OrgUnit;
 use Bites\Hrm\Models\WorkforcePlan;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;

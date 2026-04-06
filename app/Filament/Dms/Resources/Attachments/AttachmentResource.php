@@ -12,7 +12,7 @@ use App\Filament\Dms\Resources\Attachments\Schemas\AttachmentForm;
 use App\Filament\Dms\Resources\Attachments\Schemas\AttachmentInfolist;
 use App\Filament\Dms\Resources\Attachments\Tables\AttachmentsTable;
 use BackedEnum;
-use Bites\Kbm\Dms\Models\Attachment;
+use Bites\Knowledge\Library\Attachment;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;

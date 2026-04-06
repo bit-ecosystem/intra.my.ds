@@ -7,6 +7,7 @@ namespace App\Filament\Core\Resources\HelpPages\Actions;
 use Bites\Shared\Models\HelpPage;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\RichEditor;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Notifications\Notification;
@@ -61,11 +62,13 @@ final class OpenHelpAction
             ->schema([
                 Hidden::make('page_class')->default($pageKey),
                 Hidden::make('record')->default($recordId),
-                RichEditor::make('content')
-                    ->label(__('Help Content'))
-                    ->default($template)
-                    ->required()
-                    ->columnSpanFull(),
+
+                MarkdownEditor::make('content'),
+                // RichEditor::make('content')
+                //     ->label(__('Help Content'))
+                //     ->default($template)
+                //     ->required()
+                //     ->columnSpanFull(),
             ])
             ->action(function (array $data): void {
                 HelpPage::updateOrCreate(
@@ -102,7 +105,8 @@ final class OpenHelpAction
             ->schema([
                 TextEntry::make('content')
                     ->state($existing->content)
-                    ->html()
+                    // ->html()
+                    ->markdown()
                     ->columnSpanFull(),
             ]);
     }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Attachments\Schemas;
 
+use Bites\Shared\Concerns\HasAttachableExtLink;
 use Filament\Forms\Components;
 use Filament\Schemas\Schema;
-use Bites\Shared\Concerns\HasAttachableExtLink;
 
 class AttachmentForm
 {

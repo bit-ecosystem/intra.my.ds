@@ -12,7 +12,7 @@ use App\Filament\Lms\Resources\Certificates\Schemas\CertificateForm;
 use App\Filament\Lms\Resources\Certificates\Schemas\CertificateInfolist;
 use App\Filament\Lms\Resources\Certificates\Tables\CertificatesTable;
 use BackedEnum;
-use Bites\Kbm\Lms\Models\Certificate;
+use Bites\Knowledge\Learning\Certificate;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

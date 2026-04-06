@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Bites\Service\Services;
 
-use App\Models\RoleMapper;
 use App\Models\User;
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Authorization\RoleMapper;
+use Bites\Core\Organization\OrgUnit;
 use Bites\Hrm\Models\Staff;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -297,7 +297,7 @@ class RoleSyncService
                     $this->attachRoles($staff);
                 });
 
-                ++$processed;
+                $processed++;
                 if ($processed % 200 === 0) {
                     Log::info(sprintf('RoleSyncService: processed %d staff...', $processed));
                 }

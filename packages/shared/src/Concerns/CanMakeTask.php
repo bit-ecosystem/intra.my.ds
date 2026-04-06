@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Shared\Concerns;
 
-use App\Models\RoleMapper;
+use Bites\Core\Authorization\RoleMapper;
 use Bites\Hrm\Models\Staff;
 use Bites\Shared\Models\Task;
 use Illuminate\Database\Eloquent\Relations\MorphMany;

@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\Courses\Tables;
 
 use App\Enums\CourseGroup;
-use Bites\Kbm\Lms\Models\Course;
+use Bites\Knowledge\Learning\Course;
 use Filament\Support\Enums;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class CoursesTable
 {
@@ -19,7 +20,7 @@ class CoursesTable
     {
         return $table
             ->query(
-                Course::query()->where('status', 'published')
+                Course::query()->where('status', 'published')->visibleTo(Auth::user())
             )
             ->columns([
                 TextColumn::make('category')

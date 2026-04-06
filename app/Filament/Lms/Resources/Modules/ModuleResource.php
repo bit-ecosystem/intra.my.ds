@@ -12,7 +12,7 @@ use App\Filament\Lms\Resources\Modules\Schemas\ModuleForm;
 use App\Filament\Lms\Resources\Modules\Schemas\ModuleInfolist;
 use App\Filament\Lms\Resources\Modules\Tables\ModulesTable;
 use BackedEnum;
-use Bites\Kbm\Lms\Models\Module;
+use Bites\Knowledge\Learning\Module;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

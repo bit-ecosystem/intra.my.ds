@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Lms;
 
-use Bites\Kbm\Lms\Models\Module;
+use Bites\Knowledge\Learning\Module;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Modules\RelationManagers;
 
-use App\Filament\Lms\Resources\Feedback\FeedbackResource;
 use App\Filament\Lms\Resources\Evaluations\EvaluationResource;
+use App\Filament\Lms\Resources\Feedback\FeedbackResource;
 use Filament\Actions;
 use Filament\Actions\CreateAction;
 use Filament\Actions\EditAction;
@@ -47,6 +47,6 @@ class EvaluationsRelationManager extends RelationManager
         return Tab::make('Feedback')
             // ->badge($module->quizzes->count())
             ->icon('heroicon-o-hand-thumb-up');
-            // ->badgeTooltip('Number of Quizzes');
+        // ->badgeTooltip('Number of Quizzes');
     }
 }

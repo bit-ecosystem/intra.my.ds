@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Erp\Resources\OrgRoles\Tables;
 
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\OrgUnit;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;

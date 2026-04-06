@@ -25,7 +25,7 @@ final class BlockRegistry
     /** @return Block[] */
     public function paletteBlocks(): array
     {
-        return array_values(array_map(fn (\Bites\FilamentBlueprints\Contracts\BlockContract $svc): \Filament\Forms\Components\Builder\Block => $svc->palette(), $this->byName));
+        return array_values(array_map(fn (BlockContract $svc): Block => $svc->palette(), $this->byName));
     }
 
     /** @return array of decoded Filament components */

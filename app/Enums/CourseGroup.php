@@ -89,11 +89,11 @@ enum CourseGroup: string
             self::SAFETY => 'heroicon-o-shield-check',
             self::COMPLIANCE => 'heroicon-o-clipboard-document-check',
             self::QUALITY => 'heroicon-o-star',
-            self::TECHNICAL => 'heroicon-o-cpu-chip',
+            self::TECHNICAL => 'bites-l-technical',
 
             // Production
             self::PRODUCT => 'heroicon-o-cube',
-            self::PROCESS => 'heroicon-o-arrow-path',
+            self::PROCESS => 'bites-l-process',
             self::EQUIPMENT => 'heroicon-o-wrench-screwdriver',
 
             // Growth
@@ -117,24 +117,24 @@ enum CourseGroup: string
     {
         return match ($this) {
             // Operations
-            self::SAFETY => Color::Orange,
-            self::COMPLIANCE => Color::Lime,
-            self::QUALITY => Color::Blue,
-            self::TECHNICAL => Color::Red,
+            self::SAFETY => Color::Rose,
+            self::COMPLIANCE => Color::Amber,
+            self::QUALITY => Color::Pink,
+            self::TECHNICAL => Color::Orange,
 
             // Production
-            self::PRODUCT => Color::Emerald,
-            self::PROCESS => Color::Amber,
+            self::PRODUCT => Color::Blue,
+            self::PROCESS => Color::Sky,
             self::EQUIPMENT => Color::Violet,
 
             // Growth
-            self::EFFICIENCY => Color::Cyan,
-            self::DIGITAL => Color::Mauve,
-            self::SOFT_SKILLS => Color::Fuchsia,
-            self::LEADERSHIP => Color::Sky,
+            self::EFFICIENCY => Color::Green,
+            self::DIGITAL => Color::Lime,
+            self::SOFT_SKILLS => Color::Emerald,
+            self::LEADERSHIP => Color::Cyan,
 
             // Newbie
-            self::ONBOARDING => Color::Yellow,
+            self::ONBOARDING => Color::Mist,
         };
     }
 
@@ -145,22 +145,22 @@ enum CourseGroup: string
     {
         return match ($this) {
             // Operations
-            self::SAFETY => 'Workplace HSE, LOTO, PPE, and emergency readiness.',
-            self::COMPLIANCE => 'Policies, legal, anti-bribery, and data governance.',
-            self::QUALITY => 'QC methods, SPC, calibration, and non-conformance.',
-            self::TECHNICAL => 'SOPs, machine setup, maintenance, and blueprints.',
+            self::SAFETY => 'Safety : Workplace HSE, LOTO, PPE, and emergency readiness.',
+            self::COMPLIANCE => 'Compliance : Policies, legal, anti-bribery, and data governance.',
+            self::QUALITY => 'Quality : QC methods, SPC, calibration, and non-conformance.',
+            self::TECHNICAL => 'Technical : SOPs, machine setup, maintenance, and blueprints.',
 
             // Production
-            self::PRODUCT => 'Product/material-focused competencies and standards.',
-            self::PROCESS => 'Process segments and manufacturing workflows.',
-            self::EQUIPMENT => 'Equipment classes, operation, and maintenance topics.',
+            self::PRODUCT => 'Product : Product/material-focused competencies and standards.',
+            self::PROCESS => 'Process : Process segments and manufacturing workflows.',
+            self::EQUIPMENT => 'Equipment : Equipment classes, operation, and maintenance topics.',
 
             // Growth
-            self::EFFICIENCY => 'Lean, 5S, value-streams, and continuous improvement.',
-            self::DIGITAL => 'MES/ERP usage, cybersecurity, and digital tools.',
-            self::SOFT_SKILLS => 'Communication, teamwork, and collaboration.',
-            self::LEADERSHIP => 'Coaching, delegation, and frontline leadership.',
-            self::ONBOARDING => 'Company intro, site security, and handbook.',
+            self::EFFICIENCY => 'Efficiency : Lean, 5S, value-streams, and continuous improvement.',
+            self::DIGITAL => 'Digital/IT : MES/ERP usage, cybersecurity, and digital tools.',
+            self::SOFT_SKILLS => 'Soft Skills : Communication, teamwork, and collaboration.',
+            self::LEADERSHIP => 'Leadership : Coaching, delegation, and frontline leadership.',
+            self::ONBOARDING => 'Onboarding : Company intro, site security, and handbook.',
         };
     }
 

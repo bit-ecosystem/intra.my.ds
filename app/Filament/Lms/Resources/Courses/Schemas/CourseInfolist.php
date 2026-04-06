@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\Courses\Schemas;
 
 use Filament\Infolists\Components;
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums;
 
 class CourseInfolist
@@ -34,7 +34,7 @@ class CourseInfolist
                                 Components\TextEntry::make('status')
                                     ->label('Status')
                                     ->badge()
-                                    ->color(fn(string $state) => match ($state) {
+                                    ->color(fn (string $state) => match ($state) {
                                         'active' => 'success',
                                         'draft' => 'warning',
                                         'archived' => 'gray',
@@ -70,7 +70,7 @@ class CourseInfolist
                     ->description('System-generated timestamps')
                     ->icon('heroicon-o-clock')
                     ->collapsed()
-                        ->columnSpanFull()
+                    ->columnSpanFull()
                     ->schema([
                         Grid::make(3)
                             ->schema([

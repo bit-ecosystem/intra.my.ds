@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Bites\Shared\Helpers;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 abstract class StakeHolderPolicy
 {
@@ -19,6 +19,7 @@ abstract class StakeHolderPolicy
 
     public function update(User $user, $model): bool
     {
+        // return false;
         return method_exists($model, 'canEditBy')
             && $model->canEditBy($user);
     }

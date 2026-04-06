@@ -12,15 +12,15 @@ return [
             // 5 workdays, then 2 rest days
             'segments' => [
                 [
-                    'len'   => 5,
-                    'code'  => 'D',
+                    'len' => 5,
+                    'code' => 'D',
                     'label' => '🐓',
                     'start' => '08:30',
-                    'end'   => '17:30',
+                    'end' => '17:30',
                     'color' => '#22c55e',
                 ],
                 [
-                    'len'  => 2,
+                    'len' => 2,
                     'code' => 'R', // Weekend rest (hidden)
                 ],
             ],
@@ -29,9 +29,9 @@ return [
 
             'teams' => [
                 '1' => [
-                    'label'  => 'Normal Hours',
+                    'label' => 'Normal Hours',
                     'offset' => 0,
-                    'color'  => '#22c55e',
+                    'color' => '#22c55e',
                 ],
             ],
         ],

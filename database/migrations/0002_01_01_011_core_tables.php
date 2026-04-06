@@ -69,18 +69,6 @@ return new class extends Migration // packages core core_tables
             $table->index(['role_name']);
         });
 
-        Schema::create('model_stake_holders', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('role_id')->constrained()->cascadeOnDelete();
-            $table->morphs('assignable');
-            // assignable_type, assignable_id
-            $table->boolean('can_view')->default(false);
-            $table->boolean('can_edit')->default(false);
-            $table->timestamps();
-
-            $table->unique(['role_id','assignable_type','assignable_id',]);
-        }); 
-
         Schema::create('role_staff', function (Blueprint $table) {
             $table->id();
             $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete();

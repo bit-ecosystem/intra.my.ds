@@ -56,7 +56,7 @@ class QuizScoringService
             $isCorrect = ($submitted === $correctCopy);
 
             if ($isCorrect) {
-                ++$total;
+                $total++;
             }
 
             $results[$qName] = [

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Workflow\Models;
 
-use Bites\Core\Organization\Models\OrgRole;
+use Bites\Core\Organization\OrgRole;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;

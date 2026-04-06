@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\ReceiveDataController;
+use Bites\Core\Organization\Location;
+use Bites\Core\Organization\LocationJsonApi;
+use Bites\Knowledge\Learning\Course;
+use Bites\Knowledge\Learning\CourseJsonApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Bites\Core\Resources\LocationResource;
-use Bites\Core\Organization\Models\Location;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -52,16 +54,36 @@ Route::post('/slo/revoke', function (Request $request) {
     return response()->json(['revoked' => $tokens->count()]);
 });
 
-Route::get('/locations/{location?}', function (?Location $location) {
+Route::get('/get_data/locations', function () {
+    return \Bites\Core\Organization\LocationJsonApi::collection(
+        \Bites\Core\Organization\Location::with(['parent', 'company'])->get()
+    );
+});
+
+Route::get('/get_data/locations/{location?}', function (?\Bites\Core\Organization\Location $location) {
     if ($location) {
         return $location->toResource();
     }
 
-    return LocationResource::collection(
-        Location::with(['parent', 'company'])->get()
+    return  \Bites\Core\Organization\LocationJsonApi::collection(
+        \Bites\Core\Organization\Location::with(['parent', 'company'])->get()
     );
 });
 
+Route::get('/get_data/courses', function () {
+    return \Bites\Knowledge\Learning\CourseJsonApi::collection(
+        \Bites\Knowledge\Learning\Course::with(['modules'])->get()
+    );
+});
+Route::get('/get_data/courses/{course?}', function (?Course $course) {
+    if ($course) {
+        return $course->toResource();
+    }
+
+    return \Bites\Knowledge\Learning\CourseJsonApi::collection(
+        Course::with(['modules'])->get()
+    );
+});
 Route::get('/get_data/{resource}', function (string $resource) {
     $map = config("api_resources.$resource");
 
@@ -74,4 +96,36 @@ Route::get('/get_data/{resource}', function (string $resource) {
     return $map['resource']::collection($models);
 });
 
+// Route::get('/get_data/{type}/{id?}', function (string $type, $id = null) {
+//     // 1. Resolve Class Names (e.g., 'locations' -> 'Location')
+//     $modelName = Str::studly(Str::singular($type));
+    
+//     // 2. Define your Namespace Mappings
+//     $namespaces = [
+//         'Location' => ['model' => \Bites\Core\Organization\Location::class, 'api' => \Bites\Core\Organization\LocationJsonApi::class, 'with' => ['parent', 'company']],
+//         'Course'   => ['model' => \Bites\Knowledge\Learning\Course::class, 'api' => \Bites\Knowledge\Learning\CourseJsonApi::class, 'with' => ['modules']],
+//     ];
 
+//     if (!isset($namespaces[$modelName])) {
+//         abort(404, "Data type '$type' not supported.");
+//     }
+
+//     $config = $namespaces[$modelName];
+//     $modelClass = $config['model'];
+//     $resourceClass = $config['api'];
+
+//     // 3. Handle Single Item
+//     if ($id) {
+//         $item = $modelClass::with($config['with'])->findOrFail($id);
+//         return method_exists($item, 'toResource') ? $item->toResource() : new $resourceClass($item);
+//     }
+
+//     // 4. Handle Collection (with the permission scope we debugged!)
+//     $query = $modelClass::with($config['with']);
+    
+//     if (method_exists($modelClass, 'scopeVisibleTo')) {
+//         $query->visibleTo(auth()->user());
+//     }
+
+//     return $resourceClass::collection($query->get());
+// });

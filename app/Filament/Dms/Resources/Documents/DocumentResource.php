@@ -12,7 +12,7 @@ use App\Filament\Dms\Resources\Documents\Schemas\DocumentForm;
 use App\Filament\Dms\Resources\Documents\Schemas\DocumentInfolist;
 use App\Filament\Dms\Resources\Documents\Tables\DocumentsTable;
 use BackedEnum;
-use Bites\Kbm\Dms\Models\Document;
+use Bites\Knowledge\Library\Document;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;

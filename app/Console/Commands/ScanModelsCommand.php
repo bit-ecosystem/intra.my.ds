@@ -50,7 +50,7 @@ class ScanModelsCommand extends Command
     private function scanDirectory(string $dir, array &$results): void
     {
         if (! is_dir($dir)) {
-            $this->error('❌ Directory not found: ' . $dir);
+            $this->error('❌ Directory not found: '.$dir);
 
             return;
         }

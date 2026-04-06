@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Shared\Models;
 
-use App\Models\RoleMapper;
+use Bites\Core\Authorization\RoleMapper;
 use Bites\Hrm\Models\Staff;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Casts\Attribute;

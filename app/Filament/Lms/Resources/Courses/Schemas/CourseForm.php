@@ -26,8 +26,7 @@ class CourseForm
                     ->relationship()
                     ->schema([
                         Components\Select::make('role_id')
-                            ->relationship('role', 'name'),
-
+                            ->relationship('role', 'name'), // ->multiple()->preload(),
                         Components\Toggle::make('can_view'),
                         Components\Toggle::make('can_edit'),
                     ]),

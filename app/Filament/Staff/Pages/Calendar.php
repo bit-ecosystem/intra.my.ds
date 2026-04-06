@@ -85,15 +85,15 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                 // Group by Month/Year from starts_at
                 Group::make('starts_at')
                     ->label('Month')
-                    ->getTitleFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->isoFormat('MMMM • YYYY') ?? 'No Date')
-                    ->getKeyFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
+                    ->getTitleFromRecordUsing(fn (Event $record) => optional($record->starts_at)?->isoFormat('MMMM • YYYY') ?? 'No Date')
+                    ->getKeyFromRecordUsing(fn (Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
                     ->collapsible(),
 
                 Group::make('iso_week')
                     ->label('Week')
-                    ->getTitleFromRecordUsing(fn(Event $record): string => $record->starts_at ? sprintf('%s • %s', $record->starts_at->format('W'), $record->starts_at->format('o')) : 'No Date')
-                    ->getKeyFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
-                    ->orderQueryUsing(fn(Builder $query, string $direction) => $query->orderBy('starts_at', $direction))
+                    ->getTitleFromRecordUsing(fn (Event $record): string => $record->starts_at ? sprintf('%s • %s', $record->starts_at->format('W'), $record->starts_at->format('o')) : 'No Date')
+                    ->getKeyFromRecordUsing(fn (Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
+                    ->orderQueryUsing(fn (Builder $query, string $direction) => $query->orderBy('starts_at', $direction))
                     ->collapsible(),
 
             ])

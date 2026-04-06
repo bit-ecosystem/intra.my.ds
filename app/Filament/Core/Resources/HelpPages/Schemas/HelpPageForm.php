@@ -67,49 +67,57 @@ class HelpPageForm
                             ->visible(false), // Add later if you want hybrid behavior
                     ])
                     ->columns(3),
-
-                Components\RichEditor::make('content') // or rename the column to 'content'
+                Components\MarkdownEditor::make('content')
                     ->toolbarButtons([
-                        ['textColor', 'bold', 'italic', 'underline', 'strike', 'link'],
-                        ['h2', 'h3', 'alignStart', 'alignCenter', 'alignEnd'],
+                        ['bold', 'italic', 'strike', 'link'],
+                        ['heading'],
                         ['blockquote', 'codeBlock', 'bulletList', 'orderedList'],
                         ['table', 'attachFiles'],
                         ['undo', 'redo'],
                     ])
-                    ->floatingToolbars([
-                        'paragraph' => [
-                            'bold',
-                            'italic',
-                            'underline',
-                            'strike',
-                            'subscript',
-                            'superscript',
-                        ],
-                        'heading' => [
-                            'h1',
-                            'h2',
-                            'h3',
-                        ],
-                        'table' => [
-                            'tableAddColumnBefore',
-                            'tableAddColumnAfter',
-                            'tableDeleteColumn',
-                            'tableAddRowBefore',
-                            'tableAddRowAfter',
-                            'tableDeleteRow',
-                            'tableMergeCells',
-                            'tableSplitCell',
-                            'tableToggleHeaderRow',
-                            'tableToggleHeaderCell',
-                            'tableDelete',
-                        ],
-                    ])
-                    ->customBlocks([
-                        HeroBlock::class,
-                        // CallToActionBlock::class,
-                    ])
-                    ->customTextColors()
                     ->columnSpanFull(),
+                // Components\RichEditor::make('content') // or rename the column to 'content'
+                //     ->toolbarButtons([
+                //         ['textColor', 'bold', 'italic', 'underline', 'strike', 'link'],
+                //         ['h2', 'h3', 'alignStart', 'alignCenter', 'alignEnd'],
+                //         ['blockquote', 'codeBlock', 'bulletList', 'orderedList'],
+                //         ['table', 'attachFiles'],
+                //         ['undo', 'redo'],
+                //     ])
+                //     ->floatingToolbars([
+                //         'paragraph' => [
+                //             'bold',
+                //             'italic',
+                //             'underline',
+                //             'strike',
+                //             'subscript',
+                //             'superscript',
+                //         ],
+                //         'heading' => [
+                //             'h1',
+                //             'h2',
+                //             'h3',
+                //         ],
+                //         'table' => [
+                //             'tableAddColumnBefore',
+                //             'tableAddColumnAfter',
+                //             'tableDeleteColumn',
+                //             'tableAddRowBefore',
+                //             'tableAddRowAfter',
+                //             'tableDeleteRow',
+                //             'tableMergeCells',
+                //             'tableSplitCell',
+                //             'tableToggleHeaderRow',
+                //             'tableToggleHeaderCell',
+                //             'tableDelete',
+                //         ],
+                //     ])
+                //     ->customBlocks([
+                //         HeroBlock::class,
+                //         // CallToActionBlock::class,
+                //     ])
+                //     ->customTextColors()
+                //     ->columnSpanFull(),
 
                 // RichContentRenderer::make($record->markdown)
                 //     // ->customBlocks([

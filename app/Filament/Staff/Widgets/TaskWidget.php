@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Widgets;
 
 use App\Filament\Lms\Resources\Certificates\CertificateResource;
-use Bites\Kbm\Lms\Models\Certificate;
+use Bites\Knowledge\Learning\Certificate;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;

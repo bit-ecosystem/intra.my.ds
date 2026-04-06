@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Shared\Helpers;
 
+use App\Filament\Lms\Resources\Attachments\AttachmentResource;
 use Illuminate\Support\Str;
 
 final class AttachmentLinkResolver
@@ -21,13 +22,13 @@ final class AttachmentLinkResolver
 
     public static function shouldUseInternalViewer(string $path): bool
     {
-        return self::isLocal($path);// || self::isSharePoint($path);
+        return self::isLocal($path); // || self::isSharePoint($path);
     }
 
     public static function recordUrl($record): string
     {
         if (self::shouldUseInternalViewer($record->file_path)) {
-            return \App\Filament\Lms\Resources\Attachments\AttachmentResource::getUrl(
+            return AttachmentResource::getUrl(
                 'view',
                 ['record' => $record]
             );

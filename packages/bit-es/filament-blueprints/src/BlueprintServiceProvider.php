@@ -18,7 +18,7 @@ final class BlueprintServiceProvider extends ServiceProvider
         $this->app->tag($blockClasses, config('filament-blueprints.container_tag', 'filament.blueprints.blocks'));
 
         // Registry singleton resolving tagged services
-        $this->app->singleton(function ($app): \Bites\FilamentBlueprints\BlockRegistry {
+        $this->app->singleton(function ($app): BlockRegistry {
             $tag = config('filament-blueprints.container_tag', 'filament.blueprints.blocks');
             /** @var iterable<BlockContract> $services */
             $services = $app->tagged($tag);

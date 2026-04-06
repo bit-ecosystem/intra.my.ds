@@ -12,7 +12,7 @@ use App\Filament\Lms\Resources\Courses\Schemas\CourseForm;
 use App\Filament\Lms\Resources\Courses\Schemas\CourseInfolist;
 use App\Filament\Lms\Resources\Courses\Tables\CoursesTable;
 use BackedEnum;
-use Bites\Kbm\Lms\Models\Course;
+use Bites\Knowledge\Learning\Course;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\Models\RoleMapper;
+use Bites\Core\Authorization\RoleMapper;
 use Bites\Hrm\Models\Staff;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -62,7 +62,7 @@ class MakePermissions extends Command
     }
 
     /**
-     * Convert FQCN like "Bites\Kbm\Lms\Models\Certificate" → "Lms_Certificate".
+     * Convert FQCN like "Bites\Knowledge\Learning\Certificate" → "Lms_Certificate".
      */
     protected function aliasFromFqcn(string $fqcn): string
     {

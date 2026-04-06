@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Shared\Support;
 
-use App\Models\RoleMapper;
+use Bites\Core\Authorization\RoleMapper;
 use Bites\Shared\Models\ApiData;
 use Database\Seeders\StaffSeeder;
 use Illuminate\Support\Facades\Log;

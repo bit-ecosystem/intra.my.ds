@@ -6,8 +6,8 @@ namespace App\Services;
 
 namespace App\Services;
 
-use Bites\Kbm\Dms\Models\Document;
-use Bites\Kbm\Dms\Models\Vector;
+use Bites\Knowledge\Library\Document;
+use Bites\Knowledge\Library\Vector;
 use Illuminate\Support\Facades\Http;
 
 class EmbeddingService

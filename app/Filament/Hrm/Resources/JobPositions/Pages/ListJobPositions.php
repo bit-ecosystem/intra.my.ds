@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Filament\Hrm\Resources\JobPositions\Pages;
 
 use App\Filament\Hrm\Resources\JobPositions\JobPositionResource;
-use Bites\Core\Organization\Models\JobPosition;
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\JobPosition;
+use Bites\Core\Organization\OrgUnit;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;

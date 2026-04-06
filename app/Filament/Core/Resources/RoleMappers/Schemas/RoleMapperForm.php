@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Core\Resources\RoleMappers\Schemas;
 
-use App\Models\RoleMapper;
+use Bites\Core\Authorization\RoleMapper;
 use Filament\Forms\Components;
 use Filament\Schemas\Schema;
 

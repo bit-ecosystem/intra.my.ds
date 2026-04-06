@@ -13,7 +13,7 @@
         "bit-es/core": "dev-main",
         "bit-es/filament-blueprints": "dev-main",
         "bit-es/hrm": "dev-main",
-        "bit-es/kbm": "dev-main",
+        "bit-es/knowledge": "dev-main",
         "bit-es/oum": "dev-main",
         "bit-es/service": "dev-main",
         "bit-es/shared": "dev-main",
@@ -52,7 +52,7 @@
         },
         {
             "type": "path",
-            "url": "packages/kbm",
+            "url": "packages/knowledge",
             "options": {
                 "symlink": true,
                 "canonical": false

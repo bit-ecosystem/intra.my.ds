@@ -6,11 +6,13 @@ namespace App\Filament\Lms\Resources\Courses\Pages;
 
 use App\Enums\CourseGroup;
 use App\Filament\Lms\Resources\Courses\CourseResource;
-use Bites\Kbm\Lms\Models\Course;
+use Bites\Knowledge\Learning\Course;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Support\Enums\IconPosition;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class ListCourses extends ListRecords
 {
@@ -25,8 +27,7 @@ class ListCourses extends ListRecords
 
     protected function getHeaderWidgets(): array
     {
-        return [
-        ];
+        return [];
     }
 
     protected function getHeaderActions(): array
@@ -38,9 +39,11 @@ class ListCourses extends ListRecords
 
     public function getDefaultActiveTab(): string|int|null
     {
+
         $onboardingCount = Course::query()
             ->where('status', 'published')
             ->where('category', 'Onboarding')
+            ->visibleTo(Auth::user())
             ->count();
 
         return $onboardingCount > 0 ? 'Onboarding' : 'all';
@@ -52,6 +55,7 @@ class ListCourses extends ListRecords
             ->where('status', 'published')
             ->selectRaw('category, COUNT(*) as total')
             ->groupBy('category')
+            ->visibleTo(Auth::user())
             ->pluck('total', 'category');
 
         $totalPublished = (int) $counts->sum();
@@ -63,21 +67,28 @@ class ListCourses extends ListRecords
             ->badgeColor('primary')
             ->icon('heroicon-o-rectangle-stack')
             // Explicitly return the query
-            ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'published'));
+            ->modifyQueryUsing(fn(Builder $query) => $query->where('status', 'published'));
 
         foreach (CourseGroup::meta() as $key => $meta) {
-            $tabs[$key] = Tab::make($meta['label'])
-                ->badge(
-                    fn () => Course::query()
+            $tabs[$key] = Tab::make('')
+                ->extraAttributes([
+                    'x-tooltip.raw' => $meta['description'],
+                ])
+                ->badge(function () use ($key) {
+                    $count = Course::query()
                         ->where('status', 'published')
-                        ->where('category', $key) // Uses "Safety", "Compliance", etc.
-                        ->count()
-                )
+                        ->visibleTo(Auth::user())
+                        ->where('category', $key)
+                        ->count();
+
+                    return $count > 0 ? $count : null;
+                })
                 ->badgeColor($meta['color'])
                 ->icon($meta['icon'])
+                ->IconPosition(IconPosition::After)
                 //    ->color($meta['color'])
                 ->modifyQueryUsing(
-                    fn (Builder $query) => $query
+                    fn(Builder $query) => $query
                         ->where('status', 'published')
                         ->where('category', $key)
                 );
@@ -89,7 +100,7 @@ class ListCourses extends ListRecords
                 ->icon('heroicon-o-tag')
                 ->badge($uncategorizedCount)
                 ->badgeColor('gray')
-                ->modifyQueryUsing(fn (Builder $q) => $q->where('status', 'published')->whereNull('category'));
+                ->modifyQueryUsing(fn(Builder $q) => $q->where('status', 'published')->whereNull('category'));
         }
 
         return $tabs;

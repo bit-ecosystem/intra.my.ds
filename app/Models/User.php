@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Bites\Core\Organization\Models\JobPosition;
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\JobPosition;
 use Bites\Hrm\Models\Staff;
 use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
 use Filament\Models\Contracts\HasAvatar;

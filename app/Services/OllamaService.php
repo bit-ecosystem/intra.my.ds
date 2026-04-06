@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use Bites\Kbm\Dms\Models\Document;
-use Bites\Kbm\Dms\Models\Vector;
+use Bites\Knowledge\Library\Document;
+use Bites\Knowledge\Library\Vector;
 use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;

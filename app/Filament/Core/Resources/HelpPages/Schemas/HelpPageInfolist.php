@@ -14,7 +14,8 @@ class HelpPageInfolist
         return $schema
             ->components([
                 TextEntry::make('content')
-                    ->html()
+                    // ->html()
+                    ->markdown()
                     ->extraAttributes(['class' => 'document-content'])
                     ->columnSpanFull(),
             ]);

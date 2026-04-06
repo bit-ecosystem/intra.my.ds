@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Hrm\Resources\Staff\Widgets;
 
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\OrgUnit;
 use Bites\Hrm\Models\Staff;
 use Filament\Actions\BulkActionGroup;
 use Filament\Schemas\Components\Tabs\Tab;

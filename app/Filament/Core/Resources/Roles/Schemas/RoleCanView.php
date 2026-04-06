@@ -6,7 +6,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Core\Resources\Roles\Schemas;
 
-use Bites\Core\Organization\Models\OrgUnit;
+use Bites\Core\Organization\OrgUnit;
 use Closure;
 use Filament\Actions\Action;
 use Filament\Forms\Components\CheckboxList;
@@ -367,7 +367,7 @@ class RoleCanView
      * @param  array{
      *   relation?: string,               // relation to eager load (default: 'attachableRoles:id,name')
      *   sessionOrgKey?: string,          // session key to resolve current OU (default: 'current_org_unit')
-     *   ouModel?: class-string,          // OU model class (default: \Bites\Core\Organization\Models\OrgUnit::class)
+     *   ouModel?: class-string,          // OU model class (default: \Bites\Core\Organization\OrgUnit::class)
      * } $options
      */
     public static function tableVisibilityModifier(array $options = []): Closure

@@ -4,7 +4,7 @@ namespace App\Filament\Tables\Columns;
 
 use App\Filament\Lms\Resources\Courses\CourseResource; // ← adjust if your resource class differs
 use App\Models\LCourse;
-use Bites\Kbm\Lms\Models\Course;
+use Bites\Knowledge\Learning\Course;
 use Filament\Support\Components\Contracts\HasEmbeddedView;
 use Filament\Tables\Columns\Column;
 use Illuminate\Support\Collection;
