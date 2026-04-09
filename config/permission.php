@@ -1,6 +1,6 @@
 <?php
 
-use Bites\Core\Organization\OrgUnit;
+use Bites\Organization\Structure\OrgUnit;
 use Spatie\Permission\DefaultTeamResolver;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;

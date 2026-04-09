@@ -10,7 +10,7 @@ use App\Filament\Hrm\Resources\Staff\Pages\ListStaff;
 use App\Filament\Hrm\Resources\Staff\Schemas\StaffForm;
 use App\Filament\Hrm\Resources\Staff\Tables\StaffTable;
 use BackedEnum;
-use Bites\Hrm\Models\Staff;
+use Bites\Employment\Models\Staff;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Widgets;
 
 use App\Models\User;
-use Bites\Hrm\Models\Staff;
+use Bites\Employment\Models\Staff;
 use Filament\Facades\Filament;
 use Filament\Widgets\Widget;
 use Illuminate\Support\Facades\Auth;

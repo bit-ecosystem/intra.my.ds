@@ -10,7 +10,7 @@ use App\Filament\Erp\Resources\Workflow\Nodes\Pages\ListNodes;
 use App\Filament\Erp\Resources\Workflow\Nodes\Schemas\NodeForm;
 use App\Filament\Erp\Resources\Workflow\Nodes\Tables\NodesTable;
 use BackedEnum;
-use Bites\Workflow\Models\Node;
+use Bites\Base\Workflow\Node;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

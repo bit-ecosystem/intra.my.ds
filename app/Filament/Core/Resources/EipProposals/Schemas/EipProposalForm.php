@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Core\Resources\EipProposals\Schemas;
 
-use Bites\Core\Organization\Location;
+use Bites\Organization\Structure\Location;
 use Filament\Forms\Components;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;

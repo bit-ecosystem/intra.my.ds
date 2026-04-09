@@ -10,7 +10,7 @@ use App\Filament\Hrm\Resources\OrgUnits\Pages\ListOrgUnits;
 use App\Filament\Hrm\Resources\OrgUnits\Schemas\OrgUnitForm;
 use App\Filament\Hrm\Resources\OrgUnits\Tables\OrgUnitsTable;
 use BackedEnum;
-use Bites\Core\Organization\OrgUnit;
+use Bites\Organization\Structure\OrgUnit;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

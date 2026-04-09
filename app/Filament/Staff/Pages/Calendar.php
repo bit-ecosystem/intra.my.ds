@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Pages;
 
-use App\Enums\EventType;
+use Bites\Base\Todo\Enums\EventType;
 use App\Support\ShiftPattern;
 use BackedEnum;
-use Bites\Shared\Concerns\HasHelp;
-use Bites\Shared\Models\Event;
+use Bites\Service\Concerns\HasHelp;
+use Bites\Base\Todo\Event;
 use Carbon\Carbon;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -85,15 +85,15 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
                 // Group by Month/Year from starts_at
                 Group::make('starts_at')
                     ->label('Month')
-                    ->getTitleFromRecordUsing(fn (Event $record) => optional($record->starts_at)?->isoFormat('MMMM • YYYY') ?? 'No Date')
-                    ->getKeyFromRecordUsing(fn (Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
+                    ->getTitleFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->isoFormat('MMMM • YYYY') ?? 'No Date')
+                    ->getKeyFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
                     ->collapsible(),
 
                 Group::make('iso_week')
                     ->label('Week')
-                    ->getTitleFromRecordUsing(fn (Event $record): string => $record->starts_at ? sprintf('%s • %s', $record->starts_at->format('W'), $record->starts_at->format('o')) : 'No Date')
-                    ->getKeyFromRecordUsing(fn (Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
-                    ->orderQueryUsing(fn (Builder $query, string $direction) => $query->orderBy('starts_at', $direction))
+                    ->getTitleFromRecordUsing(fn(Event $record): string => $record->starts_at ? sprintf('%s • %s', $record->starts_at->format('W'), $record->starts_at->format('o')) : 'No Date')
+                    ->getKeyFromRecordUsing(fn(Event $record) => optional($record->starts_at)?->format('Y-m') ?? '0000-00')
+                    ->orderQueryUsing(fn(Builder $query, string $direction) => $query->orderBy('starts_at', $direction))
                     ->collapsible(),
 
             ])
@@ -179,40 +179,49 @@ class Calendar extends Page implements HasActions, HasForms, HasTable
 
         $public_events = collect($paginator->items())->map(function (Event $event): array {
             return [
-                'title' => $event->title,
-                'start' => optional($event->starts_at)->toDateString(),
-                'color' => $event->color,
+                'title'  => $event->title,
+                'start'  => optional($event->starts_at)->toDateString(),
+                'color'  => $event->color,
                 'allDay' => $event->is_all_day,
             ];
         })->values();
-        optional(Auth::user())->staff;
-
-        $scode = (Auth::user()->staff->shiftCode);
-        // $scode = 'B-3G2S'; // Test shift patterns
-
-        [$shiftGroup, $shiftPattern] = explode('-', $scode);
 
         $shiftEvents = collect();
-        $patterns = array_keys(config('shift_pattern.patterns', []));
-        $foundPattern = null;
 
-        foreach ($patterns as $key) {
+        $scode = Auth::user()?->staff?->shiftCode;
 
-            $pattern = ShiftPattern::fromConfig($key);
+        if (filled($scode)) {
+            [$shiftGroup, $shiftPattern] = explode('-', $scode, 2);
 
-            if ($pattern->hasTeam($shiftGroup)) {
-                $foundPattern = $pattern;
-                break;
+            $patterns = array_keys(config('shift_pattern.patterns', []));
+            $foundPattern = null;
+
+            foreach ($patterns as $key) {
+                $pattern = ShiftPattern::fromConfig($key);
+
+                if ($pattern->hasTeam($shiftGroup)) {
+                    $foundPattern = $pattern;
+                    break;
+                }
             }
-        }
 
-        if ($foundPattern instanceof ShiftPattern) {
-            $tz = config(sprintf('shift_pattern.patterns.%s.timezone', $foundPattern->getPatternKey()), config('app.timezone', 'Asia/Kuala_Lumpur'));
-            $now = Carbon::now($tz);
-            $start = $now->copy()->startOfMonth()->subDays(7);
-            $end = $now->copy()->endOfMonth()->addDays(7);
+            if ($foundPattern instanceof ShiftPattern) {
+                $tz = config(
+                    sprintf(
+                        'shift_pattern.patterns.%s.timezone',
+                        $foundPattern->getPatternKey()
+                    ),
+                    config('app.timezone', 'Asia/Kuala_Lumpur')
+                );
 
-            $shiftEvents = collect($foundPattern->eventsForTeamInRange($shiftGroup, $start, $end));
+                $now   = Carbon::now($tz);
+                $start = $now->copy()->startOfMonth()->subDays(7);
+                $end   = $now->copy()->endOfMonth()->addDays(7);
+
+                $shiftEvents = collect(
+                    $foundPattern->eventsForTeamInRange($shiftGroup, $start, $end)
+                );
+            }
         }
 
         $events = $shiftEvents->concat($public_events)->values();

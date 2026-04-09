@@ -10,7 +10,7 @@ use App\Filament\Core\Resources\OrgRoles\Pages\ListOrgRoles;
 use App\Filament\Core\Resources\OrgRoles\Schemas\OrgRoleForm;
 use App\Filament\Core\Resources\OrgRoles\Tables\OrgRolesTable;
 use BackedEnum;
-use Bites\Core\Organization\OrgRole;
+use Bites\Organization\Structure\OrgRole;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;

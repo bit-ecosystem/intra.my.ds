@@ -10,7 +10,7 @@ use App\Filament\Hrm\Resources\WorkforcePlans\Pages\ListWorkforcePlans;
 use App\Filament\Hrm\Resources\WorkforcePlans\Schemas\WorkforcePlanForm;
 use App\Filament\Hrm\Resources\WorkforcePlans\Tables\WorkforcePlansTable;
 use BackedEnum;
-use Bites\Hrm\Models\WorkforcePlan;
+use Bites\Employment\Models\WorkforcePlan;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

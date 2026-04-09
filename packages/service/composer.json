@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": "^8.2",
-        "bit-es/shared": "*",
-        "bit-es/workflow": "*"
+        "bit-es/service": "*",
+        "bit-es/base": "*"
     },
     "autoload": {
         "psr-4": {

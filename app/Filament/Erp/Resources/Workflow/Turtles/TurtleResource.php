@@ -10,7 +10,7 @@ use App\Filament\Erp\Resources\Workflow\Turtles\Pages\ListTurtles;
 use App\Filament\Erp\Resources\Workflow\Turtles\Schemas\TurtleForm;
 use App\Filament\Erp\Resources\Workflow\Turtles\Tables\TurtlesTable;
 use BackedEnum;
-use Bites\Workflow\Models\Turtle;
+use Bites\Base\Workflow\Turtle;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

@@ -10,7 +10,7 @@ use App\Filament\Hrm\Resources\JobVacancies\Pages\ListJobVacancies;
 use App\Filament\Hrm\Resources\JobVacancies\Schemas\JobVacancyForm;
 use App\Filament\Hrm\Resources\JobVacancies\Tables\JobVacanciesTable;
 use BackedEnum;
-use Bites\Hrm\Models\JobVacancy;
+use Bites\Employment\Models\JobVacancy;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

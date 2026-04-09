@@ -10,7 +10,7 @@ use App\Filament\Erp\Resources\Workflow\Workflows\Pages\ListWorkflows;
 use App\Filament\Erp\Resources\Workflow\Workflows\Schemas\WorkflowForm;
 use App\Filament\Erp\Resources\Workflow\Workflows\Tables\WorkflowsTable;
 use BackedEnum;
-use Bites\Workflow\Models\Workflow;
+use Bites\Base\Workflow\Workflow;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

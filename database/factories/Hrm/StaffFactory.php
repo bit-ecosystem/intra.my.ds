@@ -4,7 +4,7 @@ namespace Database\Factories\Hrm;
 
 use App\Models\PersonAttribute;
 use App\Models\User;
-use Bites\Hrm\Models\Staff;
+use Bites\Employment\Models\Staff;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StaffFactory extends Factory

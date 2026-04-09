@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Core\Resources\Menus\Schemas;
 
 use App\Enums\MenuCategory;
-use Bites\Shared\Concerns\HasAttachableExtLink;
+use Bites\Service\Concerns\HasAttachableExtLink;
 use Filament\Forms\Components;
 use Filament\Schemas\Schema;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Widgets;
 
-use Bites\Workflow\Models\Node;
+use Bites\Base\Workflow\Node;
 use Filament\Actions\BulkActionGroup;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;

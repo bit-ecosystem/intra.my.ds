@@ -6,7 +6,7 @@ namespace App\Providers\Filament;
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\RedirectToCoreLogin;
-use Bites\FilamentBlueprints\Resources\Blueprints\BlueprintResource;
+use Bites\Base\Blueprint\Resources\Blueprints\BlueprintResource;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;

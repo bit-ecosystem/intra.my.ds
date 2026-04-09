@@ -36,7 +36,7 @@ return new class extends Migration
             // Only use this if you want visibility bound to a specific OrgUnit per record.
             $table->foreignId('team_id')
                 ->nullable()
-                ->constrained('org_units') // your Bites\Core\Organization\OrgUnit table
+                ->constrained('org_units') // your Bites\Organization\Structure\OrgUnit table
                 ->nullOnDelete();
 
             $table->timestamps();

@@ -6,7 +6,7 @@ namespace App\Filament\Staff\Pages;
 
 use App\Filament\Staff\Widgets;
 use BackedEnum;
-use Bites\Shared\Concerns\HasHelp;
+use Bites\Service\Concerns\HasHelp;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
 use UnitEnum;

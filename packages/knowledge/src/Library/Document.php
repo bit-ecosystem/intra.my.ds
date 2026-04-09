@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bites\Knowledge\Library;
 
 use App\Models\User;
-use Bites\Core\Organization\OrgUnit;
+use Bites\Organization\Structure\OrgUnit;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

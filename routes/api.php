@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ReceiveDataController;
-use Bites\Core\Organization\Location;
-use Bites\Core\Organization\LocationJsonApi;
+use Bites\Organization\Structure\Location;
+use Bites\Organization\Structure\LocationJsonApi;
 use Bites\Knowledge\Learning\Course;
 use Bites\Knowledge\Learning\CourseJsonApi;
 use Illuminate\Http\Request;
@@ -55,18 +55,18 @@ Route::post('/slo/revoke', function (Request $request) {
 });
 
 Route::get('/get_data/locations', function () {
-    return \Bites\Core\Organization\LocationJsonApi::collection(
-        \Bites\Core\Organization\Location::with(['parent', 'company'])->get()
+    return \Bites\Organization\Structure\LocationJsonApi::collection(
+        \Bites\Organization\Structure\Location::with(['parent', 'company'])->get()
     );
 });
 
-Route::get('/get_data/locations/{location?}', function (?\Bites\Core\Organization\Location $location) {
+Route::get('/get_data/locations/{location?}', function (?\Bites\Organization\Structure\Location $location) {
     if ($location) {
         return $location->toResource();
     }
 
-    return  \Bites\Core\Organization\LocationJsonApi::collection(
-        \Bites\Core\Organization\Location::with(['parent', 'company'])->get()
+    return  \Bites\Organization\Structure\LocationJsonApi::collection(
+        \Bites\Organization\Structure\Location::with(['parent', 'company'])->get()
     );
 });
 
@@ -102,7 +102,7 @@ Route::get('/get_data/{resource}', function (string $resource) {
     
 //     // 2. Define your Namespace Mappings
 //     $namespaces = [
-//         'Location' => ['model' => \Bites\Core\Organization\Location::class, 'api' => \Bites\Core\Organization\LocationJsonApi::class, 'with' => ['parent', 'company']],
+//         'Location' => ['model' => \Bites\Organization\Structure\Location::class, 'api' => \Bites\Organization\Structure\LocationJsonApi::class, 'with' => ['parent', 'company']],
 //         'Course'   => ['model' => \Bites\Knowledge\Learning\Course::class, 'api' => \Bites\Knowledge\Learning\CourseJsonApi::class, 'with' => ['modules']],
 //     ];
 

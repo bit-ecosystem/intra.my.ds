@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bites\Knowledge\Learning;
 
 use App\Models\User;
-use Bites\Shared\Helpers\StakeHolderPolicy;
+use Bites\Service\Helpers\StakeHolderPolicy;
 
 class CoursePolicy extends StakeHolderPolicy
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Bites\Shared\Concerns\HasAttachableExtLink;
-use Bites\Shared\Concerns\HasAttachableRoles;
+use Bites\Service\Concerns\HasAttachableExtLink;
+use Bites\Service\Concerns\HasAttachableRoles;
 use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model

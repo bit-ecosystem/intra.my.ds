@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Bites\Shared\Models\HelpPage;
+use Bites\Service\Models\HelpPage;
 use Filament\Facades\Filament;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -14,22 +14,22 @@ class HelpPageSeeder extends Seeder
      */
     protected array $targetModels = [
         "App\Models\User",
-        "Bites\Core\Organization\Company",
-        "Bites\Core\Organization\OrgUnit",
-        "Bites\Core\Organization\OrgRole",
-        "Bites\Shared\Models\HelpPage",
+        "Bites\Organization\Structure\Company",
+        "Bites\Organization\Structure\OrgUnit",
+        "Bites\Organization\Structure\OrgRole",
+        "Bites\Service\Models\HelpPage",
         "App\Models\Menu",
-        "Bites\Hrm\Models\Application",
-        "Bites\Hrm\Models\ApplicationStatusHistory",
-        "Bites\Hrm\Models\Interview",
-        "Bites\Hrm\Models\JobVacancy",
-        "Bites\Core\Organization\JobPosition",
-        "Bites\Hrm\Models\WorkforcePlan",
-        "Bites\Hrm\Models\Offer",
-        "Bites\Hrm\Models\Screening",
-        "Bites\Hrm\Models\Skill",
-        "Bites\Hrm\Models\Staff",
-        "Bites\Hrm\Models\JobDescriptionTemplate",
+        "Bites\Employment\Models\Application",
+        "Bites\Employment\Models\ApplicationStatusHistory",
+        "Bites\Employment\Models\Interview",
+        "Bites\Employment\Models\JobVacancy",
+        "Bites\Organization\Structure\JobPosition",
+        "Bites\Employment\Models\WorkforcePlan",
+        "Bites\Employment\Models\Offer",
+        "Bites\Employment\Models\Screening",
+        "Bites\Employment\Models\Skill",
+        "Bites\Employment\Models\Staff",
+        "Bites\Employment\Models\JobDescriptionTemplate",
         "App\Models\Workflow\Turtle",
         "App\Models\PersonAttribute",
         "Bites\Knowledge\Library\Document",

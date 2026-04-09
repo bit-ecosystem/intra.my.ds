@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Pages;
 
 use BackedEnum;
-use Bites\Shared\Concerns\HasHelp;
+use Bites\Service\Concerns\HasHelp;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Grid;

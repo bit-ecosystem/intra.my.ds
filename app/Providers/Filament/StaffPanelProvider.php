@@ -6,9 +6,9 @@ namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\Register;
 use App\Http\Middleware\SetLocale;
-use Bites\Core\Identity\Pages\Login;
-use Bites\Core\Identity\Pages\Profile;
-use Bites\Core\Identity\Pages\ResetPassword;
+use Bites\Organization\Identity\Pages\Login;
+use Bites\Organization\Identity\Pages\Profile;
+use Bites\Organization\Identity\Pages\ResetPassword;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;

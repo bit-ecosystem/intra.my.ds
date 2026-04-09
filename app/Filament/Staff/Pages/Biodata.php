@@ -7,7 +7,7 @@ namespace App\Filament\Staff\Pages;
 use App\Filament\Staff\Widgets\StaffInfo;
 use App\Models\User;
 use BackedEnum;
-use Bites\Shared\Concerns\HasHelp;
+use Bites\Service\Concerns\HasHelp;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;

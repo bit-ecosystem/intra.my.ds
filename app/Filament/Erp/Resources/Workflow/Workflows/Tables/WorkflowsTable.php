@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Erp\Resources\Workflow\Workflows\Tables;
 
-use Bites\Workflow\Models\Workflow;
+use Bites\Base\Workflow\Workflow;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;

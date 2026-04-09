@@ -8,7 +8,7 @@ use App\Filament\Staff\Pages\Help;
 use App\Listeners\SyncKeycloakAttributes;
 use App\Listeners\SyncLdap;
 use App\Socialite\KeycloakProvider;
-use Bites\Shared\Models\HelpPage;
+use Bites\Service\Models\HelpPage;
 use BladeUI\Icons\Factory;
 use DutchCodingCompany\FilamentSocialite\Events\Login;
 use Filament\Facades\Filament;

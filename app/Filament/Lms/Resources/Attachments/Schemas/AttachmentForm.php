@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Attachments\Schemas;
 
-use Bites\Shared\Concerns\HasAttachableExtLink;
+use Bites\Service\Concerns\HasAttachableExtLink;
 use Filament\Forms\Components;
 use Filament\Schemas\Schema;
 

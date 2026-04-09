@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Filament\Hrm\Resources\WorkforcePlans\Pages;
 
 use App\Filament\Hrm\Resources\WorkforcePlans\WorkforcePlanResource;
-use Bites\Core\Organization\OrgUnit;
-use Bites\Hrm\Models\WorkforcePlan;
+use Bites\Organization\Structure\OrgUnit;
+use Bites\Employment\Models\WorkforcePlan;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;

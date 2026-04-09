@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Bites\Knowledge\Learning;
 
-use Bites\Shared\Concerns\HasAttachableRoles;
-use Bites\Shared\Concerns\HasStakeHolder;
+use Bites\Service\Concerns\HasAttachableRoles;
+use Bites\Service\Concerns\HasStakeHolder;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

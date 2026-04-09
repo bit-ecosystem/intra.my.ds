@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Widgets;
 
-use Bites\Shared\Models\Event;
+use Bites\Base\Todo\Event;
 use Filament\Widgets\Widget;
 use Illuminate\Support\Carbon;
 

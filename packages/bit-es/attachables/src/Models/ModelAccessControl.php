@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Attachables\Models;
 
-use Bites\Core\Organization\OrgUnit;
+use Bites\Organization\Structure\OrgUnit;
 use Illuminate\Database\Eloquent\Model;
 
 class ModelAccessControl extends Model

@@ -1,0 +1,352 @@
+// ============================================
+// composer.json
+// ============================================
+{
+    "name": "your-vendor/filament-workflow-engine",
+    "description": "Filament Workflow Engine with RingleSoft Approval",
+    "type": "library",
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^5.0",
+        "ringlesoft/laravel-process-approval": "^1.0",
+        "spatie/laravel-permission": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "YourVendor\\Workflow\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "YourVendor\\Workflow\\Providers\\WorkflowServiceProvider"
+            ]
+        }
+    }
+}
+
+// ============================================
+// src/Providers/WorkflowServiceProvider.php
+// ============================================
+namespace YourVendor\Workflow\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class WorkflowServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+
+        $this->publishes([
+            __DIR__ . '/../../config/workflow.php' => config_path('workflow.php'),
+        ], 'workflow-config');
+    }
+}
+
+// ============================================
+// src/WorkflowPlugin.php
+// ============================================
+namespace YourVendor\Workflow;
+
+use Filament\Contracts\Plugin;
+use Filament\Panel;
+
+class WorkflowPlugin implements Plugin
+{
+    public static function make(): static
+    {
+        return app(static::class);
+    }
+
+    public function getId(): string
+    {
+        return 'workflow-engine';
+    }
+
+    public function register(Panel $panel): void
+    {
+        $panel->resources([
+            \YourVendor\Workflow\Filament\Resources\WorkflowResource::class,
+        ]);
+    }
+
+    public function boot(Panel $panel): void {}
+}
+
+// ============================================
+// config/workflow.php
+// ============================================
+return [
+    'models' => [
+        'workflow' => \YourVendor\Workflow\Models\Workflow::class,
+        'step' => \YourVendor\Workflow\Models\WorkflowStep::class,
+    ],
+];
+
+// ============================================
+// database/migrations/2026_01_01_000000_create_workflows.php
+// ============================================
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('workflows', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('model_type');
+            $table->string('document_type')->nullable();
+            $table->foreignId('department_id')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->integer('priority')->default(1);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('workflows');
+    }
+};
+
+// ============================================
+// database/migrations/2026_01_01_000001_create_workflow_steps.php
+// ============================================
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('workflow_steps', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('workflow_id')->constrained()->cascadeOnDelete();
+            $table->integer('step_order');
+            $table->string('role');
+            $table->enum('type', ['check', 'approve']);
+            $table->boolean('is_required')->default(true);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('workflow_steps');
+    }
+};
+
+// ============================================
+// src/Models/Workflow.php
+// ============================================
+namespace YourVendor\Workflow\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Workflow extends Model
+{
+    protected $fillable = [
+        'name',
+        'model_type',
+        'document_type',
+        'department_id',
+        'is_active',
+        'priority',
+    ];
+
+    public function steps()
+    {
+        return $this->hasMany(WorkflowStep::class)->orderBy('step_order');
+    }
+}
+
+// ============================================
+// src/Models/WorkflowStep.php
+// ============================================
+namespace YourVendor\Workflow\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class WorkflowStep extends Model
+{
+    protected $fillable = [
+        'workflow_id',
+        'step_order',
+        'role',
+        'type',
+        'is_required',
+    ];
+
+    public function workflow()
+    {
+        return $this->belongsTo(Workflow::class);
+    }
+}
+
+// ============================================
+// src/Services/WorkflowResolver.php
+// ============================================
+namespace YourVendor\Workflow\Services;
+
+use YourVendor\Workflow\Models\Workflow;
+
+class WorkflowResolver
+{
+    public static function resolve($model): ?Workflow
+    {
+        return Workflow::query()
+            ->where('model_type', get_class($model))
+            ->where('is_active', true)
+            ->orderByDesc('priority')
+            ->first();
+    }
+}
+
+// ============================================
+// src/Traits/HasWorkflow.php
+// ============================================
+namespace YourVendor\Workflow\Traits;
+
+use Exception;
+use RingleSoft\ProcessApproval\Enums\ApprovalTypeEnum;
+use YourVendor\Workflow\Services\WorkflowResolver;
+
+trait HasWorkflow
+{
+    public function startWorkflow()
+    {
+        $workflow = WorkflowResolver::resolve($this);
+
+        if (!$workflow) {
+            throw new Exception('No workflow configured.');
+        }
+
+        $steps = [];
+
+        foreach ($workflow->steps as $step) {
+            $steps[$step->step_order] =
+                $step->type === 'check'
+                    ? ApprovalTypeEnum::CHECK
+                    : ApprovalTypeEnum::APPROVE;
+        }
+
+        static::makeApprovable($steps);
+
+        $this->submit();
+    }
+}
+
+// ============================================
+// src/Filament/Resources/WorkflowResource.php
+// ============================================
+namespace YourVendor\Workflow\Filament\Resources;
+
+use Filament\Forms;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use YourVendor\Workflow\Models\Workflow;
+
+class WorkflowResource extends Resource
+{
+    protected static ?string $model = Workflow::class;
+
+    public static function form(Forms\Form $form): Forms\Form
+    {
+        return $form->schema([
+            Forms\Components\TextInput::make('name')->required(),
+
+            Forms\Components\TextInput::make('model_type')
+                ->required(),
+
+            Forms\Components\TextInput::make('document_type'),
+
+            Forms\Components\TextInput::make('priority')
+                ->numeric()
+                ->default(1),
+
+            Forms\Components\Toggle::make('is_active'),
+
+            Forms\Components\Repeater::make('steps')
+                ->relationship()
+                ->schema([
+                    Forms\Components\TextInput::make('step_order')
+                        ->numeric()
+                        ->required(),
+
+                    Forms\Components\TextInput::make('role')
+                        ->required(),
+
+                    Forms\Components\Select::make('type')
+                        ->options([
+                            'check' => 'Check',
+                            'approve' => 'Approve',
+                        ])
+                        ->required(),
+
+                    Forms\Components\Toggle::make('is_required'),
+                ])
+                ->orderable('step_order')
+        ]);
+    }
+
+    public static function table(Tables\Table $table): Tables\Table
+    {
+        return $table->columns([
+            Tables\Columns\TextColumn::make('name'),
+            Tables\Columns\TextColumn::make('model_type'),
+            Tables\Columns\TextColumn::make('priority'),
+            Tables\Columns\IconColumn::make('is_active')->boolean(),
+        ]);
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListWorkflows::route('/'),
+            'create' => Pages\CreateWorkflow::route('/create'),
+            'edit' => Pages\EditWorkflow::route('/{record}/edit'),
+        ];
+    }
+}
+
+// ============================================
+// src/Filament/Resources/WorkflowResource/Pages/ListWorkflows.php
+// ============================================
+namespace YourVendor\Workflow\Filament\Resources\WorkflowResource\Pages;
+
+use Filament\Resources\Pages\ListRecords;
+use YourVendor\Workflow\Filament\Resources\WorkflowResource;
+
+class ListWorkflows extends ListRecords
+{
+    protected static string $resource = WorkflowResource::class;
+}
+
+// ============================================
+// src/Filament/Resources/WorkflowResource/Pages/CreateWorkflow.php
+// ============================================
+namespace YourVendor\Workflow\Filament\Resources\WorkflowResource\Pages;
+
+use Filament\Resources\Pages\CreateRecord;
+use YourVendor\Workflow\Filament\Resources\WorkflowResource;
+
+class CreateWorkflow extends CreateRecord
+{
+    protected static string $resource = WorkflowResource::class;
+}
+
+// ============================================
+// src/Filament/Resources/WorkflowResource/Pages/EditWorkflow.php
+// ============================================
+namespace YourVendor\Workflow\Filament\Resources\WorkflowResource\Pages;
+
+use Filament\Resources\Pages\EditRecord;
+use YourVendor\Workflow\Filament\Resources\WorkflowResource;
+
+class EditWorkflow extends EditRecord
+{
+    protected static string $resource = WorkflowResource::class;
+}

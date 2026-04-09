@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bites\Knowledge\Learning;
 
 use App\Enums\CourseGroup;
-use Bites\Shared\Concerns\HasStakeHolder;
+use Bites\Service\Concerns\HasStakeHolder;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Attributes\UseResource;

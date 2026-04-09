@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bites\Attachables\Models;
 
 use App\Models\User;
-use Bites\Core\Organization\OrgUnit;
+use Bites\Organization\Structure\OrgUnit;
 use Illuminate\Database\Eloquent\Model;
 
 class RoleGroup extends Model

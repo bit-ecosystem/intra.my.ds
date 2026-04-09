@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Core\Resources\HelpPages\Actions;
 
-use Bites\Shared\Models\HelpPage;
+use Bites\Service\Models\HelpPage;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;

@@ -10,7 +10,7 @@ use App\Filament\Erp\Resources\Workflow\Requests\Pages\ListRequests;
 use App\Filament\Erp\Resources\Workflow\Requests\Schemas\RequestForm;
 use App\Filament\Erp\Resources\Workflow\Requests\Tables\RequestsTable;
 use BackedEnum;
-use Bites\Workflow\Models\Request;
+use Bites\Base\Workflow\Request;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

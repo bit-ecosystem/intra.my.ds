@@ -10,7 +10,7 @@ use App\Filament\Core\Resources\RoleMappers\Pages\ListRoleMappers;
 use App\Filament\Core\Resources\RoleMappers\Schemas\RoleMapperForm;
 use App\Filament\Core\Resources\RoleMappers\Tables\RoleMappersTable;
 use BackedEnum;
-use Bites\Core\Authorization\RoleMapper;
+use Bites\Organization\Authorization\RoleMapper;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;

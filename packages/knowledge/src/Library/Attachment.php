@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Knowledge\Library;
 
-use Bites\Shared\Concerns\HasAttachableExtLink;
+use Bites\Service\Concerns\HasAttachableExtLink;
 use Illuminate\Database\Eloquent\Model;
 
 class Attachment extends Model

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Pages;
 
 use BackedEnum;
-use Bites\Shared\Concerns\HasHelp;
+use Bites\Service\Concerns\HasHelp;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -133,7 +133,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
     {
         return $table
             ->query(function () {
-                return \Bites\Core\Organization\Location::query()
+                return \Bites\Organization\Structure\Location::query()
                     ->when($this->scope === 'rooms', fn ($q) => $q->where('type', 'room'))
                     ->when($this->scope === 'stores', fn ($q) => $q->where('type', 'store'))
                     ->when($this->scope === 'inactive', fn ($q) => $q->whereNotNull('ends_at'));
@@ -157,7 +157,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
                         $this->scope = 'all';
                         $this->resetTablePage();
                     })
-                    ->badge(\Bites\Core\Organization\Location::count()),
+                    ->badge(\Bites\Organization\Structure\Location::count()),
 
                 Action::make('rooms')
                     ->label('Rooms')
@@ -168,7 +168,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
                         $this->scope = 'rooms';
                         $this->resetTablePage();
                     })
-                    ->badge(\Bites\Core\Organization\Location::where('type', 'room')->count()),
+                    ->badge(\Bites\Organization\Structure\Location::where('type', 'room')->count()),
 
                 Action::make('stores')
                     ->label('Stores')
@@ -179,7 +179,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
                         $this->scope = 'stores';
                         $this->resetTablePage();
                     })
-                    ->badge(\Bites\Core\Organization\Location::where('type', 'store')->count()),
+                    ->badge(\Bites\Organization\Structure\Location::where('type', 'store')->count()),
 
                 Action::make('inactive')
                     ->label('Inactive')
@@ -190,7 +190,7 @@ class Location extends Page implements HasActions, HasForms, HasTable
                         $this->scope = 'inactive';
                         $this->resetTablePage();
                     })
-                    ->badge(\Bites\Core\Organization\Location::whereNotNull('ends_at')->count()),
+                    ->badge(\Bites\Organization\Structure\Location::whereNotNull('ends_at')->count()),
             ]);
     }
 }

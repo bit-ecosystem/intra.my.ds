@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Exports\Hrm;
 
-use Bites\Hrm\Models\Staff;
+use Bites\Employment\Models\Staff;
 use Filament\Actions\Exports\ExportColumn;
 use Filament\Actions\Exports\Exporter;
 use Filament\Actions\Exports\Models\Export;

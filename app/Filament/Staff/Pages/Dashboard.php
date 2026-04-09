@@ -7,7 +7,7 @@ namespace App\Filament\Staff\Pages;
 use App\Filament\Staff\Widgets;
 use App\Filament\Staff\Widgets\BioDataWidget;
 use BackedEnum;
-use Bites\Shared\Concerns\HasHelp;
+use Bites\Service\Concerns\HasHelp;
 use Filament\Pages\Dashboard as BaseDashboard;
 use Illuminate\Contracts\Support\Htmlable;
 use UnitEnum;

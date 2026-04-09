@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bites\Knowledge\Learning;
 
 use App\Models\User;
-use Bites\Hrm\Models\Staff;
+use Bites\Employment\Models\Staff;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

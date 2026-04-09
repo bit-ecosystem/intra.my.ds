@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Staff\Pages;
 
 use BackedEnum;
-use Bites\Shared\Concerns\HasHelp;
+use Bites\Service\Concerns\HasHelp;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
 use UnitEnum;

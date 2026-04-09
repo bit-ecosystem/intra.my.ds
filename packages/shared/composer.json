@@ -1,5 +1,5 @@
 {
-    "name": "bit-es/shared",
+    "name": "bit-es/service",
     "description": "Shared utilities, traits, base models, UI components, and helpers for the BIT enterprise ecosystem.",
     "type": "library",
     "license": "MIT",

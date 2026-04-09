@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Attachments\Tables;
 
-use Bites\Shared\Helpers\AttachmentLinkResolver;
+use Bites\Service\Helpers\AttachmentLinkResolver;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
