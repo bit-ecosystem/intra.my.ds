@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bites\Base\Blueprint\Resources\Blueprints;
 
 use BackedEnum;
-use Bites\Base\Blueprint\Models\Blueprint;
+use Bites\Base\Blueprint\Blueprint;
 use Bites\Base\Blueprint\Resources\Blueprints\Pages\CreateBlueprint;
 use Bites\Base\Blueprint\Resources\Blueprints\Pages\EditBlueprint;
 use Bites\Base\Blueprint\Resources\Blueprints\Pages\ListBlueprints;

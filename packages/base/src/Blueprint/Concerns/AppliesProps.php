@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bites\Base\Blueprint\Traits;
+namespace Bites\Base\Blueprint\Concerns;
 
 trait AppliesProps
 {

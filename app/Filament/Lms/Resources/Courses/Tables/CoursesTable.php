@@ -20,7 +20,7 @@ class CoursesTable
     {
         return $table
             ->query(
-                Course::query()->where('status', 'published')->visibleTo(Auth::user())
+                Course::query()->where('status', 'published')//->visibleTo(Auth::user())
             )
             ->columns([
                 TextColumn::make('category')

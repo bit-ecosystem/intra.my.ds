@@ -6,7 +6,7 @@ namespace Bites\FilamentBlueprints\Blocks;
 
 use Bites\FilamentBlueprints\BlockRegistry;
 use Bites\FilamentBlueprints\Contracts\BlockContract;
-use Bites\FilamentBlueprints\Traits\AppliesProps;
+use Bites\FilamentBlueprints\Concerns\AppliesProps;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;

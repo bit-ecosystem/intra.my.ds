@@ -6,7 +6,7 @@ namespace Bites\Base\Blueprint\Blocks;
 
 use Bites\Base\Blueprint\BlockRegistry;
 use Bites\Base\Blueprint\Contracts\BlockContract;
-use Bites\Base\Blueprint\Traits\AppliesProps;
+use Bites\Base\Blueprint\Concerns\AppliesProps;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Repeater;

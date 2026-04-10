@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bites\Base\Blueprint\Models;
+namespace Bites\Base\Blueprint;
 
 use Illuminate\Database\Eloquent\Model;
 

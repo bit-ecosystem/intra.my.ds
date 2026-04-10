@@ -20,7 +20,7 @@ class ModulesTable
     {
         return $table
             ->query(
-                Module::query()->visibleTo(Auth::user())
+                Module::query()//->visibleTo(Auth::user())
             )
             ->columns([
                 TextColumn::make('title'),

@@ -29,7 +29,7 @@ return RectorConfig::configure()
         rectorPreset: true,
     )
     ->withSets([
-        LaravelLevelSetList::UP_TO_LARAVEL_120,
+        LaravelLevelSetList::UP_TO_LARAVEL_130,
 
     ])->withSkip([
         RenameParamToMatchTypeRector::class,

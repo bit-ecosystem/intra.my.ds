@@ -13,14 +13,15 @@ abstract class StakeHolderPolicy
 
     public function view(User $user, $model): bool
     {
-        return method_exists($model, 'canViewBy')
-            && $model->canViewBy($user);
+        // return method_exists($model, 'canViewBy')
+        //     && $model->canViewBy($user);
+            return true;
     }
 
     public function update(User $user, $model): bool
     {
-        // return false;
-        return method_exists($model, 'canEditBy')
-            && $model->canEditBy($user);
+        return false;
+        // return method_exists($model, 'canEditBy')
+        //     && $model->canEditBy($user);
     }
 }
