@@ -7,7 +7,7 @@ namespace Bites\Knowledge\Learning;
 use App\Models\User;
 use Bites\Service\Helpers\StakeHolderPolicy;
 
-class ModulePolicy extends StakeHolderPolicy
+class ModulePolicy //extends StakeHolderPolicy
 {
     // /**
     //  * Determine whether the user can view any models.

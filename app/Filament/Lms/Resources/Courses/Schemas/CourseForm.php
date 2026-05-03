@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Courses\Schemas;
 
+use App\Enums\CourseGroup;
 use Bites\Service\Components\StakeholderInput;
 use Filament\Forms\Components;
 use Filament\Schemas\Components\Section;
@@ -24,7 +25,7 @@ class CourseForm
                 Section::make('Course Details')
                     ->description('Basic information that identifies this course')
                     ->icon('myicon-course')
-                    ->columns(3)
+                    ->columns(4)
                     ->columnSpanFull()
                     ->components([
 
@@ -42,7 +43,9 @@ class CourseForm
                             ->live(onBlur: true)
                             ->helperText('Displayed to learners across the platform')
                             ->columnSpan(2),
-
+                        Components\Select::make('category')
+                            ->options(CourseGroup::class)
+                            ->required(),
                         Components\Textarea::make('description')
                             ->label('Description')
                             ->rows(4)

@@ -121,5 +121,23 @@ return [
             'params' => [],
             'enabled' => true,
         ],
+        'get_departments' => [
+            'connection' => 'external_ecology',
+            'sql' => <<<'SQL'
+            SELECT *
+            FROM HrmDepartment
+            SQL,
+            'params' => [],
+            'enabled' => true,
+        ],
+        'get_locations' => [
+            'connection' => 'external_ecology',
+            'sql' => <<<'SQL'
+            SELECT *
+            FROM HrmLocations
+            SQL,
+            'params' => [],
+            'enabled' => true,
+        ],
     ],
 ];

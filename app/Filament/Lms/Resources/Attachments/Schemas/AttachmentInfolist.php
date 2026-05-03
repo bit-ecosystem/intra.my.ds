@@ -14,7 +14,7 @@ class AttachmentInfolist
     {
         return $schema->components([
             Section::make('Document')
-                ->description('Zoom in/out using the controls')
+                ->description('Zoom in/out use Ctrl + Mouse Wheel or pinch on touch devices.')
                 ->columnSpanFull()
 
                 // ✅ Alpine state lives on the Section

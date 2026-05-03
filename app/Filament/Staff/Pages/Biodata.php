@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Staff\Pages;
 
-use App\Filament\Staff\Widgets\StaffInfo;
+use App\Filament\Staff\Widgets;
 use App\Models\User;
 use BackedEnum;
 use Bites\Service\Concerns\HasHelp;
@@ -56,11 +56,15 @@ class Biodata extends Page implements HasActions, HasSchemas
 
     protected string $view = 'filament.staff.pages.biodata';
 
+    public function getHeaderWidgetsColumns(): int | array
+    {
+        return 4;
+    }
     protected function getHeaderWidgets(): array
     {
         return [
-            StaffInfo::class,
-            // \App\Filament\Staff\Widgets\RolesWidget::class,
+            Widgets\StaffInfo::class,
+            Widgets\RolesWidgetMini::class,
         ];
     }
 
@@ -159,7 +163,7 @@ class Biodata extends Page implements HasActions, HasSchemas
                                 ->addActionLabel('Add Family Member') // Customize the button label
                                 ->columns(1) // Repeater itself occupies one column in the parent grid
                                 ->collapsible() // Optional: allows collapsing items
-                                ->itemLabel(fn (array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
+                                ->itemLabel(fn(array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
                             Action::make('save')
                                 ->label('Save Family Info')
                                 ->action('save'),
@@ -199,7 +203,7 @@ class Biodata extends Page implements HasActions, HasSchemas
                                         ->addActionLabel('Add Reminder') // Customize the button label
                                         ->columns(1) // Repeater itself occupies one column in the parent grid
                                         ->collapsible() // Optional: allows collapsing items
-                                        ->itemLabel(fn (array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
+                                        ->itemLabel(fn(array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
                                 ])->hiddenLabel(),
                             Action::make('save')
                                 ->label('Save Reminder Info')

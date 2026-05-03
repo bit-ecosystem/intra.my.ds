@@ -38,6 +38,7 @@ class StaffPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+                ->sidebarWidth('15rem')
             // Panel identity & routing
             ->id('staff')
             ->path('staff')

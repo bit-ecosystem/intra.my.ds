@@ -14,8 +14,10 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
+use Bites\Knowledge\Learning\Certificate;
 
 #[ObservedBy([StaffObserver::class])]
 class Staff extends Model
@@ -60,6 +62,12 @@ class Staff extends Model
     {
         return $this->belongsTo(JobPosition::class);
     }
+    
+    public function certificates(): HasMany
+    {
+        return $this->hasMany(Certificate::class, 'for_staff');
+    }
+
 
     public function staffRoleLinks()
     {

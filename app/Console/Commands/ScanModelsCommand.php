@@ -11,7 +11,7 @@ use RecursiveIteratorIterator;
 
 class ScanModelsCommand extends Command
 {
-    protected $signature = 'scan:models 
+    protected $signature = 'bites:scan-models 
                             {path? : Directory to scan}
                             {--vendor : Also scan vendor/ directory}';
 

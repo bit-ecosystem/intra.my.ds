@@ -18,7 +18,7 @@ class StaffInfo extends Widget
     // Control ordering relative to other widgets (same as AccountWidget example)
     protected static ?int $sort = -2;
 
-    protected int|string|array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 3;
 
     // Render immediately (no skeleton/loading state)
     protected static bool $isLazy = false;
