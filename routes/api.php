@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\ReceiveDataController;
-use Bites\Organization\Structure\Location;
-use Bites\Organization\Structure\LocationJsonApi;
 use Bites\Business\Lms\Entities\Course;
 use Bites\Business\Lms\Entities\CourseJsonApi;
+use Bites\Organization\Structure\Location;
+use Bites\Organization\Structure\LocationJsonApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -55,24 +55,24 @@ Route::post('/slo/revoke', function (Request $request) {
 });
 
 Route::get('/get_data/locations', function () {
-    return \Bites\Organization\Structure\LocationJsonApi::collection(
-        \Bites\Organization\Structure\Location::with(['parent', 'company'])->get()
+    return LocationJsonApi::collection(
+        Location::with(['parent', 'company'])->get()
     );
 });
 
-Route::get('/get_data/locations/{location?}', function (?\Bites\Organization\Structure\Location $location) {
+Route::get('/get_data/locations/{location?}', function (?Location $location) {
     if ($location) {
         return $location->toResource();
     }
 
-    return  \Bites\Organization\Structure\LocationJsonApi::collection(
-        \Bites\Organization\Structure\Location::with(['parent', 'company'])->get()
+    return LocationJsonApi::collection(
+        Location::with(['parent', 'company'])->get()
     );
 });
 
 Route::get('/get_data/courses', function () {
-    return \Bites\Business\Lms\Entities\CourseJsonApi::collection(
-        \Bites\Business\Lms\Entities\Course::with(['modules'])->get()
+    return CourseJsonApi::collection(
+        Course::with(['modules'])->get()
     );
 });
 Route::get('/get_data/courses/{course?}', function (?Course $course) {
@@ -80,7 +80,7 @@ Route::get('/get_data/courses/{course?}', function (?Course $course) {
         return $course->toResource();
     }
 
-    return \Bites\Business\Lms\Entities\CourseJsonApi::collection(
+    return CourseJsonApi::collection(
         Course::with(['modules'])->get()
     );
 });
@@ -99,7 +99,7 @@ Route::get('/get_data/{resource}', function (string $resource) {
 // Route::get('/get_data/{type}/{id?}', function (string $type, $id = null) {
 //     // 1. Resolve Class Names (e.g., 'locations' -> 'Location')
 //     $modelName = Str::studly(Str::singular($type));
-    
+
 //     // 2. Define your Namespace Mappings
 //     $namespaces = [
 //         'Location' => ['model' => \Bites\Organization\Structure\Location::class, 'api' => \Bites\Organization\Structure\LocationJsonApi::class, 'with' => ['parent', 'company']],
@@ -122,7 +122,7 @@ Route::get('/get_data/{resource}', function (string $resource) {
 
 //     // 4. Handle Collection (with the permission scope we debugged!)
 //     $query = $modelClass::with($config['with']);
-    
+
 //     if (method_exists($modelClass, 'scopeVisibleTo')) {
 //         $query->visibleTo(auth()->user());
 //     }

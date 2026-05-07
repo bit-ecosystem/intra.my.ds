@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use Bites\Service\Services\EcologyFetchService;
 use Bites\Service\Models\ApiData;
+use Bites\Service\Services\EcologyFetchService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 

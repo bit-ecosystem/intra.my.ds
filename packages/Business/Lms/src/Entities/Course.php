@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Bites\Business\Lms\Entities;
 
 use App\Enums\CourseGroup;
+use Bites\Business\Lms\Factories\CourseFactory;
+use Bites\Business\Lms\Policies\CoursePolicy;
 use Bites\Service\Concerns\HasStakeHolder;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
-use Illuminate\Database\Eloquent\Attributes\UseResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-#[UseResource(CourseJsonApi::class)]
 #[UseFactory(CourseFactory::class)]
 #[UsePolicy(CoursePolicy::class)]
 class Course extends Model

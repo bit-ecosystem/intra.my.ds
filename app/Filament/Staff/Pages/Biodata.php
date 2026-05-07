@@ -56,10 +56,11 @@ class Biodata extends Page implements HasActions, HasSchemas
 
     protected string $view = 'filament.staff.pages.biodata';
 
-    public function getHeaderWidgetsColumns(): int | array
+    public function getHeaderWidgetsColumns(): int|array
     {
         return 4;
     }
+
     protected function getHeaderWidgets(): array
     {
         return [
@@ -163,7 +164,7 @@ class Biodata extends Page implements HasActions, HasSchemas
                                 ->addActionLabel('Add Family Member') // Customize the button label
                                 ->columns(1) // Repeater itself occupies one column in the parent grid
                                 ->collapsible() // Optional: allows collapsing items
-                                ->itemLabel(fn(array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
+                                ->itemLabel(fn (array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
                             Action::make('save')
                                 ->label('Save Family Info')
                                 ->action('save'),
@@ -203,7 +204,7 @@ class Biodata extends Page implements HasActions, HasSchemas
                                         ->addActionLabel('Add Reminder') // Customize the button label
                                         ->columns(1) // Repeater itself occupies one column in the parent grid
                                         ->collapsible() // Optional: allows collapsing items
-                                        ->itemLabel(fn(array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
+                                        ->itemLabel(fn (array $state): ?string => $state['name'] ?? null), // Shows name as label when collapsed
                                 ])->hiddenLabel(),
                             Action::make('save')
                                 ->label('Save Reminder Info')

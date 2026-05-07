@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Bites\Business\Lms\Entities;
 
+use Bites\Business\Lms\Factories\ModuleFactory;
+use Bites\Business\Lms\Policies\ModulePolicy;
 use Bites\Service\Concerns\HasAttachableRoles;
 use Bites\Service\Concerns\HasStakeHolder;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;

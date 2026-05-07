@@ -40,8 +40,6 @@ enum ProcessStages: string
         };
     }
 
-    
-
     /**
      * Display label for Filament (tabs, badges, selects).
      */
@@ -106,7 +104,6 @@ enum ProcessStages: string
             self::SUPERVISING => 'Supervising : Oversight and supervision activities.',
         };
     }
-
 
     /**
      * Optional: name-value list for a Select component.

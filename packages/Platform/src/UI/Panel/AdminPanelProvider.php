@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Platform\UI\Panel;
 
+use Bites\Platform\Branding\Pages\LoginLdap;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -25,17 +26,17 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-        // dd(config('bites.queue'));
+        // dd(config('rimba.queue'));
         $panel
             ->default()
-            ->login(\Bites\Platform\Branding\Pages\LoginLdap::class)
-            ->id(config('bites.ui.panels.admin.0', 'admin'))
-            ->path(config('bites.ui.panels.admin.1', 'admin'))
-            ->colors(['primary' => config('bites.ui.panels.admin.2', Color::Amber)])
-            ->brandName(config('bites.ui.panels.admin.3', 'Administration'))
-            ->homeUrl(fn (): string => route(config('bites.ui.panels.admin.4', 'filament.admin.pages.dashboard')));
+            ->login(LoginLdap::class)
+            ->id(config('rimba.ui.panels.admin.0', 'admin'))
+            ->path(config('rimba.ui.panels.admin.1', 'admin'))
+            ->colors(['primary' => config('rimba.ui.panels.admin.2', Color::Blue)])
+            ->brandName(config('rimba.ui.panels.admin.3', 'Administration'))
+            ->homeUrl(fn (): string => route(config('rimba.ui.panels.admin.4', 'filament.admin.pages.dashboard')));
 
-        $packages = config('bites.ui.packages', []);
+        $packages = config('rimba.ui.packages', []);
         foreach ($packages as $package => $namespace) {
             $panel
                 ->discoverResources(

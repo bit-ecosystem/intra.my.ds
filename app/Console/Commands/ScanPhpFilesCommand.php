@@ -59,6 +59,7 @@ class ScanPhpFilesCommand extends Command
     {
         if (! is_dir($dir)) {
             $this->error('❌ Directory not found: '.$dir);
+
             return;
         }
 
@@ -73,8 +74,8 @@ class ScanPhpFilesCommand extends Command
 
             $results[] = [
                 'filename' => $file->getFilename(),
-                'path'     => $file->getRealPath(),
+                'path' => $file->getRealPath(),
             ];
         }
     }
-};
+}

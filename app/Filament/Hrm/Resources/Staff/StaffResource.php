@@ -7,6 +7,9 @@ namespace App\Filament\Hrm\Resources\Staff;
 use App\Filament\Hrm\Resources\Staff\Pages\CreateStaff;
 use App\Filament\Hrm\Resources\Staff\Pages\EditStaff;
 use App\Filament\Hrm\Resources\Staff\Pages\ListStaff;
+use App\Filament\Hrm\Resources\Staff\RelationManagers\ExpiredCertificatesRelationManager;
+use App\Filament\Hrm\Resources\Staff\RelationManagers\RevokedCertificatesRelationManager;
+use App\Filament\Hrm\Resources\Staff\RelationManagers\ValidCertificatesRelationManager;
 use App\Filament\Hrm\Resources\Staff\Schemas\StaffForm;
 use App\Filament\Hrm\Resources\Staff\Tables\StaffTable;
 use BackedEnum;
@@ -55,9 +58,9 @@ class StaffResource extends Resource
     public static function getRelations(): array
     {
         return [
-            \App\Filament\Hrm\Resources\Staff\RelationManagers\ValidCertificatesRelationManager::class,
-            \App\Filament\Hrm\Resources\Staff\RelationManagers\RevokedCertificatesRelationManager::class,
-            \App\Filament\Hrm\Resources\Staff\RelationManagers\ExpiredCertificatesRelationManager::class,
+            ValidCertificatesRelationManager::class,
+            RevokedCertificatesRelationManager::class,
+            ExpiredCertificatesRelationManager::class,
         ];
 
     }

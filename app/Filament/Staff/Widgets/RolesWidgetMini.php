@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class RolesWidgetMini extends Widget
 {
     protected string $view = 'filament.staff.widgets.roles-widget-mini';
+
     protected int|string|array $columnSpan = 1;
 
     protected static ?string $heading = 'Your Roles';

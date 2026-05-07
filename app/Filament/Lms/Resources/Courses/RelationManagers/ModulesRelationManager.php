@@ -37,7 +37,7 @@ class ModulesRelationManager extends RelationManager
                     ->label('View')
                     ->icon('heroicon-m-arrow-top-right-on-square') // nice "external" icon
                     ->color('primary')
-                    ->url(fn($record): string => 'https://intra.my.ds.amkor.com/lms/modules/' . $record->getKey()),
+                    ->url(fn ($record): string => 'https://intra.my.ds.amkor.com/lms/modules/'.$record->getKey()),
 
             ]);
     }

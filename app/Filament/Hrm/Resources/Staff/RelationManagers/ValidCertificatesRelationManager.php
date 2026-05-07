@@ -2,8 +2,8 @@
 
 namespace App\Filament\Hrm\Resources\Staff\RelationManagers;
 
-use Filament\Tables;
 use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Tables;
 use Illuminate\Database\Eloquent\Model;
 
 class ValidCertificatesRelationManager extends BaseCertificatesRelationManager
@@ -14,13 +14,12 @@ class ValidCertificatesRelationManager extends BaseCertificatesRelationManager
     {
         return parent::table($table)
             ->modifyQueryUsing(
-                fn($query) =>
-                $query->where('status', 'valid')
+                fn ($query) => $query->where('status', 'valid')
             )
             ->emptyStateHeading('No certificates')
-            ->emptyStateDescription('No certificates in this category.');;
+            ->emptyStateDescription('No certificates in this category.');
     }
-    
+
     public static function getTabComponent(Model $ownerRecord, string $pageClass): Tab
     {
         $count = $ownerRecord
@@ -28,9 +27,8 @@ class ValidCertificatesRelationManager extends BaseCertificatesRelationManager
             ->where('status', 'valid')
             ->count();
 
-        return Tab::make(static::$title. ' Certificates')
+        return Tab::make(static::$title.' Certificates')
             ->badge($count > 0 ? $count : null)
             ->badgeTooltip('Number of valid certificates');
     }
-
 }

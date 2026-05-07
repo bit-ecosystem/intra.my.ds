@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use Bites\Employment\Models\Staff;
 use Bites\Organization\Structure\JobPosition;
 use Bites\Organization\Structure\OrgUnit;
-use Bites\Employment\Models\Staff;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;

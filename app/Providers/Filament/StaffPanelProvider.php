@@ -37,8 +37,8 @@ class StaffPanelProvider extends PanelProvider
 
     public function panel(Panel $panel): Panel
     {
-        return $panel
-                ->sidebarWidth('15rem')
+        $panel
+            ->sidebarWidth('15rem')
             // Panel identity & routing
             ->id('staff')
             ->path('staff')
@@ -115,6 +115,8 @@ class StaffPanelProvider extends PanelProvider
             // Custom render hooks for UI
             ->renderHook('panels::auth.login.form.after', fn (): View => view('corp-login::panel.extra'))
             ->renderHook('panels::auth.register.form.after', fn (): View => view('corp-login::panel.extra'));
+
+            return $panel;
     }
 
     public function boot(Panel $panel): void

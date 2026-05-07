@@ -20,7 +20,7 @@ class CoursesTable
     {
         return $table
             ->query(
-                Course::query()->where('status', 'published')->withCount('modules') //->visibleTo(Auth::user())
+                Course::query()->where('status', 'published')->withCount('modules') // ->visibleTo(Auth::user())
             )
             ->columns([
                 TextColumn::make('category')
@@ -33,16 +33,17 @@ class CoursesTable
                         if ($count === 0) {
                             return $label;
                         }
-                        return "{$label} · {$count} " . str('module')->plural($count);
+
+                        return "{$label} · {$count} ".str('module')->plural($count);
                     })
-                    ->color(fn(?CourseGroup $state) => $state?->getColor())
-                    ->tooltip(fn(?CourseGroup $state) => $state?->getDescription()),
+                    ->color(fn (?CourseGroup $state) => $state?->getColor())
+                    ->tooltip(fn (?CourseGroup $state) => $state?->getDescription()),
                 Split::make([
                     IconColumn::make('category')
                         ->label('')
-                        ->icon(fn(?CourseGroup $state): string|\BackedEnum|\Illuminate\Contracts\Support\Htmlable => $state?->getIcon() ?? 'heroicon-o-tag')
-                        ->color(fn(?CourseGroup $state): string|array|null => $state?->getColor())
-                        ->tooltip(fn(?CourseGroup $state): string|\Illuminate\Contracts\Support\Htmlable|null => $state?->getDescription())
+                        ->icon(fn (?CourseGroup $state): string|\BackedEnum|\Illuminate\Contracts\Support\Htmlable => $state?->getIcon() ?? 'heroicon-o-tag')
+                        ->color(fn (?CourseGroup $state): string|array|null => $state?->getColor())
+                        ->tooltip(fn (?CourseGroup $state): string|\Illuminate\Contracts\Support\Htmlable|null => $state?->getDescription())
                         ->sortable(false)
                         ->grow(false),
                     Stack::make([
@@ -50,8 +51,8 @@ class CoursesTable
                             ->label('Title')
                             ->searchable()
                             ->weight(Enums\FontWeight::SemiBold)
-                            ->color(fn($record) => $record->category?->getColor())
-                            ->tooltip(fn($record) => $record->category?->getDescription()),
+                            ->color(fn ($record) => $record->category?->getColor())
+                            ->tooltip(fn ($record) => $record->category?->getDescription()),
                         TextColumn::make('description')
                             ->size(Enums\TextSize::ExtraSmall)
                             ->searchable()

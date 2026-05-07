@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Bites\Organization\Authorization;
 
+use Bites\Employment\Models\Staff;
 use Bites\Organization\Structure\JobPosition;
 use Bites\Organization\Structure\OrgUnit;
-use Bites\Employment\Models\Staff;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Model;

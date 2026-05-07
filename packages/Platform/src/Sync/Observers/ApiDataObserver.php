@@ -23,7 +23,7 @@ class ApiDataObserver
         }
 
         // ✅ Respect config: async (queue) OR sync (immediate)
-        if (config('bites.sync.queue', true)) {
+        if (config('rimba.sync.queue', true)) {
             ProcessApiDataJob::dispatch($data);
 
             return;

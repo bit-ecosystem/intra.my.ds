@@ -5,12 +5,6 @@ declare(strict_types=1);
 namespace Bites\Organization\Providers;
 
 use App\Http\Middleware\RedirectToCoreLogin;
-use Bites\Organization\Identity\Resources\AuthCodes\AuthCodeResource;
-use Bites\Organization\Identity\Resources\Clients\ClientResource;
-use Bites\Organization\Identity\Resources\DeviceCodes\DeviceCodeResource;
-use Bites\Organization\Identity\Resources\RefreshTokens\RefreshTokenResource;
-use Bites\Organization\Identity\Resources\Tokens\TokenResource;
-use Bites\Organization\Identity\Resources\Users\UserResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;

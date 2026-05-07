@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Bites\Organization\Structure;
 
-use Bites\Organization\Authorization\RoleMapper;
+use Bites\Base\Workflow\Turtle;
 use Bites\Employment\Models\WorkforcePlan;
 use Bites\Knowledge\Library\Document;
-use Bites\Base\Workflow\Turtle;
+use Bites\Organization\Authorization\RoleMapper;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 

@@ -15,7 +15,7 @@ abstract class StakeHolderPolicy
     {
         // return method_exists($model, 'canViewBy')
         //     && $model->canViewBy($user);
-            return true;
+        return true;
     }
 
     public function update(User $user, $model): bool

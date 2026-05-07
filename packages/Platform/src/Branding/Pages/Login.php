@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Platform\Branding\Pages;
 
+use Bites\Platform\Auth\Services\AuthOrchestrator;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use Filament\Auth\Http\Responses\Contracts\LoginResponse;
 use Filament\Auth\Pages\Login as BaseLogin;
@@ -11,7 +12,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Route;
-use Bites\Platform\Auth\Services\AuthOrchestrator;
 
 class Login extends BaseLogin
 {
@@ -35,6 +35,7 @@ class Login extends BaseLogin
             $this->rateLimit(5);
         } catch (TooManyRequestsException $e) {
             $this->getRateLimitedNotification($e)?->send();
+
             return null;
         }
 

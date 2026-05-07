@@ -7,6 +7,7 @@ namespace App\Filament\Lms\Resources\Courses\Pages;
 use App\Enums\CourseGroup;
 use App\Filament\Lms\Resources\Courses\CourseResource;
 use Bites\Business\Lms\Entities\Course;
+use Bites\Business\Lms\Entities\Module;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
@@ -67,7 +68,7 @@ class ListCourses extends ListRecords
             // ->badgeColor('primary')
             ->icon('heroicon-o-rectangle-stack')
             // Explicitly return the query
-            ->modifyQueryUsing(fn(Builder $query) => $query->where('status', 'published'));
+            ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'published'));
 
         foreach (CourseGroup::meta() as $key => $meta) {
             $tabs[$key] = Tab::make('')
@@ -75,7 +76,7 @@ class ListCourses extends ListRecords
                     'x-tooltip.raw' => $meta['description'],
                 ])
                 ->badge(function () use ($key) {
-                    $count = \Bites\Business\Lms\Entities\Module::query()
+                    $count = Module::query()
                         ->whereHas('courses', function ($query) use ($key) {
                             $query->where('status', 'published')
                                 ->where('category', $key);
@@ -89,7 +90,7 @@ class ListCourses extends ListRecords
                 ->IconPosition(IconPosition::After)
                 //    ->color($meta['color'])
                 ->modifyQueryUsing(
-                    fn(Builder $query) => $query
+                    fn (Builder $query) => $query
                         ->where('status', 'published')
                         ->where('category', $key)
                 );
@@ -101,7 +102,7 @@ class ListCourses extends ListRecords
                 ->icon('heroicon-o-tag')
                 ->badge($uncategorizedCount)
                 ->badgeColor('gray')
-                ->modifyQueryUsing(fn(Builder $q) => $q->where('status', 'published')->whereNull('category'));
+                ->modifyQueryUsing(fn (Builder $q) => $q->where('status', 'published')->whereNull('category'));
         }
 
         return $tabs;

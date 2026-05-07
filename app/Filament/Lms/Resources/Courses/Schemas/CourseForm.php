@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\Courses\Schemas;
 
 use App\Enums\CourseGroup;
+use Bites\Business\Lms\Entities\Module;
 use Bites\Service\Components\StakeholderInput;
 use Filament\Forms\Components;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Bites\Business\Lms\Entities\Module;
 
 class CourseForm
 {
@@ -34,7 +34,6 @@ class CourseForm
                             ->required()
                             ->maxLength(50)
                             ->helperText('Short unique identifier (e.g. LMS-SEC-101)'),
-
 
                         Components\TextInput::make('title')
                             ->label('Course Title')
@@ -78,9 +77,9 @@ class CourseForm
                     ->components([
                         Components\Select::make('status')
                             ->options([
-                                'draft'     => 'Draft',
+                                'draft' => 'Draft',
                                 'published' => 'Published',
-                                'archived'  => 'Archived',
+                                'archived' => 'Archived',
                             ])
                             ->required()
                             ->default('draft')
@@ -93,7 +92,7 @@ class CourseForm
 
                     ]),
 
-      Section::make('Modules')
+                Section::make('Modules')
                     ->description('Attach this module to one or more courses')
                     ->icon('myicon-course')
                     ->components([

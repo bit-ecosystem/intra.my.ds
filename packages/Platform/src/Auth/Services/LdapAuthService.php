@@ -29,6 +29,7 @@ class LdapAuthService
             $isEmail ? 'mail' : 'samaccountname' => $login ?? null,
             'password' => $password ?? null,
         ];
+
         return Filament::auth()->attempt($credentials, $remember);
     }
 }

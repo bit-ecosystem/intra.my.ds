@@ -15,8 +15,8 @@ class AuthOrchestrator
     {
         // STEP 1: Check LDAP first
         if ($this->ldap->userExists($login)) {
-// dd($this->ldap->userExists($login));
-// dd($this->ldap->authenticate($login, $password, $remember));
+            // dd($this->ldap->userExists($login));
+            // dd($this->ldap->authenticate($login, $password, $remember));
             // LDAP user → must pass LDAP auth
             return $this->ldap->authenticate($login, $password, $remember)
                 ? 'ldap_success'

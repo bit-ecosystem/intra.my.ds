@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Bites\Service\Jobs;
 
-use Bites\Service\Services\StaffImportService;
 use Bites\Service\Models\ApiData;
+use Bites\Service\Services\StaffImportService;
 use Bites\Service\Support\WeaverToStaff;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

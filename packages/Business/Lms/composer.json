@@ -14,7 +14,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Bites\\Business\\Lms\\": "src/"
+            "Bites\\Business\\Lms\\": "src/",
+            "Bites\\Business\\Lms\\Factories\\": "database/factories/"
         }
     },
     "extra": {

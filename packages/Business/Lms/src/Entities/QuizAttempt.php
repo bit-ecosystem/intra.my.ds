@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bites\Business\Lms\Entities;
 
 use App\Models\User;
+use Bites\Business\Lms\Observers\QuizAttemptObserver;
 use Bites\Employment\Models\Staff;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

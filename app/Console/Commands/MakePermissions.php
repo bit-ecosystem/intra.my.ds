@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use Bites\Organization\Authorization\RoleMapper;
 use Bites\Employment\Models\Staff;
+use Bites\Organization\Authorization\RoleMapper;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;

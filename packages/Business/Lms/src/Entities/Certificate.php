@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Bites\Business\Lms\Entities;
 
-use Bites\Employment\Models\Staff;
 use Bites\Base\Todo\Concerns\CanMakeTask;
+use Bites\Employment\Models\Staff;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

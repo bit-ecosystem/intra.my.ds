@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Bites\FilamentBlueprints\Blocks;
 
 use Bites\FilamentBlueprints\BlockRegistry;
-use Bites\FilamentBlueprints\Contracts\BlockContract;
 use Bites\FilamentBlueprints\Concerns\AppliesProps;
+use Bites\FilamentBlueprints\Contracts\BlockContract;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\KeyValue;

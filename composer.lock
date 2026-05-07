@@ -134,7 +134,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/Business/Lms",
-                "reference": "da021f5f41b12eb2801d5bd40925f2cf0c549f3e"
+                "reference": "e8b795e83679368b4a1d1b24cd7773397ce4c7be"
             },
             "require": {
                 "php": "^8.3"
@@ -149,7 +149,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Bites\\Business\\Lms\\": "src/"
+                    "Bites\\Business\\Lms\\": "src/",
+                    "Bites\\Business\\Lms\\Factories\\": "database/factories/"
                 }
             },
             "scripts": {

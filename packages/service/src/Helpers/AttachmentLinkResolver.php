@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bites\Service\Helpers;
 
-use App\Filament\Lms\Resources\Attachments\AttachmentResource;
+use Bites\Business\Lms\Http\UI\Staff\Resources\Attachments\AttachmentResource;
 use Illuminate\Support\Str;
 
 final class AttachmentLinkResolver

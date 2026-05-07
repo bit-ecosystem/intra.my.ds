@@ -2,11 +2,10 @@
 
 namespace App\Filament\Hrm\Resources\Staff\RelationManagers;
 
-use Filament\Actions;
-use Filament\Tables;
-use Filament\Resources\RelationManagers\RelationManager;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Lms\Resources\Certificates\Schemas\CertificateInfolist;
+use Filament\Actions;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables;
 
 abstract class BaseCertificatesRelationManager extends RelationManager
 {
@@ -35,7 +34,7 @@ abstract class BaseCertificatesRelationManager extends RelationManager
                     ->colors([
                         'success' => 'valid',
                         'warning' => 'expired',
-                        'danger'  => 'revoked',
+                        'danger' => 'revoked',
                     ]),
 
                 Tables\Columns\TextColumn::make('issued_at')
@@ -52,8 +51,7 @@ abstract class BaseCertificatesRelationManager extends RelationManager
                     ->modalHeading('Certificate')
                     ->modalWidth('4xl')
                     ->schema(
-                        fn($schema) =>
-                        CertificateInfolist::configure($schema)
+                        fn ($schema) => CertificateInfolist::configure($schema)
                     ),
 
             ])

@@ -7,6 +7,7 @@ namespace Bites\Employment\Models;
 use App\Models\PersonAttribute;
 use App\Models\User;
 use App\Observers\StaffObserver;
+use Bites\Business\Lms\Entities\Certificate;
 use Bites\Organization\Structure\JobPosition;
 use Bites\Organization\Structure\OrgUnit;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
@@ -17,7 +18,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
-use Bites\Business\Lms\Entities\Certificate;
 
 #[ObservedBy([StaffObserver::class])]
 class Staff extends Model
@@ -62,12 +62,11 @@ class Staff extends Model
     {
         return $this->belongsTo(JobPosition::class);
     }
-    
+
     public function certificates(): HasMany
     {
         return $this->hasMany(Certificate::class, 'for_staff');
     }
-
 
     public function staffRoleLinks()
     {

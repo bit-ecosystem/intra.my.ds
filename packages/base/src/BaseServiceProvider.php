@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Bites\Base;
 
-use Illuminate\Support\ServiceProvider;
 use Bites\Base\Blueprint\BlockRegistry;
+use Illuminate\Support\ServiceProvider;
 
 class BaseServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/filament-blueprints.php', 'filament-blueprints');
+        $this->mergeConfigFrom(__DIR__.'/../config/filament-blueprints.php', 'filament-blueprints');
 
         // Tag block services listed in config
         $blockClasses = (array) config('filament-blueprints.blocks', []);
@@ -31,10 +31,10 @@ class BaseServiceProvider extends ServiceProvider
     {
         // Publish config
         $this->publishes([
-            __DIR__ . '/../config/filament-blueprints.php' => config_path('filament-blueprints.php'),
+            __DIR__.'/../config/filament-blueprints.php' => config_path('filament-blueprints.php'),
         ], 'filament-blueprints-config');
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'workflow');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'workflow');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'workflow');
     }
 }

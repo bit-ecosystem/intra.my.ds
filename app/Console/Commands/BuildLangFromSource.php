@@ -26,7 +26,7 @@ class BuildLangFromSource extends Command
         foreach ($paths as $path) {
             $fullPath = base_path($path);
 
-            if (!is_dir($fullPath)) {
+            if (! is_dir($fullPath)) {
                 continue;
             }
 
@@ -51,6 +51,7 @@ class BuildLangFromSource extends Command
 
         if (empty($keys)) {
             $this->warn('No translation keys found.');
+
             return self::SUCCESS;
         }
 
@@ -82,10 +83,10 @@ class BuildLangFromSource extends Command
 
         File::put(
             $file,
-            "<?php\n\nreturn " . var_export($merged, true) . ";\n"
+            "<?php\n\nreturn ".var_export($merged, true).";\n"
         );
 
-        $this->info("📘 auto.php: " . count($merged) . ' keys');
+        $this->info('📘 auto.php: '.count($merged).' keys');
     }
 
     private function buildJsonLangFile(string $locale, array $keys): void
@@ -109,7 +110,7 @@ class BuildLangFromSource extends Command
             )
         );
 
-        $this->info("📙 {$locale}.json: " . count($merged) . ' keys');
+        $this->info("📙 {$locale}.json: ".count($merged).' keys');
     }
 
     private function humanize(string $key): string
