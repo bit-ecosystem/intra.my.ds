@@ -23,7 +23,7 @@ class ModuleFactory extends Factory
             'description' => $this->faker->optional()->paragraph(),
             'order_index' => $this->faker->numberBetween(0, 20),
             'estimated_duration_minutes' => $this->faker->optional()->numberBetween(15, 240),
-            'validity_months' => $this->faker->optional()->numberBetween(6, 36),
+            'validity_months' => $this->faker->numberBetween(1, 36),
             'certificate_template' => $this->faker->optional()->randomElement([
                 ['layout' => 'default', 'theme' => 'blue', 'signature' => 'Training Dept'],
                 ['layout' => 'modern', 'theme' => 'green', 'signature' => 'QA Office'],

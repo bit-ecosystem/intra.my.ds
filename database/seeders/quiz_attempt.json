@@ -607,6 +607,21 @@
             "time_taken": 162.5,
             "created_at": "2026-02-06 11:44:06",
             "updated_at": "2026-02-06 11:44:06"
+        },        {
+            "id": 40,
+            "quiz_id": 13,
+            "data": "{\"q01ITIL101\":\"a01ITIL101B\",\"q01ITIL102\":[\"a01ITIL102C\"],\"q01ITIL103\":\"a01ITIL103C\",\"q01ITIL104\":\"a01ITIL104B\",\"q01ITIL105\":[\"a01ITIL105D\",\"a01ITIL105A\",\"a01ITIL105B\"],\"q01ITIL106\":\"a01ITIL106A\",\"q01ITIL107\":\"a01ITIL107B\",\"q01ITIL108\":[\"a01ITIL108A\",\"a01ITIL108B\",\"a01ITIL108D\"],\"q01ITIL109\":\"a01ITIL109B\",\"q01ITIL110\":\"a01ITIL110B\",\"q01ITIL111\":[\"a01ITIL111C\",\"a01ITIL111B\",\"a01ITIL111D\",\"a01ITIL111A\"],\"q01ITIL112\":[\"a01ITIL112C\"]}",
+            "result": 1,
+            "score": 66.67,
+            "user_id": 1,
+            "for_staff": 38,
+            "by_staff": 38,
+            "meta": "153582,153582",
+            "module_id": 3,
+            "started_at": "2026-02-06 11:25:34",
+            "time_taken": 157.3,
+            "created_at": "2026-02-06 11:28:11",
+            "updated_at": "2026-02-06 11:28:11"
         }
     ]
 }
