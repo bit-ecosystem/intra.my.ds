@@ -45,7 +45,8 @@ class StaffPanelProvider extends PanelProvider
             ->homeUrl(fn (): string => route(config('bites.staff_panel.route', '/')))
             // Authentication pages
             // ->login(\Bites\CorpLogin\Pages\Login::class) // Use package-provided login page
-            ->login(Login::class)
+            // ->login(Login::class)
+            ->login(\Bites\Platform\Branding\Pages\Login::class) // Use custom login page with branding
             ->registration(Register::class)
             ->profile(Profile::class)
             ->passwordReset(ResetPassword::class)

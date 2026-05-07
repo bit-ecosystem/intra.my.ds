@@ -30,10 +30,10 @@ class AppServiceProvider extends ServiceProvider
         // });
 
         // Event::listen(Login::class, [SyncKeycloakAttributes::class, 'handle']);
-        Event::listen(Synchronized::class, [
-            SyncLdap::class,
-            'handle',
-        ]);
+        // Event::listen(Synchronized::class, [
+        //     SyncLdap::class,
+        //     'handle',
+        // ]);
     }
 
     public function boot(): void

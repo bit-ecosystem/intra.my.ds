@@ -1,4 +1,4 @@
-[ 
+[
   {
     "course": "Technical & Manufacturing-Specific Training",
     "category": "Technical",
@@ -216,6 +216,7 @@
       },
       {
         "name": "Networking Essentials",
+        "validity_months": 1,
         "description": "Networking fundamentals, TCP/IP, routing, and switching concepts.",
         "materials": [
           {
@@ -349,6 +350,7 @@
     "modules": [
       {
         "name": "Level 3 – MOM",
+        "validity_months": 1,
         "description": "Manufacturing Operations Management concepts, MES systems, and ISA-95 standards.",
         "materials": [
           {
@@ -398,4 +400,3 @@
     ]
   }
 ]
-
