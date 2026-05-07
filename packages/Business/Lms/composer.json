@@ -1,0 +1,39 @@
+{
+    "name": "bit-es/lms",
+    "description": "Learning package for the BITES.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BIT Ecosystem",
+            "email": "bit.ecosystem@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bites\\Business\\Lms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bites\\Business\\Lms\\LmsServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "setup": [
+            "composer install",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate",
+            "@php artisan migrate --force",
+            "npm install",
+            "npm run build"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

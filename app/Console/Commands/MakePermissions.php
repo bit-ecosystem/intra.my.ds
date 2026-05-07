@@ -62,7 +62,7 @@ class MakePermissions extends Command
     }
 
     /**
-     * Convert FQCN like "Bites\Knowledge\Learning\Certificate" → "Lms_Certificate".
+     * Convert FQCN like "Bites\Business\Lms\Entities\Certificate" → "Lms_Certificate".
      */
     protected function aliasFromFqcn(string $fqcn): string
     {

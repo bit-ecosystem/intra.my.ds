@@ -10,7 +10,7 @@ use App\Filament\Lms\Resources\QuizAttempts\Pages\ListQuizAttempts;
 use App\Filament\Lms\Resources\QuizAttempts\Schemas\QuizAttemptForm;
 use App\Filament\Lms\Resources\QuizAttempts\Tables\QuizAttemptsTable;
 use BackedEnum;
-use Bites\Knowledge\Learning\QuizAttempt;
+use Bites\Business\Lms\Entities\QuizAttempt;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

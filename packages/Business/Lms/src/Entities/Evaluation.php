@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bites\Knowledge\Learning;
+namespace Bites\Business\Lms\Entities;
 
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,19 +11,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Quiz extends Model
+class Evaluation extends Model
 {
     use HasFactory;
 
-    protected $table = 'l_quizzes';
+    protected $table = 'l_evaluations';
 
     protected $fillable = [
         'module_id',
         'code',
         'name',          // optional, as per your migration
-        'passing_mark',  // DECIMAL(8,2) per your schema (choose ratio vs percent consistently in your app)
         'is_active',
-        'examiner_style',
         'schema',        // JSON (your quiz schema)
     ];
 
@@ -32,9 +30,9 @@ class Quiz extends Model
         return $this->belongsTo(Module::class, 'module_id');
     }
 
-    public function attempts(): HasMany
+    public function feedback(): HasMany
     {
-        return $this->hasMany(QuizAttempt::class, 'quiz_id');
+        return $this->hasMany(Feedback::class, 'evaluation_id');
     }
 
     /** Scope: active quizzes only */
@@ -49,8 +47,6 @@ class Quiz extends Model
         return [
             'schema' => 'array',
             'is_active' => 'boolean',
-            'examiner_style' => 'boolean',
-            'passing_mark' => 'decimal:2',
         ];
     }
 }

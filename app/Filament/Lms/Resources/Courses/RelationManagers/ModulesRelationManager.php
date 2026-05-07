@@ -18,10 +18,17 @@ class ModulesRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
+
         return $table
+            ->modifyQueryUsing(function ($query) {
+                return $this->ownerRecord
+                    ->modules()
+                    ->getQuery(); // 🔥 FORCE correct query
+            })
             ->headerActions([
                 CreateAction::make(),
             ])
+
             ->recordActions([
 
                 // Actions\ViewAction::make(),
@@ -30,7 +37,7 @@ class ModulesRelationManager extends RelationManager
                     ->label('View')
                     ->icon('heroicon-m-arrow-top-right-on-square') // nice "external" icon
                     ->color('primary')
-                    ->url(fn ($record): string => 'https://intra.my.ds.amkor.com/lms/modules/'.$record->getKey()),
+                    ->url(fn($record): string => 'https://intra.my.ds.amkor.com/lms/modules/' . $record->getKey()),
 
             ]);
     }

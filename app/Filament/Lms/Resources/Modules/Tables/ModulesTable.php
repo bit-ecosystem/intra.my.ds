@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Lms\Resources\Modules\Tables;
 
 use App\Filament\Lms\Resources\Modules\ModuleResource;
-use Bites\Knowledge\Learning\Module;
+use Bites\Business\Lms\Entities\Module;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;

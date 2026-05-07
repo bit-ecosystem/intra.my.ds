@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
-use Bites\Knowledge\Learning\Certificate;
+use Bites\Business\Lms\Entities\Certificate;
 
 #[ObservedBy([StaffObserver::class])]
 class Staff extends Model

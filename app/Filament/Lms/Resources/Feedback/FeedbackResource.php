@@ -10,7 +10,7 @@ use App\Filament\Lms\Resources\Feedback\Schemas\FeedbackForm;
 use App\Filament\Lms\Resources\Feedback\Schemas\FeedbackInfolist;
 use App\Filament\Lms\Resources\Feedback\Tables\FeedbackTable;
 use BackedEnum;
-use Bites\Knowledge\Learning\Feedback;
+use Bites\Business\Lms\Entities\Feedback;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;

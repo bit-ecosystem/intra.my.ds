@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bites\Knowledge\Learning;
+namespace Bites\Business\Lms\Entities;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;

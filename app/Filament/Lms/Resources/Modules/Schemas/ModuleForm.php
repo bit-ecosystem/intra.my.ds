@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Lms\Resources\Modules\Schemas;
 
-use Bites\Knowledge\Learning\Course;
+use Bites\Business\Lms\Entities\Course;
 use Bites\Service\Components\StakeholderInput;
 use Filament\Forms\Components;
 use Filament\Schemas\Components\Section;

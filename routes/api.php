@@ -3,8 +3,8 @@
 use App\Http\Controllers\ReceiveDataController;
 use Bites\Organization\Structure\Location;
 use Bites\Organization\Structure\LocationJsonApi;
-use Bites\Knowledge\Learning\Course;
-use Bites\Knowledge\Learning\CourseJsonApi;
+use Bites\Business\Lms\Entities\Course;
+use Bites\Business\Lms\Entities\CourseJsonApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -71,8 +71,8 @@ Route::get('/get_data/locations/{location?}', function (?\Bites\Organization\Str
 });
 
 Route::get('/get_data/courses', function () {
-    return \Bites\Knowledge\Learning\CourseJsonApi::collection(
-        \Bites\Knowledge\Learning\Course::with(['modules'])->get()
+    return \Bites\Business\Lms\Entities\CourseJsonApi::collection(
+        \Bites\Business\Lms\Entities\Course::with(['modules'])->get()
     );
 });
 Route::get('/get_data/courses/{course?}', function (?Course $course) {
@@ -80,7 +80,7 @@ Route::get('/get_data/courses/{course?}', function (?Course $course) {
         return $course->toResource();
     }
 
-    return \Bites\Knowledge\Learning\CourseJsonApi::collection(
+    return \Bites\Business\Lms\Entities\CourseJsonApi::collection(
         Course::with(['modules'])->get()
     );
 });
@@ -103,7 +103,7 @@ Route::get('/get_data/{resource}', function (string $resource) {
 //     // 2. Define your Namespace Mappings
 //     $namespaces = [
 //         'Location' => ['model' => \Bites\Organization\Structure\Location::class, 'api' => \Bites\Organization\Structure\LocationJsonApi::class, 'with' => ['parent', 'company']],
-//         'Course'   => ['model' => \Bites\Knowledge\Learning\Course::class, 'api' => \Bites\Knowledge\Learning\CourseJsonApi::class, 'with' => ['modules']],
+//         'Course'   => ['model' => \Bites\Business\Lms\Entities\Course::class, 'api' => \Bites\Business\Lms\Entities\CourseJsonApi::class, 'with' => ['modules']],
 //     ];
 
 //     if (!isset($namespaces[$modelName])) {

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Bites\Knowledge\Learning\Course;
-use Bites\Knowledge\Learning\Material;
-use Bites\Knowledge\Learning\Module;
+use Bites\Business\Lms\Entities\Course;
+use Bites\Business\Lms\Entities\Material;
+use Bites\Business\Lms\Entities\Module;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;

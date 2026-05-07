@@ -1,6 +1,6 @@
 <?php
 
-namespace Bites\Knowledge\Learning;
+namespace Bites\Business\Lms\Entities;
 
 use Bites\Service\Resources\StakeHolderResource;
 use Illuminate\Http\Resources\JsonApi\JsonApiResource;

@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Lms;
 
-use Bites\Knowledge\Learning\Course;
+use Bites\Business\Lms\Entities\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

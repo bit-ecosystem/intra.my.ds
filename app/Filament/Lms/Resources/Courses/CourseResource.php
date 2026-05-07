@@ -12,7 +12,7 @@ use App\Filament\Lms\Resources\Courses\Schemas\CourseForm;
 use App\Filament\Lms\Resources\Courses\Schemas\CourseInfolist;
 use App\Filament\Lms\Resources\Courses\Tables\CoursesTable;
 use BackedEnum;
-use Bites\Knowledge\Learning\Course;
+use Bites\Business\Lms\Entities\Course;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
@@ -31,10 +31,11 @@ class CourseResource extends Resource
 
     protected static ?int $navigationSort = 3;
 
-    public static function getEloquentQuery(): Builder
-    {
-        return static::getModel()::query(); // ✅ ensure not null
-    }
+    // public static function getEloquentQuery(): Builder
+    // {
+    //     // return static::getModel()::query(); // ✅ ensure not null
+    //         return parent::getEloquentQuery();
+    // }
 
     public static function form(Schema $schema): Schema
     {

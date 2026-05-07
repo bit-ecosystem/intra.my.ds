@@ -10,7 +10,7 @@ use App\Filament\Lms\Resources\Evaluations\Schemas\EvaluationForm;
 use App\Filament\Lms\Resources\Evaluations\Schemas\EvaluationInfolist;
 use App\Filament\Lms\Resources\Evaluations\Tables\EvaluationsTable;
 use BackedEnum;
-use Bites\Knowledge\Learning\Evaluation;
+use Bites\Business\Lms\Entities\Evaluation;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;

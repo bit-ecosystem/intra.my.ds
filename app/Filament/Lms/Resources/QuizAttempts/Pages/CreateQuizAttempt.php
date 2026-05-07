@@ -6,9 +6,9 @@ namespace App\Filament\Lms\Resources\QuizAttempts\Pages;
 
 use App\Filament\Lms\Resources\QuizAttempts\QuizAttemptResource;
 use App\Services\QuizScoringService;
-use Bites\Knowledge\Learning\Certificate;
-use Bites\Knowledge\Learning\Module;
-use Bites\Knowledge\Learning\Quiz;
+use Bites\Business\Lms\Entities\Certificate;
+use Bites\Business\Lms\Entities\Module;
+use Bites\Business\Lms\Entities\Quiz;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Carbon;
@@ -114,7 +114,7 @@ class CreateQuizAttempt extends CreateRecord
      */
     // protected function afterCreate(): void
     // {
-    //     /** @var \Bites\Knowledge\Learning\QuizAttempt $attempt */
+    //     /** @var \Bites\Business\Lms\Entities\QuizAttempt $attempt */
     //     $attempt = $this->record;
 
     //     // Only issue certificate on pass

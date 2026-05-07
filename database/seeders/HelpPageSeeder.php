@@ -36,12 +36,12 @@ class HelpPageSeeder extends Seeder
         "Bites\Knowledge\Library\Vector",
         "App\Models\Qas\Methodology",
         "App\Models\Qas\RunInitiative",
-        "Bites\Knowledge\Learning\Course",
-        "Bites\Knowledge\Learning\Module",
-        "Bites\Knowledge\Learning\Quiz",
-        "Bites\Knowledge\Learning\QuizAttempt",
-        "Bites\Knowledge\Learning\Certificate",
-        "Bites\Knowledge\Learning\Material",
+        "Bites\Business\Lms\Entities\Course",
+        "Bites\Business\Lms\Entities\Module",
+        "Bites\Business\Lms\Entities\Quiz",
+        "Bites\Business\Lms\Entities\QuizAttempt",
+        "Bites\Business\Lms\Entities\Certificate",
+        "Bites\Business\Lms\Entities\Material",
     ];
 
     public function run(): void

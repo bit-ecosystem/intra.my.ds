@@ -9,7 +9,7 @@ use Bites\Service\Components\StakeholderInput;
 use Filament\Forms\Components;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Bites\Knowledge\Learning\Module;
+use Bites\Business\Lms\Entities\Module;
 
 class CourseForm
 {

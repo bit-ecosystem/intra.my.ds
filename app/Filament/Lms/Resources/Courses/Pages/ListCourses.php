@@ -6,7 +6,7 @@ namespace App\Filament\Lms\Resources\Courses\Pages;
 
 use App\Enums\CourseGroup;
 use App\Filament\Lms\Resources\Courses\CourseResource;
-use Bites\Knowledge\Learning\Course;
+use Bites\Business\Lms\Entities\Course;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
@@ -63,8 +63,8 @@ class ListCourses extends ListRecords
 
         // "All" tab - use a simple string key 'all'
         $tabs['all'] = Tab::make(__('All'))
-            ->badge($totalPublished)
-            ->badgeColor('primary')
+            // ->badge($totalPublished)
+            // ->badgeColor('primary')
             ->icon('heroicon-o-rectangle-stack')
             // Explicitly return the query
             ->modifyQueryUsing(fn(Builder $query) => $query->where('status', 'published'));
@@ -75,10 +75,11 @@ class ListCourses extends ListRecords
                     'x-tooltip.raw' => $meta['description'],
                 ])
                 ->badge(function () use ($key) {
-                    $count = Course::query()
-                        ->where('status', 'published')
-                        ->visibleTo(Auth::user())
-                        ->where('category', $key)
+                    $count = \Bites\Business\Lms\Entities\Module::query()
+                        ->whereHas('courses', function ($query) use ($key) {
+                            $query->where('status', 'published')
+                                ->where('category', $key);
+                        })
                         ->count();
 
                     return $count > 0 ? $count : null;

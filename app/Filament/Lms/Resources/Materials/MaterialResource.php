@@ -12,7 +12,7 @@ use App\Filament\Lms\Resources\Materials\Schemas\MaterialForm;
 use App\Filament\Lms\Resources\Materials\Schemas\MaterialInfolist;
 use App\Filament\Lms\Resources\Materials\Tables\MaterialsTable;
 use BackedEnum;
-use Bites\Knowledge\Learning\Material;
+use Bites\Business\Lms\Entities\Material;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;

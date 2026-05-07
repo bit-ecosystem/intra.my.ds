@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Bites\Knowledge\Learning;
+namespace Bites\Business\Lms\Entities;
 
 use App\Models\User;
 use Bites\Service\Helpers\StakeHolderPolicy;
 
-class ModulePolicy //extends StakeHolderPolicy
+class CoursePolicy extends StakeHolderPolicy
 {
     // /**
     //  * Determine whether the user can view any models.
     //  */
     // public function viewAny(User $user): bool
     // {
-    //     return false;
+    //     return true;
     // }
 
     // /**

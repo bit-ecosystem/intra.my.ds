@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bites\Knowledge\Learning;
+namespace Bites\Business\Lms\Entities;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;

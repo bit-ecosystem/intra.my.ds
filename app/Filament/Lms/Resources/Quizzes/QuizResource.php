@@ -12,7 +12,7 @@ use App\Filament\Lms\Resources\Quizzes\Schemas\QuizForm;
 use App\Filament\Lms\Resources\Quizzes\Schemas\QuizInfolist;
 use App\Filament\Lms\Resources\Quizzes\Tables\QuizzesTable;
 use BackedEnum;
-use Bites\Knowledge\Learning\Quiz;
+use Bites\Business\Lms\Entities\Quiz;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
