@@ -7,6 +7,7 @@ namespace Bites\Business\Lms\Http\UI\Staff\Resources\QuizAttempts\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\QueryBuilder\Constraints;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
@@ -62,7 +63,7 @@ class QuizAttemptsTable
                     ]),
             ], layout: FiltersLayout::BeforeContentCollapsible)
             ->recordActions([
-                EditAction::make(),
+                ViewAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

@@ -8,8 +8,10 @@ use BackedEnum;
 use Bites\Business\Lms\Entities\QuizAttempt;
 use Bites\Business\Lms\Http\UI\Staff\Resources\QuizAttempts\Pages\CreateQuizAttempt;
 use Bites\Business\Lms\Http\UI\Staff\Resources\QuizAttempts\Pages\EditQuizAttempt;
+use Bites\Business\Lms\Http\UI\Staff\Resources\QuizAttempts\Pages\ViewQuizAttempt;
 use Bites\Business\Lms\Http\UI\Staff\Resources\QuizAttempts\Pages\ListQuizAttempts;
 use Bites\Business\Lms\Http\UI\Staff\Resources\QuizAttempts\Schemas\QuizAttemptForm;
+use Bites\Business\Lms\Http\UI\Staff\Resources\QuizAttempts\Schemas\QuizAttemptInfolist;
 use Bites\Business\Lms\Http\UI\Staff\Resources\QuizAttempts\Tables\QuizAttemptsTable;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -32,6 +34,10 @@ class QuizAttemptResource extends Resource
     {
         return QuizAttemptForm::configure($schema);
     }
+    public static function infolist(Schema $schema): Schema
+    {
+        return QuizAttemptInfolist::configure($schema);
+    }
 
     public static function table(Table $table): Table
     {
@@ -50,6 +56,7 @@ class QuizAttemptResource extends Resource
         return [
             'index' => ListQuizAttempts::route('/'),
             'create' => CreateQuizAttempt::route('/create'),
+            'view' => ViewQuizAttempt::route('/{record}'),
             'edit' => EditQuizAttempt::route('/{record}/edit'),
         ];
     }
